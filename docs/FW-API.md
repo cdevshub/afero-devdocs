@@ -6,7 +6,7 @@ Use the information in this section if you have an MCU in your device that must 
 - [Device Attribute Message Protocol](/AttrMsgProtocol)
 - [Device Attribute Registry](/AttrRegistry)
 - [Attribute Value Change Rules](/AttrChangeRules)
-- afLib API
+- [afLib API](/API-afLib)
   - [afLib Lifecycle](/afLibLifecycle)
   - [Getting/Setting Attributes](/afLibAttributes)
   - [Callbacks and Events](/afLibCallbacks)

@@ -4,8 +4,8 @@ At the heart of any MCU application that interacts with ASR are the actions of *
 
 The functions described on this page allow your MCU to query and set the attribute values, as currently maintained by the Afero Cloud:
 
-- [`af_lib_get_attribute()`](/afLibAttributes#Func-getAttribute)
-- [`af_lib_set_attribute()`](/afLibAttributes#Func-setAttribute)
+- [`af_lib_get_attribute()`](/afLibAttributes#af_lib_get_attribute)
+- [`af_lib_set_attribute()`](/afLibAttributes#af_lib_set_attribute)
 
 It’s important to keep in mind that the attribute values are represented in multiple places in your project:
 
