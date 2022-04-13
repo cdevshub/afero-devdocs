@@ -2,13 +2,13 @@
 
 Afero Console is designed for partners so they can monitor and visualize their device deployments and usage. It offers aggregated, real-time location views of partner devices as well as individual device use history.
 
-The Console is easy to use and self-documenting. A description of the user interface is presented on this page. Be sure to refer to the [Glossary](https://developer.afero.io/Glossary) for term definitions when using the Console.
+The Console is easy to use and self-documenting. A description of the user interface is presented on this page. Be sure to refer to the [Glossary](/Glossary) for term definitions when using the Console.
 
 ## Sign In and Out of Afero Console
 
 Go to [https://console.afero.io](https://console.afero.io/) then sign in with your Afero partner username (email) and password.
 
-To sign out, click the arrow![img](https://developer.afero.io/static/custom/images/Console-SignOut.png)in the upper-right of the main Console window.
+To sign out, click the arrow![img](img/Console-SignOut.png)in the upper-right of the main Console window.
 
 ## Switch Partners
 
@@ -18,13 +18,13 @@ If you belong to more than one partner, you can switch to view the Console of a 
 
 To view any of the windows in Afero Console, use the left-hand Navigation pane. In addition to the Real-Time Activity window, which opens by default, you’ll find links to Device Listing, Device Type Reports (click to see all your Device Types), Platform Usage, Platform Status, the Developer Portal, and the Dev Portal page with links for purchasing Afero hardware. The Console windows are described and illustrated below:
 
-- [Real-Time Activity](https://developer.afero.io/Console#RTActivity)
-- [Device Listing](https://developer.afero.io/Console#DevListing) and [Individual Device Data Viewer](https://developer.afero.io/Console#DeviceDataViewer)
-- [Device Type Reports](https://developer.afero.io/Console#DTReports)
-- [Data Explorer](https://developer.afero.io/Console#DataExpl)
-- [Platform Usage](https://developer.afero.io/Console#PlatUse)
-- [Platform Status](https://developer.afero.io/Console#PltStatus)
-- [User Manager](https://developer.afero.io/Console#UsrMgr)
+- [Real-Time Activity](/Console#RTActivity)
+- [Device Listing](/Console#DevListing) and [Individual Device Data Viewer](/Console#DeviceDataViewer)
+- [Device Type Reports](/Console#DTReports)
+- [Data Explorer](/Console#DataExpl)
+- [Platform Usage](/Console#PlatUse)
+- [Platform Status](/Console#PltStatus)
+- [User Manager](/Console#UsrMgr)
 
 ### Real-Time Activity Window
 
@@ -40,17 +40,17 @@ You can switch between a map of the world (Global Map) or United States (USA Map
 
 To clear the map of all device activity, click the CLEAR MARKERS button in the upper-right corner.
 
-![img](https://developer.afero.io/static/custom/images/Console-RealTime.png)
+![img](img/Console-RealTime.png)
 
 ### Device Listing
 
 Click DEVICE LISTING in the left-hand Navigation pane to open a window displaying all your devices, including methods for filtering and finding a specific device or set of devices.
 
-In the table titled YOUR AFERO POWERED DEVICE LISTING, click a Device ID to open the [Device Data Viewer](https://developer.afero.io/Console#DeviceDataViewer), or click a DEVICE TYPE NAME to go to the relevant [Device Type Reports](https://developer.afero.io/Console#DTReports) window.
+In the table titled YOUR AFERO POWERED DEVICE LISTING, click a Device ID to open the [Device Data Viewer](/Console#DeviceDataViewer), or click a DEVICE TYPE NAME to go to the relevant [Device Type Reports](/Console#DTReports) window.
 
-You can package and download the contents of this device listings table (with additional Creation Date, Profile ID, and Location information) into a zipped .csv file. Click the download icon on the far right![img](https://developer.afero.io/static/custom/images/Console-DownloadIcon.png)then click the download link that appears. When unzipping the file, you’ll be prompted to enter the password provided under the download link (use copy & paste).
+You can package and download the contents of this device listings table (with additional Creation Date, Profile ID, and Location information) into a zipped .csv file. Click the download icon on the far right![img](img/Console-DownloadIcon.png)then click the download link that appears. When unzipping the file, you’ll be prompted to enter the password provided under the download link (use copy & paste).
 
-![img](https://developer.afero.io/static/custom/images/Console-DeviceListing.png)
+![img](img/Console-DeviceListing.png)
 
 
 
@@ -64,9 +64,9 @@ To view usage data on an **individual device**, do any of the following:
 
 On successful search or navigation, the DEVICE DETAILS tab opens. The ATTRIBUTE BROWSER tab displays each attribute definition, how this attribute is presented on the mobile UI, and attribute update history (updates that occurred in the last 31 days, up to 200 entries).
 
-![img](https://developer.afero.io/static/custom/images/Console-DeviceDetails.png)
+![img](img/Console-DeviceDetails.png)
 
-![img](https://developer.afero.io/static/custom/images/Console-AttributeBrowser.png)
+![img](img/Console-AttributeBrowser.png)
 
 ### Device Type Reports Window
 
@@ -74,29 +74,29 @@ Click DEVICE TYPE REPORTS in the left-hand Navigation pane to show a list of all
 
 Note that metrics are shown in date ranges; click (in the upper-right) FROM THIS WEEK, FROM THIS MONTH, or SELECT DATE RANGE (to customize the range):
 
-![img](https://developer.afero.io/static/custom/images/Console-DateScope.png)
+![img](img/Console-DateScope.png)
 
 You’ll be able to view your Device Type usage in the following ways:
 
-- [Device Type Status](https://developer.afero.io/Console#DevicesOnline)
-- [Attribute Usage Breakdown](https://developer.afero.io/Console#AttrUsageBkdn)
-- [Attribute Value Breakdown](https://developer.afero.io/Console#AttrValueBkdn)
-- [Relative Associated Device Distribution](https://developer.afero.io/Console#RelAssocDevDistr)
-- [Cumulative Device Association Trend](https://developer.afero.io/Console#CumDevAssoc)
-- [Application Version Breakdown](https://developer.afero.io/Console#AppVerBkdn)
-- [Connection Type Breakdown](https://developer.afero.io/Console#ConnTypeBkdn)
+- [Device Type Status](/Console#DevicesOnline)
+- [Attribute Usage Breakdown](/Console#AttrUsageBkdn)
+- [Attribute Value Breakdown](/Console#AttrValueBkdn)
+- [Relative Associated Device Distribution](/Console#RelAssocDevDistr)
+- [Cumulative Device Association Trend](/Console#CumDevAssoc)
+- [Application Version Breakdown](/Console#AppVerBkdn)
+- [Connection Type Breakdown](/Console#ConnTypeBkdn)
 
 #### Device Type Status
 
 At the top are four metrics: number of devices currently associated (attached to an end-user account) and pending association (produced but not yet associated), and total number of devices currently online (available) and offline (unavailable).
 
-![img](https://developer.afero.io/static/custom/images/Console-Online.png)
+![img](img/Console-Online.png)
 
 #### Attribute Usage Breakdown
 
 This table displays, for a selected Device Type, each partner-defined attribute’s usage, important information for determining how customers are using a specific type of device. In the example, the attributes compared are EcoMode, Heating Level, and Fan Speed. You can see that Fan Speed has changed more than the others.
 
-![img](https://developer.afero.io/static/custom/images/Console-DeviceType1.png)
+![img](img/Console-DeviceType1.png)
 
 #### <*Attribute Name*> Value Breakdown
 
@@ -108,33 +108,33 @@ To start, click an attribute in the Attribute Usage table, then look right to th
 - To see the total number of times that an attribute value was selected in the given timeframe, hover over an attribute value in the graph or look in the TOTAL RECORDS column in the table.
 - Attribute values are identified in this table using their labels, or VALUE OPTIONS. These labels are displayed to the end-user in the mobile app UI, as control options.
 
-![img](https://developer.afero.io/static/custom/images/Console-DeviceType2.png)
+![img](img/Console-DeviceType2.png)
 
 #### Relative Associated Device Distribution Map
 
 Scroll down the page to see the Relative Associated Device Distribution map. Use this map to see at a glance where all your associated devices are located, at this point in time.
 
-You can switch views between United States only or Global by toggling the icon![img](https://developer.afero.io/static/custom/images/Console-MapViewToggle.png)in the upper-right of the window.
+You can switch views between United States only or Global by toggling the icon![img](img/Console-MapViewToggle.png)in the upper-right of the window.
 
-![img](https://developer.afero.io/static/custom/images/Console-RelAssocDeviceDistr.png)
+![img](img/Console-RelAssocDeviceDistr.png)
 
 #### Cumulative Device Association Trend
 
 Scroll further down the window to see the cumulative rate of device association trend over time.
 
-![img](https://developer.afero.io/static/custom/images/Console-CumAssocDeviceDistr.png)
+![img](img/Console-CumAssocDeviceDistr.png)
 
 #### Application Version Breakdown
 
 Scroll down to see a graph displaying the versions running on the associated devices. To report a version number, a device must have been associated *and* connected to the Afero Cloud. Those reporting an unknown version have not yet connected to the Cloud.
 
-![img](https://developer.afero.io/static/custom/images/Console-AppVersBkdwn.png)
+![img](img/Console-AppVersBkdwn.png)
 
 #### Connection Type Breakdown
 
 To find out how associated devices have connected to the Afero Cloud, Bluetooth or Wi-Fi, scroll down to the Connection Type Breakdown graph.
 
-![img](https://developer.afero.io/static/custom/images/Console-ConnTypeBkdwn.png)
+![img](img/Console-ConnTypeBkdwn.png)
 
 ### Data Explorer
 
@@ -148,7 +148,7 @@ Afero will give you a monthly allocation of Query Credits. Each query you run is
 
 Your remaining monthly credits will always appear at the top of the Data Explorer Home window, along with other useful information:
 
-![img](https://developer.afero.io/static/custom/images/Console-QueryCredits.png)
+![img](img/Console-QueryCredits.png)
 
 #### Enter a Query
 
@@ -182,7 +182,7 @@ There are a few ways you can query your data:
 
 - #### View Query Results
 
-- Results are displayed in the RESULTS tab, on the far right of the tab bar. Each query you run is displayed in a numbered RESULTS tab. You can clear any of the results by clicking![img](https://developer.afero.io/static/custom/images/Console-ClearResults.png)in the tab.
+- Results are displayed in the RESULTS tab, on the far right of the tab bar. Each query you run is displayed in a numbered RESULTS tab. You can clear any of the results by clicking![img](img/Console-ClearResults.png)in the tab.
 
 - By default, results are displayed in tabular format:
 
@@ -190,10 +190,10 @@ There are a few ways you can query your data:
 
 - You can change the display by clicking the icons on the right:
 
-- | TABULAR ![img](https://developer.afero.io/static/custom/images/Console-TabularDisplay.png) | ![img](https://developer.afero.io/static/custom/images/Console-Tabular.png) | LINE ![img](https://developer.afero.io/static/custom/images/Console-LineDisplay.png) | ![img](https://developer.afero.io/static/custom/images/Console-Line.png) |
+- | TABULAR ![img](img/Console-TabularDisplay.png) | ![img](img/Console-Tabular.png) | LINE ![img](img/Console-LineDisplay.png) | ![img](img/Console-Line.png) |
   | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | DONUT ![img](https://developer.afero.io/static/custom/images/Console-DonutDisplay.png) | ![img](https://developer.afero.io/static/custom/images/Console-Donut.png) | AREA ![img](https://developer.afero.io/static/custom/images/Console-AreaDisplay.png) | ![img](https://developer.afero.io/static/custom/images/Console-Area.png) |
-  | BAR ![img](https://developer.afero.io/static/custom/images/Console-BarDisplay.png) | ![img](https://developer.afero.io/static/custom/images/Console-Bar.png) |                                                              |                                                              |
+  | DONUT ![img](img/Console-DonutDisplay.png) | ![img](img/Console-Donut.png) | AREA ![img](img/Console-AreaDisplay.png) | ![img](img/Console-Area.png) |
+  | BAR ![img](img/Console-BarDisplay.png) | ![img](img/Console-Bar.png) |                                                              |                                                              |
 
 - For all but the tabular format, you can select which columns are used in the display. Click the SAVE button to save the query to use another time. Your saved queries will be listed in the Query Templates tab > Your Custom Query Templates.
 
@@ -212,7 +212,7 @@ There are a few ways you can query your data:
 - Click PLATFORM USAGE on the left-hand Navigation pane to display month-to-date details for each Device Type:
 
 - - Total monthly message count
-  - Total unique [active devices](https://developer.afero.io/Console#ActiveDevDef)
+  - Total unique [active devices](/Console#ActiveDevDef)
   - Monthly per device (message) average
 
 - Totals across Device Types are also provided.
@@ -221,7 +221,7 @@ There are a few ways you can query your data:
 
 - ### Platform Status Window
 
-- You can view the current status of the Platform by clicking PLATFORM STATUS in the left-hand Navigation pane or the checkmark icon![img](https://developer.afero.io/static/custom/images/Console-checkmark.png)in the upper-right of the main window.
+- You can view the current status of the Platform by clicking PLATFORM STATUS in the left-hand Navigation pane or the checkmark icon![img](img/Console-checkmark.png)in the upper-right of the main window.
 
 - Status is checked automatically every minute and reported as healthy if all subsystems are operating as expected. A degraded status means some part of the Platform has reported a less than optimal status, and also means the Operations Team has been notified.
 

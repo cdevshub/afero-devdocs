@@ -8,7 +8,7 @@ You can open the Inspector by going to [https://inspector.afero.io](https://insp
 
 After you sign in, the Inspector Home window appears:
 
-![Inspector Home Window](https://developer.afero.io/static/custom/images/InspectorMain.png)
+![Inspector Home Window](img/InspectorMain.png)
 
 This window offers you the following information and actions:
 
@@ -21,39 +21,39 @@ This window offers you the following information and actions:
   - Device ID (alpha-numeric string under the device name) - Click the Device ID to copy the ID to your clipboard.
   - Connectivity status - Online or offline.
 
-- View details for any of your devices by selecting the associated card; click the friendly name directly, not the Device ID. (Read more in [Device Details Window](https://developer.afero.io/Inspector#InspectorDeviceDetails).)
+- View details for any of your devices by selecting the associated card; click the friendly name directly, not the Device ID. (Read more in [Device Details Window](/Inspector#InspectorDeviceDetails).)
 
 - The icons in the upper-right of the window are links to the following:
 
-  - ![Inspector Home Window Icon](https://developer.afero.io/static/custom/images/Inspector-HomeIcon.png)- Returns you to this Home window from the Device Details or Account Information windows.
-  - ![Inspector Account Icon](https://developer.afero.io/static/custom/images/Inspector-AccountIcon.png)- Opens a window with your account information. (Read more in [Developer Account Information](https://developer.afero.io/Inspector#UserInfo).)
-  - ![Inspector User Guide Icon](https://developer.afero.io/static/custom/images/Inspector-UserGuideIcon.png)- Opens this Inspector User Guide in a new window.
-  - ![Inspector Sign Out Icon](https://developer.afero.io/static/custom/images/Inspector-SignOutIcon.png)- Signs you out from Inspector.
+  - ![Inspector Home Window Icon](img/Inspector-HomeIcon.png)- Returns you to this Home window from the Device Details or Account Information windows.
+  - ![Inspector Account Icon](img/Inspector-AccountIcon.png)- Opens a window with your account information. (Read more in [Developer Account Information](/Inspector#UserInfo).)
+  - ![Inspector User Guide Icon](img/Inspector-UserGuideIcon.png)- Opens this Inspector User Guide in a new window.
+  - ![Inspector Sign Out Icon](img/Inspector-SignOutIcon.png)- Signs you out from Inspector.
 
 ## Device Details Window
 
 After you select a device card in the Home window, that device’s Details window opens. To look at the details for a different device, use the left-hand Navigation pane, where all the devices associated with your account are listed, identified by their friendly names. Devices with an orange dot are online; devices with a greyed-out dot are offline.
 
-![Inspector Device Details Window](https://developer.afero.io/static/custom/images/Inspector-DeviceDetails.png)
+![Inspector Device Details Window](img/Inspector-DeviceDetails.png)
 
 The selected device details are presented in the following panes:
 
-- [Attribute Tabs](https://developer.afero.io/Inspector#Attributes)
-- [Connection - Wi-Fi/Bluetooth Signal Strength](https://developer.afero.io/Inspector#SignalStrength)
-- [Device Log](https://developer.afero.io/Inspector#Log)
-- [Device Information](https://developer.afero.io/Inspector#Info)
+- [Attribute Tabs](/Inspector#Attributes)
+- [Connection - Wi-Fi/Bluetooth Signal Strength](/Inspector#SignalStrength)
+- [Device Log](/Inspector#Log)
+- [Device Information](/Inspector#Info)
 
 ### Attribute Tabs
 
-The attributes relevant to the selected device are displayed in two tabs: [Device Attributes](https://developer.afero.io/Inspector#DeviceAttr) and [Afero System Attributes](https://developer.afero.io/Inspector#SystemAttr).
+The attributes relevant to the selected device are displayed in two tabs: [Device Attributes](/Inspector#DeviceAttr) and [Afero System Attributes](/Inspector#SystemAttr).
 
 You can download the information and even edit the READ/WRITE attributes from these windows.
 
-- Click![Inspector Download Icon](https://developer.afero.io/static/custom/images/Inspector-DownloadIcon.png)(there is one on each tab) to download the attribute information to a file in JSON format.
+- Click![Inspector Download Icon](img/Inspector-DownloadIcon.png)(there is one on each tab) to download the attribute information to a file in JSON format.
 - You can sort on the Attribute ID, Attribute Name, or Last Update columns. Click the associated arrow to select that column for sort (the arrow will turn orange), plus reverse the sort order.
 - You can edit READ/WRITE attribute values in real-time when the device is online; these values are indicated with a pencil icon. Click the pencil to edit and update a value:
-  ![Edit Attribute Value](https://developer.afero.io/static/custom/images/Inspector-EditValue.png)
-  Click![Save Icon](https://developer.afero.io/static/custom/images/Inspector-SaveIcon.png)to save an edit and update the value, or![Dismiss Icon](https://developer.afero.io/static/custom/images/Inspector-DismissIcon.png)to dismiss the edit box with no update. If the value you type is invalid or if your device is offline, you’ll see an error message (in orange text) below the edit value field.
+  ![Edit Attribute Value](img/Inspector-EditValue.png)
+  Click![Save Icon](img/Inspector-SaveIcon.png)to save an edit and update the value, or![Dismiss Icon](img/Inspector-DismissIcon.png)to dismiss the edit box with no update. If the value you type is invalid or if your device is offline, you’ll see an error message (in orange text) below the edit value field.
 
 #### Device Attributes
 
@@ -69,13 +69,13 @@ The DEVICE ATTRIBUTES tab details the activity of your device attributes:
 
 #### Afero System Attributes
 
-The attributes shown in the AFERO SYSTEM ATTRIBUTES tab are generally set by the Cloud and read by the ASR module, but they can also be set by ASR. For a description of these attributes, refer to the [Device Attribute Registry](https://developer.afero.io/AttrRegistry).
+The attributes shown in the AFERO SYSTEM ATTRIBUTES tab are generally set by the Cloud and read by the ASR module, but they can also be set by ASR. For a description of these attributes, refer to the [Device Attribute Registry](/AttrRegistry).
 
 ### Connection - Wi-Fi/Bluetooth Signal Strength
 
 For the selected device, this pane displays either the Received Signal Strength Indicator (RSSI) signal status for Wi-Fi or, if the device is connected via Bluetooth and a hub, the signal strength (in dBm), as seen by the hub(s).
 
-Click![Inspector Collapse Icon](https://developer.afero.io/static/custom/images/Inspector-CollapseIcon.png)to show/hide this pane.
+Click![Inspector Collapse Icon](img/Inspector-CollapseIcon.png)to show/hide this pane.
 
 #### Wi-Fi Connection
 
@@ -100,13 +100,13 @@ For devices connected via Bluetooth and a hub, the RSSI is primarily a function 
 
 This section lists the activity (events) between this device and Afero in real-time.
 
-- You can filter the log contents by typing a search string in the search box![Inspector Log Search Box](https://developer.afero.io/static/custom/images/Inspector-SearchBox.png). Clear the search results by clicking![Inspector Clear Filter Icon](https://developer.afero.io/static/custom/images/Inspector-ClearFilterIcon.png).
-- Click![Inspector Download Icon](https://developer.afero.io/static/custom/images/Inspector-DownloadIcon.png)to download the log contents to a file. Note that this file also contains the current RSSI connectivity data.
-- Click![Inspector Clear Log Icon](https://developer.afero.io/static/custom/images/Inspector-ClearLogIcon.png)to remove the current log contents.
+- You can filter the log contents by typing a search string in the search box![Inspector Log Search Box](img/Inspector-SearchBox.png). Clear the search results by clicking![Inspector Clear Filter Icon](img/Inspector-ClearFilterIcon.png).
+- Click![Inspector Download Icon](img/Inspector-DownloadIcon.png)to download the log contents to a file. Note that this file also contains the current RSSI connectivity data.
+- Click![Inspector Clear Log Icon](img/Inspector-ClearLogIcon.png)to remove the current log contents.
 
 ### Device Information
 
-This section contains details that you have defined for the device in the Afero Profile Editor, as well as system-assigned information, such as device location. Click![Inspector Download Icon](https://developer.afero.io/static/custom/images/Inspector-DownloadIcon.png)to download the device information to a file.
+This section contains details that you have defined for the device in the Afero Profile Editor, as well as system-assigned information, such as device location. Click![Inspector Download Icon](img/Inspector-DownloadIcon.png)to download the device information to a file.
 
 | FIELD              | DESCRIPTION                                                  | EXAMPLE                              |
 | :----------------- | :----------------------------------------------------------- | :----------------------------------- |
@@ -120,7 +120,7 @@ This section contains details that you have defined for the device in the Afero 
 
 ## Developer Account Information
 
-To view your account information, click![Inspector Account Icon](https://developer.afero.io/static/custom/images/Inspector-AccountIcon.png)in the upper-right of the window. Most of the information in this section was provided by you when registering for an Afero developer account:
+To view your account information, click![Inspector Account Icon](img/Inspector-AccountIcon.png)in the upper-right of the window. Most of the information in this section was provided by you when registering for an Afero developer account:
 
 | FIELD            | DESCRIPTION                                                  | EXAMPLE                                                |
 | :--------------- | :----------------------------------------------------------- | :----------------------------------------------------- |
