@@ -1,4 +1,7 @@
 site_name: Afero Developer Documentation
+markdown_extensions:
+    - toc:
+        permalink: "#"
 nav:
    - Welcome: 'index.md'
    - Introducing Afero:

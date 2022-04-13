@@ -15,7 +15,7 @@ This data sheet contains the following sections:
 - [Where to Obtain](/Modulo1BTYDataSheet#Obtain)
 - [Compliance Notices](/Modulo1BTYDataSheet#Compliance)
 
-This data sheet is also available as a [PDF file](/static/custom/files/Modulo-1B-TYDataSheet.pdf).
+This data sheet is also available as a [PDF file](/files/Modulo-1B-TYDataSheet.pdf).
 
 ## Overview
 
