@@ -27,7 +27,7 @@ Whenever the MCU reboots, it must then force ASR to reboot as well, thus canceli
 1. MCU prepares the interface for communication with ASR.
 2. MCU asserts the Reset signal for a minimum of 250 ms.
 
-This sequence forces ASR to start from a known (initial) state. ASR will initiate the zero sync right after it reboots, as described below in [Example 1](#Example-1.-Zero-Sync).
+This sequence forces ASR to start from a known (initial) state. ASR will initiate the zero sync right after it reboots, as described below in [Example 1](/afPro-SPI/#example-1-zero-sync).
 
 ## Sync Messages
 
@@ -53,10 +53,10 @@ For all the timing diagrams in the examples below, the byte counts are little-en
 
 Let’s look at these examples:
 
-- [Example 1: Zero Sync](/afPro-SPI#SPI-ZeroSync) - Occurs when the master sends a Sync Request to the slave, but the data payload is empty. For example, when the master boots, it sends a zero Sync Request to the slave.
-- [Example 2: Set Attribute](/afPro-SPI#SPI-SetAttr) - Occurs when the master sets the value of an attribute.
-- [Example 3: Update Attribute](/afPro-SPI#SPI-UpdateAttr) - Occurs when the MCU changes the value of an attribute and sends the update back to ASR.
-- [Example 4: Set Attribute with Collision](/afPro-SPI#SPI-Collision) - Occurs when the master and slave both want to send a request.
+- [Example 1: Zero Sync](/afPro-SPI/#example-1-zero-sync) - Occurs when the master sends a Sync Request to the slave, but the data payload is empty. For example, when the master boots, it sends a zero Sync Request to the slave.
+- [Example 2: Set Attribute](/afPro-SPI/#example-2-set-attribute) - Occurs when the master sets the value of an attribute.
+- [Example 3: Update Attribute](/afPro-SPI/#example-3-update-attribute) - Occurs when the MCU changes the value of an attribute and sends the update back to ASR.
+- [Example 4: Set Attribute with Collision](/afPro-SPI/#example-4-set-attribute-with-collision) - Occurs when the master and slave both want to send a request.
 
 ### Example 1. Zero Sync
 

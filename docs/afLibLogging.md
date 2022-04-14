@@ -49,22 +49,8 @@ None.
 
 ### Examples
 
-1. This line:
+1. This line:<br>   ```af_logger_println_buffer("Rebooted - Always set MCU attributes after reboot");```<br>will print "**Rebooted - Always set MCU attributes after reboot**", followed by a newline.
 
-   ```
-   af_logger_println_buffer("Rebooted - Always set MCU attributes after reboot");
-   ```
-
-   will print "**Rebooted - Always set MCU attributes after reboot**", followed by a newline.
-
-2. On Arduino, the following two lines of code are functionally identical:
-
-   ```
-   Serial.println( int8variable, HEX );
-   ```
-
-   ```
-   af_logger_println_formatted_value( int8variable, AF_LOGGER_HEX );
-   ```
+2. On Arduino, the following two lines of code are functionally identical:<br>```Serial.println( int8variable, HEX );```<br>```  af_logger_println_formatted_value( int8variable, AF_LOGGER_HEX );```
 
  Next: [afLib Result Codes](/afLibErrors)

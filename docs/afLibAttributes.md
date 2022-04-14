@@ -180,10 +180,10 @@ af_lib_error_t af_lib_set_attribute_bytes(af_lib_t *af_lib,
 
 | `af_lib`   | Pointer to the active aflib instance.                        |
 | ---------- | ------------------------------------------------------------ |
-| `attr_id`  | The attribute ID for which you are requesting the value.     |
-| `valueLen` | The size in bytes of the attribute value. This parameter only needed when value size is not indicated by value type. |
+| `attr_id`  | The attribute ID for which you are<br>requesting the value.     |
+| `valueLen` | The size in bytes of the attribute value.<br>This parameter only needed when value size is not indicated by value type. |
 | `value`    | The new value for the attribute.                             |
-| `reason`   | The reason that the MCU is setting the attribute at the time. The two possible values are:AF_LIB_SET_REASON_GET_RESPONSE (if the set is in response to an AF_LIB_EVENT_MCU_GET_REQUEST event in the callback)AF_LIB_SET_REASON_LOCAL_CHANGE (for any other reason). |
+| `reason`   | The reason that the MCU is setting the attribute at the time. <br>The two possible values are:<br>-AF_LIB_SET_REASON_GET_RESPONSE (if the set is in response to an<br> AF_LIB_EVENT_MCU_GET_REQUEST event in the callback)<br>-AF_LIB_SET_REASON_LOCAL_CHANGE (for any other reason). |
 |            |                                                              |
 
 ### Returns

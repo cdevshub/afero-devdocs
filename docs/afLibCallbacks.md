@@ -103,7 +103,7 @@ Let’s consider a few specific cases, just to make this clear:
 
 - Consider that an end-user taps a control in your mobile application to change an attribute value. If the attribute changed is a GPIO, your code will be informed of the change by `attrEventCallback()` with eventType AF_LIB_EVENT_ASR_NOTIFICATION.
 
-- **However…**
+**However…**
 
 - If the attribute changed by the mobile app is an MCU attribute, your code will receive AF_LIB_EVENT_MCU_SET_REQUEST.
 
@@ -111,9 +111,9 @@ Let’s consider a few specific cases, just to make this clear:
 
 - After receiving any AF_LIB_EVENT_MCU_DEFAULT_NOTIFICATION events, the MCU application will receive an AF_LIB_EVENT_MCU_GET_REQUEST for every MCU attribute defined. It is the responsibility of the MCU to respond to _each_ of these events with an `af_lib_set_attribute()`call…the calls will be in one of two forms:
 
-- - If your application is designed so that a reboot should cause a given attribute to reset to the value specified in the device Profile, then `af_lib_set_attribute()` should be called with the value sent in the AF_LIB_EVENT_MCU_DEFAULT_NOTIFICATION event. This scheme can be useful when you want to be able to change default attribute values for devices in the field via an OTA update.
-  - If your application is designed so that the current value of an attribute as held by the MCU is the value to be used, regardless of reboots, then `af_lib_set_attribute()` should be called with the attribute value held by the MCU. This scheme can be useful when your application assumes the MCU will ensure continuity of attribute values despite any reboots of ASR, for example, because of a Profile OTA.
-  - In BOTH forms, the **reason** parameter to the `af_lib_set_attribute()` call should be AF_LIB_SET_REASON_GET_RESPONSE, indicating that the set is a response to the AF_LIB_EVENT_MCU_GET_REQUEST event.
+    - If your application is designed so that a reboot should cause a given attribute to reset to the value specified in the device Profile, then `af_lib_set_attribute()` should be called with the value sent in the AF_LIB_EVENT_MCU_DEFAULT_NOTIFICATION event. This scheme can be useful when you want to be able to change default attribute values for devices in the field via an OTA update.
+    - If your application is designed so that the current value of an attribute as held by the MCU is the value to be used, regardless of reboots, then `af_lib_set_attribute()` should be called with the attribute value held by the MCU. This scheme can be useful when your application assumes the MCU will ensure continuity of attribute values despite any reboots of ASR, for example, because of a Profile OTA.
+    - In BOTH forms, the **reason** parameter to the `af_lib_set_attribute()` call should be AF_LIB_SET_REASON_GET_RESPONSE, indicating that the set is a response to the AF_LIB_EVENT_MCU_GET_REQUEST event.
 
 - **IMPORTANT**: The AF_LIB_EVENT_MCU_DEFAULT_NOTIFICATION and AF_LIB_EVENT_MCU_GET_REQUEST events will be sent during the "attribute update-all" sequence that is part of the boot process. This sequence happens **before** your application enters the AF_MODULE_STATE_INITIALIZED state – and you must not call `af_lib_set_attribute()` until after you enter AF_MODULE_STATE_INITIALIZED. This means your application code may need to temporarily store each pending attribute value upon receipt of the AF_LIB_EVENT_MCU_DEFAULT_NOTIFICATION, and then use the stored value(s) once the application state reaches AF_MODULE_STATE_INITIALIZED.
 
@@ -230,61 +230,32 @@ This afBlink example uses a Teensy to control the LED onboard an Afero developme
 
 - In the case of a tap on the “Start” button in the mobile app UI…
 
-  - The mobile app translates the button tap into an `af_lib_set_bool()` for attribute AF_BLINK.
-  - As a result, `attrEventCallback()` will be called with an eventType AF_LIB_EVENT_MCU_SET_REQUEST and attributeId AF_BLINK.
-  - So, when we get eventType AF_LIB_EVENT_MCU_SET_REQUEST belonging to attribute AF_BLINK, our code sets the value of our variable `blinking`, and then calls `af_lib_send_set_response` to confirm that MCU was able to update its state.
-  - Within our `loop()` function, if `blinking` is true, we call `toggleLED()` every two seconds, which blinks the LED!
+    - The mobile app translates the button tap into an `af_lib_set_bool()` for attribute AF_BLINK.
+    - As a result, `attrEventCallback()` will be called with an eventType AF_LIB_EVENT_MCU_SET_REQUEST and attributeId AF_BLINK.
+    - So, when we get eventType AF_LIB_EVENT_MCU_SET_REQUEST belonging to attribute AF_BLINK, our code sets the value of our variable `blinking`, and then calls `af_lib_send_set_response` to confirm that MCU was able to update its state.
+    - Within our `loop()` function, if `blinking` is true, we call `toggleLED()` every two seconds, which blinks the LED!
 
 - In the case of a button press on the Afero dev board…
 
-  - The Afero dev board changes the local attribute value and sends an update, which causes…
-  - `attrEventCallback()` to be called with an eventType AF_LIB_EVENT_ASR_NOTIFICATION and attributeId AF_MODULO_BUTTON.
-  - When we get eventType AF_LIB_EVENT_ASR_NOTIFICATION, belonging to attribute `AF_MODULO_BUTTON`, our code toggles the value of our global `curButtonValue`.
-  - Within our `loop()` function, if our `curButtonValue` is different from `prevButtonValue` (that is, if the button value has changed), then we call `af_lib_set_bool()` on AF_BLINK, setting that attribute, which controls blinking.
-  - *That* `af_lib_set_bool()` call triggers the same sequence of events as example #1 above, which results in the LED blinking.
+    - The Afero dev board changes the local attribute value and sends an update, which causes…
+    - `attrEventCallback()` to be called with an eventType AF_LIB_EVENT_ASR_NOTIFICATION and attributeId AF_MODULO_BUTTON.
+    - When we get eventType AF_LIB_EVENT_ASR_NOTIFICATION, belonging to attribute `AF_MODULO_BUTTON`, our code toggles the value of our global `curButtonValue`.
+    - Within our `loop()` function, if our `curButtonValue` is different from `prevButtonValue` (that is, if the button value has changed), then we call `af_lib_set_bool()` on AF_BLINK, setting that attribute, which controls blinking.
+    - *That* `af_lib_set_bool()` call triggers the same sequence of events as example #1 above, which results in the LED blinking.
 
-- **Any time the Afero dev board reboots…**
+- **Any time the Afero dev board reboots…** <br>The MCU is required to call `set_attribute` for each MCU attribute whenever ASR reboots, so:
 
-  The MCU is required to call `set_attribute` for each MCU attribute whenever ASR reboots, so:
+    - Upon reboot, `attrEventCallback()` will be called with an eventType AF_LIB_EVENT_ASR_NOTIFICATION and attributeId AF_SYSTEM_ASR_STATE.
 
-  - Upon reboot, `attrEventCallback()` will be called with an eventType AF_LIB_EVENT_ASR_NOTIFICATION and attributeId AF_SYSTEM_ASR_STATE.
+    - Presented that combination of eventType and attributeId, our code checks the `value` delivered via the callback; in this case, that value is AF_MODULE_STATE_REBOOTED.
 
-  - Presented that combination of eventType and attributeId, our code checks the `value` delivered via the callback; in this case, that value is AF_MODULE_STATE_REBOOTED.
+    - Our code responds by setting `initializationPending` and `attr1SyncPending` to true. Both values are checked in `loop()`:
 
-  - Our code responds by setting
+        - Any time `initializationPending` is true, we avoid making afLib calls until we receive the AF_SYSTEM_ASR_STATE AF_MODULE_STATE_INITIALIZED signal that tells us that ASR is ready to handle requests.
+        
+        - If `attr1SyncPending` is true, we call `af_lib_set_attribute_bool` for attribute 1 (AF_BLINK), setting it to the current value of the `blinking` variable.
 
-     
-
-    ```
-    initializationPending
-    ```
-
-     
-
-    and
-
-     
-
-    ```
-    attr1SyncPending
-    ```
-
-     
-
-    to true. Both values are checked in
-
-     
-
-    ```
-    loop()
-    ```
-
-    :
-
-    - Any time `initializationPending` is true, we avoid making afLib calls until we receive the AF_SYSTEM_ASR_STATE AF_MODULE_STATE_INITIALIZED signal that tells us that ASR is ready to handle requests.
-    - If `attr1SyncPending` is true, we call `af_lib_set_attribute_bool` for attribute 1 (AF_BLINK), setting it to the current value of the `blinking` variable.
-
-- If the Afero dev board receives an OTA update…
+- **If the Afero dev board receives an OTA update…**
 
   - When the OTA is complete, `attrEventCallback()` will be called with an eventType AF_LIB_EVENT_ASR_NOTIFICATION and attributeId AF_SYSTEM_ASR_STATE.
   - We check the `value` delivered via the callback; in this case it’s AF_MODULE_UPDATE_READY.
