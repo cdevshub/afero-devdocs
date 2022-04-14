@@ -14,4 +14,20 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
     mkdocs.yml    # The configuration file.
     docs/
         index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+        FW-API.md # Other markdown pages, images and other files.
+		MCUtoHachi.md
+		afPro-SPI.md
+		afPro-UART.md
+		afPro-UART-S.md
+		AttrMsgProtocol.md
+		AttrRegistry.md
+		AttrChangeRules.md
+		API-afLib.md
+		afLibLifecycle.md
+		afLibLogging.md
+		afLibAttributes.md
+		afLibCallbacks.md
+		afLibCapabilities.md
+		afLibLogging.md
+		afLibErrors.md
+		PeripheralUpdates.md
