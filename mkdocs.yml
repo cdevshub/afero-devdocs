@@ -5,8 +5,7 @@ markdown_extensions:
         baselevel: 2
 
 nav:
-   - index: 'index.md'
-   - Welcome: 'Welcome.md'
+   - Welcome: 'index.md'
    - Introducing Afero:
         - INTRODUCING AFERO: 'Overview.md'
         - Afero IoT Platform Overview: 'SystemOverview.md'
