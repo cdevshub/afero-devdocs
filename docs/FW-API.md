@@ -2,7 +2,8 @@
 
 Use the information in this section if you have an MCU in your device that must communicate with ASR. Almost all of the ASR API is common across all supported platforms, but there are a few platform-specific differences in creating the ASR and `af_logger` interfaces. Examples in this documentation will use Arduino APIs but we’ll note where there are differences in other platforms. You can download this library from http://github.com/aferodeveloper/afLib.
 
-<a href="MCUtoHachi.html">MCU to ASR Communication Link in HTML</a>
+- [MCU to ASR Communication](https://afero-devdocs.readthedocs.io/en/latest/MCUtoHachi)
+<a href="MCUtoHachi">MCU to ASR Communication Link in HTML</a>
 
 - [MCU to ASR Communication](https://afero-devdocs.readthedocs.io/en/latest/MCUtoHachi)
 - [Device Attribute Message Protocol](https://afero-devdocs.readthedocs.io/en/latest/AttrMsgProtocol)
