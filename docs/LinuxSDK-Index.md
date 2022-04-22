@@ -2,27 +2,27 @@
 
 The documentation set outlined below supports the Afero Secure Linux Device SDK. To obtain access to the SDK, please contact Afero.
 
-- [Using the Linux Device SDK](/LinuxSDK-Overview)
+- [Using the Linux Device SDK](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview)
 
-- [Software Tasks](/LinuxSDK-SWTasks)
+- [Software Tasks](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-SWTasks)
 
-- [Attribute Daemon Client Implementation](/LinuxSDK-AttrDaemon)
+- [Attribute Daemon Client Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-AttrDaemon)
 
-- - [Defining Your Own Attributes](/LinuxSDK-DefineAttrs)
+- - [Defining Your Own Attributes](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-DefineAttrs)
 
-- [Wi-Fi Station Daemon Implementation](/LinuxSDK-WiFiStDaemon)
+- [Wi-Fi Station Daemon Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WiFiStDaemon)
 
-- [WAN Daemon Implementation](/LinuxSDK-WANDaemon)
+- [WAN Daemon Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon)
 
-- [Connection Manager Daemon Implementation](/LinuxSDK-ConnMgrDaemon)
+- [Connection Manager Daemon Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-ConnMgrDaemon)
 
-- [Edge Device Daemon Implementation](/LinuxSDK-EdgeDaemon)
+- [Edge Device Daemon Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-EdgeDaemon)
 
-- [OTA Manager Implementation](/LinuxSDK-OTAManager)
+- [OTA Manager Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-OTAManager)
 
-- [Full OTA Image Management](/LinuxSDK-FullImageUpdate)
+- [Full OTA Image Management](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate)
 
 We are also building a collection of Potenco setup guides. We are currently offering the following:
 
-- [Potenco Setup for BBGW Board](/LinuxSDK-PotencoBBGW)
-- [Potenco Setup for SAMA5D2 Board](/LinuxSDK-PotencoSAMA5D2)
+- [Potenco Setup for BBGW Board](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-PotencoBBGW)
+- [Potenco Setup for SAMA5D2 Board](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-PotencoSAMA5D2)

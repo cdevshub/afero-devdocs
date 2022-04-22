@@ -6,16 +6,16 @@ Modulo-1B-TY makes it easy to prototype and build connected products used in con
 
 This data sheet contains the following sections:
 
-- [Overview](/Modulo1BTYDataSheet#Intro)
-- [Pin Definitions](/Modulo1BTYDataSheet#PinDefs)
-- [DC Electrical Specification](/Modulo1BTYDataSheet#DCSpec)
-- [RF Specification](/Modulo1BTYDataSheet#RFSpec)
-- [Environmental Specification](/Modulo1BTYDataSheet#EnvSpec)
-- [Mechanical Specification](/Modulo1BTYDataSheet#MechSpec)
-- [Where to Obtain](/Modulo1BTYDataSheet#Obtain)
-- [Compliance Notices](/Modulo1BTYDataSheet#Compliance)
+- [Overview](https://afero-devdocs.readthedocs.io/en/latest/Modulo1BTYDataSheet#Intro)
+- [Pin Definitions](https://afero-devdocs.readthedocs.io/en/latest/Modulo1BTYDataSheet#PinDefs)
+- [DC Electrical Specification](https://afero-devdocs.readthedocs.io/en/latest/Modulo1BTYDataSheet#DCSpec)
+- [RF Specification](https://afero-devdocs.readthedocs.io/en/latest/Modulo1BTYDataSheet#RFSpec)
+- [Environmental Specification](https://afero-devdocs.readthedocs.io/en/latest/Modulo1BTYDataSheet#EnvSpec)
+- [Mechanical Specification](https://afero-devdocs.readthedocs.io/en/latest/Modulo1BTYDataSheet#MechSpec)
+- [Where to Obtain](https://afero-devdocs.readthedocs.io/en/latest/Modulo1BTYDataSheet#Obtain)
+- [Compliance Notices](https://afero-devdocs.readthedocs.io/en/latest/Modulo1BTYDataSheet#Compliance)
 
-This data sheet is also available as a [PDF file](/files/Modulo-1B-TYDataSheet.pdf).
+This data sheet is also available as a [PDF file](https://afero-devdocs.readthedocs.io/en/latest/files/Modulo-1B-TYDataSheet.pdf).
 
 ## Overview
 
@@ -207,4 +207,4 @@ Contains EYSHCN: 001-A10745
 
 This product installs a radio system which has been approved as a radio station in a low power data communication system based on the Radio Law.
 
- Next: [Modulo-2 Data Sheet](/Modulo2DataSheet)
+ Next: [Modulo-2 Data Sheet](https://afero-devdocs.readthedocs.io/en/latest/Modulo2DataSheet)

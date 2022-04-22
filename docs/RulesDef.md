@@ -54,4 +54,4 @@ Edit a Notification - Locate the notification you want to edit, then click the p
 
 Duplicate a Notification - Locate the notification you want to duplicate and click the duplicate icon![img](img/DupIcon.png), located on the right. A new notification window opens using the Description and Message from the original notification. Make your edits, then click SAVE.
 
- Next: [Publish Your Profile](/Publish)
+ Next: [Publish Your Profile](https://afero-devdocs.readthedocs.io/en/latest/Publish)

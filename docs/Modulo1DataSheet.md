@@ -2,12 +2,12 @@
 
 Modulo-1 is the demonstration platform board for Afero Secure Radio. This page contains the following sections:
 
-- [Connections](/Modulo1DataSheet#Modulo1Connections)
-- [Specification](/Modulo1DataSheet#Modulo1Spec)
-- [Block Diagram](/Modulo1DataSheet#Modulo1BlockDiagram)
-- [Pin Configuration](/Modulo1DataSheet#Modulo1Pinout)
-- [DC Electrical Specification](/Modulo1DataSheet#Modulo1DCElecSpec)
-- [Environmental Specification](/Modulo1DataSheet#Modulo1EnvironSpec)
+- [Connections](https://afero-devdocs.readthedocs.io/en/latest/Modulo1DataSheet#Modulo1Connections)
+- [Specification](https://afero-devdocs.readthedocs.io/en/latest/Modulo1DataSheet#Modulo1Spec)
+- [Block Diagram](https://afero-devdocs.readthedocs.io/en/latest/Modulo1DataSheet#Modulo1BlockDiagram)
+- [Pin Configuration](https://afero-devdocs.readthedocs.io/en/latest/Modulo1DataSheet#Modulo1Pinout)
+- [DC Electrical Specification](https://afero-devdocs.readthedocs.io/en/latest/Modulo1DataSheet#Modulo1DCElecSpec)
+- [Environmental Specification](https://afero-devdocs.readthedocs.io/en/latest/Modulo1DataSheet#Modulo1EnvironSpec)
 
 ## Connections
 
@@ -221,4 +221,4 @@ The UART interface offers fast, full-duplex, asynchronous serial communication s
 | Operating temperature range | -20  | 75   | °C   |
 | VCC                         | 2.1  | 3.6  | V    |
 
- Next: [Modulo-1B-TY Data Sheet](/Modulo1BTYDataSheet)
+ Next: [Modulo-1B-TY Data Sheet](https://afero-devdocs.readthedocs.io/en/latest/Modulo1BTYDataSheet)

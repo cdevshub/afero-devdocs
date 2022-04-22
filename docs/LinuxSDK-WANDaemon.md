@@ -2,17 +2,17 @@
 
 The WAN system has the following parts that work together. Each component is described in detail on this page:
 
-- [wancontrol script](/LinuxSDK-WANDaemon#wancontrol) - Bash script that controls the power states of the modem. You will need to customize this script for your modem.
+- [wancontrol script](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#wancontrol) - Bash script that controls the power states of the modem. You will need to customize this script for your modem.
 
-- [atcmd executable](/LinuxSDK-WANDaemon#atcmdexec) - Linux executable to send AT commands that is suitable for scripting. You should not need to customize this code.
+- [atcmd executable](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#atcmdexec) - Linux executable to send AT commands that is suitable for scripting. You should not need to customize this code.
 
-- [wannetwork script](/LinuxSDK-WANDaemon#wannetwork) - Bash script that brings up the WAN network interface and sets up the routing and DNS servers. You will need to customize this code for your OS.
+- [wannetwork script](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#wannetwork) - Bash script that brings up the WAN network interface and sets up the routing and DNS servers. You will need to customize this code for your OS.
 
-- [Radio Interface Layer (RIL)](/LinuxSDK-WANDaemon#ril) - Static library that manages an AT command interface for network setup, RF environment monitoring, and debugging. You will need to customize this code for your modem.
+- [Radio Interface Layer (RIL)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#ril) - Static library that manages an AT command interface for network setup, RF environment monitoring, and debugging. You will need to customize this code for your modem.
 
-- - [AT command interface](/LinuxSDK-WANDaemon#atcomdif) - Part of the RIL that provides general purpose AT command utilities. You may need to modify this code for your modem.
+- - [AT command interface](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#atcomdif) - Part of the RIL that provides general purpose AT command utilities. You may need to modify this code for your modem.
 
-- [WAN daemon components](/LinuxSDK-WANDaemon#wandcomps) - Linux executable that binds all of these pieces together. You may not need to customize this code.
+- [WAN daemon components](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#wandcomps) - Linux executable that binds all of these pieces together. You may not need to customize this code.
 
 The sections on this page discuss each of these parts in more detail with an emphasis on the motivation for each part’s design. If you must customize anything for a particular modem, the requirements are presented.
 
@@ -270,7 +270,7 @@ Determines if the modem is attached to a packet switched network:
 - When the modem is attached to a packet switched network, the WAN daemon can start or maintain a PDP context.
 - When the modem is not attached to a packet network, a PDP context cannot be started or sustained.
 
-This function is also responsible for getting the WAN status information, which is discussed in more detail in [Concurrency and Debug Data](/LinuxSDK-WANDaemon#concuranddebug).
+This function is also responsible for getting the WAN status information, which is discussed in more detail in [Concurrency and Debug Data](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#concuranddebug).
 
 Parameters
 
@@ -445,7 +445,7 @@ Syntax
 void at_shutdown(void);
 ```
 
-This function closes the AT command serial device and deletes the input event. It also cleans up the synchronization primitives create in at_init. See [RIL Threading](/LinuxSDK-WANDaemon#rilthreading) for more information.
+This function closes the AT command serial device and deletes the input event. It also cleans up the synchronization primitives create in at_init. See [RIL Threading](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#rilthreading) for more information.
 
 #### at_start_cmds
 
@@ -455,7 +455,7 @@ Syntax
 void at_start_cmds(void);
 ```
 
-This function locks the resources used for sending AT commands and parsing the responses. You must call this function before sending a series of AT commands or you will have concurrency issues. See [RIL Threading](/LinuxSDK-WANDaemon#rilthreading) for more information.
+This function locks the resources used for sending AT commands and parsing the responses. You must call this function before sending a series of AT commands or you will have concurrency issues. See [RIL Threading](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#rilthreading) for more information.
 
 #### at_end_cmds
 
@@ -515,7 +515,7 @@ Sends the AT command with the specified prefix and single integer argument. This
 
 Parameters
 
-| `rsp_type` | See the [at_send_cmd](/LinuxSDK-WANDaemon#at_send_cmd) documentation for an explanation of the response type. |
+| `rsp_type` | See the [at_send_cmd](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#at_send_cmd) documentation for an explanation of the response type. |
 | ---------- | ------------------------------------------------------------ |
 | `prefix`   | Null-terminated string that specifies the AT command prefix. For example, the prefix for “AT+COPS=0” is “+COPS”. |
 | `arg`      | Integer argument for the command. For example, the argument for “AT+COPS=” is “0”. |
@@ -539,7 +539,7 @@ Sends the AT command with the specified prefix and two integer arguments. This i
 
 Parameters
 
-| `rsp_type` | See the [at_send_cmd](/LinuxSDK-WANDaemon#at_send_cmd) documentation for an explanation of the response type. |
+| `rsp_type` | See the [at_send_cmd](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#at_send_cmd) documentation for an explanation of the response type. |
 | ---------- | ------------------------------------------------------------ |
 | `prefix`   | Null-terminated string that specifies the AT command prefix. For example, the prefix for “AT+COPS=0” is “+COPS”. |
 | `arg1`     | First integer argument for the command.                      |
@@ -717,7 +717,7 @@ at_start_cmds();
 
 #### Concurrency and Debug Data
 
-The WAN daemon provides debugging information in the form of Afero attributes. These attributes are described in the [Attribute Daemon Client Implementation](/LinuxSDK-AttrDaemon). The Radio Interface Layer is responsible for gathering this data, which it stores in a structure of type `ril_wan_status_t`, defined (in `ril.h`) as follows:
+The WAN daemon provides debugging information in the form of Afero attributes. These attributes are described in the [Attribute Daemon Client Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-AttrDaemon). The Radio Interface Layer is responsible for gathering this data, which it stores in a structure of type `ril_wan_status_t`, defined (in `ril.h`) as follows:
 
 ```
 typedef struct {
@@ -769,10 +769,10 @@ ril_unlock_wan_status();
 
 The WAN daemon binds all of these pieces together. It consists of four components:
 
-- [Worker thread (wand.c)](/LinuxSDK-WANDaemon#workerthread)
-- [State machine (wand.c)](/LinuxSDK-WANDaemon#statemachine)
-- [Network monitor (net.c)](/LinuxSDK-WANDaemon#networkmonitor)
-- [Attribute handler (server.c)](/LinuxSDK-WANDaemon#attributehandler)
+- [Worker thread (wand.c)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#workerthread)
+- [State machine (wand.c)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#statemachine)
+- [Network monitor (net.c)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#networkmonitor)
+- [Attribute handler (server.c)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#attributehandler)
 
 These components are discussed in more detail in the sections below.
 
@@ -780,15 +780,15 @@ These components are discussed in more detail in the sections below.
 
 The worker thread has already been mentioned above; it is the thread in which all of the RIL functions that talk to the modem run. Conceptually this thread runs in a tight loop executing commands that it receives from a mailbox or queue—except that the queue is only one element deep. The WAN daemon does not queue multiple commands to the worker thread; instead, it tees up a single command. If circumstances change and a different command needs to be teed up, the new command replaces the old one. The reason for this design is that once a new command is issued, the old command is no longer relevant and can be safely ignored.
 
-The worker thread loop is in the `prv_worker_loop` function. It waits for a condition variable to be triggered so that it can execute a command. It then executes the command and goes back to the beginning. If the condition variable wait times out and the WAN is powered up, the signal strength is checked; and if the WAN daemon has been asked to report the RSSI, the signal strength is reported to the Attribute daemon. The signal strength check can fail, for example, if the AT command serial device locks up. We discuss this in more detail in the [State Machine](/LinuxSDK-WANDaemon#statemachine) section.
+The worker thread loop is in the `prv_worker_loop` function. It waits for a condition variable to be triggered so that it can execute a command. It then executes the command and goes back to the beginning. If the condition variable wait times out and the WAN is powered up, the signal strength is checked; and if the WAN daemon has been asked to report the RSSI, the signal strength is reported to the Attribute daemon. The signal strength check can fail, for example, if the AT command serial device locks up. We discuss this in more detail in the [State Machine](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#statemachine) section.
 
 The worker thread can perform the following functions:
 
-| [WAND_COMMAND_MODEM_ON](/LinuxSDK-WANDaemon#WAND_COMMAND_MODEM_ON) | Powers on the modem.                                         |
+| [WAND_COMMAND_MODEM_ON](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#WAND_COMMAND_MODEM_ON) | Powers on the modem.                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [WAND_COMMAND_MODEM_OFF](/LinuxSDK-WANDaemon#WAND_COMMAND_MODEM_OFF) | Powers off the modem by calling the `prv_modem_off` function. |
-| [WAND_COMMAND_ACTIVATE_DATA_CALL](/LinuxSDK-WANDaemon#WAND_COMMAND_ACTIVATE_DATA_CALL) | Starts a data call while the modem is powered up by calling the `prv_activate_data_call` function. |
-| [WAND_COMMAND_REACTIVATE_DATA_CALL](/LinuxSDK-WANDaemon#WAND_COMMAND_REACTIVATE_DATA_CALL) | Tears down and restarts the data call by calling the `prv_reactivate_data_call` function. |
+| [WAND_COMMAND_MODEM_OFF](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#WAND_COMMAND_MODEM_OFF) | Powers off the modem by calling the `prv_modem_off` function. |
+| [WAND_COMMAND_ACTIVATE_DATA_CALL](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#WAND_COMMAND_ACTIVATE_DATA_CALL) | Starts a data call while the modem is powered up by calling the `prv_activate_data_call` function. |
+| [WAND_COMMAND_REACTIVATE_DATA_CALL](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#WAND_COMMAND_REACTIVATE_DATA_CALL) | Tears down and restarts the data call by calling the `prv_reactivate_data_call` function. |
 | `WAND_COMMAND_CHECK`                                         | Checks the signal strength by calling `prv_check_signal`. This command is issued when the condition-variable timed-wait times out after five seconds. |
 
 Each of these actions can take quite a long time and is therefore ineligible for handling by the event thread.
@@ -844,7 +844,7 @@ To execute this command the worker thread calls the `prv_activate_data_call` fun
 1. Waits for the modem to become packet switch attached to the network making use of the `ril_get_ps_attach` function.
 2. Calls the `ril_activate_data_call` function to start a PDP context on the modem.
 3. Calls the `prv_set_up_network` function to set up the networking on the host platform. This is just a wrapper for the wannetwork script.
-4. Sets up the network monitor (see [Network Monitor](/LinuxSDK-WANDaemon#networkmonitor) below).
+4. Sets up the network monitor (see [Network Monitor](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#networkmonitor) below).
 
 The rest of the function handles the many retry and other failure cases. Here a little more detail about each:
 
@@ -859,7 +859,7 @@ In general, if this function fails, the WAN daemon tries to activate the network
 
 To execute this command the worker thread calls `prv_reactivate_data_call`. This function calls `prv_deactivate_data_call` and then calls `prv_activate_data_call` described in the previous section.
 
-The `prv_deactivate_data_call` function shuts down the network watcher (see [Network Monitor](/LinuxSDK-WANDaemon#networkmonitor) below), shuts down the host network using the wannetwork script, and shuts down the data call using the `ril_deactivate_data_call` function.
+The `prv_deactivate_data_call` function shuts down the network watcher (see [Network Monitor](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#networkmonitor) below), shuts down the host network using the wannetwork script, and shuts down the data call using the `ril_deactivate_data_call` function.
 
  
 
@@ -895,7 +895,7 @@ The `prv_handle_wand_event` function also must be called to tell the WAN daemon 
 
 #### State Machine Threading
 
-The `prv_handle_wand_event` is designed to move from one state to another. It can also tee up a command (remember that the worker thread only has one command queue), but it doesn’t block. It uses mutexes to ensure that the relevant data structures are protected; specifically, the WAN state (`sWandStateMutex`) and the worker thread next command (`sCmdMutex`). So you can safely call this function from any thread provided you are not holding either of the aforementioned mutexes. Indeed this function is called in the worker thread, the network monitor thread (described in [Network Monitor](/LinuxSDK-WANDaemon#networkmonitor) below) and the main event loop thread.
+The `prv_handle_wand_event` is designed to move from one state to another. It can also tee up a command (remember that the worker thread only has one command queue), but it doesn’t block. It uses mutexes to ensure that the relevant data structures are protected; specifically, the WAN state (`sWandStateMutex`) and the worker thread next command (`sCmdMutex`). So you can safely call this function from any thread provided you are not holding either of the aforementioned mutexes. Indeed this function is called in the worker thread, the network monitor thread (described in [Network Monitor](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#networkmonitor) below) and the main event loop thread.
 
 ### Network Monitor
 
@@ -931,4 +931,4 @@ The attributes that this code handles are:
 - WAN_DL_BIT_RATE
 - WAN_UL_BIT_RATE
 
-These attributes are described in more detail in the [Attribute Daemon Client Implementation](/LinuxSDK-AttrDaemon). With few exceptions (WAN_APN, WAN_ITF_STATE, WAN_DL_BIT_RATE, and WAN_UL_BIT_RATE) the attribute values for these attributes are derived from the WAN status structure in the RIL. See the [Concurrency and Debug Data](/LinuxSDK-WANDaemon#concuranddebug) section for more details.
+These attributes are described in more detail in the [Attribute Daemon Client Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-AttrDaemon). With few exceptions (WAN_APN, WAN_ITF_STATE, WAN_DL_BIT_RATE, and WAN_UL_BIT_RATE) the attribute values for these attributes are derived from the WAN status structure in the RIL. See the [Concurrency and Debug Data](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon#concuranddebug) section for more details.

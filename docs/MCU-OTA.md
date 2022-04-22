@@ -1,6 +1,6 @@
 # Handling MCU OTA Updates
 
-In the [previous topic](/RebootRequests), we looked at how ASR can receive an over-the-air (OTA) firmware update, and should be ready to handle the update by rebooting once the update is complete.
+In the [previous topic](https://afero-devdocs.readthedocs.io/en/latest/RebootRequests), we looked at how ASR can receive an over-the-air (OTA) firmware update, and should be ready to handle the update by rebooting once the update is complete.
 
 With Release 2.0 of the Afero firmware, we added a new feature: the ability to use the Afero OTA service to deliver not only updates of ASR firmware, but also updates to your MCU application code (or indeed any arbitrary file) running on developer devices. This page will describe what you’ll need to include in your application code to accept an MCU OTA update.
 
@@ -10,17 +10,17 @@ At a high level, the steps involved in an MCU OTA update are as described below.
 
 ### Preparation
 
-- Use the Afero OTA Manager to [prepare a firmware update](/OTAMgr) for your device. Note that the MCU OTA mechanism can be used to deliver any type of data to your device, not just MCU code.
+- Use the Afero OTA Manager to [prepare a firmware update](https://afero-devdocs.readthedocs.io/en/latest/OTAMgr) for your device. Note that the MCU OTA mechanism can be used to deliver any type of data to your device, not just MCU code.
 
-- Use the Afero Profile Editor to [define MCU OTA handling](/AttrDef#MCUAttrs) for the device Profile involved.
+- Use the Afero Profile Editor to [define MCU OTA handling](https://afero-devdocs.readthedocs.io/en/latest/AttrDef#MCUAttrs) for the device Profile involved.
 
-  In order to support receipt of MCU OTA updates, your device Profile must include a few special attributes, including `AF_MCU_OTA_INFO` and `AF_MCU_OTA_TRANSFER`, which convey control information and the transferred data itself, respectively. All special attributes are added for you by the Afero Profile Editor when you select a particular firmware type to be received. Read more about this in the in the Profile Editor User Guide, [Configure the MCU](/AttrDef#ConfigMCU) section.
+  In order to support receipt of MCU OTA updates, your device Profile must include a few special attributes, including `AF_MCU_OTA_INFO` and `AF_MCU_OTA_TRANSFER`, which convey control information and the transferred data itself, respectively. All special attributes are added for you by the Afero Profile Editor when you select a particular firmware type to be received. Read more about this in the in the Profile Editor User Guide, [Configure the MCU](https://afero-devdocs.readthedocs.io/en/latest/AttrDef#ConfigMCU) section.
 
 - You’ll include code in your MCU application to handle the messaging and data transfers involved in an MCU OTA update. The purpose of this page is to help you with that.
 
 ### OTA Delivery
 
-- You’ll use the Afero OTA Manager to [deploy a firmware image](/OTAMgr#DeployFWImage) to your device.
+- You’ll use the Afero OTA Manager to [deploy a firmware image](https://afero-devdocs.readthedocs.io/en/latest/OTAMgr#DeployFWImage) to your device.
 
 - The incoming update will be handled as described below. Your MCU code will:
 

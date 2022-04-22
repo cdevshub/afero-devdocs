@@ -2,7 +2,7 @@
 
 The RESTful API exposes the functionality related to Users described in this section.
 
-Before you begin using the API below, be sure you have read the information in [Afero Cloud APIs](/CloudAPIs).
+Before you begin using the API below, be sure you have read the information in [Afero Cloud APIs](https://afero-devdocs.readthedocs.io/en/latest/CloudAPIs).
 
 
 
@@ -87,4 +87,4 @@ The `users/me` endpoint provides a variety of user-specific information useful f
 }
 ```
 
- Next: [Device API Endpoints](/API-DeviceEndpoints)
+ Next: [Device API Endpoints](https://afero-devdocs.readthedocs.io/en/latest/API-DeviceEndpoints)

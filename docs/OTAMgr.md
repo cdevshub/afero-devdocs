@@ -13,7 +13,7 @@ At a high level, this is how it works:
 7. The ASR passes the firmware update to the MCU using the ASR ⇆ MCU interface.
 8. Update success/failure is reported back to Afero.
 
-In addition, you'll have to prepare your application code to accept an MCU OTA update. Instructions are on this page: [Handling MCU OTA Updates](/MCU_OTA).
+In addition, you'll have to prepare your application code to accept an MCU OTA update. Instructions are on this page: [Handling MCU OTA Updates](https://afero-devdocs.readthedocs.io/en/latest/MCU_OTA).
 
 
 
@@ -88,7 +88,7 @@ If you want to change the name or description of an existing Image Type, you can
 
 When you are ready to upload a firmware image, start from the OTA Manager main window.
 
-Remember that before uploading an image, you must have already used the Profile Editor to create and publish a device Profile that has a firmware Image Type selected. You do this on the Attributes Definition window > MCU Configuration pane > Firmware OTA Updates section. Read [Configure the MCU](/AttrDef#ConfigMCU) for more details.
+Remember that before uploading an image, you must have already used the Profile Editor to create and publish a device Profile that has a firmware Image Type selected. You do this on the Attributes Definition window > MCU Configuration pane > Firmware OTA Updates section. Read [Configure the MCU](https://afero-devdocs.readthedocs.io/en/latest/AttrDef#ConfigMCU) for more details.
 
 
 
@@ -129,5 +129,5 @@ Once you have found the firmware image you want to deploy, you’re ready to pus
 
 ## See Also
 
-- Read [Handling MCU OTA Updates](/MCU_OTA) for details on what you’ll need to include in your application code to accept an MCU OTA update.
-- Read [Configure the MCU](/AttrDef#ConfigMCU) for details on using the Profile Editor to prepare your MCU for accepting specific Image Types.
+- Read [Handling MCU OTA Updates](https://afero-devdocs.readthedocs.io/en/latest/MCU_OTA) for details on what you’ll need to include in your application code to accept an MCU OTA update.
+- Read [Configure the MCU](https://afero-devdocs.readthedocs.io/en/latest/AttrDef#ConfigMCU) for details on using the Profile Editor to prepare your MCU for accepting specific Image Types.

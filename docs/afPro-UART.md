@@ -22,7 +22,7 @@ Whenever the MCU reboots, it must force ASR to reboot as well, thus canceling an
 1. MCU prepares the UART interface for communication with ASR.
 2. MCU asserts the Reset signal for a minimum of 250 ms.
 
-This sequence forces ASR to start from a known (initial) state. ASR will initiate the Zero Sync right after it reboots, as described below in [Example 1](/afPro-UART/#example-1-zero-sync).
+This sequence forces ASR to start from a known (initial) state. ASR will initiate the Zero Sync right after it reboots, as described below in [Example 1](https://afero-devdocs.readthedocs.io/en/latest/afPro-UART/#example-1-zero-sync).
 
 ## Sync Request/Response and Acknowledge Messages
 
@@ -67,10 +67,10 @@ In these examples, note that:
 
 We’ll look at these example transactions:
 
-- [Example 1: Zero Sync](/afPro-UART/#example-1-zero-sync)
-- [Example 2: Set Attribute](/afPro-UART/#example-2-set-attribute)
-- [Example 3: Update Attribute](/afPro-UART/#example-3-update-attribute)
-- [Example 4: Set Attribute with Collision](/afPro-UART/#example-4-set-attribute-with-collision)
+- [Example 1: Zero Sync](https://afero-devdocs.readthedocs.io/en/latest/afPro-UART/#example-1-zero-sync)
+- [Example 2: Set Attribute](https://afero-devdocs.readthedocs.io/en/latest/afPro-UART/#example-2-set-attribute)
+- [Example 3: Update Attribute](https://afero-devdocs.readthedocs.io/en/latest/afPro-UART/#example-3-update-attribute)
+- [Example 4: Set Attribute with Collision](https://afero-devdocs.readthedocs.io/en/latest/afPro-UART/#example-4-set-attribute-with-collision)
 
 ### Example 1: Zero Sync
 
@@ -117,7 +117,7 @@ At this point the master and slave are in sync. Neither one has anything to send
 
 ### Example 2: Set Attribute
 
-In this example, the Afero Cloud requests the MCU change the value of one of its attributes using a Set Attribute transaction. The MCU makes the change, resulting in an Update Attribute transaction (detailed in [Example 3: Update Attribute](/afPro-UART#UART-UpdateAttr)).
+In this example, the Afero Cloud requests the MCU change the value of one of its attributes using a Set Attribute transaction. The MCU makes the change, resulting in an Update Attribute transaction (detailed in [Example 3: Update Attribute](https://afero-devdocs.readthedocs.io/en/latest/afPro-UART#UART-UpdateAttr)).
 
 The transaction starts with ASR sending the Ready byte to let the MCU know it has something to send. The transaction ends with ASR sending the Ready byte to signal the operation has completed:
 
@@ -213,4 +213,4 @@ ASR completes the transaction with a final Ready byte.
 
 Lastly, there is the rare situation in which both the master and the slave have data to send at the same time. In this case, the Sync Request message from the master and the Sync Response message from the slave will both contain non-zero values. We call this case a “collision”.
 
-The protocol dictates that whenever there is a collision, the MCU wins. Both the MCU and ASR notice the collision. ASR queues its Sync Response and prepares to handle the MCU Sync Request. The MCU just waits for the next Ready byte from ASR and then resends the Sync Request. At this point the transaction looks just like [Example 3: Update Attribute](/afPro-UART/#example-3-update-attribute), above.
+The protocol dictates that whenever there is a collision, the MCU wins. Both the MCU and ASR notice the collision. ASR queues its Sync Response and prepares to handle the MCU Sync Request. The MCU just waits for the next Ready byte from ASR and then resends the Sync Request. At this point the transaction looks just like [Example 3: Update Attribute](https://afero-devdocs.readthedocs.io/en/latest/afPro-UART/#example-3-update-attribute), above.

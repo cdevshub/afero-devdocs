@@ -21,12 +21,12 @@ This window offers you the following information and actions:
   - Device ID (alpha-numeric string under the device name) - Click the Device ID to copy the ID to your clipboard.
   - Connectivity status - Online or offline.
 
-- View details for any of your devices by selecting the associated card; click the friendly name directly, not the Device ID. (Read more in [Device Details Window](/Inspector#InspectorDeviceDetails).)
+- View details for any of your devices by selecting the associated card; click the friendly name directly, not the Device ID. (Read more in [Device Details Window](https://afero-devdocs.readthedocs.io/en/latest/Inspector#InspectorDeviceDetails).)
 
 - The icons in the upper-right of the window are links to the following:
 
   - ![Inspector Home Window Icon](img/Inspector-HomeIcon.png)- Returns you to this Home window from the Device Details or Account Information windows.
-  - ![Inspector Account Icon](img/Inspector-AccountIcon.png)- Opens a window with your account information. (Read more in [Developer Account Information](/Inspector#UserInfo).)
+  - ![Inspector Account Icon](img/Inspector-AccountIcon.png)- Opens a window with your account information. (Read more in [Developer Account Information](https://afero-devdocs.readthedocs.io/en/latest/Inspector#UserInfo).)
   - ![Inspector User Guide Icon](img/Inspector-UserGuideIcon.png)- Opens this Inspector User Guide in a new window.
   - ![Inspector Sign Out Icon](img/Inspector-SignOutIcon.png)- Signs you out from Inspector.
 
@@ -38,14 +38,14 @@ After you select a device card in the Home window, that device’s Details windo
 
 The selected device details are presented in the following panes:
 
-- [Attribute Tabs](/Inspector#Attributes)
-- [Connection - Wi-Fi/Bluetooth Signal Strength](/Inspector#SignalStrength)
-- [Device Log](/Inspector#Log)
-- [Device Information](/Inspector#Info)
+- [Attribute Tabs](https://afero-devdocs.readthedocs.io/en/latest/Inspector#Attributes)
+- [Connection - Wi-Fi/Bluetooth Signal Strength](https://afero-devdocs.readthedocs.io/en/latest/Inspector#SignalStrength)
+- [Device Log](https://afero-devdocs.readthedocs.io/en/latest/Inspector#Log)
+- [Device Information](https://afero-devdocs.readthedocs.io/en/latest/Inspector#Info)
 
 ### Attribute Tabs
 
-The attributes relevant to the selected device are displayed in two tabs: [Device Attributes](/Inspector#DeviceAttr) and [Afero System Attributes](/Inspector#SystemAttr).
+The attributes relevant to the selected device are displayed in two tabs: [Device Attributes](https://afero-devdocs.readthedocs.io/en/latest/Inspector#DeviceAttr) and [Afero System Attributes](https://afero-devdocs.readthedocs.io/en/latest/Inspector#SystemAttr).
 
 You can download the information and even edit the READ/WRITE attributes from these windows.
 
@@ -69,7 +69,7 @@ The DEVICE ATTRIBUTES tab details the activity of your device attributes:
 
 #### Afero System Attributes
 
-The attributes shown in the AFERO SYSTEM ATTRIBUTES tab are generally set by the Cloud and read by the ASR module, but they can also be set by ASR. For a description of these attributes, refer to the [Device Attribute Registry](/AttrRegistry).
+The attributes shown in the AFERO SYSTEM ATTRIBUTES tab are generally set by the Cloud and read by the ASR module, but they can also be set by ASR. For a description of these attributes, refer to the [Device Attribute Registry](https://afero-devdocs.readthedocs.io/en/latest/AttrRegistry).
 
 ### Connection - Wi-Fi/Bluetooth Signal Strength
 

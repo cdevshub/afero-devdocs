@@ -15,7 +15,7 @@ This page describes the afLib functions related to initializing and terminating 
 
 Initialize an `af_transport_t` appropriate for the communications protocol to be used by the application. A pointer to the `af_transport_t` is a required argument for `af_lib_create_with_unified_callback()`.
 
-There is a specific form of `af_transport_t` for each of the communication protocols available, SPI and UART. You will need to create the `af_transport_t` corresponding to the protocol used in your project, and pass it to [`af_lib_create_with_unified_callback()`](/afLibLifecycle#af_lib_create_with_unified_callback).
+There is a specific form of `af_transport_t` for each of the communication protocols available, SPI and UART. You will need to create the `af_transport_t` corresponding to the protocol used in your project, and pass it to [`af_lib_create_with_unified_callback()`](https://afero-devdocs.readthedocs.io/en/latest/afLibLifecycle#af_lib_create_with_unified_callback).
 
 There is a specific form of this create call for different MCU platforms. Please refer to the `<*platform*>_transport` source file in afLib for the exact syntax.
 

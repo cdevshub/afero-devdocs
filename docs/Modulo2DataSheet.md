@@ -4,13 +4,13 @@ Modulo-2 is a Wi-Fi and Bluetooth® low energy development board that makes it e
 
 This page contains the following sections:
 
-- [Introduction](/Modulo2DataSheet#Intro)
-- [Mechanical Specification](/Modulo2DataSheet#MechSpec)
-- [DC Electrical Specification](/Modulo2DataSheet#DCSpec)
-- [RF Electrical Specification](/Modulo2DataSheet#RFSpec)
-- [Environmental Specification](/Modulo2DataSheet#EnvSpec)
-- [Ordering Information](/Modulo2DataSheet#OrderInfo)
-- [Compliance Notices](/Modulo2DataSheet#Compliance)
+- [Introduction](https://afero-devdocs.readthedocs.io/en/latest/Modulo2DataSheet#Intro)
+- [Mechanical Specification](https://afero-devdocs.readthedocs.io/en/latest/Modulo2DataSheet#MechSpec)
+- [DC Electrical Specification](https://afero-devdocs.readthedocs.io/en/latest/Modulo2DataSheet#DCSpec)
+- [RF Electrical Specification](https://afero-devdocs.readthedocs.io/en/latest/Modulo2DataSheet#RFSpec)
+- [Environmental Specification](https://afero-devdocs.readthedocs.io/en/latest/Modulo2DataSheet#EnvSpec)
+- [Ordering Information](https://afero-devdocs.readthedocs.io/en/latest/Modulo2DataSheet#OrderInfo)
+- [Compliance Notices](https://afero-devdocs.readthedocs.io/en/latest/Modulo2DataSheet#Compliance)
 
 ## Introduction
 
@@ -296,7 +296,7 @@ Afero, Inc.
 Suite 210
 Los Altos, CA 94022
 
-View letter stating [EU Declaration of Conformity (pdf)](/files/Modulo2-EU-Decl-Conform.pdf).
+View letter stating [EU Declaration of Conformity (pdf)](https://afero-devdocs.readthedocs.io/en/latest/files/Modulo2-EU-Decl-Conform.pdf).
 
 ### RoHS
 
@@ -306,4 +306,4 @@ This device conforms to RoHS (Restriction of Hazardous Substances) European Unio
 
 This product has been supplied from an environmentally aware manufacturer that complies with the Waste Electrical and Electronic Equipment (WEEE) Directive 2002/96/EC. The “crossed-out wheelie bin” symbol is placed on this product to encourage you to recycle wherever possible.
 
- Next: [ASR-2 Hardware Integration Guide](/ASR2HWInt)
+ Next: [ASR-2 Hardware Integration Guide](https://afero-devdocs.readthedocs.io/en/latest/ASR2HWInt)

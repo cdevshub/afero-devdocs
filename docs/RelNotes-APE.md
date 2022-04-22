@@ -29,10 +29,10 @@ Release date: May 30, 2019
 
 - New attribute features:
 
-- - Attributes can be assigned to multiple controls. Read more in [Define the Mobile App UI](/AppUIDef).
-  - Attribute updates can be tracked with a timestamp, now accurately reporting when the update occurred even if the device was offline at the time of update. Read more in [Define the Device Attributes > Use ASR Timestamps](/AttrDef#UseTimestamp).
-  - Attributes updates can now be stored in a configurable queue. Read more in [Define the Device Attributes > Queue Configuration](/AttrDef/#QueueConfig) and [All About Queuing](/AttrDef#queuepolicy).
-  - For projects using the Potenco module type, you can now specify supported network interfaces. Read more in [Define Potenco Attributes](/AttrDef#HubAttributes).
+- - Attributes can be assigned to multiple controls. Read more in [Define the Mobile App UI](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef).
+  - Attribute updates can be tracked with a timestamp, now accurately reporting when the update occurred even if the device was offline at the time of update. Read more in [Define the Device Attributes > Use ASR Timestamps](https://afero-devdocs.readthedocs.io/en/latest/AttrDef#UseTimestamp).
+  - Attributes updates can now be stored in a configurable queue. Read more in [Define the Device Attributes > Queue Configuration](https://afero-devdocs.readthedocs.io/en/latest/AttrDef/#QueueConfig) and [All About Queuing](https://afero-devdocs.readthedocs.io/en/latest/AttrDef#queuepolicy).
+  - For projects using the Potenco module type, you can now specify supported network interfaces. Read more in [Define Potenco Attributes](https://afero-devdocs.readthedocs.io/en/latest/AttrDef#HubAttributes).
 
 ## Afero Profile Editor R1.7
 
@@ -41,7 +41,7 @@ Release date: March 27, 2019
 - Support added for the Modulo-1B module.
 - For developers associated with more than one partner, new feature for switching between partner accounts. You’ll find the Partner Selector on the Startup window.
 - Control group titles limited to 39 characters, for optimal display on Android devices.
-- Enforcement of unique Device Type name/module combination across projects. Developer is notified when creating, cloning, or opening projects. Read more in [Before You Proceed](/SelectProject#DOC-158).
+- Enforcement of unique Device Type name/module combination across projects. Developer is notified when creating, cloning, or opening projects. Read more in [Before You Proceed](https://afero-devdocs.readthedocs.io/en/latest/SelectProject#DOC-158).
 - On the Publish window, in the Device Activity pane, the device attributes are now displayed with their names and numbers, for easy identification.
 - For GPIO Input attributes, the COUNT flag is now available when MCU is enabled.
 - Bug fixes and assorted improvements.
@@ -56,9 +56,9 @@ Release date: October 1, 2018
 
 Release date: August 9, 2018
 
-- Support added for defining an “attribute event trigger” that results in a notification being sent to the end-user in the mobile app. Read more in [Define the Rules & Notifications](/RulesDef).
-- Support added for updating the firmware on your MCU via OTA. Read more in [Configure the MCU](/AttrDef#ConfigMCU).
-- The Afero Firmware R2.0 added a local attribute that will send the current UTC time to an MCU every minute as it changes, but only if it’s been enabled. We’ve added a checkbox to enable this UTC Time attribute and add it to your device Profile. Read more in [Define the MCU Attributes](/AttrDef#MCUAttrs) and [Using the Afero Cloud to Keep Time on the MCU](/SetMCUTime).
+- Support added for defining an “attribute event trigger” that results in a notification being sent to the end-user in the mobile app. Read more in [Define the Rules & Notifications](https://afero-devdocs.readthedocs.io/en/latest/RulesDef).
+- Support added for updating the firmware on your MCU via OTA. Read more in [Configure the MCU](https://afero-devdocs.readthedocs.io/en/latest/AttrDef#ConfigMCU).
+- The Afero Firmware R2.0 added a local attribute that will send the current UTC time to an MCU every minute as it changes, but only if it’s been enabled. We’ve added a checkbox to enable this UTC Time attribute and add it to your device Profile. Read more in [Define the MCU Attributes](https://afero-devdocs.readthedocs.io/en/latest/AttrDef#MCUAttrs) and [Using the Afero Cloud to Keep Time on the MCU](https://afero-devdocs.readthedocs.io/en/latest/SetMCUTime).
 - On the UI Controls window, there is now dynamic rendering of UI controls for the different view styles.
 - Assorted bug fixes.
 
@@ -76,7 +76,7 @@ Release date: April 30, 2018
 
 Release date: January 23, 2018
 
-- User interface facelift (new style and colors). Read more in [Profile Editor User Interface](/SelectProject#APE-UI).
+- User interface facelift (new style and colors). Read more in [Profile Editor User Interface](https://afero-devdocs.readthedocs.io/en/latest/SelectProject#APE-UI).
 - On the Publish screen, Device History has been replaced by Device Activity, a rolling log of events initially populated with the last values cached in the Cloud.
 
 ## Afero Profile Editor R1.2.23
@@ -124,7 +124,7 @@ Release date: July 25, 2017
 
 ### Important! Order of Operations
 
-Because of dependencies between the Afero Profile Editor, afLib3, and Modulo firmware, upgrading to the latest Modulo release must be done in the correct order. This page documents the order and why it is the way it is. Please refer also to the [Afero Firmware Release Notes](/RelNotes-FW).
+Because of dependencies between the Afero Profile Editor, afLib3, and Modulo firmware, upgrading to the latest Modulo release must be done in the correct order. This page documents the order and why it is the way it is. Please refer also to the [Afero Firmware Release Notes](https://afero-devdocs.readthedocs.io/en/latest/RelNotes-FW).
 
 #### Step 1. OTA
 

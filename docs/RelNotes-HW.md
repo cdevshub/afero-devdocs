@@ -12,4 +12,4 @@ Additional features:
 - The board uses a new and improved switch, first used on Modulo-2A.
 - The Taiyo Yuden EYSHCNZWZ module gives the board FCC/IC and Telec certification.
 
-For more technical details, refer to the [Modulo-1B-TY data sheet](/Modulo1BTYDataSheet). You can find the complete design files in [this GitHub repository](https://github.com/aferodeveloper/Modulo-1B-TY). The design files are open-sourced under the Apache 2.0 license.
+For more technical details, refer to the [Modulo-1B-TY data sheet](https://afero-devdocs.readthedocs.io/en/latest/Modulo1BTYDataSheet). You can find the complete design files in [this GitHub repository](https://github.com/aferodeveloper/Modulo-1B-TY). The design files are open-sourced under the Apache 2.0 license.

@@ -4,10 +4,10 @@ This section describes the overall architecture of the Afero Secure Linux Device
 
 This page contains the following sections:
 
-- [System Diagram](/LinuxSDK-Overview#SysDiag)
-- [The Afero Secure Device on Linux](/LinuxSDK-Overview#OnLinux)
-- [Afero Linux SDK Components](/LinuxSDK-Overview#LinuxSDKComponents)
-- [Software Dependencies](/LinuxSDK-Overview#SWDependencies)
+- [System Diagram](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#SysDiag)
+- [The Afero Secure Device on Linux](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#OnLinux)
+- [Afero Linux SDK Components](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#LinuxSDKComponents)
+- [Software Dependencies](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#SWDependencies)
 
 ## System Diagram
 
@@ -21,17 +21,17 @@ The Afero Secure Linux Device SDK relies on several Linux components, including 
 
 Each component in an Afero Linux device functions as follows:
 
-| [Edge Device daemon (edged)](/LinuxSDK-Overview#edgedSummary) | Provides edge device functionality for the Linux device.     |
+| [Edge Device daemon (edged)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#edgedSummary) | Provides edge device functionality for the Linux device.     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Attribute daemon (attrd)](/LinuxSDK-Overview#attrdSummary) | Provides interprocess communication based on Afero attributes. |
-| [hubby](/LinuxSDK-Overview#hubbySummary) | Provides core Afero device and Cloud service communication functionality for both hub and/or edge devices. |
-| [beetle](/LinuxSDK-Overview#beetleSummary) | Provides hubby with a Bluetooth low energy interface.        |
-| [Afero Security daemon (afsecd)](/LinuxSDK-Overview#afsecdSummary) | Provides hubby with an interface to the Afero Hardware Security Module (HSM). |
-| [Afero IPC Library (af-ipc)](/LinuxSDK-Overview#af-ipcSummary) | Provides a common, simple, low-level interprocess communication system based on Unix domain sockets. |
-| [Wi-Fi Station daemon (wifistad)](/LinuxSDK-Overview#wifistadSummary) | Controls the WPA Supplicant and allows the Afero mobile app to set up the user’s Wi-Fi using Bluetooth. |
-| [WAN daemon (wand)](/LinuxSDK-Overview#wandSummary) | Maintains a WCDMA/LTE modem internet connection for hubs that have cellular connectivity. |
-| [Connection Manager daemon (connmgr)](/LinuxSDK-Overview#connmgrSummary) | Dynamically selects network interfaces to route data to the internet. It also maintains a very tight firewall using iptables. |
-| [OTA Manager (otamgr)](/LinuxSDK-Overview#otamgrSummary) | Updates the Afero software using OTA images signed with Afero keys and verified using the Afero Hardware Security Module, and delivers Linux update packages to the system. |
+| [Attribute daemon (attrd)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#attrdSummary) | Provides interprocess communication based on Afero attributes. |
+| [hubby](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#hubbySummary) | Provides core Afero device and Cloud service communication functionality for both hub and/or edge devices. |
+| [beetle](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#beetleSummary) | Provides hubby with a Bluetooth low energy interface.        |
+| [Afero Security daemon (afsecd)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#afsecdSummary) | Provides hubby with an interface to the Afero Hardware Security Module (HSM). |
+| [Afero IPC Library (af-ipc)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#af-ipcSummary) | Provides a common, simple, low-level interprocess communication system based on Unix domain sockets. |
+| [Wi-Fi Station daemon (wifistad)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#wifistadSummary) | Controls the WPA Supplicant and allows the Afero mobile app to set up the user’s Wi-Fi using Bluetooth. |
+| [WAN daemon (wand)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#wandSummary) | Maintains a WCDMA/LTE modem internet connection for hubs that have cellular connectivity. |
+| [Connection Manager daemon (connmgr)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#connmgrSummary) | Dynamically selects network interfaces to route data to the internet. It also maintains a very tight firewall using iptables. |
+| [OTA Manager (otamgr)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#otamgrSummary) | Updates the Afero software using OTA images signed with Afero keys and verified using the Afero Hardware Security Module, and delivers Linux update packages to the system. |
 
 ### Edge Device Daemon (edged)
 
@@ -42,13 +42,13 @@ We provide the following ways to implement the edge attributes for your device:
 - Write a daemon in C that links with the latest afLib library. afLib implements the same API that is used by an MCU connected to an Afero ASR module.
 - Write scripts that accept command-line parameters to respond to notifications, attribute `set` operations, and attribute `get` operations. These scripts can be written in Bash, Python, Perl, or any other scripting language that supports command-line parameters.
 
-Implementing edge device functionality is the subject of [Edge Device Daemon Implementation](/LinuxSDK-EdgeDaemon).
+Implementing edge device functionality is the subject of [Edge Device Daemon Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-EdgeDaemon).
 
 ### Attribute Daemon (attrd)
 
 This daemon is based on the af-ipc layer and provides an attribute-sharing mechanism that works in a similar way to the Afero attribute system. Clients of the Attribute daemon can own attributes, read attributes, change attribute values, and be notified when attribute values change. All attributes are considered binary blobs by the Attribute daemon.
 
-hubby uses the Attribute daemon to communicate Afero attributes between the Cloud and the daemons that own them. For example, the Wi-Fi Station daemon (described [below](/LinuxSDK-Overview#wifistadSummary)) provides the Wi-Fi SSID list attribute, which the Afero mobile app requests when it sets up Wi-Fi. When the value is updated, the Wi-Fi Station daemon sends the new value of the attribute to hubby using the client API of the Attribute daemon. The Attribute daemon then forwards the value to hubby, which in turn forwards the value to the Cloud, which then forwards the value to the application.
+hubby uses the Attribute daemon to communicate Afero attributes between the Cloud and the daemons that own them. For example, the Wi-Fi Station daemon (described [below](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#wifistadSummary)) provides the Wi-Fi SSID list attribute, which the Afero mobile app requests when it sets up Wi-Fi. When the value is updated, the Wi-Fi Station daemon sends the new value of the attribute to hubby using the client API of the Attribute daemon. The Attribute daemon then forwards the value to hubby, which in turn forwards the value to the Cloud, which then forwards the value to the application.
 
 The Attribute daemon uses the IPC layer and therefore uses libevent2 for its main event loop. All Attribute daemon client daemons must also have a libevent2 main event loop.
 
@@ -57,7 +57,7 @@ Afero provides the Attribute daemon in source form. It builds into a daemon and 
 - You can write a C daemon that uses the Attribute daemon client API.
 - You can use scripts to handle the client functionality.
 
-Both methods are discussed in [Attribute Daemon Client Implementation.](/LinuxSDK-AttrDaemon)
+Both methods are discussed in [Attribute Daemon Client Implementation.](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-AttrDaemon)
 
 ### hubby
 
@@ -122,7 +122,7 @@ The Wi-Fi Station daemon (wifistad) supervises the Linux WPA supplicant and adds
 
 Communication with the WPA supplicant is performed through the same Unix domain socket the wpa_cli application uses.
 
-The Wi-Fi Station daemon is provided as sample code in source form. It builds into a standalone daemon that is also a client of the Attribute daemon, which implies that it uses libevent2 as its main event loop. Implementing a Wi-Fi Station daemon is the subject of the [Wi-Fi Station Daemon Implementation](/LinuxSDK-WiFiStDaemon).
+The Wi-Fi Station daemon is provided as sample code in source form. It builds into a standalone daemon that is also a client of the Attribute daemon, which implies that it uses libevent2 as its main event loop. Implementing a Wi-Fi Station daemon is the subject of the [Wi-Fi Station Daemon Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WiFiStDaemon).
 
 ### WAN Daemon (wand)
 
@@ -130,7 +130,7 @@ The WAN daemon maintains a network interface over a cellular network. It also co
 
 The WAN daemon sample code supports the Cinterion ELS61 wireless module and the USB-connected Sierra Wireless HL75xx modems based on the Intel/Infineon chipsets, but it can be adapted to other modems by modifying the modem-specific Radio Interface Layer (RIL). It is not particularly well suited to the Qualcomm modems that have built-in application processors like the MDM96xx series because the WAN daemon is designed around a USB-connected modem.
 
-The WAN daemon is provided as sample code in source form. It builds into a standalone daemon that is also a client of the Attribute daemon, which implies that it uses libevent2. The modem power states are managed separately by a script called wancontrol. The network setup is performed by another script called wannetwork. Implementing a WAN daemon is the subject of the [WAN Daemon Implementation](/LinuxSDK-WANDaemon).
+The WAN daemon is provided as sample code in source form. It builds into a standalone daemon that is also a client of the Attribute daemon, which implies that it uses libevent2. The modem power states are managed separately by a script called wancontrol. The network setup is performed by another script called wannetwork. Implementing a WAN daemon is the subject of the [WAN Daemon Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon).
 
 ### Connection Manager Daemon (connmgr)
 
@@ -156,7 +156,7 @@ The routing changes are done by changing the route metric of the default route. 
 
 The firewall code is distinctive because it maintains a whitelist of allowed servers based on host name and not IP address. This distinction is required to accommodate the dynamic load balancers in the Afero Cloud. The Connection Manager uses libpcap to monitor DNS lookups, and if the request is for a host name in the whitelist, it opens up the resolved IP addresses in the firewall. This feature is useful for devices that wish to act as an access point for Afero Wi-Fi devices. For devices that are Wi-Fi stations only, this special firewall feature may not be necessary; blocking all incoming connections may provide sufficient security.
 
-The Connection Manager is released by Afero as sample code. It builds into a standalone daemon that is a client of the Attribute daemon, which implies that the main loop is based on libevent2. Implementing a Connection Manager is the subject of the [Connection Manager Implementation](/LinuxSDK-ConnMgrDaemon).
+The Connection Manager is released by Afero as sample code. It builds into a standalone daemon that is a client of the Attribute daemon, which implies that the main loop is based on libevent2. Implementing a Connection Manager is the subject of the [Connection Manager Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-ConnMgrDaemon).
 
 ### OTA Manager (otamgr)
 
@@ -166,7 +166,7 @@ Use of the Afero otamgr daemon is not required. If you do choose to write your o
 
 Note that the OTA service and its tools are **not** part of the OTA Manager. The OTA service and tools are responsible for signing and securely transporting/downloading the image to the devices. The OTA Manager takes over and installs the image once it has been downloaded to the device. You, as the third-party, are responsible for generating the OTA image (the “blob”) and the mechanism (e.g., a script or daemon) that triggers the update.
 
-The OTA Manager is released as sample source code with stubbed functionality that builds into a standalone daemon. The OTA Manager **must** be a client of the Attribute daemon. Implementing the OTA Manager is the subject of [OTA Manager Implementation](/LinuxSDK-OTAManager).
+The OTA Manager is released as sample source code with stubbed functionality that builds into a standalone daemon. The OTA Manager **must** be a client of the Attribute daemon. Implementing the OTA Manager is the subject of [OTA Manager Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-OTAManager).
 
 ## Software Dependencies
 

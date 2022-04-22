@@ -17,7 +17,7 @@ Be sure you’ve done the following before starting the steps below:
 - You’ve downloaded, installed, and signed in to the Afero mobile app and the Afero Profile Editor.
 - You have an Afero development board.
 - You've got an Arduino-compatible MCU, such as an Arduino Uno, plus an Afero Plinto shield for the most basic examples, or preferably a PJRC “Teensy” MCU (from pjrc.com or elsewhere) for a more powerful MCU so you don’t have to worry about memory or processing power while you're learning the platform.
-- You’ve connected your development board to your Arduino. Refer to the [Data Sheet](/HWRef) appropriate for your development board if needed.
+- You’ve connected your development board to your Arduino. Refer to the [Data Sheet](https://afero-devdocs.readthedocs.io/en/latest/HWRef) appropriate for your development board if needed.
 - You have the Arduino IDE (1.8 or later) up and running, and have installed the Teensy Arduino support package from https://www.pjrc.com/teensy/td_download.html if you’re using a Teensy MCU.
 
 ## The Steps
@@ -102,7 +102,7 @@ Recall that when the UI gets a tap on the START control, a message to the Afero 
 13:16:04.666 -> attr BLINK=false
 ```
 
-In the first line of output we see the MCU program logging execution of `attrEventCallback()`. We know from the [afLib API](/API-afLib) that the MCU runs `attrEventCallback()` when ASR has executed `af_lib_set_attribute*()`. So we know that ASR must have called `af_lib_set_attribute*()` to tell MCU to set attribute 1 to value 1, and the MCU is handling that. How does that happen?
+In the first line of output we see the MCU program logging execution of `attrEventCallback()`. We know from the [afLib API](https://afero-devdocs.readthedocs.io/en/latest/API-afLib) that the MCU runs `attrEventCallback()` when ASR has executed `af_lib_set_attribute*()`. So we know that ASR must have called `af_lib_set_attribute*()` to tell MCU to set attribute 1 to value 1, and the MCU is handling that. How does that happen?
 
 Take a look at the MCU’s `attrEventCallback()` definition (some code snipped out for clarity):
 
@@ -148,7 +148,7 @@ What’s happening here is that the user’s tap in the mobile app UI goes up to
 
 Back to the console output, where we see several lines containing `attrEventCallback` calls with attribute ID AF_MODULO_LED. You probably recognize that the alternating 0’s and 1’s reflect that the LED is being blinked.
 
-Based on the [afLib API](/API-afLib), we know that `attrEventCallback()` is executed by the MCU whenever ASR sends an update message about an attribute change. So we deduce that ASR is sending updates every time it changes the value of GPIO 0 (the LED). The one piece of the puzzle we haven’t seen is what’s making ASR change that value. One more look at the code:
+Based on the [afLib API](https://afero-devdocs.readthedocs.io/en/latest/API-afLib), we know that `attrEventCallback()` is executed by the MCU whenever ASR sends an update message about an attribute change. So we deduce that ASR is sending updates every time it changes the value of GPIO 0 (the LED). The one piece of the puzzle we haven’t seen is what’s making ASR change that value. One more look at the code:
 
 ```
 void loop() {
@@ -288,9 +288,9 @@ The ASR_STATE attribute can have one of a small range of values, or “states”
 
 Let’s take a look at how your code can use three of these events:
 
-- [0 = Rebooted](/Lesson3#ASR_State-0)
-- [4 = Initialized](/Lesson3#ASR_State-4)
-- [3 = Update Ready to Apply (Reboot Requested)](/Lesson3#ASR_State-3)
+- [0 = Rebooted](https://afero-devdocs.readthedocs.io/en/latest/Lesson3#ASR_State-0)
+- [4 = Initialized](https://afero-devdocs.readthedocs.io/en/latest/Lesson3#ASR_State-4)
+- [3 = Update Ready to Apply (Reboot Requested)](https://afero-devdocs.readthedocs.io/en/latest/Lesson3#ASR_State-3)
 
 #### What to Do When You Receive the “Rebooted” State Message
 
