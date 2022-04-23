@@ -1,6 +1,6 @@
 # Tutorial 2: Creating a Device Profile
 
-Before you start, we assume that you’ve already run through [Tutorial 1: Linking Modulo](https://afero-devdocs.readthedocs.io/en/latest/Lesson1). If not, please start there.
+Before you start, we assume that you’ve already run through [Tutorial 1: Linking Modulo](](.../Lesson1). If not, please start there.
 
 This tutorial is designed for the Modulo-1 and Modulo-2 dev boards, but not for the Modulo-1B.
 
@@ -61,7 +61,7 @@ This tutorial is designed for the Modulo-1 and Modulo-2 dev boards, but not for 
 
    There are two steps to defining the UI controls: a) we first define the “attribute options” for each attribute; and b) we then assign UI controls to each attribute.
 
-   You might be wondering why defining attribute options is separate from assigning controls. The reason is so you can easily assign multiple controls to the same attribute without having to retype a lot of details (although that doesn’t apply to this Tutorial). To learn more about attribute options, read [Define the Mobile App UI > Define the Attribute Options](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef#Options).
+   You might be wondering why defining attribute options is separate from assigning controls. The reason is so you can easily assign multiple controls to the same attribute without having to retype a lot of details (although that doesn’t apply to this Tutorial). To learn more about attribute options, read [Define the Mobile App UI > Define the Attribute Options](](.../AppUIDef#Options).
 
    
 
@@ -150,4 +150,4 @@ You will see that we have defined the following:
 
    You should now be able to control the Modulo LED using the LED buttons on your smartphone, and the pushbutton on the Modulo board should toggle the On/Off Button control in the mobile app UI.
 
- Next: [Tutorial 3: Afero + Arduino](https://afero-devdocs.readthedocs.io/en/latest/Lesson3)
+ Next: [Tutorial 3: Afero + Arduino](](.../Lesson3)

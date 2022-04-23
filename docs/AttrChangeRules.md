@@ -2,10 +2,10 @@
 
 What happens when an attribute value is changed is a function of its definition; specifically, the attribute ownership and flag(s). The rules around attribute value changes are described in the following sections:
 
-- [Attribute Characteristics Affecting Change Behavior](https://afero-devdocs.readthedocs.io/en/latest/AttrChangeRules/#attribute-characteristics-affecting-change-behavior)
-- [Change Rules for MCU Attributes](https://afero-devdocs.readthedocs.io/en/latest/AttrChangeRules/#change-rules-for-mcu-attributes)
-- [Change Rules for ASR Attributes](https://afero-devdocs.readthedocs.io/en/latest/AttrChangeRules/#change-rules-for-asr-attributes)
-- [SET, GET, UPDATE Messages](https://afero-devdocs.readthedocs.io/en/latest/AttrChangeRules/#set-get-update-messages)
+- [Attribute Characteristics Affecting Change Behavior](](.../AttrChangeRules/#attribute-characteristics-affecting-change-behavior)
+- [Change Rules for MCU Attributes](](.../AttrChangeRules/#change-rules-for-mcu-attributes)
+- [Change Rules for ASR Attributes](](.../AttrChangeRules/#change-rules-for-asr-attributes)
+- [SET, GET, UPDATE Messages](](.../AttrChangeRules/#set-get-update-messages)
 
 Note that all mentions of “Cloud” refer to the Afero Cloud.
 
@@ -38,7 +38,7 @@ Ownership affects how an attribute is treated; specifically:
 - What happens when the attribute value is changed, and
 - What message types (GET, SET, or UPDATE) are used to control the attribute.
 
-At a simple level, SET messages can be thought of as the initiator of an attribute change, while UPDATE messages typically indicate that an attribute value has been changed and other parts of the system should be made aware of the change. Attributes are described in more detail below in [SET, GET, UPDATE Messages](https://afero-devdocs.readthedocs.io/en/latest/AttrChangeRules/#set-get-update-messages).
+At a simple level, SET messages can be thought of as the initiator of an attribute change, while UPDATE messages typically indicate that an attribute value has been changed and other parts of the system should be made aware of the change. Attributes are described in more detail below in [SET, GET, UPDATE Messages](](.../AttrChangeRules/#set-get-update-messages).
 
 ### Attribute Flags
 

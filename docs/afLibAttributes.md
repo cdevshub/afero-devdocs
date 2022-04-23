@@ -4,8 +4,8 @@ At the heart of any MCU application that interacts with ASR are the actions of *
 
 The functions described on this page allow your MCU to query and set the attribute values, as currently maintained by the Afero Cloud:
 
-- [`af_lib_get_attribute()`](https://afero-devdocs.readthedocs.io/en/latest/afLibAttributes#af_lib_get_attribute)
-- [`af_lib_set_attribute()`](https://afero-devdocs.readthedocs.io/en/latest/afLibAttributes#af_lib_set_attribute)
+- [`af_lib_get_attribute()`](../afLibAttributes#af_lib_get_attribute)
+- [`af_lib_set_attribute()`](](.../afLibAttributes#af_lib_set_attribute)
 
 It’s important to keep in mind that the attribute values are represented in multiple places in your project:
 
@@ -14,13 +14,13 @@ It’s important to keep in mind that the attribute values are represented in mu
 - The Afero Cloud also knows the Profile for your device, and has copies of the attribute values.
 - Your Profile *might* define "Default Values" for one or more attributes. If desired, these default values can be reloaded at boot time to reset the state of your device.
 
-Obviously, it’s critical that all representations of attribute values in the system stay in sync. Your MCU code, in conjunction with the Afero Cloud, will be responsible for this data synchronization, and it will be performed through the use of the two functions to `**get**` and `**set**` attribute values described below. The rules by which this synchronization takes place are detailed in [Attribute Value Change Rules](https://afero-devdocs.readthedocs.io/en/latest/AttrChangeRules).
+Obviously, it’s critical that all representations of attribute values in the system stay in sync. Your MCU code, in conjunction with the Afero Cloud, will be responsible for this data synchronization, and it will be performed through the use of the two functions to `**get**` and `**set**` attribute values described below. The rules by which this synchronization takes place are detailed in [Attribute Value Change Rules](](.../AttrChangeRules).
 
 ## af_lib_get_attribute()
 
 ### Description
 
-Request the value of a specified attribute. The `af_lib_get_attribute()` call only queues the request; your [`attrEventCallback()`](https://afero-devdocs.readthedocs.io/en/latest/afLibCallbacks#Func-attrEventCallback) function will be called when the value is returned by ASR. The attribute value is returned via the callback.
+Request the value of a specified attribute. The `af_lib_get_attribute()` call only queues the request; your [`attrEventCallback()`](](.../afLibCallbacks#Func-attrEventCallback) function will be called when the value is returned by ASR. The attribute value is returned via the callback.
 
 When called:
 
@@ -42,11 +42,11 @@ af_lib_get_attribute(af_lib_t *af_lib, const uint16_t attr_id)
 
 ### Returns
 
-An [afLib result code](https://afero-devdocs.readthedocs.io/en/latest/afLibErrors) indicating whether request was queued successfully.
+An [afLib result code](](.../afLibErrors) indicating whether request was queued successfully.
 
 ### Example
 
-The code examples for the functions below illustrate the use of SPI communication. To use UART instead, only the minimal changes in afLib instantiation, as described in the [afLib Lifecycle](https://afero-devdocs.readthedocs.io/en/latest/afLibLifecycle#Func-transport-create) section, would be required.
+The code examples for the functions below illustrate the use of SPI communication. To use UART instead, only the minimal changes in afLib instantiation, as described in the [afLib Lifecycle](](.../afLibLifecycle#Func-transport-create) section, would be required.
 
 
 
@@ -127,9 +127,9 @@ void loop() {
 
 ### Description
 
-Request to change the value of a specified attribute. This call only queues the request. Your [`attrEventCallback()`](https://afero-devdocs.readthedocs.io/en/latest/afLibCallbacks#Func-attrEventCallback) function will be called when afLib has handled the request.
+Request to change the value of a specified attribute. This call only queues the request. Your [`attrEventCallback()`](](.../afLibCallbacks#Func-attrEventCallback) function will be called when afLib has handled the request.
 
-It’s important to recognize that `af_lib_set_attribute` may be called in several ways (e.g., from MCU code, as a result of actions by the mobile app, etc.), and for multiple attribute types (i.e., GPIO, MCU). Your `attrEventCallback()` will respond to a given attribute-set event depending on how it was called, and for which attribute type. This is detailed in [Callback & Events](https://afero-devdocs.readthedocs.io/en/latest/afLibCallbacks).
+It’s important to recognize that `af_lib_set_attribute` may be called in several ways (e.g., from MCU code, as a result of actions by the mobile app, etc.), and for multiple attribute types (i.e., GPIO, MCU). Your `attrEventCallback()` will respond to a given attribute-set event depending on how it was called, and for which attribute type. This is detailed in [Callback & Events](](.../afLibCallbacks).
 
 
 
@@ -188,7 +188,7 @@ af_lib_error_t af_lib_set_attribute_bytes(af_lib_t *af_lib,
 
 ### Returns
 
-An [afLib result code](https://afero-devdocs.readthedocs.io/en/latest/afLibErrors) indicating whether request was queued successfully.
+An [afLib result code](](.../afLibErrors) indicating whether request was queued successfully.
 
 ### Example
 

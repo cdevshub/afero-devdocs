@@ -7,7 +7,7 @@ We’ve built Afero to be accessible to a broad range of developers, from novice
 - Afero mobile app for: [Android](https://play.google.com/store/apps/details?id=io.afero.tokui.prod.release) or [iOS](https://apps.apple.com/us/app/afero-iot-platform/id1065087421?ls=1).
 - Afero Profile Editor for: [Windows](https://cdn.afero.io/latest-ape/win) or [macOS](https://cdn.afero.io/latest-ape/mac).
 - [GitHub Repositories](https://github.com/aferodeveloper)
-- [Afero Development Hardware - BUY HERE!](https://afero-devdocs.readthedocs.io/en/latest/Hardware)
+- [Afero Development Hardware - BUY HERE!](](.../Hardware)
 - [Instructables.com demo projects](http://www.instructables.com/howto/afero)
 
 ## Support Links
@@ -20,19 +20,19 @@ We’ve built Afero to be accessible to a broad range of developers, from novice
 
 ## Getting Started
 
-- Read an overview of the [Afero Platform](https://afero-devdocs.readthedocs.io/en/latest/SystemOverview).
-- Understand our [core development concepts](https://afero-devdocs.readthedocs.io/en/latest/CoreConcepts).
-- Read and refer to our [Glossary](https://afero-devdocs.readthedocs.io/en/latest/Glossary) for a clear understanding of concepts and instructions.
+- Read an overview of the [Afero Platform](](.../SystemOverview).
+- Understand our [core development concepts](](.../CoreConcepts).
+- Read and refer to our [Glossary](](.../Glossary) for a clear understanding of concepts and instructions.
 - Install the Afero mobile app on your smartphone.
 - Download and install the Afero Profile Editor.
 
 ## Building Devices
 
-- Read our [Firmware](https://afero-devdocs.readthedocs.io/en/latest/FW-API) and [Hardware](https://afero-devdocs.readthedocs.io/en/latest/HWRef) docs to get your device ready for programming.
-- Define and program your device with Afero Profile Editor, following the [Profile Editor User Guide](https://afero-devdocs.readthedocs.io/en/latest/Projects).
-- Use the [Afero Inspector](https://afero-devdocs.readthedocs.io/en/latest/Inspector) web app to look inside your device definitions.
-- If you have an MCU on your developer device, refer to the [afLib](https://afero-devdocs.readthedocs.io/en/latest/API-afLib) docs to use the library in your MCU application.
-- For MCU firmware updates, use the [Afero OTA Manager](https://afero-devdocs.readthedocs.io/en/latest/OTAMgr) web app to update the MCU firmware.
-- Create a standalone developer hub using the [Developer Hub](https://afero-devdocs.readthedocs.io/en/latest/StandaloneHub) setup instructions.
-- Access cloud functions using our [Cloud API](https://afero-devdocs.readthedocs.io/en/latest/CloudAPIs).
-- Monitor and evaluate your device deployments and usage with the [Afero Console](https://afero-devdocs.readthedocs.io/en/latest/Console).
+- Read our [Firmware](](.../FW-API) and [Hardware](](.../HWRef) docs to get your device ready for programming.
+- Define and program your device with Afero Profile Editor, following the [Profile Editor User Guide](](.../Projects).
+- Use the [Afero Inspector](](.../Inspector) web app to look inside your device definitions.
+- If you have an MCU on your developer device, refer to the [afLib](](.../API-afLib) docs to use the library in your MCU application.
+- For MCU firmware updates, use the [Afero OTA Manager](](.../OTAMgr) web app to update the MCU firmware.
+- Create a standalone developer hub using the [Developer Hub](](.../StandaloneHub) setup instructions.
+- Access cloud functions using our [Cloud API](](.../CloudAPIs).
+- Monitor and evaluate your device deployments and usage with the [Afero Console](](.../Console).

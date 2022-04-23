@@ -4,9 +4,9 @@ The Wi-Fi Station daemon (wifistad) is event-based and designed to manage the Wi
 
 This page contains the following sections:
 
-- [Platform Dependency](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WiFiStDaemon#platdepend)
-- [Event-Driven Design](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WiFiStDaemon#event-driven)
-- [Wi-Fi Station Daemon System Components](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WiFiStDaemon#wifistadcomps)
+- [Platform Dependency](](.../LinuxSDK-WiFiStDaemon#platdepend)
+- [Event-Driven Design](](.../LinuxSDK-WiFiStDaemon#event-driven)
+- [Wi-Fi Station Daemon System Components](](.../LinuxSDK-WiFiStDaemon#wifistadcomps)
 
 ## Platform Dependency
 
@@ -79,9 +79,9 @@ typedef enum {
 
 The Wi-Fi Station daemon has the following components:
 
-- [WPA manager](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WiFiStDaemon#wpamgmt) - Interfaces with wpa_supplicant and intercepts its events; performs Wi-Fi scan, Wi-Fi network setup, and terminations.
-- [wifi_event.sh script](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WiFiStDaemon#wifi_eventscript) - Provides a hook for developers to modify/enhance Wi-Fi network functionality.
-- [Attribute management](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WiFiStDaemon#attrmgmt) - Works with attrd and hubby to assist users setting up Wi-Fi using the Afero mobile app for iOS or Android.
+- [WPA manager](](.../LinuxSDK-WiFiStDaemon#wpamgmt) - Interfaces with wpa_supplicant and intercepts its events; performs Wi-Fi scan, Wi-Fi network setup, and terminations.
+- [wifi_event.sh script](](.../LinuxSDK-WiFiStDaemon#wifi_eventscript) - Provides a hook for developers to modify/enhance Wi-Fi network functionality.
+- [Attribute management](](.../LinuxSDK-WiFiStDaemon#attrmgmt) - Works with attrd and hubby to assist users setting up Wi-Fi using the Afero mobile app for iOS or Android.
 
 The implementation uses two event loops:
 
@@ -161,7 +161,7 @@ or
 
 ### Attribute Management
 
-On the device, each daemon is responsible for the attributes relevant to its own functionality. These attributes can hold statistical-related, operational state/status-related, or network management-related information. The supported/defined attributes are documented in the [Device Attribute Registry](https://afero-devdocs.readthedocs.io/en/latest/AttrRegistry). wifistad must register with the Attribute daemon (attrd) at initialization time, and must implement `get` and `set` functionality for each supported attribute.
+On the device, each daemon is responsible for the attributes relevant to its own functionality. These attributes can hold statistical-related, operational state/status-related, or network management-related information. The supported/defined attributes are documented in the [Device Attribute Registry](](.../AttrRegistry). wifistad must register with the Attribute daemon (attrd) at initialization time, and must implement `get` and `set` functionality for each supported attribute.
 
 The following Wi-Fi related attributes are supported by wifstad:
 
@@ -181,4 +181,4 @@ These attributes must be part of the device Profile to work properly.
 
 
 
- Next: [WAN Daemon Implementation](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-WANDaemon)
+ Next: [WAN Daemon Implementation](](.../LinuxSDK-WANDaemon)

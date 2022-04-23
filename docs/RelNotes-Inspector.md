@@ -19,7 +19,7 @@ Release date: February 27, 2019
 - RSSI Bluetooth graph now provides hub and signal strength details when hovering over a point on the graph.
 - Various bug fixes.
 
-Read all about using Afero Inspector in the [Inspector User Guide](https://afero-devdocs.readthedocs.io/en/latest/Inspector).
+Read all about using Afero Inspector in the [Inspector User Guide](](.../Inspector).
 
 ## Afero Inspector R2.0
 

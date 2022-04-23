@@ -9,7 +9,7 @@ Every label must include the following two pieces of information:
 - QR code, and
 - Plain-text version of the Association ID
 
-For more technical QR code information, please refer to the [QR Codes for Afero Products](https://afero-devdocs.readthedocs.io/en/latest/QRCodes) page.
+For more technical QR code information, please refer to the [QR Codes for Afero Products](](.../QRCodes) page.
 
 The AFP2 Factory Provisioning package includes `.json` files that define the elements of the QR code + text label. (These files are found in the directory `\targets\*ProgrammerName*\labels\`.) The reference code in these files is compatible with Zebra printers (ZPL format) and is commented for ease of use.
 
@@ -67,4 +67,4 @@ x_coord: (x coordinate of the left edge of the association ID in DOTS)
 y_coord: (y coordinate of the bottom edge of the association ID in DOTS)
 ```
 
- Next: [Add Environment Variable Paths on a PC](https://afero-devdocs.readthedocs.io/en/latest/AddPath)
+ Next: [Add Environment Variable Paths on a PC](](.../AddPath)

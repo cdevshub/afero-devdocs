@@ -4,13 +4,13 @@ Once you are set up for development, you are ready to work on your project. Each
 
 Whatever your goal, you will start by creating a project using the Afero Profile Editor. This user guide steps you through everything you need to know to get started and create a device Profile:
 
-- [Select the Project](https://afero-devdocs.readthedocs.io/en/latest/SelectProject)
-- [Define the Device Type](https://afero-devdocs.readthedocs.io/en/latest/DeviceType)
-- [Define the Device Attributes](https://afero-devdocs.readthedocs.io/en/latest/AttrDef)
-- [Define the Mobile App UI](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef)
-- [Publish Your Profile](https://afero-devdocs.readthedocs.io/en/latest/Publish)
+- [Select the Project](](.../SelectProject)
+- [Define the Device Type](](.../DeviceType)
+- [Define the Device Attributes](](.../AttrDef)
+- [Define the Mobile App UI](](.../AppUIDef)
+- [Publish Your Profile](](.../Publish)
 
-Before you start, read the next few sections to get an introduction to Device Types, device Profiles, and the Afero Profile Editor in general. You are also encouraged to step through [Tutorial 2: Creating a Device Profile](https://afero-devdocs.readthedocs.io/en/latest/Lesson2) before creating your own device Profile.
+Before you start, read the next few sections to get an introduction to Device Types, device Profiles, and the Afero Profile Editor in general. You are also encouraged to step through [Tutorial 2: Creating a Device Profile](](.../Lesson2) before creating your own device Profile.
 
 ## The Device Type
 
@@ -62,4 +62,4 @@ Avoid making edits directly on project files with tools other than the Afero Pro
 
 
 
- Next: [Select the Project](https://afero-devdocs.readthedocs.io/en/latest/SelectProject)
+ Next: [Select the Project](](.../SelectProject)

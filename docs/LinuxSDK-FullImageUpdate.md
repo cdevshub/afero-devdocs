@@ -4,20 +4,20 @@ The Afero Linux SDK supports Over-the-Air (OTA) image replacement of the entire 
 
 This page contains the following sections:
 
-- [Introduction](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#intro)
+- [Introduction](](.../LinuxSDK-FullImageUpdate#intro)
 
-- - [OTA Image Concepts](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#otaconcepts)
-  - [The Journey of an OTA Image](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#otajourney)
-  - [Use Case](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#otausecase)
-  - [OTA Design and Best Practices](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#otadesign)
+- - [OTA Image Concepts](](.../LinuxSDK-FullImageUpdate#otaconcepts)
+  - [The Journey of an OTA Image](](.../LinuxSDK-FullImageUpdate#otajourney)
+  - [Use Case](](.../LinuxSDK-FullImageUpdate#otausecase)
+  - [OTA Design and Best Practices](](.../LinuxSDK-FullImageUpdate#otadesign)
 
-- [The OTA Image Update Steps](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#stepoverview)
+- [The OTA Image Update Steps](](.../LinuxSDK-FullImageUpdate#stepoverview)
 
-- - [1. Create the OTA Image](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#createimage)
-  - [2. Deploy the OTA Image to a Device](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#deployimage)
-  - [3. Install Image on Device Using otamgr Daemon](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#otamanager)
+- - [1. Create the OTA Image](](.../LinuxSDK-FullImageUpdate#createimage)
+  - [2. Deploy the OTA Image to a Device](](.../LinuxSDK-FullImageUpdate#deployimage)
+  - [3. Install Image on Device Using otamgr Daemon](](.../LinuxSDK-FullImageUpdate#otamanager)
 
-- [OTA Python Tools Reference](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#otatoolref)
+- [OTA Python Tools Reference](](.../LinuxSDK-FullImageUpdate#otatoolref)
 
 ## Introduction
 
@@ -70,7 +70,7 @@ We strongly recommend the two partitions approach to the full OTA image update. 
 
 ## The OTA Image Update Steps
 
-Follow the instructions outlined below to perform a full OTA image update. (The steps include the use of the Python script tools Afero provides. These scripts are described in detail in the section, [OTA Python Tools Reference](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#otatoolref)).
+Follow the instructions outlined below to perform a full OTA image update. (The steps include the use of the Python script tools Afero provides. These scripts are described in detail in the section, [OTA Python Tools Reference](](.../LinuxSDK-FullImageUpdate#otatoolref)).
 
 1. Create the OTA image
 
@@ -81,9 +81,9 @@ Follow the instructions outlined below to perform a full OTA image update. (The 
    - Incorporating the OTA record into your build
    - Uploading the image file to the OTA service
 
-2. [Deploy the OTA image](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#deployimage) by pushing the OTA image file to the Linux device.
+2. [Deploy the OTA image](](.../LinuxSDK-FullImageUpdate#deployimage) by pushing the OTA image file to the Linux device.
 
-3. [Install the OTA image](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#otamanager) on the device using the otamgr daemon.
+3. [Install the OTA image](](.../LinuxSDK-FullImageUpdate#otamanager) on the device using the otamgr daemon.
 
 ### 1. Create the OTA Image
 
@@ -93,8 +93,8 @@ This section focuses on how to create your OTA image, including integrating the 
 
 Set up the build environment using the following instructions, as appropriate:
 
-- For the Atmel SAMA5D2, follow the instructions in [Build the SAMA5D2 Linux OS Image](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-PotencoSAMA5D2#bldpotosimage) to set up the SAMA5D2 Yocto build.
-- For the BeagleBone Green Wireless, follow the instructions in [Build the BBGW Linux OS Image](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-PotencoBBGW#bldpotosimage) to set up the BBGW Yocto build.
+- For the Atmel SAMA5D2, follow the instructions in [Build the SAMA5D2 Linux OS Image](](.../LinuxSDK-PotencoSAMA5D2#bldpotosimage) to set up the SAMA5D2 Yocto build.
+- For the BeagleBone Green Wireless, follow the instructions in [Build the BBGW Linux OS Image](](.../LinuxSDK-PotencoBBGW#bldpotosimage) to set up the BBGW Yocto build.
 
 #### Set Up the Environment
 
@@ -172,7 +172,7 @@ Set up the build environment using the following instructions, as appropriate:
 
 #### Customize the Configuration File
 
-Read details in [About the Configuration File](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#configfile). Use your favorite editor to edit the configuration file `partner-ota-conf.json`. Fill in the following fields and save it:
+Read details in [About the Configuration File](](.../LinuxSDK-FullImageUpdate#configfile). Use your favorite editor to edit the configuration file `partner-ota-conf.json`. Fill in the following fields and save it:
 
 ```
 $ vim partner-ota-conf.json
@@ -201,7 +201,7 @@ Contact the Afero Enablement team (“ace@afero.io”) if you have any problem w
 
 #### Create the OTA Record
 
-Read details in the reference sections below, [About the OTA Record](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#otarecord) and [Using the partner-ota-hub-uploader.py Script](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#stage1createrecord).
+Read details in the reference sections below, [About the OTA Record](](.../LinuxSDK-FullImageUpdate#otarecord) and [Using the partner-ota-hub-uploader.py Script](](.../LinuxSDK-FullImageUpdate#stage1createrecord).
 
 Run the `partner-ota-hub-uploader.py` tool with the option `--createOTARecord` to create an OTA record file using the above modified configuration file. Note: You must specify a build number with the -n option:
 
@@ -276,7 +276,7 @@ Assuming success, the OTA record file is generated and saved; for example, as th
 
 Deploying an OTA image can be independent of the creating the image. In this section, it is assumed that you have already uploaded your OTA image to the Afero OTA service and now you want to deploy this uploaded image to an device. Currently, we only support deploying image one at a time using this tool.
 
-1. Make sure you have already cloned the Afero partner tools and edited the configuration file, as described above in [Set Up the Environment](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#setupenv) and [Customize the Configuration File](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#editconfigfile).
+1. Make sure you have already cloned the Afero partner tools and edited the configuration file, as described above in [Set Up the Environment](](.../LinuxSDK-FullImageUpdate#setupenv) and [Customize the Configuration File](](.../LinuxSDK-FullImageUpdate#editconfigfile).
 
 2. Display your OTA images for the deviceTypeId and partnerId by typing the following:
 
@@ -384,7 +384,7 @@ sh: /sbin/sysupgrade: No such file or directory
 
 ### 3. Install Image on Device Using otamgr Daemon
 
-Once the OTA image has been deployed to the device and hubby has informed the otamgr daemon (via an Afero attribute) the location of the validated firmware in the filesystem, the otamgr daemon can install the image on the device. Please refer to [OTA Manager (otamgr)](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-Overview#otamgrSummary) and [OTA Manager Daemon](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-OTAManager) for details.
+Once the OTA image has been deployed to the device and hubby has informed the otamgr daemon (via an Afero attribute) the location of the validated firmware in the filesystem, the otamgr daemon can install the image on the device. Please refer to [OTA Manager (otamgr)](](.../LinuxSDK-Overview#otamgrSummary) and [OTA Manager Daemon](](.../LinuxSDK-OTAManager) for details.
 
 ## OTA Python Tools Reference
 
@@ -407,7 +407,7 @@ Afero provides a Python script to help with the following two tasks:
 - Create an OTA record file, and then
 - Upload the generated OTA image file to the Afero Cloud OTA service.
 
-The script is called “`partner-ota-hub-uploader.py`” and is used to generate an OTA record for the full OTA image that you plan to upload, then is used to perform the upload as well. The script is used as a command line tool with input parameters and a JSON configuration file. This tool should be part of the build for the product release. Read more above in [Create the OTA Image](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-FullImageUpdate#createimage).
+The script is called “`partner-ota-hub-uploader.py`” and is used to generate an OTA record for the full OTA image that you plan to upload, then is used to perform the upload as well. The script is used as a command line tool with input parameters and a JSON configuration file. This tool should be part of the build for the product release. Read more above in [Create the OTA Image](](.../LinuxSDK-FullImageUpdate#createimage).
 
 The script interacts with the backend of the Afero Cloud OTA service using the RESTful service API endpoints. The OTA service keeps records on the OTA images and each OTA record is used to evaluate whether a device is eligible for update by examining the version information, among other information. For convenience, some of the information required for the OTA record and access privileges are put in the JSON configuration file.
 
@@ -469,7 +469,7 @@ An example configuration file is shown, with each field described below:
 | deviceTypeId | The device type ID generated by the Profile Editor for the Profile that identifies your device as a particular type. |
 | imageFiles   | Provides the partition and the final full OTA image filename. Use `A` for the partition. **It is important that the final OTA image filename is the same filename string specified in this field.** |
 
-The following fields are security credentials that are used to access the user’s account. The `username`, `auth-string`, and `partnerId` can be obtained from the Afero Profile Editor. Please refer to [Cloud APIs](https://afero-devdocs.readthedocs.io/en/latest/CloudAPIs) for more details.
+The following fields are security credentials that are used to access the user’s account. The `username`, `auth-string`, and `partnerId` can be obtained from the Afero Profile Editor. Please refer to [Cloud APIs](](.../CloudAPIs) for more details.
 
 | FIELD               | DESCRIPTION                                                  |
 | :------------------ | :----------------------------------------------------------- |
@@ -600,4 +600,4 @@ Request accepted for processing
 
 
 
- Next: [Afero Potenco Setup Guides](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-PotencoSetupGds)
+ Next: [Afero Potenco Setup Guides](](.../LinuxSDK-PotencoSetupGds)

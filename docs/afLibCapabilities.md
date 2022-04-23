@@ -26,7 +26,7 @@ Possible capability values currently include:
 
 ### Returns
 
-An [afLib result code](https://afero-devdocs.readthedocs.io/en/latest/afLibErrors).
+An [afLib result code](](.../afLibErrors).
 
 It can take non-zero time for ASR to communicate a capability to afLib. If this function is called too early it will return the `AF_ERROR_BUSY` error code, in which case it should be tried again "at a later time."
 If you need an explicit determination of that "later time," it is marked by the time when you can successfully call `af_lib_get_attribute()` for attribute `AF_ATTRIBUTE_ID_ASR_CAPABILITIES`, and retrieve it via the `attrEventCallback()`, in the `AF_LIB_EVENT_ASR_GET_RESPONSE` event.

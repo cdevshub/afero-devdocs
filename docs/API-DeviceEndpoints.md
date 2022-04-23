@@ -2,11 +2,11 @@
 
 The following functions are being exposed via the RESTful API:
 
-- [List Current Device(s) and State Information](https://afero-devdocs.readthedocs.io/en/latest/API-DeviceEndpoints#CurrentDevState)
-- [Execute an Action on a Device](https://afero-devdocs.readthedocs.io/en/latest/API-DeviceEndpoints#DevAction)
-- [Update the Friendly Name of a Device](https://afero-devdocs.readthedocs.io/en/latest/API-DeviceEndpoints#NameUpdate)
+- [List Current Device(s) and State Information](](.../API-DeviceEndpoints#CurrentDevState)
+- [Execute an Action on a Device](](.../API-DeviceEndpoints#DevAction)
+- [Update the Friendly Name of a Device](](.../API-DeviceEndpoints#NameUpdate)
 
-Before you begin using the API below, be sure you have read the information in [Afero Cloud API](https://afero-devdocs.readthedocs.io/en/latest/CloudAPIs).
+Before you begin using the API below, be sure you have read the information in [Afero Cloud API](](.../CloudAPIs).
 
 
 
@@ -211,4 +211,4 @@ Change the friendly name of the specified device. This name is visible in the Af
 }
 ```
 
- **Next:** [Over-the-Air (OTA) Update API](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints)
+ **Next:** [Over-the-Air (OTA) Update API](](.../API-OTAEndpoints)

@@ -17,7 +17,7 @@ Version numbers: 30362 for Modulo-1B
 - Support for nRF52832, the Nordic multiprotocol Bluetooth low energy, ANT/ANT+ and 2.4GHz proprietary System-on-Chip.
 - Support for attribute timestamp flag.
 - Support for queued attributes, a subset of attributes that maintain a history of previous updates, as opposed to nonqueued attributes, which are overwritten when the device is offline.
-- New reboot reason format. Read more in [Device Attribute Registry > Attribute 65019](https://afero-devdocs.readthedocs.io/en/latest/AttrRegistry#RebootReason).
+- New reboot reason format. Read more in [Device Attribute Registry > Attribute 65019](](.../AttrRegistry#RebootReason).
 - Bug fixes.
 
 ## Afero Firmware R2.0.1
@@ -26,7 +26,7 @@ Release date: August 29, 2018
 
 Version number: 28036 for Modulo-2, 28036 for Abelo-2A
 
-- Changed the MCU UTC time update to fire **on** the minute. Read more in [Using the Afero Cloud to Keep Time on the MCU](https://afero-devdocs.readthedocs.io/en/latest/SetMCUTime).
+- Changed the MCU UTC time update to fire **on** the minute. Read more in [Using the Afero Cloud to Keep Time on the MCU](](.../SetMCUTime).
 - Fixed a bug that could prevent some of the MCU default values from being sent to the MCU at startup.
 
 ## Afero Firmware R2.0
@@ -35,8 +35,8 @@ Release date: July 24, 2018
 
 Version numbers: 27144 for Modulo-2, 27144 for Abelo-2A
 
-- API added to support MCU over-the-air (OTA) firmware updates. Read more in [Handling MCU OTA Updates](https://afero-devdocs.readthedocs.io/en/latest/MCU_OTA).
-- New version of [afLib](http://github.com/aferodeveloper/afLib) is available, called afLib3. Read more in [afLib Release Notes](https://afero-devdocs.readthedocs.io/en/latest/RelNotes-afLib) and [afLib3 API](https://afero-devdocs.readthedocs.io/en/latest/API-afLib).
+- API added to support MCU over-the-air (OTA) firmware updates. Read more in [Handling MCU OTA Updates](](.../MCU_OTA).
+- New version of [afLib](http://github.com/aferodeveloper/afLib) is available, called afLib3. Read more in [afLib Release Notes](](.../RelNotes-afLib) and [afLib3 API](](.../API-afLib).
 - Better handling of MCU attribute default values.
 - Changes to Update All.
 - New local attributes that support the following:
@@ -53,8 +53,8 @@ Release date: March 14, 2018
 Version number: 23773 for Modulo-2
 
 - Wi-Fi stability improvements.
-- Added Update state and reasons to the [Device Attribute Message Protocol](https://afero-devdocs.readthedocs.io/en/latest/AttrMsgProtocol).
-- New version of [afLib](http://github.com/aferodeveloper/afLib) is available, called afLib2. We’ve improved the sample code and included the example application, **aflib_time_check**. Read more in [Using the Afero Cloud to Keep Time on the MCU](https://afero-devdocs.readthedocs.io/en/latest/SetMCUTime).
+- Added Update state and reasons to the [Device Attribute Message Protocol](](.../AttrMsgProtocol).
+- New version of [afLib](http://github.com/aferodeveloper/afLib) is available, called afLib2. We’ve improved the sample code and included the example application, **aflib_time_check**. Read more in [Using the Afero Cloud to Keep Time on the MCU](](.../SetMCUTime).
 
 ## Afero Firmware R1.2.1.35
 
@@ -88,7 +88,7 @@ Release date: July 24, 2017
 
 ### Important! Order of Operations
 
-Because of dependencies between the Afero Profile Editor, afLib3, and Modulo firmware, upgrading to the latest Modulo release must be done in the correct order. This page documents the order and why it is the way it is. Please refer also to the [Afero Profile Editor Release Notes](https://afero-devdocs.readthedocs.io/en/latest/RelNotes-APE).
+Because of dependencies between the Afero Profile Editor, afLib3, and Modulo firmware, upgrading to the latest Modulo release must be done in the correct order. This page documents the order and why it is the way it is. Please refer also to the [Afero Profile Editor Release Notes](](.../RelNotes-APE).
 
 #### Step 1. OTA
 

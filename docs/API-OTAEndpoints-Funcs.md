@@ -1,43 +1,43 @@
 # OTA API Endpoints
 
-Before you begin, make sure you have read the background sections in [Over-the-Air (OTA) Updates API](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints). Below, you’ll find all the endpoint details, organized as follows:
+Before you begin, make sure you have read the background sections in [Over-the-Air (OTA) Updates API](](.../API-OTAEndpoints). Below, you’ll find all the endpoint details, organized as follows:
 
-- [Before You Begin](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#beforebegin)
+- [Before You Begin](](.../API-OTAEndpoints-Funcs#beforebegin)
 
-- - [Problem Description](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#probdescr)
-  - [Approach](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#approach)
-  - [Prerequisites](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#prereqs)
-  - [General Notes on Using the OTA API Endpoints](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#gennotes)
+- - [Problem Description](](.../API-OTAEndpoints-Funcs#probdescr)
+  - [Approach](](.../API-OTAEndpoints-Funcs#approach)
+  - [Prerequisites](](.../API-OTAEndpoints-Funcs#prereqs)
+  - [General Notes on Using the OTA API Endpoints](](.../API-OTAEndpoints-Funcs#gennotes)
 
-- [Firmware Type Endpoints](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#fwtypes)
+- [Firmware Type Endpoints](](.../API-OTAEndpoints-Funcs#fwtypes)
 
-- - [POST /v1/ota/partners/{partnerId}/types](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#post201created)
-  - [GET /v1/ota/partners/{partnerId}/types](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#get200ok)
-  - [GET /v1/ota/partners/{partnerId}/types/{type}](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#get200oktype)
-  - [PUT /v1/ota/partners/{partnerId}/types/{type}](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#put204nocontent)
+- - [POST /v1/ota/partners/{partnerId}/types](](.../API-OTAEndpoints-Funcs#post201created)
+  - [GET /v1/ota/partners/{partnerId}/types](](.../API-OTAEndpoints-Funcs#get200ok)
+  - [GET /v1/ota/partners/{partnerId}/types/{type}](](.../API-OTAEndpoints-Funcs#get200oktype)
+  - [PUT /v1/ota/partners/{partnerId}/types/{type}](](.../API-OTAEndpoints-Funcs#put204nocontent)
 
-- [Firmware Pool Image Endpoints](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#fwpool)
+- [Firmware Pool Image Endpoints](](.../API-OTAEndpoints-Funcs#fwpool)
 
-- - [POST /v1/ota/partners/{partnerId}/pool](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#post201createdpool)
-  - [POST /v1/ota/partners/{partnerId}/binaries](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#post200okbins)
-  - [POST /v1/ota/partners/{partnerId}/binaries/moveToRepository](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#post200okmove)
-  - [GET /v1/ota/partners/{partnerId}/pool](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#get200okpool)
-  - [GET /v1/ota/partners/{partnerId}/pool/types/{type}](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#get200okpooltype)
-  - [GET /v1/ota/partners/{partnerId}/pool/types/{type}/versionNumbers/{versionNumber}/associations](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#get200okpoolassn)
-  - [PUT /v1/ota/partners/{partnerId}/pool/types/{type}/versionNumbers/{versionNumber}](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#put204nocontentvers)
+- - [POST /v1/ota/partners/{partnerId}/pool](](.../API-OTAEndpoints-Funcs#post201createdpool)
+  - [POST /v1/ota/partners/{partnerId}/binaries](](.../API-OTAEndpoints-Funcs#post200okbins)
+  - [POST /v1/ota/partners/{partnerId}/binaries/moveToRepository](](.../API-OTAEndpoints-Funcs#post200okmove)
+  - [GET /v1/ota/partners/{partnerId}/pool](](.../API-OTAEndpoints-Funcs#get200okpool)
+  - [GET /v1/ota/partners/{partnerId}/pool/types/{type}](](.../API-OTAEndpoints-Funcs#get200okpooltype)
+  - [GET /v1/ota/partners/{partnerId}/pool/types/{type}/versionNumbers/{versionNumber}/associations](](.../API-OTAEndpoints-Funcs#get200okpoolassn)
+  - [PUT /v1/ota/partners/{partnerId}/pool/types/{type}/versionNumbers/{versionNumber}](](.../API-OTAEndpoints-Funcs#put204nocontentvers)
 
-- [Firmware Image Endpoints](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#fwimages)
+- [Firmware Image Endpoints](](.../API-OTAEndpoints-Funcs#fwimages)
 
-- - [POST /v1/ota/partners/{partnerId}/deviceTypes/{deviceTypeId}/firmwareImages](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#post201createdimages)
-  - [GET /v1/ota/partners/{partnerId}/deviceTypes/{deviceTypeId}/firmwareImages](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#get200okimages)
-  - [GET /v1/ota/partners/{partnerId}/deviceTypes/{deviceTypeId}/firmwareImages/types/{type}](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#get200okimagestype)
-  - [GET /v1/ota/partners/{partnerId}/deviceTypes/{deviceTypeId}/firmwareImages/types/{type}/versionNumbers/{versionNumber}](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#get200okimagestypeplusver)
-  - [PUT /v1/ota/partners/{partnerId}/deviceTypes/{deviceTypeId}/firmwareImages/{firmwareImageId}/push](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#put202acceptedpushimage)
-  - [DELETE /v1/ota/partners/{partnerId}/deviceTypes/{deviceTypeId}/firmwareImages/types/{type}/versionNumbers/{versionNumber}](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#put204nocontentdelete)
+- - [POST /v1/ota/partners/{partnerId}/deviceTypes/{deviceTypeId}/firmwareImages](](.../API-OTAEndpoints-Funcs#post201createdimages)
+  - [GET /v1/ota/partners/{partnerId}/deviceTypes/{deviceTypeId}/firmwareImages](](.../API-OTAEndpoints-Funcs#get200okimages)
+  - [GET /v1/ota/partners/{partnerId}/deviceTypes/{deviceTypeId}/firmwareImages/types/{type}](](.../API-OTAEndpoints-Funcs#get200okimagestype)
+  - [GET /v1/ota/partners/{partnerId}/deviceTypes/{deviceTypeId}/firmwareImages/types/{type}/versionNumbers/{versionNumber}](](.../API-OTAEndpoints-Funcs#get200okimagestypeplusver)
+  - [PUT /v1/ota/partners/{partnerId}/deviceTypes/{deviceTypeId}/firmwareImages/{firmwareImageId}/push](](.../API-OTAEndpoints-Funcs#put202acceptedpushimage)
+  - [DELETE /v1/ota/partners/{partnerId}/deviceTypes/{deviceTypeId}/firmwareImages/types/{type}/versionNumbers/{versionNumber}](](.../API-OTAEndpoints-Funcs#put204nocontentdelete)
 
-- [Firmware Tag Endpoints](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#fwtags)
+- [Firmware Tag Endpoints](](.../API-OTAEndpoints-Funcs#fwtags)
 
-- - [GET /v1/ota/partners/{partnerId}/tags](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints-Funcs#put204nocontentdelete)
+- - [GET /v1/ota/partners/{partnerId}/tags](](.../API-OTAEndpoints-Funcs#put204nocontentdelete)
 
 ## Before You Begin
 
@@ -53,10 +53,10 @@ Depending on the partner’s internal development and build processes, the usage
 
 Afero account authentication flow follows the OAuth 2.0 standard as described in [RFC6749](https://tools.ietf.org/html/rfc6749). The API documentation uses JSON format for data model examples. The full prerequisites are listed below:
 
-- Understand how Afero authorization API (OAuth) works. To read about OAuth, go to [OAuth.net documentation](http://oauth.net/documentation/). Also please read [Cloud API](https://afero-devdocs.readthedocs.io/en/latest/CloudAPIs).
+- Understand how Afero authorization API (OAuth) works. To read about OAuth, go to [OAuth.net documentation](http://oauth.net/documentation/). Also please read [Cloud API](](.../CloudAPIs).
 - Base Cloud API URL: [https://api.afero.io](https://api.afero.io/).
 - Understanding of JSON and common HTTP methods POST, PUT, GET, and DELETE and their usage in the context of RESTful web services.
-- Be familiar with public [OAuth/User API Endpoints](https://afero-devdocs.readthedocs.io/en/latest/API-UserEndpoints) and [Device API Endpoints](https://afero-devdocs.readthedocs.io/en/latest/API-DeviceEndpoints).
+- Be familiar with public [OAuth/User API Endpoints](](.../API-UserEndpoints) and [Device API Endpoints](](.../API-DeviceEndpoints).
 - Understanding of how to authenticate with the Afero Cloud and how to use authorization tokens in subsequent requests.
 - Client credentials as described in [RFC6749 Section 2](https://tools.ietf.org/html/rfc6749#section-2) for client application authentication.
 
@@ -81,7 +81,7 @@ In production applications, **do not** use developer credentials obtained throug
 
 ## Firmware Type Endpoints
 
-This section lists the endpoints that manage firmware types. Make sure you have read [About Firmware Types](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints#aboutfwtypes).
+This section lists the endpoints that manage firmware types. Make sure you have read [About Firmware Types](](.../API-OTAEndpoints#aboutfwtypes).
 
 ### POST /v1/ota/partners/{partnerId}/types
 
@@ -149,7 +149,7 @@ Updates a partner firmware type.
 
 ## Firmware Pool Image Endpoints
 
-This section lists the endpoints that manage images in the firmware pool. Make sure you have read [About Firmware Pools and Associations](https://afero-devdocs.readthedocs.io/en/latest/API-OTAEndpoints#aboutfwpool).
+This section lists the endpoints that manage images in the firmware pool. Make sure you have read [About Firmware Pools and Associations](](.../API-OTAEndpoints#aboutfwpool).
 
 ### POST /v1/ota/partners/{partnerId}/pool
 

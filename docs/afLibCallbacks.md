@@ -2,7 +2,7 @@
 
 Calls to `af_lib_get_attribute()` and `af_lib_set_attribute*()` are enqueued for handling by afLib; and once handled, result in execution of a callback function named `attrEventCallback()`. You must define `attrEventCallback()` in your MCU code, and pass this function as an argument to `af_lib_create()`. This callback contains your application-specific code intended to respond to attribute changes.
 
-Your `attrEventCallback()` will be called with an **event type** and an [**error code**](https://afero-devdocs.readthedocs.io/en/latest/afLibErrors). You’ll use these data to select an appropriate response. This page describes how your code can distinguish the events and respond accordingly.
+Your `attrEventCallback()` will be called with an **event type** and an [**error code**](](.../afLibErrors). You’ll use these data to select an appropriate response. This page describes how your code can distinguish the events and respond accordingly.
 
 ## attrEventCallback()
 
@@ -24,7 +24,7 @@ void attrEventCallback(const af_lib_event_type_t eventType,
 
 | `eventType`    | The event type for this request.                             |
 | -------------- | ------------------------------------------------------------ |
-| `error`        | An [afLib result code](https://afero-devdocs.readthedocs.io/en/latest/afLibErrors) |
+| `error`        | An [afLib result code](](.../afLibErrors) |
 | `attribute_id` | The ID of the attribute involved.                            |
 | `value_len`    | The size in bytes of the attribute value.                    |
 | `value`        | The new value for the attribute.                             |

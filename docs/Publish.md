@@ -3,7 +3,7 @@
 The final step in device Profile creation is publishing. When you publish your Profile using the Afero Profile Editor, several operations take place:
 
 - The Device Type, Attribute, and Mobile App UI definitions are pushed to the Afero Cloud.
-- The source you’ve created is used to generate a header file you will include in any MCU code you write that uses [afLib](https://afero-devdocs.readthedocs.io/en/latest/API-afLib).
+- The source you’ve created is used to generate a header file you will include in any MCU code you write that uses [afLib](](.../API-afLib).
 - The device Profile is installed onto your Afero module on your device.
 
 ## Before You Publish

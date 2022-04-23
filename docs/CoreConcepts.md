@@ -22,7 +22,7 @@ For each attribute, we need to decide the possible values:
 - Power can be **either On or Off**.
 - Brightness can **range from 0% to 100%**.
 
-When deciding on attributes, you can create attributes for all the functions your device is capable of, or just selected ones. You are free to decide what kind of control you want to give your user, and how granular you want that control to be. There’s a lot of flexibility built into the system to accommodate your specific design goals. (Read more in [Great Attribute Modeling](https://afero-devdocs.readthedocs.io/en/latest/AttrModel).)
+When deciding on attributes, you can create attributes for all the functions your device is capable of, or just selected ones. You are free to decide what kind of control you want to give your user, and how granular you want that control to be. There’s a lot of flexibility built into the system to accommodate your specific design goals. (Read more in [Great Attribute Modeling](](.../AttrModel).)
 
 Next, we’ll talk about how device attributes and values translate into user controls on a mobile app.
 
@@ -69,6 +69,6 @@ The device Profile leaves the Profile Editor and enters the Afero Cloud. Profile
 
 - For the Afero mobile app, the Attribute and Mobile App UI definitions (in particular, “device-description.json” and “device-presentation.json”, respectively) are used to create the UI for user control of the light bulb’s power and brightness.
 - For ASR, the Device Attributes are installed into it via the Afero Secure Hub. ASR can then securely report device state to the Afero Cloud and be controlled by the mobile app via the Afero Cloud and hub.
-- For the device MCU, a header file (“device-description.h”) is generated, which must be included in any MCU code you write that uses [afLib](https://afero-devdocs.readthedocs.io/en/latest/API-afLib).
+- For the device MCU, a header file (“device-description.h”) is generated, which must be included in any MCU code you write that uses [afLib](](.../API-afLib).
 
- Next: [Getting Started](https://afero-devdocs.readthedocs.io/en/latest/Tutorials)
+ Next: [Getting Started](](.../Tutorials)

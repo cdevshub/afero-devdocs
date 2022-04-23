@@ -8,11 +8,11 @@ The Attribute daemon is the central nervous system for the device. It communicat
 
 This page contains the following sections:
 
-- [What Are Attributes?](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-AttrDaemon#WhatAreAttrs)
-- [System Attributes and hubby](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-AttrDaemon#SysAttrhubby)
-- [Writing an Attribute Client](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-AttrDaemon#WritingAttrClient)
-- [Handling Endian Issues](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-AttrDaemon#EndianIssues)
-- [Attribute Client API Reference](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-AttrDaemon#AttrClientAPI)
+- [What Are Attributes?](](.../LinuxSDK-AttrDaemon#WhatAreAttrs)
+- [System Attributes and hubby](](.../LinuxSDK-AttrDaemon#SysAttrhubby)
+- [Writing an Attribute Client](](.../LinuxSDK-AttrDaemon#WritingAttrClient)
+- [Handling Endian Issues](](.../LinuxSDK-AttrDaemon#EndianIssues)
+- [Attribute Client API Reference](](.../LinuxSDK-AttrDaemon#AttrClientAPI)
 
 ## What Are Attributes?
 
@@ -24,7 +24,7 @@ Afero device attributes have the following properties:
 - Attributes have an owner. The owner of the attribute can always set the value of the attribute. Nonowners can write to the attribute if it is writable.
 - Attributes have a set of flags, indicating what can be done with the attribute. The flags are: WRITABLE and NOTIFY. A writable attribute can be set by a daemon that doesn’t own the attribute. A notify attribute causes the Attribute daemon to tell interested daemons that an attribute has been set.
 
-You can create your own attributes; instructions for doing this are in [Defining Your Own Attributes](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-DefineAttrs). We use a Potenco as an example.
+You can create your own attributes; instructions for doing this are in [Defining Your Own Attributes](](.../LinuxSDK-DefineAttrs). We use a Potenco as an example.
 
 ## System Attributes and hubby
 
@@ -94,7 +94,7 @@ The following is a list of Afero attributes that are used or owned by device dae
 
 If the Notify flag is set for an attribute, then the Attribute daemon (attrd) will tell the other daemons when a value changes (hubby being one of them). If the attribute is in the Profile then hubby will send the value to the Afero Cloud; otherwise, it’s dropped. So for hubby to communicate the values to the Afero Cloud, both the Notify flag has to be set **and** the attribute must be in the Profile.
 
-Afero attributes that are integers are always communicated in Little Endian byte order. Therefore daemons that provide values for Afero attributes must convert the values to Little Endian byte format. The Attribute Client library provides functions to perform these conversions. See the [Handling Endian Issues](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-AttrDaemon#) section below.
+Afero attributes that are integers are always communicated in Little Endian byte order. Therefore daemons that provide values for Afero attributes must convert the values to Little Endian byte format. The Attribute Client library provides functions to perform these conversions. See the [Handling Endian Issues](](.../LinuxSDK-AttrDaemon#) section below.
 
 ## Writing an Attribute Client
 
@@ -325,7 +325,7 @@ This app will loop forever, printing out a message every time the REPORT_RSSI_CH
 attrc set ATTRD_REPORT_RSSI_CHANGES 01
 ```
 
-The Attribute Client is described in greater detail in the [Attribute Client API Reference](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-AttrDaemon#AttrClientAPI) section.
+The Attribute Client is described in greater detail in the [Attribute Client API Reference](](.../LinuxSDK-AttrDaemon#AttrClientAPI) section.
 
 ### Owning Attributes
 
@@ -415,7 +415,7 @@ attrc set ATTRTEST_SCRATCHWO "A"
 attrc get ATTRTEST_SCRATCHRO s
 ```
 
-The Attribute Client is described in greater detail in the [Attribute Client API Reference](https://afero-devdocs.readthedocs.io/en/latest/LinuxSDK-AttrDaemon#AttrClientAPI) section.
+The Attribute Client is described in greater detail in the [Attribute Client API Reference](](.../LinuxSDK-AttrDaemon#AttrClientAPI) section.
 
 ### Adding Your Own Attributes and Daemons
 

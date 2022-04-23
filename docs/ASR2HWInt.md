@@ -1,6 +1,6 @@
 # ASR-2 Hardware Integration with the Murata Type1LD BLE+Wi-Fi Module
 
-This page describes what you must do for your connected hardware IoT project to work as an edge device in the Afero IoT ecosystem. The ecosystem includes the edge device, the Afero Secure Hub, the Afero mobile app, and the Afero Cloud. This information is also available as a[ Tech Note (.pdf file)](https://afero-devdocs.readthedocs.io/en/latest/files/TechNote-Integrate-MurataWiFiBLE-Afero.pdf).
+This page describes what you must do for your connected hardware IoT project to work as an edge device in the Afero IoT ecosystem. The ecosystem includes the edge device, the Afero Secure Hub, the Afero mobile app, and the Afero Cloud. This information is also available as a[ Tech Note (.pdf file)](](.../files/TechNote-Integrate-MurataWiFiBLE-Afero.pdf).
 
 The instructions that follow use the following components:
 
@@ -8,7 +8,7 @@ The instructions that follow use the following components:
 - Afero specific Microchip CryptoAuthentication™ Security Module (ATECC508A-MAHKN)
 - SPI flash memory (W25Q32JVSSIQ)
 
-Ordering information is provided below in the [Key Components List](https://afero-devdocs.readthedocs.io/en/latest/ASR2HWInt#key-comps) section.
+Ordering information is provided below in the [Key Components List](](.../ASR2HWInt#key-comps) section.
 
 ## Components
 
@@ -26,7 +26,7 @@ The Murata LBEE5PA1LD (1LD) combo module provides an embedded wireless LAN and B
 
 WICED is a Cypress development system that vastly reduces the effort required to add wireless connectivity to embedded devices. For more information, go to the [Murata product page for the Type 1LD module](https://wireless.murata.com/products/rf-modules-1/wi-fi-bluetooth/type1ld.html).
 
-Afero designed the following reference schematic with Murata. (Click to open a [.pdf file of the schematic](https://afero-devdocs.readthedocs.io/en/latest/files/1LD_Afero_20181023.pdf).)
+Afero designed the following reference schematic with Murata. (Click to open a [.pdf file of the schematic](](.../files/1LD_Afero_20181023.pdf).)
 
 ![img](img/1LD_Afero_20181023.png)
 
@@ -87,4 +87,4 @@ The Murata 1LD Wi-Fi/BLE module has FCC-approval and other regulatory certificat
 | Bluetooth low energy (BLE) + Wi-Fi combo Module              | Murata       | IC    | 1        | LBEE5PA1LD      | [Digi-Key](https://www.digikey.com/catalog/en/partgroup/lbee5pa1ld/89234) |
 | SPI flash memory                                             | Winbond      | SPI   | 1        | W25Q32JVSSIQ    | [Digi-Key](https://www.digikey.com/product-detail/en/winbond-electronics/W25Q32JVSSIQ-TR/W25Q32JVSSIQCT-ND/7393546) |
 
- Next: [QR Codes for Afero Products](https://afero-devdocs.readthedocs.io/en/latest/QRCodes)
+ Next: [QR Codes for Afero Products](](.../QRCodes)

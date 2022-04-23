@@ -2,11 +2,11 @@
 
 Once you’ve created the Attribute definition, you’re ready to design how the end-user views and controls your device from the Afero mobile app. There are three parts to this task:
 
-- [Define the Attribute Options](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef#Options) - We recommend you begin by providing the details needed to support *all* the UI controls for *all* of your attributes. Some of your attributes may not be suited for some of the controls, or you might have some attributes you don’t plan on exposing in a control; but in case you want to experiment and for maximum flexibility, it’s a good idea to prepare by completing the attribute option details for all your attributes.
-- [Define the UI Controls](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef#Controls) - In this step you assign attribute options to UI controls. Each control you use will correspond to a specific attribute, except for Battery Level and Temperature: Battery Level and Temperature are unique in that they combine information from more than one attribute. The UI control could provide only a graphic representation of the attribute state (a Read-Only attribute), or could be an active control that allows the end-user to set the attribute value (a Read/Write attribute).
-- [Define the UI Control Groups](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef#ControlGroups) - For usability, you will organize your UI controls into one or more control groups. The name of each group is displayed in a “ribbon” above the group’s controls in the mobile app UI. Control groups are organizational constructs and provide no additional functionality to the enclosed controls.
+- [Define the Attribute Options](](.../AppUIDef#Options) - We recommend you begin by providing the details needed to support *all* the UI controls for *all* of your attributes. Some of your attributes may not be suited for some of the controls, or you might have some attributes you don’t plan on exposing in a control; but in case you want to experiment and for maximum flexibility, it’s a good idea to prepare by completing the attribute option details for all your attributes.
+- [Define the UI Controls](](.../AppUIDef#Controls) - In this step you assign attribute options to UI controls. Each control you use will correspond to a specific attribute, except for Battery Level and Temperature: Battery Level and Temperature are unique in that they combine information from more than one attribute. The UI control could provide only a graphic representation of the attribute state (a Read-Only attribute), or could be an active control that allows the end-user to set the attribute value (a Read/Write attribute).
+- [Define the UI Control Groups](](.../AppUIDef#ControlGroups) - For usability, you will organize your UI controls into one or more control groups. The name of each group is displayed in a “ribbon” above the group’s controls in the mobile app UI. Control groups are organizational constructs and provide no additional functionality to the enclosed controls.
 
-After you’ve defined the mobile app UI but before you move on to publishing your Profile, check out your UI using a virtual “preview” device in the Afero mobile app. Read more about this feature in [Preview the Mobile App UI](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef#PreviewUI).
+After you’ve defined the mobile app UI but before you move on to publishing your Profile, check out your UI using a virtual “preview” device in the Afero mobile app. Read more about this feature in [Preview the Mobile App UI](](.../AppUIDef#PreviewUI).
 
 ## Define the Attribute Options
 
@@ -49,17 +49,17 @@ You can assign a single attribute option to multiple UI controls. Each control a
 
 1. If you haven’t defined any controls for your device yet, or to create a new one, click + CONTROL to open the Select Control Type window. You’ll be able to select from the following controls (read below, step 2, for details).
 
-   | [MENU](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef#MenuControl)      |      | [SLIDER](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef#SliderControl)  |
+   | [MENU](](.../AppUIDef#MenuControl)      |      | [SLIDER](](.../AppUIDef#SliderControl)  |
    | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
    | ![Menu Control](img/MenuControl.png) |      | ![Slider Control](img/SliderControl.png) |
-   | [VALUE](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef#ValueControl)    |      | [TEMPERATURE](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef#TempControl) |
+   | [VALUE](](.../AppUIDef#ValueControl)    |      | [TEMPERATURE](](.../AppUIDef#TempControl) |
    | ![Value Control](img/ValueControl.png) |      | ![Temperature Control](img/TempControl.png) |
-   | [BATTERY LEVEL](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef#BatteryControl) |      | [SWITCH](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef#SwitchControl)  |
+   | [BATTERY LEVEL](](.../AppUIDef#BatteryControl) |      | [SWITCH](](.../AppUIDef#SwitchControl)  |
    | ![Battery Level Control](img/BatteryLevelControl.png) |      | ![Switch Control](img/SwitchControl.png) |
-   | [TEXT BOX](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef#TextBoxControl) |      |                                                              |
+   | [TEXT BOX](](.../AppUIDef#TextBoxControl) |      |                                                              |
    | ![Text Box Control](img/TextBoxControl.png) |      |                                                              |
 
-2. Use the following guidelines when selecting and defining a control. Note that if you have not defined attribute options for a given attribute, that attribute won’t be available in the ATTRIBUTE OPTION drop-down menu. You must do that by selecting the +ATTRIBUTE OPTION button in the right-hand pane. Instructions for completing those fields are described above in [Define the Attribute Options](https://afero-devdocs.readthedocs.io/en/latest/AppUIDef#Options).
+2. Use the following guidelines when selecting and defining a control. Note that if you have not defined attribute options for a given attribute, that attribute won’t be available in the ATTRIBUTE OPTION drop-down menu. You must do that by selecting the +ATTRIBUTE OPTION button in the right-hand pane. Instructions for completing those fields are described above in [Define the Attribute Options](](.../AppUIDef#Options).
 
    MENU - Use when the function has a small number of discrete value states and when each value state is short (can only be one line of text). When you select this control you must define the fields described below:
 
@@ -223,4 +223,4 @@ It’s possible to preview the UI as you’re creating it, right in the Afero mo
 
 8. When you’re done testing your UI, remove the Preview Device by doing this: In the mobile app, go to the Preview Device > Settings screen, then tap the Remove Device button.
 
- Next: [Define the Rules & Notifications](https://afero-devdocs.readthedocs.io/en/latest/RulesDef)
+ Next: [Define the Rules & Notifications](](.../RulesDef)
