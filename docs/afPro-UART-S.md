@@ -1,8 +1,8 @@
 # afPro UART Protocol - A Practical Guide
 
-This page describes a single path through the UART protocol, the minimum required for an MCU to communicate over UART. The full explanation is covered in [afPro UART Protocol - How It Works](](.../afPro-UART) and includes all the corner cases.
+This page describes a single path through the UART protocol, the minimum required for an MCU to communicate over UART. The full explanation is covered in [afPro UART Protocol - How It Works](../afPro-UART) and includes all the corner cases.
 
-The high-level interactions between the MCU and ASR are outlined below in [Protocol Flow](](.../afPro-UART-S/#protocol-flow). The details of each interaction are described in the second section, [Procedure Descriptions](](.../afPro-UART-S/#protocol-procedures). The last section, [Attribute Data](](.../afPro-UART-S/#attribute-data), provides a handy worksheet for defining and mapping attributes to protocol messages, illustrated with our smart toaster oven data model from [Great Attribute Modeling](](.../AttrModel).
+The high-level interactions between the MCU and ASR are outlined below in [Protocol Flow](../afPro-UART-S/#protocol-flow). The details of each interaction are described in the second section, [Procedure Descriptions](../afPro-UART-S/#protocol-procedures). The last section, [Attribute Data](../afPro-UART-S/#attribute-data), provides a handy worksheet for defining and mapping attributes to protocol messages, illustrated with our smart toaster oven data model from [Great Attribute Modeling](../AttrModel).
 
 ## Protocol Flow
 
@@ -11,22 +11,22 @@ The protocol flow consists of four high-level interactions (Boot Process, New At
 ### MCU: Boot Process
 
 1. The MCU reboots ASR via Reset line. (Refer to diagram below.)![Block Diagram Showing Reset Line](img/BlockDiag.png)
-2. After ASR boots, ASR starts [Init Procedure](](.../afPro-UART-S/#init-procedure) with the MCU.
-3. ASR starts [ASR to MCU Notify Procedure](](.../afPro-UART-S/#asr-to-mcu-notify-procedure) with the MCU.
+2. After ASR boots, ASR starts [Init Procedure](../afPro-UART-S/#init-procedure) with the MCU.
+3. ASR starts [ASR to MCU Notify Procedure](../afPro-UART-S/#asr-to-mcu-notify-procedure) with the MCU.
 4. Repeat Step 3 until Attribute ID 0xF5FD (ASR State) has Value=0x04 (Initialized).
 5. After Step 4, the MCU can start sending attributes.
 
 ### ASR: Afero Platform Notifications to Send to MCU
 
-ASR starts [ASR to MCU Notify Procedure](](.../afPro-UART-S/#asr-to-mcu-notify-procedure) with MCU.
+ASR starts [ASR to MCU Notify Procedure](../afPro-UART-S/#asr-to-mcu-notify-procedure) with MCU.
 
 ### ASR: Product-Specific Commands to Send to MCU
 
-ASR starts [ASR to MCU Command Procedure](](.../afPro-UART-S/#asr-to-mcu-command-procedure) with the MCU.
+ASR starts [ASR to MCU Command Procedure](../afPro-UART-S/#asr-to-mcu-command-procedure) with the MCU.
 
 ### MCU: Product-Specific Notifications to Send to ASR
 
-The MCU starts [MCU to ASR Notify Procedure](](.../afPro-UART-S/#mcu-to-asr-notify-procedure) with ASR.
+The MCU starts [MCU to ASR Notify Procedure](../afPro-UART-S/#mcu-to-asr-notify-procedure) with ASR.
 
 ## Protocol Procedures
 
@@ -76,8 +76,8 @@ So, in the case of a very simple application (like this example), your code coul
 | 4    | 0x32                 |                | Sync Response Terminator |                                                              | 0x32 sent every one second until MCU responds.               |
 | 5    |                      | 0x310000YYYYZZ | Sync Acknowledgement     | •YYYY= YYYY from Sync Response (above) <br>•ZZ = Checksum        |                                                              |
 | 6    | 0x32                 |                | Sync Complete            |                                                              |                                                              |
-| 7    | LLLLGGRRTTTTSSUUNNNN |                | Update Attribute Header  | •LLLL = NNNN + 8 <br>•GG = 0x0D <br>•RR = Ignore <br>•TTTT = Attribute ID (if !=0xF5FD, then discard) <br>•SS = 0x00 <br>•UU = Ignore <br>•NNNN = Length of Attribute Data | See [Attribute Data](](.../afPro-UART-S/#attribute-data) below for details of "TTTT" and "NNNN". |
-| 8    | V…                   |                | Set Attribute Data       | NNNN Bytes of Attribute Data                                 | See [Attribute Data](](.../afPro-UART-S/#attribute-data) below for details of "V…". |
+| 7    | LLLLGGRRTTTTSSUUNNNN |                | Update Attribute Header  | •LLLL = NNNN + 8 <br>•GG = 0x0D <br>•RR = Ignore <br>•TTTT = Attribute ID (if !=0xF5FD, then discard) <br>•SS = 0x00 <br>•UU = Ignore <br>•NNNN = Length of Attribute Data | See [Attribute Data](../afPro-UART-S/#attribute-data) below for details of "TTTT" and "NNNN". |
+| 8    | V…                   |                | Set Attribute Data       | NNNN Bytes of Attribute Data                                 | See [Attribute Data](../afPro-UART-S/#attribute-data) below for details of "V…". |
 | 9    | 0x32                 |                | Procedure Complete       |                                                              | 0x32 sent every five seconds until MCU sends next message.   |
 
 ### ASR to MCU Command Procedure
@@ -94,8 +94,8 @@ ASR sends command to MCU, MCU acknowledges that command was successful (SS=0x00)
 | 4    | 0x32                         |                      | Sync Response Terminator |                                                              | 0x32 sent every one second until MCU responds.               |
 | 5    |                              | 0x310000YYYYZZ       | Sync Acknowledgement     | •YYYY= YYYY from Sync Response (row 3 above) <br>•ZZ = Checksum  |                                                              |
 | 6    | 0x32                         |                      | Sync Complete            |                                                              |                                                              |
-| 7    | LLLLGGRRTTTTNNNN             |                      | Set Attribute Header     | •LLLL = NNNN + 6 <br>•GG = 0x0B <br>•RR = Ignore <br>•TTTT = Attribute ID <br>•NNNN = Length of Attribute Data | Discard any message with GG!=0x0B. See [Attribute Data](](.../afPro-UART-S/#attribute-data) below for details of "TTTT" and "NNNN". |
-| 8    | V…                           |                      | Set Attribute Data       | NNNN Bytes of Attribute Data                                 | See [Attribute Data](](.../afPro-UART-S/#attribute-data) below for details of "V…". |
+| 7    | LLLLGGRRTTTTNNNN             |                      | Set Attribute Header     | •LLLL = NNNN + 6 <br>•GG = 0x0B <br>•RR = Ignore <br>•TTTT = Attribute ID <br>•NNNN = Length of Attribute Data | Discard any message with GG!=0x0B. See [Attribute Data](../afPro-UART-S/#attribute-data) below for details of "TTTT" and "NNNN". |
+| 8    | V…                           |                      | Set Attribute Data       | NNNN Bytes of Attribute Data                                 | See [Attribute Data](../afPro-UART-S/#attribute-data) below for details of "V…". |
 | 9    | 0x32                         |                      | Procedure Complete       |                                                              | 0x32 sent every one second until MCU sends next message.     |
 | 10   | *Wait until change is made…* |                      |                          |                                                              |                                                              |
 | 11   |                              | 0x30XXXX0000ZZ       | Sync Request             | •XXXX (# of bytes of data MCU will send) = LLLL + 2 (for value of LLLL, see row 16 below) <br>•ZZ = Checksum | If MCU receives 0x32 after sending Sync Request, ignore the 0x32 and wait for Sync Response from ASR. |
@@ -103,8 +103,8 @@ ASR sends command to MCU, MCU acknowledges that command was successful (SS=0x00)
 | 13   | 0x32                         |                      | Sync Response Terminator |                                                              | 0x32 sent every one second until MCU responds.               |
 | 14   |                              | 0x31XXXX0000ZZ       | Sync Acknowledgement     | •XXXX = XXXX from Sync Request (above) <br>•ZZ = Checksum        |                                                              |
 | 15   | 0x32                         |                      | Sync Complete            |                                                              |                                                              |
-| 16   |                              | LLLLGGQQTTTTSSUUNNNN | Update Attribute Header  | •LLLL = NNNN + 8 <br>•GG = 0x0D <br>•QQ = RR (from row 7 above) <br>•TTTT = Attribute ID <br>•SS = 0x00 (success) or 0x05 (failure) <br>•UU = 0x02 <br>•NNNN = Length of Attribute Data | See [Attribute Data](](.../afPro-UART-S/#attribute-data) below for details of "TTTT" and "NNNN". |
-| 17   |                              | V…                   | Update Attribute Data    | NNNN bytes of Attribute Data                                 | See [Attribute Data](](.../afPro-UART-S/#attribute-data) below for details of "V…". |
+| 16   |                              | LLLLGGQQTTTTSSUUNNNN | Update Attribute Header  | •LLLL = NNNN + 8 <br>•GG = 0x0D <br>•QQ = RR (from row 7 above) <br>•TTTT = Attribute ID <br>•SS = 0x00 (success) or 0x05 (failure) <br>•UU = 0x02 <br>•NNNN = Length of Attribute Data | See [Attribute Data](../afPro-UART-S/#attribute-data) below for details of "TTTT" and "NNNN". |
+| 17   |                              | V…                   | Update Attribute Data    | NNNN bytes of Attribute Data                                 | See [Attribute Data](../afPro-UART-S/#attribute-data) below for details of "V…". |
 | 18   | 0x32                         |                      | Procedure Complete       |                                                              | 0x32 sent every one second until MCU sends next message.     |
 
 ### MCU to ASR Notify Procedure
@@ -118,8 +118,8 @@ MCU notifies ASR of changes to MCU Attributes (device-side attributes).
 | 3    | 0x32           |                      | Sync Response Terminator |                                                              | 0x32 sent every one second until MCU responds.               |
 | 4    |                | 0x31XXXX0000ZZ       | Sync Acknowledgement     | •XXXX = XXXX from Sync Request (above) <br>•ZZ = Checksum        |                                                              |
 | 5    | 0x32           |                      | Sync Complete            |                                                              |                                                              |
-| 6    |                | LLLLGGRRTTTTSSUUNNNN | Update Attribute Header  | •LLLL = NNNN + 8 <br>•GG = 0x0D <br>•RR = 0x00 <br>•TTTT = Attribute ID <br>•SS = 0x00 <br>•UU = 0x01 <br>•NNNN = Length of Attribute Data | See [Attribute Data](](.../afPro-UART-S/#attribute-data) below for details of "TTTT" and "NNNN". |
-| 7    |                | V…                   | Update Attribute Data    | NNNN Bytes of Attribute Data                                 | See [Attribute Data](](.../afPro-UART-S/#attribute-data) below for details of "V…". |
+| 6    |                | LLLLGGRRTTTTSSUUNNNN | Update Attribute Header  | •LLLL = NNNN + 8 <br>•GG = 0x0D <br>•RR = 0x00 <br>•TTTT = Attribute ID <br>•SS = 0x00 <br>•UU = 0x01 <br>•NNNN = Length of Attribute Data | See [Attribute Data](../afPro-UART-S/#attribute-data) below for details of "TTTT" and "NNNN". |
+| 7    |                | V…                   | Update Attribute Data    | NNNN Bytes of Attribute Data                                 | See [Attribute Data](../afPro-UART-S/#attribute-data) below for details of "V…". |
 | 8    | 0x32           |                      | Procedure Complete       |                                                              | 0x32 sent every one second until MCU sends next message.     |
 
 ## Attribute Data

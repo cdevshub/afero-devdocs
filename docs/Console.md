@@ -2,7 +2,7 @@
 
 Afero Console is designed for partners so they can monitor and visualize their device deployments and usage. It offers aggregated, real-time location views of partner devices as well as individual device use history.
 
-The Console is easy to use and self-documenting. A description of the user interface is presented on this page. Be sure to refer to the [Glossary](](.../Glossary) for term definitions when using the Console.
+The Console is easy to use and self-documenting. A description of the user interface is presented on this page. Be sure to refer to the [Glossary](../Glossary) for term definitions when using the Console.
 
 ## Sign In and Out of Afero Console
 
@@ -18,13 +18,13 @@ If you belong to more than one partner, you can switch to view the Console of a 
 
 To view any of the windows in Afero Console, use the left-hand Navigation pane. In addition to the Real-Time Activity window, which opens by default, you’ll find links to Device Listing, Device Type Reports (click to see all your Device Types), Platform Usage, Platform Status, the Developer Portal, and the Dev Portal page with links for purchasing Afero hardware. The Console windows are described and illustrated below:
 
-- [Real-Time Activity](](.../Console#RTActivity)
-- [Device Listing](](.../Console#DevListing) and [Individual Device Data Viewer](](.../Console#DeviceDataViewer)
-- [Device Type Reports](](.../Console#DTReports)
-- [Data Explorer](](.../Console#DataExpl)
-- [Platform Usage](](.../Console#PlatUse)
-- [Platform Status](](.../Console#PltStatus)
-- [User Manager](](.../Console#UsrMgr)
+- [Real-Time Activity](../Console#RTActivity)
+- [Device Listing](../Console#DevListing) and [Individual Device Data Viewer](../Console#DeviceDataViewer)
+- [Device Type Reports](../Console#DTReports)
+- [Data Explorer](../Console#DataExpl)
+- [Platform Usage](../Console#PlatUse)
+- [Platform Status](../Console#PltStatus)
+- [User Manager](../Console#UsrMgr)
 
 ### Real-Time Activity Window
 
@@ -46,7 +46,7 @@ To clear the map of all device activity, click the CLEAR MARKERS button in the u
 
 Click DEVICE LISTING in the left-hand Navigation pane to open a window displaying all your devices, including methods for filtering and finding a specific device or set of devices.
 
-In the table titled YOUR AFERO POWERED DEVICE LISTING, click a Device ID to open the [Device Data Viewer](](.../Console#DeviceDataViewer), or click a DEVICE TYPE NAME to go to the relevant [Device Type Reports](](.../Console#DTReports) window.
+In the table titled YOUR AFERO POWERED DEVICE LISTING, click a Device ID to open the [Device Data Viewer](../Console#DeviceDataViewer), or click a DEVICE TYPE NAME to go to the relevant [Device Type Reports](../Console#DTReports) window.
 
 You can package and download the contents of this device listings table (with additional Creation Date, Profile ID, and Location information) into a zipped .csv file. Click the download icon on the far right![img](img/Console-DownloadIcon.png)then click the download link that appears. When unzipping the file, you’ll be prompted to enter the password provided under the download link (use copy & paste).
 
@@ -78,13 +78,13 @@ Note that metrics are shown in date ranges; click (in the upper-right) FROM THIS
 
 You’ll be able to view your Device Type usage in the following ways:
 
-- [Device Type Status](](.../Console#DevicesOnline)
-- [Attribute Usage Breakdown](](.../Console#AttrUsageBkdn)
-- [Attribute Value Breakdown](](.../Console#AttrValueBkdn)
-- [Relative Associated Device Distribution](](.../Console#RelAssocDevDistr)
-- [Cumulative Device Association Trend](](.../Console#CumDevAssoc)
-- [Application Version Breakdown](](.../Console#AppVerBkdn)
-- [Connection Type Breakdown](](.../Console#ConnTypeBkdn)
+- [Device Type Status](../Console#DevicesOnline)
+- [Attribute Usage Breakdown](../Console#AttrUsageBkdn)
+- [Attribute Value Breakdown](../Console#AttrValueBkdn)
+- [Relative Associated Device Distribution](../Console#RelAssocDevDistr)
+- [Cumulative Device Association Trend](../Console#CumDevAssoc)
+- [Application Version Breakdown](../Console#AppVerBkdn)
+- [Connection Type Breakdown](../Console#ConnTypeBkdn)
 
 #### Device Type Status
 
@@ -212,7 +212,7 @@ There are a few ways you can query your data:
 - Click PLATFORM USAGE on the left-hand Navigation pane to display month-to-date details for each Device Type:
 
 - - Total monthly message count
-  - Total unique [active devices](](.../Console#ActiveDevDef)
+  - Total unique [active devices](../Console#ActiveDevDef)
   - Monthly per device (message) average
 
 - Totals across Device Types are also provided.

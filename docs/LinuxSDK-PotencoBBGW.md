@@ -6,14 +6,14 @@ The instructions on this page explain how to download the software image, apply 
 
 This page contains the following sections:
 
-- [Requirements](](.../LinuxSDK-PotencoBBGW#requirements)
-- [Install and Boot the Potenco Operating System](](.../LinuxSDK-PotencoBBGW#installboot)
-- [Build the Potenco OS Image](](.../LinuxSDK-PotencoBBGW#bldpotosimage)
-- [Connect the Peaberry Security Module](](.../LinuxSDK-PotencoBBGW#connpeaberry)
-- [Build the Potenco SDK](](.../LinuxSDK-PotencoBBGW#buildpotsdk)
-- [Use Potenco as an Afero Hub](](.../LinuxSDK-PotencoBBGW#potencoashub)
-- [Implement Your IoT Project](](.../LinuxSDK-PotencoBBGW#youriot)
-- [Support for Questions and Issues](](.../LinuxSDK-PotencoBBGW#support)
+- [Requirements](../LinuxSDK-PotencoBBGW#requirements)
+- [Install and Boot the Potenco Operating System](../LinuxSDK-PotencoBBGW#installboot)
+- [Build the Potenco OS Image](../LinuxSDK-PotencoBBGW#bldpotosimage)
+- [Connect the Peaberry Security Module](../LinuxSDK-PotencoBBGW#connpeaberry)
+- [Build the Potenco SDK](../LinuxSDK-PotencoBBGW#buildpotsdk)
+- [Use Potenco as an Afero Hub](../LinuxSDK-PotencoBBGW#potencoashub)
+- [Implement Your IoT Project](../LinuxSDK-PotencoBBGW#youriot)
+- [Support for Questions and Issues](../LinuxSDK-PotencoBBGW#support)
 
 ## Requirements
 
@@ -48,7 +48,7 @@ To install and boot a Potenco Operating System image on the BeagleBone Green Wir
 
 ### Create the SD Card Image
 
-1. Obtain the file `arago-afero-image-am335x-evm.afimg` either from the Afero FTP site, or from the output of your Potenco build environment (see [Build the Potenco OS Image](](.../LinuxSDK-PotencoBBGW#bldpotosimage)).
+1. Obtain the file `arago-afero-image-am335x-evm.afimg` either from the Afero FTP site, or from the output of your Potenco build environment (see [Build the Potenco OS Image](../LinuxSDK-PotencoBBGW#bldpotosimage)).
 2. Insert a MicroSD card into your PC. Use a card at least 4GB in size.
 3. Obtain software for your PC that can write an image to an SD card. We use a freeware tool called Etcher (https://www.balena.io/etcher/) that is available for Windows, MacOS, and Linux.
 4. Rename the `.afimg` file to use the extension “.img”. Write this .img file to the SD card, then eject the card from your PC. Etcher will unmount the SD card when it has successfully written.
@@ -207,7 +207,7 @@ Do not remove the SD card until all the data has been written to it and the devi
     $ bitbake arago-afero-image
     ```
 
-11. To flash the image, use the directions in [Install and Boot the Potenco Operating System](](.../LinuxSDK-PotencoBBGW#installboot). The SD image file you want is in the following file location:
+11. To flash the image, use the directions in [Install and Boot the Potenco Operating System](../LinuxSDK-PotencoBBGW#installboot). The SD image file you want is in the following file location:
 
     `arago-tmp-external-linaro-toolchain/deploy/images/am335x-evm/arago-afero-image-am335x-evm.afimg`.
 
@@ -265,4 +265,4 @@ Potenco also acts as an Afero edge device and can communicate with the Afero Clo
 
 If you have any questions or issues with Potenco please use the project's [GitHub Project Issue Tracker](https://github.com/AferoCE/potenco/issues).
 
- Next: [Add an afLib C-Based App to Potenco Build for BBGW](](.../LinuxSDK-PotencoBBGWApp)
+ Next: [Add an afLib C-Based App to Potenco Build for BBGW](../LinuxSDK-PotencoBBGWApp)

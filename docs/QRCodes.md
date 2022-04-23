@@ -2,35 +2,35 @@
 
 This page contains the following information about the QR code labels required for Afero products. You will need this information in the prototyping and manufacturing processes.
 
-- [Labeling Afero Products with QR Codes](](.../QRCodes#QR-Code-Labeling)
+- [Labeling Afero Products with QR Codes](../QRCodes#QR-Code-Labeling)
 
-- - [Large QR Code Labels](](.../QRCodes#LargeQRCode)
-  - [Small QR Code Labels](](.../QRCodes#SmallQRCode)
-  - [Manufacturing Process](](.../QRCodes#QRCodeManufacturing)
-  - [Notes on Label Placement](](.../QRCodes#LabelPlacement)
-  - [Customizing the Label for Printing](](.../QRCodes#CustomLabel)
+- - [Large QR Code Labels](../QRCodes#LargeQRCode)
+  - [Small QR Code Labels](../QRCodes#SmallQRCode)
+  - [Manufacturing Process](../QRCodes#QRCodeManufacturing)
+  - [Notes on Label Placement](../QRCodes#LabelPlacement)
+  - [Customizing the Label for Printing](../QRCodes#CustomLabel)
 
-- [Generating QR Codes for Afero Products](](.../QRCodes#QRCodeGen)
+- [Generating QR Codes for Afero Products](../QRCodes#QRCodeGen)
 
-- - [Products Using the Latest QR Code Version](](.../QRCodes#ASR2QR)
+- - [Products Using the Latest QR Code Version](../QRCodes#ASR2QR)
 
-  - - [QR Payload Details](](.../QRCodes#QRPayload)
-    - [QR Code Details](](.../QRCodes#QRParameters)
-    - [Plain-Text Association ID](](.../QRCodes#PlainTextAssnID)
-    - [Examples](](.../QRCodes#ASR2QRcodeExample)
+  - - [QR Payload Details](../QRCodes#QRPayload)
+    - [QR Code Details](../QRCodes#QRParameters)
+    - [Plain-Text Association ID](../QRCodes#PlainTextAssnID)
+    - [Examples](../QRCodes#ASR2QRcodeExample)
 
-  - [Products Using the Legacy QR Code Version](](.../QRCodes#ASR1QR)
+  - [Products Using the Legacy QR Code Version](../QRCodes#ASR1QR)
 
-  - - [About ASR-1 Association ID](](.../QRCodes#AboutASR-1QRCodes)
-    - [Label Printing](](.../QRCodes#ASR1QRLabeling)
-    - [Examples](](.../QRCodes#ASR1QRcodeExample)
+  - - [About ASR-1 Association ID](../QRCodes#AboutASR-1QRCodes)
+    - [Label Printing](../QRCodes#ASR1QRLabeling)
+    - [Examples](../QRCodes#ASR1QRcodeExample)
 
 ## Labeling Afero Products with QR Codes
 
 Each Afero smart product requires two QR code labels:
 
-- A customer-visible QR code label on the product, described further in [Large QR code Label](](.../QRCodes#LargeQRCode) below.
-- A smaller QR code label on the PCB, described further in [Small QR Code Label](](.../QRCodes#SmallQRCode), also below.
+- A customer-visible QR code label on the product, described further in [Large QR code Label](../QRCodes#LargeQRCode) below.
+- A smaller QR code label on the PCB, described further in [Small QR Code Label](../QRCodes#SmallQRCode), also below.
 
 ### Large QR Code Label
 
@@ -76,9 +76,9 @@ The Afero Factory Test verifies that the QR code labels are printed correctly.
 
 - Both labels must be designed to adhere very well to the PCB and product body.
 - The label sizes identified in the sections above are standard sizes selected for cost savings reasons.
-- Any changes from Afero standard requires writing updated Zebra printer language for the new label layout/size. Read the next section, [Customizing the Label for Printing](](.../QRCodes#CustomLabel), for details.
+- Any changes from Afero standard requires writing updated Zebra printer language for the new label layout/size. Read the next section, [Customizing the Label for Printing](../QRCodes#CustomLabel), for details.
 
-For more technical details of our QR codes, read the section below, [Generating QR Codes for Afero Products](](.../QRCodes#QRCodeGen).
+For more technical details of our QR codes, read the section below, [Generating QR Codes for Afero Products](../QRCodes#QRCodeGen).
 
 ### Customizing the Label for Printing
 
@@ -142,8 +142,8 @@ Assn ID
 
 This section contains instructions for generating the QR codes that will be printed on the labels, for:
 
-- [Products using the latest QR code version](](.../QRCodes#ASR2QR), and
-- [Products containing the legacy QR code version](](.../QRCodes#ASR1QR)
+- [Products using the latest QR code version](../QRCodes#ASR2QR), and
+- [Products containing the legacy QR code version](../QRCodes#ASR1QR)
 
 Unless explicitly instructed otherwise, assume you will be generating the latest QR code version.
 
@@ -238,4 +238,4 @@ Every label must include the following two pieces of information: 1) the QR code
 
 
 
- Next: [Hardware Design Files](](.../Datasheets)
+ Next: [Hardware Design Files](../Datasheets)

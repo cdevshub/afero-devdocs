@@ -2,13 +2,13 @@
 
 The RESTful API exposes the OAuth function described in this section.
 
-Before you begin using the API below, be sure you have read the information in [Afero Cloud APIs](](.../CloudAPIs).
+Before you begin using the API below, be sure you have read the information in [Afero Cloud APIs](../CloudAPIs).
 
 
 
 ## OAuth Authentication
 
-The OAuth Authentication endpoint is used to authenticate end-users and generate an access token, which will be used to authenticate requests on behalf of the end-user. For this endpoint, you will need your OAuth Client ID and OAuth Client Secret, which you can view by signing in to the Afero Profile Editor, then going to the operating system menu bar and opening the [View > Account Info](](.../SelectProject#APE-MyAccount) screen.
+The OAuth Authentication endpoint is used to authenticate end-users and generate an access token, which will be used to authenticate requests on behalf of the end-user. For this endpoint, you will need your OAuth Client ID and OAuth Client Secret, which you can view by signing in to the Afero Profile Editor, then going to the operating system menu bar and opening the [View > Account Info](../SelectProject#APE-MyAccount) screen.
 
 ### Request
 
@@ -41,4 +41,4 @@ The OAuth Authentication endpoint is used to authenticate end-users and generate
 
 - The expiration parameter in the response, `expires_in`, is measured in seconds.
 
- Next: [User API Endpoint](](.../API-UserEndpoints)
+ Next: [User API Endpoint](../API-UserEndpoints)

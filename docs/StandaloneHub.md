@@ -9,26 +9,26 @@ This Raspberry Pi release includes the following:
 
 To set up an Afero Developer Hub, please use the information in the sections below:
 
-- [Caveats and Considerations](](.../StandaloneHub#HubbyCaveats)
+- [Caveats and Considerations](../StandaloneHub#HubbyCaveats)
 
-- [Hardware Requirements](](.../StandaloneHub#HubbyHWReqs)
+- [Hardware Requirements](../StandaloneHub#HubbyHWReqs)
 
-- [Set Up the Raspberry Pi](](.../StandaloneHub#RaspPiSetup)
+- [Set Up the Raspberry Pi](../StandaloneHub#RaspPiSetup)
 
-- [Install the Afero Hub Software](](.../StandaloneHub#HubbyInstallOptions)
+- [Install the Afero Hub Software](../StandaloneHub#HubbyInstallOptions)
 
-- - [Install the Hub Software via APT Repository (Recommended)](](.../StandaloneHub#HubbyInstallAPT)
-  - [Install the Hub Software Manually](](.../StandaloneHub#HubbyManPkgInstall)
+- - [Install the Hub Software via APT Repository (Recommended)](../StandaloneHub#HubbyInstallAPT)
+  - [Install the Hub Software Manually](../StandaloneHub#HubbyManPkgInstall)
 
-- [Add the Virtual-Hub Device to Your Account](](.../StandaloneHub#HubbyConfigure)
+- [Add the Virtual-Hub Device to Your Account](../StandaloneHub#HubbyConfigure)
 
-- [Manage the Afero Hub Software](](.../StandaloneHub#HubbyManage)
+- [Manage the Afero Hub Software](../StandaloneHub#HubbyManage)
 
-- - [Start, Stop, and Restart the Hub Software](](.../StandaloneHub#HubbyStartStopRestart)
-  - [Manage the Virtual-Hub Device](](.../StandaloneHub#HubbyVirtualDevice)
-  - [Remove, Reinstall, and Update the Hub Software](](.../StandaloneHub#HubbyRemoveEtc)
+- - [Start, Stop, and Restart the Hub Software](../StandaloneHub#HubbyStartStopRestart)
+  - [Manage the Virtual-Hub Device](../StandaloneHub#HubbyVirtualDevice)
+  - [Remove, Reinstall, and Update the Hub Software](../StandaloneHub#HubbyRemoveEtc)
 
-- [Get Support](](.../StandaloneHub#HubbySupport)
+- [Get Support](../StandaloneHub#HubbySupport)
 
 ## Caveats and Considerations
 
@@ -114,7 +114,7 @@ The Raspbian OS allows you to configure the Wi-Fi network from your local PC bef
 
 ## Install the Afero Hub Software
 
-You can install the Afero Hub Software in either of two ways. The first, [via APT repository](](.../StandaloneHub#HubbyInstallAPT), is recommended. The second, [manual install](](.../StandaloneHub#HubbyManPkgInstall), is there if you need it.
+You can install the Afero Hub Software in either of two ways. The first, [via APT repository](../StandaloneHub#HubbyInstallAPT), is recommended. The second, [manual install](../StandaloneHub#HubbyManPkgInstall), is there if you need it.
 
 ### Install the Hub Software via APT Repository (Recommended)
 
@@ -138,7 +138,7 @@ Afero provides a Debian Repository for the packages we publish. If you add our r
 
 2. During installation, you will be prompted to accept the [Afero Developer Terms of Service](https://www.afero.io/legal#developer), which is the license that covers your use of the Afero ble and hub packages.
 
-3. Skip down to [Add the Virtual-Hub Device to Your Account](](.../StandaloneHub#HubbyConfigure) to continue.
+3. Skip down to [Add the Virtual-Hub Device to Your Account](../StandaloneHub#HubbyConfigure) to continue.
 
 ### Install the Hub Software Manually
 
@@ -163,7 +163,7 @@ Afero provides a Debian Repository for the packages we publish. If you add our r
    $ sudo dpkg -i afero-hub*.deb
    ```
 
-4. Continue with [Add the Virtual-Hub Device to Your Account](](.../StandaloneHub#HubbyConfigure).
+4. Continue with [Add the Virtual-Hub Device to Your Account](../StandaloneHub#HubbyConfigure).
 
 ## Add the Virtual-Hub Device to Your Account
 

@@ -44,17 +44,17 @@ If you have created some projects, your most recently-opened projects will be sh
 
 ![Open a Project](img/APE-StartScreen.png)
 
-Simply double-click the project’s panel to open the project, or select the panel and click the SELECT button. If you haven’t assigned a project an icon, the question mark icon![No Icon Assigned for Project](img/grey-question-mark.png)will be used. Projects open by default to the Device Type definition window, described further in [Define the Device Type](](.../DeviceType).
+Simply double-click the project’s panel to open the project, or select the panel and click the SELECT button. If you haven’t assigned a project an icon, the question mark icon![No Icon Assigned for Project](img/grey-question-mark.png)will be used. Projects open by default to the Device Type definition window, described further in [Define the Device Type](../DeviceType).
 
 ### Clone an Existing Project
 
-If you have a project you’d like to use as a starting point for another, first open the project you want to clone. Then go to the operating system menu bar and select FILE > CLONE PROJECT. The Clone Project dialog opens; proceed as you would when creating a new project, noting the restrictions described above in [Before You Proceed](](.../SelectProject#DOC-158).
+If you have a project you’d like to use as a starting point for another, first open the project you want to clone. Then go to the operating system menu bar and select FILE > CLONE PROJECT. The Clone Project dialog opens; proceed as you would when creating a new project, noting the restrictions described above in [Before You Proceed](../SelectProject#DOC-158).
 
 ### Open an Existing Project from the Filesystem
 
-Click the OPEN button to navigate within your local filesystem to any Afero project that you saved using your Profile Editor or was shared with you by another developer. If the project you’re opening uses an existing Device Type, you’ll be prompted to create a new Device Type name, as described above in [Before You Proceed](](.../SelectProject#DOC-158).
+Click the OPEN button to navigate within your local filesystem to any Afero project that you saved using your Profile Editor or was shared with you by another developer. If the project you’re opening uses an existing Device Type, you’ll be prompted to create a new Device Type name, as described above in [Before You Proceed](../SelectProject#DOC-158).
 
-Once you’ve opened a project, you’ll see the Device Type definition window, described further in [Define the Device Type](](.../DeviceType).
+Once you’ve opened a project, you’ll see the Device Type definition window, described further in [Define the Device Type](../DeviceType).
 
 ## Profile Editor User Interface
 
@@ -70,7 +70,7 @@ Before going to the next section, let’s do a quick tour of the Profile Editor 
 
   - FILE > CLONE PROJECT to make a copy of your open project (menu item appears active when you have a project open). If you are defining a new Device Type with this project, make sure the Device Type Name you give it is unique across your projects, a name that you haven’t used before.
 
-  - VIEW > ACCOUNT INFO to see information about your account: first name, last name, username, and authentication information. This includes your OAuth Client ID and OAuth Client Secret, which you’ll need when working with [Afero Cloud API endpoints](](.../CloudAPIs).
+  - VIEW > ACCOUNT INFO to see information about your account: first name, last name, username, and authentication information. This includes your OAuth Client ID and OAuth Client Secret, which you’ll need when working with [Afero Cloud API endpoints](../CloudAPIs).
 
   - TOOLS > SAMPLE PROJECTS to download some projects we’ve posted to the [aferodeveloper GitHub site](http://github.com/aferodeveloper/APE-Project-Profiles). You can use these projects as starting points. To see all the projects we’ve created (not just those explicitly listed in the menu), select the GITHUB REPOSITORY menu item. This menu selection will open the GitHub page where you can conveniently download a zip file of all the projects.
 
@@ -87,4 +87,4 @@ Before going to the next section, let’s do a quick tour of the Profile Editor 
     - Selected checkboxes and radio buttons are partially filled with orange![img](img/APE-CheckboxSel.png); deselected checkboxes and radio buttons are filled with dark grey![img](img/APE-CheckboxDesel.png).
     - Selected options have an orange background (“OUTPUT” in the example); deselected options have a black background![img](img/APE-Selection.png).
 
-   Next: [Define the Device Type](](.../DeviceType)
+   Next: [Define the Device Type](../DeviceType)

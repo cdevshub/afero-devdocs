@@ -7,8 +7,8 @@ Download the latest afLib library from here: http://github.com/aferodeveloper/af
 Release date: October 14, 2019
 
 - Updated and simplified example apps, including addition of `full_api_example` app, which documents every event afLib generates and how to handle each event.
-- Updated handling of device Profile default values. AF_LIB_EVENT_MCU_DEFAULT_NOTIFICATION is now purely informational, and the new AF_LIB_EVENT_MCU_GET_REQUEST event will request that MCU send current value – including default value if desired – of each MCU attribute. Read more in [Callbacks and Events](](.../afLibCallbacks).
-- Added **`reason`** parameter to `af_lib_set_attribute()`function to indicate the reason the MCU is setting the attribute at the time. Read more about this function in [Getting/Setting Attributes](](.../afLibAttributes#Func-setAttribute).
+- Updated handling of device Profile default values. AF_LIB_EVENT_MCU_DEFAULT_NOTIFICATION is now purely informational, and the new AF_LIB_EVENT_MCU_GET_REQUEST event will request that MCU send current value – including default value if desired – of each MCU attribute. Read more in [Callbacks and Events](../afLibCallbacks).
+- Added **`reason`** parameter to `af_lib_set_attribute()`function to indicate the reason the MCU is setting the attribute at the time. Read more about this function in [Getting/Setting Attributes](../afLibAttributes#Func-setAttribute).
 - Added Support for Plumo-2D devices.
 - Platforms now supported include Arduino, Linux, and STM32.
 
@@ -52,7 +52,7 @@ Release date: August 9, 2018
 
 - More granular event-handling in callback to simplify usage.
 
-- MCU OTA support. You can upload and deploy new firmware for your connected MCU via the Afero OTA Manager. Read more in [Handling MCU OTA Updates](](.../MCU_OTA).
+- MCU OTA support. You can upload and deploy new firmware for your connected MCU via the Afero OTA Manager. Read more in [Handling MCU OTA Updates](../MCU_OTA).
 
 - New system attributes:
 

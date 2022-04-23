@@ -1,20 +1,20 @@
 # Software Tasks for Creating an Afero Secure Linux Device
 
-There are a number of software tasks that must be finished to produce a fully-functional, production-ready device. The first section below goes over the [high-level software tasks](](.../LinuxSDK-SWTasks#HiLevelSW) that must be completed; the next section describes the [miscellaneous integration tasks](](.../LinuxSDK-SWTasks#MiscTasks).
+There are a number of software tasks that must be finished to produce a fully-functional, production-ready device. The first section below goes over the [high-level software tasks](../LinuxSDK-SWTasks#HiLevelSW) that must be completed; the next section describes the [miscellaneous integration tasks](../LinuxSDK-SWTasks#MiscTasks).
 
-The instructions in this section describe the process generically; you can use the instructions as a building block to create a working system for any architecture of your choice. See [Afero Potenco Setup Guide for BeagleBone Green Wireless Board](](.../LinuxSDK-PotencoBBGW) for one example.
+The instructions in this section describe the process generically; you can use the instructions as a building block to create a working system for any architecture of your choice. See [Afero Potenco Setup Guide for BeagleBone Green Wireless Board](../LinuxSDK-PotencoBBGW) for one example.
 
 ## High-Level Software Tasks
 
 At a high level, developing an Afero Linux device is like developing any other Linux-based embedded system. You must do the following:
 
-1. [Define the Partition Scheme](](.../LinuxSDK-SWTasks#DefinePartition)
-2. [Create a Build System](](.../LinuxSDK-SWTasks#CreateBuildSys)
-3. [Implement an OTA Scheme](](.../LinuxSDK-SWTasks#ImplOTA)
-4. [Implement Device-Specific Functionality](](.../LinuxSDK-SWTasks#DeviceSpecFunc)
-5. [Implement Factory Diagnostics](](.../LinuxSDK-SWTasks#ImplFactDiag)
-6. [Secure Your Hardware](](.../LinuxSDK-SWTasks#SecureHW)
-7. [Get Certifications](](.../LinuxSDK-SWTasks#GetCerts)
+1. [Define the Partition Scheme](../LinuxSDK-SWTasks#DefinePartition)
+2. [Create a Build System](../LinuxSDK-SWTasks#CreateBuildSys)
+3. [Implement an OTA Scheme](../LinuxSDK-SWTasks#ImplOTA)
+4. [Implement Device-Specific Functionality](../LinuxSDK-SWTasks#DeviceSpecFunc)
+5. [Implement Factory Diagnostics](../LinuxSDK-SWTasks#ImplFactDiag)
+6. [Secure Your Hardware](../LinuxSDK-SWTasks#SecureHW)
+7. [Get Certifications](../LinuxSDK-SWTasks#GetCerts)
 
 In the following sections we discuss specific requirements for each of these steps when you’re building an Afero secure Linux device.
 
@@ -55,7 +55,7 @@ The last repo, meta-afero, is very helpful because it contains many of the glue 
 
 ### 3. Implement an OTA Scheme
 
-OTA updates are critical for the security of the device in the field. If you use the Afero Cloud to provide OTA updates, you will need to write an OTA Manager, which is a daemon that listens for OTA update attribute notifications. We provide a sample OTA Manager that works on OpenWrt. You will need to modify this code for your device. This daemon is described in detail in [OTA Manager Implementation](](.../LinuxSDK-OTAManager).
+OTA updates are critical for the security of the device in the field. If you use the Afero Cloud to provide OTA updates, you will need to write an OTA Manager, which is a daemon that listens for OTA update attribute notifications. We provide a sample OTA Manager that works on OpenWrt. You will need to modify this code for your device. This daemon is described in detail in [OTA Manager Implementation](../LinuxSDK-OTAManager).
 
 **Requirement** Write an OTA Manager based on the provided sample code to receive OTA updates from the Afero Cloud.
 
@@ -65,11 +65,11 @@ The device-specific code implements the features that make your device do someth
 
 **Requirement** Write an Edge Device daemon to implement the device functionality. This is discussed in more detail in Edge Device Daemon Implementation.
 
-**Requirement** If you're using a wireless modem (WAN), you must change or rewrite the WAN daemon. This is in the af-conn repository and details are given in [WAN Daemon Implementation](](.../LinuxSDK-WANDaemon).
+**Requirement** If you're using a wireless modem (WAN), you must change or rewrite the WAN daemon. This is in the af-conn repository and details are given in [WAN Daemon Implementation](../LinuxSDK-WANDaemon).
 
-**Requirement** If you have special Wi-Fi requirements – for example, if you’re building a Wi-Fi access point – you'll have to modify the Wi-Fi Station daemon and the Connection Manager. These components are also in the af-conn repository and more details are given in [Wi-Fi Station Daemon Implementation](](.../LinuxSDK-WiFiStDaemon) and the [Connection Manager Daemon Implementation](](.../LinuxSDK-ConnMgrDaemon).
+**Requirement** If you have special Wi-Fi requirements – for example, if you’re building a Wi-Fi access point – you'll have to modify the Wi-Fi Station daemon and the Connection Manager. These components are also in the af-conn repository and more details are given in [Wi-Fi Station Daemon Implementation](../LinuxSDK-WiFiStDaemon) and the [Connection Manager Daemon Implementation](../LinuxSDK-ConnMgrDaemon).
 
-In addition, there are integration tasks, discussed below in the [Miscellaneous Afero Integration Tasks](](.../LinuxSDK-SWTasks#MiscTasks) section.
+In addition, there are integration tasks, discussed below in the [Miscellaneous Afero Integration Tasks](../LinuxSDK-SWTasks#MiscTasks) section.
 
 ### 5. Implement Factory Diagnostics
 
@@ -116,13 +116,13 @@ In addition, your device must undergo testing at Afero before you can sell it.
 
 This section captures some miscellaneous integration tasks required to get the Afero Linux SDK package running. We will discuss the following tasks:
 
-- [Init Scripts](](.../LinuxSDK-SWTasks#InitScripts)
-- [Logging](](.../LinuxSDK-SWTasks#Logging)
-- [Reporting hubby State Using LEDs](](.../LinuxSDK-SWTasks#hubbyStateLED)
-- [Network Capabilities Script](](.../LinuxSDK-SWTasks#NetworkCapScript)
-- [COMMAND Attribute](](.../LinuxSDK-SWTasks#COMMANDattr)
-- [REBOOT_REASON Attribute](](.../LinuxSDK-SWTasks#REBOOT_REASONattr)
-- [Network Interface Names File](](.../LinuxSDK-SWTasks#NetInterNames)
+- [Init Scripts](../LinuxSDK-SWTasks#InitScripts)
+- [Logging](../LinuxSDK-SWTasks#Logging)
+- [Reporting hubby State Using LEDs](../LinuxSDK-SWTasks#hubbyStateLED)
+- [Network Capabilities Script](../LinuxSDK-SWTasks#NetworkCapScript)
+- [COMMAND Attribute](../LinuxSDK-SWTasks#COMMANDattr)
+- [REBOOT_REASON Attribute](../LinuxSDK-SWTasks#REBOOT_REASONattr)
+- [Network Interface Names File](../LinuxSDK-SWTasks#NetInterNames)
 
 ### Init Scripts
 

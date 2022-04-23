@@ -22,12 +22,12 @@ Release date: January 28, 2020
 
 ## Past Release Notes
 
-- [afLib Release Notes](](.../RelNotes-afLib)
-- [Console Release Notes](](.../RelNotes-Console)
-- [Developer Hub Release Notes](](.../RelNotes-DevHub)
-- [Firmware Release Notes](](.../RelNotes-FW)
-- [Hardware Release Notes](](.../RelNotes-HW)
-- [Inspector Release Notes](](.../RelNotes-Inspector)
-- [Mobile App Release Notes](](.../RelNotes-MobileApp)
-- [OTA Manager Release Notes](](.../RelNotes-OTAMgr)
-- [Profile Editor Release Notes](](.../RelNotes-APE)
+- [afLib Release Notes](../RelNotes-afLib)
+- [Console Release Notes](../RelNotes-Console)
+- [Developer Hub Release Notes](../RelNotes-DevHub)
+- [Firmware Release Notes](../RelNotes-FW)
+- [Hardware Release Notes](../RelNotes-HW)
+- [Inspector Release Notes](../RelNotes-Inspector)
+- [Mobile App Release Notes](../RelNotes-MobileApp)
+- [OTA Manager Release Notes](../RelNotes-OTAMgr)
+- [Profile Editor Release Notes](../RelNotes-APE)

@@ -9,7 +9,7 @@ The Profile Editor is available to all Afero partner-developers and can be downl
 - [Windows ![Download for Windows]
 - [macOS ![Download for Mac OS]
 
-For all the details, refer to the [Afero Profile Editor User Guide](](.../Projects).
+For all the details, refer to the [Afero Profile Editor User Guide](../Projects).
 
 ### Sample Profile for Attribute Daemon Clients
 

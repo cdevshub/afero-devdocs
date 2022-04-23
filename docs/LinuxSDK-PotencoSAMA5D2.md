@@ -6,15 +6,15 @@ The instructions on this page explain how to flash the image to the internal eMM
 
 This page contains the following sections:
 
-- [Requirements](](.../LinuxSDK-PotencoSAMA5D2#requirements)
-- [Install and Boot the Potenco Operating System](](.../LinuxSDK-PotencoSAMA5D2#installboot)
-- [Build the SAMA5D2 Linux OS Image](](.../LinuxSDK-PotencoSAMA5D2#bldpotosimage)
-- [Flash the SAMA5D2 Image](](.../LinuxSDK-PotencoSAMA5D2#flash)
-- [Connect the Peaberry Security Module](](.../LinuxSDK-PotencoSAMA5D2#connpeaberry)
-- [Build the Potenco SDK](](.../LinuxSDK-PotencoSAMA5D2#buildpotsdk)
-- [Use Potenco as an Afero Hub](](.../LinuxSDK-PotencoSAMA5D2#potencoashub)
-- [Implement Your IoT Project](](.../LinuxSDK-PotencoSAMA5D2#youriot)
-- [Support for Questions and Issues](](.../LinuxSDK-PotencoSAMA5D2#support)
+- [Requirements](../LinuxSDK-PotencoSAMA5D2#requirements)
+- [Install and Boot the Potenco Operating System](../LinuxSDK-PotencoSAMA5D2#installboot)
+- [Build the SAMA5D2 Linux OS Image](../LinuxSDK-PotencoSAMA5D2#bldpotosimage)
+- [Flash the SAMA5D2 Image](../LinuxSDK-PotencoSAMA5D2#flash)
+- [Connect the Peaberry Security Module](../LinuxSDK-PotencoSAMA5D2#connpeaberry)
+- [Build the Potenco SDK](../LinuxSDK-PotencoSAMA5D2#buildpotsdk)
+- [Use Potenco as an Afero Hub](../LinuxSDK-PotencoSAMA5D2#potencoashub)
+- [Implement Your IoT Project](../LinuxSDK-PotencoSAMA5D2#youriot)
+- [Support for Questions and Issues](../LinuxSDK-PotencoSAMA5D2#support)
 
 ## Requirements
 
@@ -49,7 +49,7 @@ To install and boot a Potenco Operating System image on the SAMA5D2 development 
 
 ### Create the eMMC Image
 
-1. Obtain the image files, either from the Afero FTP site, or from the output of your Potenco build environment (see [Build the SAMA5D2 Linux OS Image](](.../LinuxSDK-PotencoSAMA5D2#bldpotosimage)).
+1. Obtain the image files, either from the Afero FTP site, or from the output of your Potenco build environment (see [Build the SAMA5D2 Linux OS Image](../LinuxSDK-PotencoSAMA5D2#bldpotosimage)).
 
 2. - u-boot: at91bootstrap-sama5d2_xplained.bin
    - secondary bootloader: u-boot-sama5d2-xplained-emmc.bin
@@ -57,7 +57,7 @@ To install and boot a Potenco Operating System image on the SAMA5D2 development 
 
 3. Obtain/download Microchip’s flash tool, SAM-BA, available for Windows, macOS, and Linux. Microchip recommends using version 3.2.3. Download from https://github.com/atmelcorp/sam-ba/releases.
 
-4. Follow the instructions in [Flash the SAMA5D2 Image](](.../LinuxSDK-PotencoSAMA5D2#flash) to flash the image on the eMMC.
+4. Follow the instructions in [Flash the SAMA5D2 Image](../LinuxSDK-PotencoSAMA5D2#flash) to flash the image on the eMMC.
 
 ### Boot from the eMMC Image
 
@@ -465,4 +465,4 @@ Potenco also acts as an Afero edge device and can communicate with the Afero Clo
 
 If you have any questions or issues with Potenco please use the project's [GitHub Project Issue Tracker](https://github.com/AferoCE/potenco/issues).
 
- Next: [Add an afLib C-Based App to Potenco Build for SAMA5D2](](.../LinuxSDK-PotencoSAMA5D2App)
+ Next: [Add an afLib C-Based App to Potenco Build for SAMA5D2](../LinuxSDK-PotencoSAMA5D2App)

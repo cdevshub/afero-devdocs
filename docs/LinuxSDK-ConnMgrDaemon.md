@@ -8,11 +8,11 @@ The Connection Manager (ConnMgr) is an event-based daemon. It manages the networ
 
 The Connection Manager daemon consists of the following components, each described in detail on this page:
 
-- [Firewall scripts](](.../LinuxSDK-ConnMgrDaemon#firewallscripts) - Bash scripts that manage the firewall (via iptables) on the device.
-- [Afero service whitelist](](.../LinuxSDK-ConnMgrDaemon#whitelist) - ASCII file that contains the list of servers with which the firewall allows traffic. It’s also responsible for the management of the whitelist.
-- [Traffic monitoring and route selection engine](](.../LinuxSDK-ConnMgrDaemon#traffmonandroute) - Monitors traffic from the Ethernet and Wi-Fi connections (if they are enabled). In the event a selected connection becomes unavailable, it performs a route switch to a connection that is available (based on the selection criteria).
-- [Whitelist IP extraction (from DNS entry)](](.../LinuxSDK-ConnMgrDaemon#whitelistextract) - Because Afero services are hosted in the Amazon Cloud and the load balancing service is provided by the Amazon Cloud, the IP address in the services whitelist are not static. This component helps us adapt to the dynamic changes of the IP addresses in the Amazon Cloud by modifying the firewall with updated firewall rules, thereby permitting traffic with Afero services.
-- [Attribute management](](.../LinuxSDK-ConnMgrDaemon#attributemgmt) - Responsible for managing the connection to the Attribute daemon and for the `get` and `set` operations of the attributes owned by ConnMgr.
+- [Firewall scripts](../LinuxSDK-ConnMgrDaemon#firewallscripts) - Bash scripts that manage the firewall (via iptables) on the device.
+- [Afero service whitelist](../LinuxSDK-ConnMgrDaemon#whitelist) - ASCII file that contains the list of servers with which the firewall allows traffic. It’s also responsible for the management of the whitelist.
+- [Traffic monitoring and route selection engine](../LinuxSDK-ConnMgrDaemon#traffmonandroute) - Monitors traffic from the Ethernet and Wi-Fi connections (if they are enabled). In the event a selected connection becomes unavailable, it performs a route switch to a connection that is available (based on the selection criteria).
+- [Whitelist IP extraction (from DNS entry)](../LinuxSDK-ConnMgrDaemon#whitelistextract) - Because Afero services are hosted in the Amazon Cloud and the load balancing service is provided by the Amazon Cloud, the IP address in the services whitelist are not static. This component helps us adapt to the dynamic changes of the IP addresses in the Amazon Cloud by modifying the firewall with updated firewall rules, thereby permitting traffic with Afero services.
+- [Attribute management](../LinuxSDK-ConnMgrDaemon#attributemgmt) - Responsible for managing the connection to the Attribute daemon and for the `get` and `set` operations of the attributes owned by ConnMgr.
 
 The sections below discuss each component in more detail with an emphasis on the motivation behind the design. If you must customize any sections for a particular component, the requirements are presented.
 
@@ -235,7 +235,7 @@ ConnMgr implements the functionality of extracting the service IP addresses from
 
 ## Attribute Management
 
-On the device, each daemon is responsible for the attributes relevant to its own functionality. These attributes can hold statistical-related, operational state/status-related, or network management-related information. The supported/defined attributes are documented in the [Device Attribute Registry](](.../AttrRegistry). ConnMgr must register with the Attribute daemon (attrd) at initialization time, and must implement `get` and `set` functionality for each supported attribute.
+On the device, each daemon is responsible for the attributes relevant to its own functionality. These attributes can hold statistical-related, operational state/status-related, or network management-related information. The supported/defined attributes are documented in the [Device Attribute Registry](../AttrRegistry). ConnMgr must register with the Attribute daemon (attrd) at initialization time, and must implement `get` and `set` functionality for each supported attribute.
 
 There are other attributes defined, but ConnMgr supports the following attribute only:
 
@@ -249,4 +249,4 @@ These attributes must be part of the device Profile to work properly.
 
 
 
- Next: [Edge Device Daemon Implementation](](.../LinuxSDK-EdgeDaemon)
+ Next: [Edge Device Daemon Implementation](../LinuxSDK-EdgeDaemon)

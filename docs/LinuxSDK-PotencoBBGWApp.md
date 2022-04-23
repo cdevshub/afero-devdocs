@@ -2,22 +2,22 @@
 
 Now that you have successfully built Potenco using the instructions in the Linux SDK documentation, you may want to add your own recipe and application. In the sections below, we will lay out both the instructions for how to do this, and the reasoning behind the instructions.
 
-- [About BitBake Layers](](.../LinuxSDK-PotencoBBGWApp#aboutlayers)
-- [Prerequisites](](.../LinuxSDK-PotencoBBGWApp#prereqs)
+- [About BitBake Layers](../LinuxSDK-PotencoBBGWApp#aboutlayers)
+- [Prerequisites](../LinuxSDK-PotencoBBGWApp#prereqs)
 - The Steps
-  - [Step 1. Have Your Potenco Build Image](](.../LinuxSDK-PotencoBBGWApp#step1)
-  - [Step 2. Create af-app Directory](](.../LinuxSDK-PotencoBBGWApp#step2)
-  - [Step 3. Add Source File](](.../LinuxSDK-PotencoBBGWApp#step3)
-  - [Step 4. Create the makefile](](.../LinuxSDK-PotencoBBGWApp#step4)
-  - [Step 5. Create the BitBake Layer](](.../LinuxSDK-PotencoBBGWApp#step5)
-  - [Step 6. Create the BitBake Recipe for the App](](.../LinuxSDK-PotencoBBGWApp#step6)
-  - [Step 7. Create the layer.conf File](](.../LinuxSDK-PotencoBBGWApp#step7)
-  - [Step 8. Modify bblayers.conf File](](.../LinuxSDK-PotencoBBGWApp#step8)
-  - [Step 9. Build Application](](.../LinuxSDK-PotencoBBGWApp#step9)
-  - [Step 10. Copy App to Target Machine or Create SD Card Image](](.../LinuxSDK-PotencoBBGWApp#step10)
-  - [Step 11. Create and Publish Device Profile](](.../LinuxSDK-PotencoBBGWApp#step11)
-  - [Step 12. Open the App on the Device](](.../LinuxSDK-PotencoBBGWApp#step12)
-- [Using the Ready-Made Example App](](.../LinuxSDK-PotencoBBGWApp#exapp)
+  - [Step 1. Have Your Potenco Build Image](../LinuxSDK-PotencoBBGWApp#step1)
+  - [Step 2. Create af-app Directory](../LinuxSDK-PotencoBBGWApp#step2)
+  - [Step 3. Add Source File](../LinuxSDK-PotencoBBGWApp#step3)
+  - [Step 4. Create the makefile](../LinuxSDK-PotencoBBGWApp#step4)
+  - [Step 5. Create the BitBake Layer](../LinuxSDK-PotencoBBGWApp#step5)
+  - [Step 6. Create the BitBake Recipe for the App](../LinuxSDK-PotencoBBGWApp#step6)
+  - [Step 7. Create the layer.conf File](../LinuxSDK-PotencoBBGWApp#step7)
+  - [Step 8. Modify bblayers.conf File](../LinuxSDK-PotencoBBGWApp#step8)
+  - [Step 9. Build Application](../LinuxSDK-PotencoBBGWApp#step9)
+  - [Step 10. Copy App to Target Machine or Create SD Card Image](../LinuxSDK-PotencoBBGWApp#step10)
+  - [Step 11. Create and Publish Device Profile](../LinuxSDK-PotencoBBGWApp#step11)
+  - [Step 12. Open the App on the Device](../LinuxSDK-PotencoBBGWApp#step12)
+- [Using the Ready-Made Example App](../LinuxSDK-PotencoBBGWApp#exapp)
 
 We are assuming some general familiarity with Yocto and BitBake so will not be defining the terminology used.
 
@@ -31,7 +31,7 @@ Before we get started, let’s get some preliminaries out of the way.
 
 ## Prerequisites
 
-- You have completed the instructions for building the BeagleBone Green Wireless-based Potenco project, contained in the section [Build the Potenco OS Image](](.../LinuxSDK-PotencoBBGW#bldpotosimage).
+- You have completed the instructions for building the BeagleBone Green Wireless-based Potenco project, contained in the section [Build the Potenco OS Image](../LinuxSDK-PotencoBBGW#bldpotosimage).
 - You have named the directory in which the Potenco project exists as “potenco” and placed it in your home directory. If you choose to use a different path or directory name, you must adjust the instructions below accordingly.
 - You must have at least 64GB of disk space and 4GB of memory in your Ubuntu system to successfully build the Potenco image.
 
@@ -39,7 +39,7 @@ Before we get started, let’s get some preliminaries out of the way.
 
 ### Step 1. Have Your Potenco Build Image
 
-Again, be sure you have created a Potenco build image per the instructions in [Build the Potenco OS Image](](.../LinuxSDK-PotencoBBGW#bldpotosimage). This will be both the core image that is used on the BeagleBone Green Wireless and the image to which you will add your own application code.
+Again, be sure you have created a Potenco build image per the instructions in [Build the Potenco OS Image](../LinuxSDK-PotencoBBGW#bldpotosimage). This will be both the core image that is used on the BeagleBone Green Wireless and the image to which you will add your own application code.
 
 The first-time build of the Potenco image can take up to several hours, depending on the speed of your computer. In the instructions below, you will create your own BitBake layer so you can create your application by simply typing “`bitake app`”, avoiding having to rebuild from scratch. Also, when building the root filesystem, the time required will be much shorter once the Potenco image has been built vs. having to build it from scratch; that is, it will take minutes rather than hours.
 
@@ -582,7 +582,7 @@ Now we will create the Potenco device Profile and publish it to the device.
 
 ### Step 11. Create and Publish Device Profile
 
-After the system boots, you can type `**app**` at the command prompt and the application will run. However, it won’t **do** anything until you have pushed a new profile to your Potenco device that includes two new attributes. Use the Afero Profile Editor to create a new Profile that defines these attributes. You can read details on using the Profile Editor in the [Profile Editor User Guide](](.../Projects), but the specific instructions follow:
+After the system boots, you can type `**app**` at the command prompt and the application will run. However, it won’t **do** anything until you have pushed a new profile to your Potenco device that includes two new attributes. Use the Afero Profile Editor to create a new Profile that defines these attributes. You can read details on using the Profile Editor in the [Profile Editor User Guide](../Projects), but the specific instructions follow:
 
 1. Open the latest version of the Afero Profile Editor and sign in with your Afero developer account. (Download for either [Windows](http://cdn.afero.io/latest-ape/win) or [macOS](http://cdn.afero.io/latest-ape/mac).)
 
@@ -750,7 +750,7 @@ Note that these instructions are very similar to those above and use identical c
 
 ### Prerequisites
 
-- You have completed the instructions for building the BeagleBone Green Wireless based Potenco project, contained in the section [Build the Potenco OS Image](](.../LinuxSDK-PotencoBBGW#bldpotosimage).
+- You have completed the instructions for building the BeagleBone Green Wireless based Potenco project, contained in the section [Build the Potenco OS Image](../LinuxSDK-PotencoBBGW#bldpotosimage).
 - You have named the directory in which the Potenco project exists as “potenco” and placed it in your home directory. If you choose to use a different path or directory name, you must adjust the instructions below accordingly.
 - You have at least 64GB of disk space and 4GB of memory in your Ubuntu system to successfully build the Potenco image.
 - You have a GitHub account and have been given access to the am335x-demo-app GitHub repository. Contact the Afero Customer Enablement (ACE) team at “ace@afero.io” for access and the GitHub repo URL.
@@ -1123,6 +1123,6 @@ Note that these instructions are very similar to those above and use identical c
 
     .
 
-Now you have a full distribution image as per the [Potenco Setup Guide for BBGW](](.../LinuxSDK-PotencoBBGW). You can use those instructions to burn the image into an SD card and then install the image onto your BeagleBone Green Wireless board.
+Now you have a full distribution image as per the [Potenco Setup Guide for BBGW](../LinuxSDK-PotencoBBGW). You can use those instructions to burn the image into an SD card and then install the image onto your BeagleBone Green Wireless board.
 
- Next: [Afero Potenco Setup Guide for SAMA5D2 Board](](.../LinuxSDK-PotencoSAMA5D2)
+ Next: [Afero Potenco Setup Guide for SAMA5D2 Board](../LinuxSDK-PotencoSAMA5D2)

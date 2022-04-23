@@ -2,10 +2,10 @@
 
 Please factor in the following information when writing your MCU code:
 
-- [Don’t Forget to Call `af_lib_loop()`](](.../MCUCodingTips#MCU-DoNotForgetafLib)
-- [Instead of delay(), use a function that calls `af_lib_loop()`](](.../MCUCodingTips#MCU-AvoidDelay)
-- [Adjust the Request Queue Size If Necessary](](.../MCUCodingTips#MCU-AdjustQueueSize)
-- [Watch Your Memory Usage](](.../MCUCodingTips#MCU-WatchMemoryUsage)
+- [Don’t Forget to Call `af_lib_loop()`](../MCUCodingTips#MCU-DoNotForgetafLib)
+- [Instead of delay(), use a function that calls `af_lib_loop()`](../MCUCodingTips#MCU-AvoidDelay)
+- [Adjust the Request Queue Size If Necessary](../MCUCodingTips#MCU-AdjustQueueSize)
+- [Watch Your Memory Usage](../MCUCodingTips#MCU-WatchMemoryUsage)
 
 ## Don’t Forget to Call af_lib_loop()
 
@@ -30,11 +30,11 @@ void loop() {
 - `af_lib_loop()` performs small amounts of work every time it’s called. A multi-threaded process is emulated on a single-threaded MCU.
 - Call `af_lib_loop()` as often as possible in your code. If afLib has little to do, it returns quickly. Some complex calls, like `setAttribute`, require multiple `loop()` calls to finish.
 - **IMPORTANT!** Calling `af_lib_loop()` from within the `attrEventCallback` callback is NOT supported and will likely result in undesired behavior.
-- When afLib is finished with a task, you’ll get an event via `attrEventCallback()`. Within that callback, you’ll want to listen for any eventTypes that you need. See [attrEventCallback()](](.../afLibCallbacks#Func-attrEventCallback) for information on handling this callback.
+- When afLib is finished with a task, you’ll get an event via `attrEventCallback()`. Within that callback, you’ll want to listen for any eventTypes that you need. See [attrEventCallback()](../afLibCallbacks#Func-attrEventCallback) for information on handling this callback.
 - Make sure afLib has time to complete its work. When doing multiple `af_lib_set_attribute*()` calls, ideally wait for `attrEventCallback` before doing additional writes.
 - If you write faster than afLib can process, the queue may fill up, and the return code will be:
   `AF_ERROR_QUEUE_OVERFLOW  -4 // Queue is full`
-- Always check the [return code](](.../afLibErrors) from afLib calls. Check for return of AF_SUCCESS.
+- Always check the [return code](../afLibErrors) from afLib calls. Check for return of AF_SUCCESS.
 
 ## Instead of delay(), use a function that calls af_lib_loop()
 
@@ -52,14 +52,14 @@ void safeDelay(long msec) {
 
 ## Adjust the Request Queue Size If Necessary
 
-You may notice that the [return code](](.../afLibErrors) from some afLib calls in your MCU code indicates a full request queue (`AF_ERROR_QUEUE_OVERFLOW = -4`). If you observe this, you should consider increasing the size of the request queue. This value is defined as the `REQUEST_QUEUE_SIZE` in `af_lib.h`. The default value is 10, but you can safely change that value within the bounds of available memory on your platform.
+You may notice that the [return code](../afLibErrors) from some afLib calls in your MCU code indicates a full request queue (`AF_ERROR_QUEUE_OVERFLOW = -4`). If you observe this, you should consider increasing the size of the request queue. This value is defined as the `REQUEST_QUEUE_SIZE` in `af_lib.h`. The default value is 10, but you can safely change that value within the bounds of available memory on your platform.
 
 ## Watch Your Memory Usage
 
-If you’ve worked much with Arduino, this tip is probably not news to you: Memory is limited, and if your MCU code exceeds available memory, your output can be quite puzzling. You may see strange behavior from a sketch running on Uno only to find that the same code runs as expected on Teensy. This is particularly useful to remember in the context of the [Useful Debugging Methods](](.../DebugMethods) provided elsewhere; use of those methods requires significant memory, and will be difficult using Uno.
+If you’ve worked much with Arduino, this tip is probably not news to you: Memory is limited, and if your MCU code exceeds available memory, your output can be quite puzzling. You may see strange behavior from a sketch running on Uno only to find that the same code runs as expected on Teensy. This is particularly useful to remember in the context of the [Useful Debugging Methods](../DebugMethods) provided elsewhere; use of those methods requires significant memory, and will be difficult using Uno.
 
 ### See Also
 
-[Tutorial 3: Afero + Arduino](](.../Lesson3)
+[Tutorial 3: Afero + Arduino](../Lesson3)
 
- Next: [Using the Afero Cloud to Keep Time on the MCU](](.../SetMCUTime)
+ Next: [Using the Afero Cloud to Keep Time on the MCU](../SetMCUTime)

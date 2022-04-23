@@ -1,6 +1,6 @@
 # Edge Device Daemon Implementation
 
-Before reading this section, we recommend you familiarize yourself with the Afero Platform concepts by reading [Introducing Afero](](.../Overview).
+Before reading this section, we recommend you familiarize yourself with the Afero Platform concepts by reading [Introducing Afero](../Overview).
 
 One of the core Afero Platform concepts is *attributes*. Attributes represent various device states or functionalities that a user is able to control. The Edge Device daemon on the Linux-based device can function as a hub and edge device to control these attributes.
 
@@ -10,7 +10,7 @@ From the Afero system point of view, the edge device is implemented by adding at
 
 The Edge Device daemon must run in a libevent2 event loop, and link with the libevent2, af-ipc, af-util, and af-edge libraries.
 
-The af-edge client API is functionally equivalent to the afLib device API. This section translates the concepts from the afLib device API to the af-edge API. For more information about the afLib API please read [afLib API](](.../API-afLib).
+The af-edge client API is functionally equivalent to the afLib device API. This section translates the concepts from the afLib device API to the af-edge API. For more information about the afLib API please read [afLib API](../API-afLib).
 
 ## Building
 
@@ -115,4 +115,4 @@ Differences from afLib:
 - Logging is done to syslog, instead of a supplied stream.
 - The concept of transport is not supported. The “transport” implements a serial communication protocol for communicating with an MCU attached to the device.
 
- Next: [OTA Manager Daemon Implementation](](.../LinuxSDK-OTAManager)
+ Next: [OTA Manager Daemon Implementation](../LinuxSDK-OTAManager)

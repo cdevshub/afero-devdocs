@@ -26,7 +26,7 @@ Whenever possible, express data in the smallest form possible. Usually this just
 
 For frequency, no more than one write/update per second is preferable. Much slower than that, if possible, is recommended. Remember, a high update rate can affect your overall solution cost. If a device reports attribute values rapidly during operation even if those values haven’t changed, those updates will cause excessive traffic between the MCU and ASR. Also, there’s no need to write a group of related attributes if only one has changed. Only send updates that are meaningful to you.
 
-Writing to ASR does not mean the attribute has been synchronized with the Cloud; synchronization may take some time depending on the radio network or connectivity in general. So if you overwrite an attribute before it’s synchronized, the Cloud will not know about it (with an exception for attributes defined as [latch](](.../AttrDef#Latching)). Read more about allowing adequate attribute write timing in [Don’t Forget to Call af_lib_loop()](](.../MCUCodingTips#MCU-DoNotForgetafLib).
+Writing to ASR does not mean the attribute has been synchronized with the Cloud; synchronization may take some time depending on the radio network or connectivity in general. So if you overwrite an attribute before it’s synchronized, the Cloud will not know about it (with an exception for attributes defined as [latch](../AttrDef#Latching)). Read more about allowing adequate attribute write timing in [Don’t Forget to Call af_lib_loop()](../MCUCodingTips#MCU-DoNotForgetafLib).
 
 The MCU can sample as often as desired; there’s no limit on attribute reads since they come directly from ASR with no Cloud overhead. But again, **only push useful data**.
 
@@ -53,7 +53,7 @@ The information entered in the table will answer these questions:
 
 ## Smart Toaster Oven Example
 
-In this example we’ll define the attributes for a smart midline toaster oven. We’ll step through the toaster oven features (a.k.a. attributes), numbering and naming them so we can use that information when defining these attributes in the Afero Profile Editor. The full table is shown at the end of the example in [The Toaster Oven Data Model](](.../AttrModel#toven-datamodel).
+In this example we’ll define the attributes for a smart midline toaster oven. We’ll step through the toaster oven features (a.k.a. attributes), numbering and naming them so we can use that information when defining these attributes in the Afero Profile Editor. The full table is shown at the end of the example in [The Toaster Oven Data Model](../AttrModel#toven-datamodel).
 
 First, let’s ask, “What controls does the toaster oven provide?” The Start Button is pretty obvious, let’s begin with that.
 

@@ -4,10 +4,10 @@ Partners typically develop their own MCU code with the intent to update it remot
 
 To thoroughly understand the OTA API, don’t skip these sections!
 
-- [Definitions](](.../API-OTAEndpoints#otadefs)
-- [About Firmware Types](](.../API-OTAEndpoints#aboutfwtypes)
-- [About Version Numbers](](.../API-OTAEndpoints#aboutvernums)
-- [About Firmware Pools and Associations](](.../API-OTAEndpoints#aboutfwpool)
+- [Definitions](../API-OTAEndpoints#otadefs)
+- [About Firmware Types](../API-OTAEndpoints#aboutfwtypes)
+- [About Version Numbers](../API-OTAEndpoints#aboutvernums)
+- [About Firmware Pools and Associations](../API-OTAEndpoints#aboutfwpool)
 
 ## Definitions
 
@@ -15,10 +15,10 @@ To thoroughly understand the OTA API, don’t skip these sections!
 | ----------------------------------- | ------------------------------------------------------------ |
 | **Device/Peripheral**               | Any device in the Afero IoT ecosystem that can receive over-the-air updates. |
 | **Firmware Image/ Firmware Binary** | A piece of software that can be installed on a device to enhance its current functionality. It is specific to a device type. |
-| **Firmware Pool**                   | A group of firmware images that are hardware-specific, but can be assigned to a specific partner and device type to make them available for OTAs. Read more below in [About Firmware Pools and Associations](](.../API-OTAEndpoints#aboutfwpool). |
+| **Firmware Pool**                   | A group of firmware images that are hardware-specific, but can be assigned to a specific partner and device type to make them available for OTAs. Read more below in [About Firmware Pools and Associations](../API-OTAEndpoints#aboutfwpool). |
 | **Firmware Record**                 | A collection of metadata about a firmware image, including version information, description, etc. |
-| **Firmware Type**                   | A firmware image has a specific type that designates its usage on a device. For some modules this type is also used to determine where on the flash the firmware is written.Afero has some known firmware images types like Bootloader (Attribute ID 2001, Type 1), Soft Device (Attribute ID 2002, Type 2), Application (Attribute ID 2003, Type 3), and Device Description (Attribute ID 2004, Type 4).All firmware types except Type 4 have to be created in the firmware pool. They can be assigned to a specific device type at any time. The reason for this is that a lot of device types share the same basic firmware. However, device Profiles describe specific functionality of a device and therefore can only be created under a device type.Read more below in [About Firmware Types](](.../API-OTAEndpoints#aboutfwtypes). |
-| **OTA Manager**                     | A web application for managing firmware records. Read more in the [OTA Manager User Guide](](.../OTAMgr). |
+| **Firmware Type**                   | A firmware image has a specific type that designates its usage on a device. For some modules this type is also used to determine where on the flash the firmware is written.Afero has some known firmware images types like Bootloader (Attribute ID 2001, Type 1), Soft Device (Attribute ID 2002, Type 2), Application (Attribute ID 2003, Type 3), and Device Description (Attribute ID 2004, Type 4).All firmware types except Type 4 have to be created in the firmware pool. They can be assigned to a specific device type at any time. The reason for this is that a lot of device types share the same basic firmware. However, device Profiles describe specific functionality of a device and therefore can only be created under a device type.Read more below in [About Firmware Types](../API-OTAEndpoints#aboutfwtypes). |
+| **OTA Manager**                     | A web application for managing firmware records. Read more in the [OTA Manager User Guide](../OTAMgr). |
 
 ## About Firmware Types
 
@@ -52,4 +52,4 @@ Different types of devices often have some hardware components in common. Not on
 
 This is where the firmware pool comes into play. The firmware for the radio module is written once and only one artifact exists. This firmware is uploaded to the firmware pool and a general firmware record is created in the Afero Platform. To make this firmware available for OTAs, the firmware must be associated with a specific device type.
 
- Next: [OTA API Endpoints](](.../API-OTAEndpoints-Funcs)
+ Next: [OTA API Endpoints](../API-OTAEndpoints-Funcs)
