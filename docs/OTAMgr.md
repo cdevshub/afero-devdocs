@@ -13,7 +13,7 @@ At a high level, this is how it works:
 7. The ASR passes the firmware update to the MCU using the ASR ⇆ MCU interface.
 8. Update success/failure is reported back to Afero.
 
-In addition, you'll have to prepare your application code to accept an MCU OTA update. Instructions are on this page: [Handling MCU OTA Updates](../MCU_OTA).
+In addition, you'll have to prepare your application code to accept an MCU OTA update. Instructions are on this page: [Handling MCU OTA Updates](../MCU-OTA).
 
 
 
