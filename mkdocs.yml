@@ -3,7 +3,6 @@ markdown_extensions:
     - toc:
         permalink: "#"
         baselevel: 2
-theme: readthedocs
 nav:
    - Welcome: 'index.md'
    - Introducing Afero:
