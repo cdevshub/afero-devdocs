@@ -1,5 +1,6 @@
 # afPro UART Protocol
 
+
 This section describes using afPro (Afero Serial Protocol) over a UART interface. The examples used assume a standalone MCU as the master, ASR as the slave, and logic analyzer traces taken on a system running at 9600 baud 8-N-1 with no flow control. Note that the MCU must always be the master and ASR must always be the slave.
 
 We use timing diagrams from a logic analyzer to show the traffic.
