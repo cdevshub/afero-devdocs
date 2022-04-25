@@ -2,7 +2,10 @@ site_name: Afero Developer Documentation
 markdown_extensions:
     - toc:
         permalink: "#"
-        baselevel: 2
+        baselevel: 4
+theme: 
+   name: readthedocs
+   navigation_depth: 3
 nav:
    - Welcome: 'index.md'
    - Introducing Afero:
