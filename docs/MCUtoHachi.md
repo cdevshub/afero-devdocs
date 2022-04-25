@@ -7,5 +7,5 @@ afLib is provided in a form ready to be used with the Arduino development enviro
 In the first two links below, we’ve provided timing diagrams to help you understand the communication protocol using real examples. The state machine in afLib implements this protocol and should also be used as a model when porting the code. Note that the diagrams in the first two sections below were captured realtime during ASR operation. The third link below is to the “Practical Guide” to using the UART protocol, which describes a single (“happy”) path through the UART protocol.
 
 - [afPro SPI Protocol - How It Works](../afPro-SPI)
-- [afPro UART Protocol - How It Works](../afPro-UART) - Also available as a [Tech Note (.pdf file)](../files/TechNote-AferoUARTProtocol.pdf).
+- [afPro UART Protocol - How It Works](../afPro-UART) - Also available as a [Tech Note (.pdf file)](/files/TechNote-AferoUARTProtocol.pdf).
 - [afPro UART Protocol - Practical Guide](../afPro-UART-S) - An alternative explanation.

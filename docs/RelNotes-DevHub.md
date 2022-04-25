@@ -39,4 +39,4 @@ Release date: December 18, 2017
 - - Bug fixes to bring Developer Hub functionality in sync with soft hub (mobile app hub) functionality.
   - Support for Afero peripheral mode devices.
 
-- The Afero Hub Software (“Beetle” and “Hubby”) can now be operated on two separate hosts for testing purposes. To learn more, read [Running Afero Hub Software on Separate Hosts (.pdf)](../files/TechNote-AHS-on-Separate-Hosts.pdf).
+- The Afero Hub Software (“Beetle” and “Hubby”) can now be operated on two separate hosts for testing purposes. To learn more, read [Running Afero Hub Software on Separate Hosts (.pdf)](/files/TechNote-AHS-on-Separate-Hosts.pdf).

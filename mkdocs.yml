@@ -2,10 +2,10 @@ site_name: Afero Developer Documentation
 markdown_extensions:
     - toc:
         permalink: "#"
-        baselevel: 3
+        baselevel: 1
+    - smarty
 theme:
-   name: mkdocs
-   navigation_depth: 3
+    name: united
 nav:
    - Welcome: 'index.md'
    - Introducing Afero:

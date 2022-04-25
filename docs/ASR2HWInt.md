@@ -1,6 +1,6 @@
 # ASR-2 Hardware Integration with the Murata Type1LD BLE+Wi-Fi Module
 
-This page describes what you must do for your connected hardware IoT project to work as an edge device in the Afero IoT ecosystem. The ecosystem includes the edge device, the Afero Secure Hub, the Afero mobile app, and the Afero Cloud. This information is also available as a[ Tech Note (.pdf file)](../files/TechNote-Integrate-MurataWiFiBLE-Afero.pdf).
+This page describes what you must do for your connected hardware IoT project to work as an edge device in the Afero IoT ecosystem. The ecosystem includes the edge device, the Afero Secure Hub, the Afero mobile app, and the Afero Cloud. This information is also available as a[ Tech Note (.pdf file)](/files/TechNote-Integrate-MurataWiFiBLE-Afero.pdf).
 
 The instructions that follow use the following components:
 
@@ -26,7 +26,7 @@ The Murata LBEE5PA1LD (1LD) combo module provides an embedded wireless LAN and B
 
 WICED is a Cypress development system that vastly reduces the effort required to add wireless connectivity to embedded devices. For more information, go to the [Murata product page for the Type 1LD module](https://wireless.murata.com/products/rf-modules-1/wi-fi-bluetooth/type1ld.html).
 
-Afero designed the following reference schematic with Murata. (Click to open a [.pdf file of the schematic](../files/1LD_Afero_20181023.pdf).)
+Afero designed the following reference schematic with Murata. (Click to open a [.pdf file of the schematic](/files/1LD_Afero_20181023.pdf).)
 
 ![img](img/1LD_Afero_20181023.png)
 

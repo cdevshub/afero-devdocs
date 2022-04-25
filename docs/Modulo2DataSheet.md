@@ -296,7 +296,7 @@ Afero, Inc.
 Suite 210
 Los Altos, CA 94022
 
-View letter stating [EU Declaration of Conformity (pdf)](../files/Modulo2-EU-Decl-Conform.pdf).
+View letter stating [EU Declaration of Conformity (pdf)](/files/Modulo2-EU-Decl-Conform.pdf).
 
 ### RoHS
 
