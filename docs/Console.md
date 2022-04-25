@@ -52,8 +52,6 @@ You can package and download the contents of this device listings table (with ad
 
 ![img](img/Console-DeviceListing.png)
 
-
-
 #### Individual Device Data Viewer
 
 To view usage data on an **individual device**, do any of the following:
