@@ -7,8 +7,7 @@ In this section, we’ll talk about some concepts behind the Afero development p
 Your device’s attributes and values, and how the Afero Platform uses them, are concepts foundational to development. To understand your device in terms of its attributes and values, think about what your device can do (its attributes), then the ways in which it can do it (its values).
 
 Let’s look at an example, a simple light bulb:
-
-![[Light Bulb Example]](img/Lightbulb.png)
+<img src="../img/Lightbulb.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none">
 
 **The Light Bulb Example**
 
@@ -29,14 +28,13 @@ Next, we’ll talk about how device attributes and values translate into user co
 ## The Mobile App UI
 
 Now that we have a good idea of the light bulb’s attributes and possible values, think about how a user would control those device functions from a mobile app interface. We’ll stay with our light bulb example:
-
-![[Light Bulb Example]](img/Lightbulb.png)
+<img src="../img/Lightbulb.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none">
 
 We want a user to control the light bulb from their Profile Editor, so for each attribute we need to present a suitable UI element that gives the user a reasonable level of control:
 
 - **Power** can have only two values, so a **Switch** that toggles **On** and **Off** is good control choice:
-  ![Switch Control](img/Switch.png)
-- **Brightness** can have a range of values, so a **Slider** is an appropriate choice to control this attribute:![Slider Control](img/Slider.png)
+<img src="../img/Switch.png" width="100" style="vertical-align:middle;margin:0px 0px;border:none">
+- **Brightness** can have a range of values, so a **Slider** is an appropriate choice to control this attribute:<br><img src="../img/Slider.png" width="300" style="vertical-align:middle;margin:0px 0px;border:none">
 
 The data type and function of each attribute will suggest the logical UI control element to use. Some examples:
 
@@ -62,8 +60,7 @@ When the definitions are complete, the Profile Editor “publishes” your devic
 ## Device Profile Distribution
 
 The device definitions that the Profile Editor packages into the device Profile are used throughout the Afero Platform. The picture below illustrates the information flow once you click the PUBLISH button in the Profile Editor:
-
-![Device Profile Distribution](img/APE-ProfileDistr.png)
+<br><img src="../img/APE-ProfileDistr.png" style="vertical-align:middle;margin:0px 0px;border:none">
 
 The device Profile leaves the Profile Editor and enters the Afero Cloud. Profiles are stored in the cloud and retrieved on demand by components within the Afero Platform.
 
