@@ -4,8 +4,8 @@ We’ve built Afero to be accessible to a broad range of developers, from novice
 
 ## Quick Links
 
-* Afero mobile app for: [Android <img src="img/android.svg" alt="drawing" width="20" style="vertical-align:middle;margin:0px 0px">](https://play.google.com/store/apps/details?id=io.afero.tokui.prod.release) or [iOS <img src="img/apple.svg" alt="drawing" width="20" style="vertical-align:middle;margin:0px 0px">](https://apps.apple.com/us/app/afero-iot-platform/id1065087421?ls=1) .
-* Afero Profile Editor for: [Windows <img src="img/windows.svg" alt="drawing" width="20" style="vertical-align:middle;margin:0px 0px">](https://cdn.afero.io/latest-ape/win) or [macOS <img src="img/macos.svg" alt="drawing" width="20" style="vertical-align:middle;margin:0px 0px">](https://cdn.afero.io/latest-ape/mac) .
+* Afero mobile app for: [Android <img src="img/android.svg" alt="drawing" width="20" style="vertical-align:middle;margin:0px 0px;border:none">](https://play.google.com/store/apps/details?id=io.afero.tokui.prod.release) or [iOS <img src="img/apple.svg" alt="drawing" width="20" style="vertical-align:middle;margin:0px 0px;border:none">](https://apps.apple.com/us/app/afero-iot-platform/id1065087421?ls=1) .
+* Afero Profile Editor for: [Windows <img src="img/windows.svg" alt="drawing" width="20" style="vertical-align:middle;margin:0px 0px;border:none">](https://cdn.afero.io/latest-ape/win) or [macOS <img src="img/macos.svg" alt="drawing" width="20" style="vertical-align:middle;margin:0px 0px;border:none">](https://cdn.afero.io/latest-ape/mac) .
 * [GitHub Repositories](https://github.com/aferodeveloper)
 * [Afero Development Hardware - BUY HERE!](Hardware)
 * [Instructables.com demo projects](http://www.instructables.com/howto/afero)
