@@ -80,7 +80,7 @@ Zero sync is required for the first transaction after a reset, but is not requir
 The zero sync transaction starts with ASR sending the Ready byte (0x32). This lets the MCU know it can now send data. The full sequence is:
 
 [*Click image to enlarge:*
-![Zero Sync Overview](img/UART-ZeroSync-Overview.png)](img/UART-ZeroSync-Overview.png)
+<img src="../img/UART-ZeroSync-Overview.png" style="vertical-align:middle;margin:0px 0px;border:none">](img/UART-ZeroSync-Overview.png)
 
 The events occur in this order:
 
@@ -98,21 +98,21 @@ Next, we’ll look at the individual events.
 After the MCU receives a Ready byte from ASR, the MCU sends a Sync Request message:
 
 [*Click image to enlarge:*
-![Zero Sync Request](img/UART-ZeroSync-Request.png)](img/UART-ZeroSync-Request.png)
+<img src="../img/UART-ZeroSync-Request.png" style="vertical-align:middle;margin:0px 0px;border:none">](img/UART-ZeroSync-Request.png)
 
 **Sync Response (Events 3-4)**
 
 ASR responds with a Sync Response message indicating it has no bytes to send to the MCU, then follows with a Ready byte:
 
 [*Click image to enlarge:*
-![Zero Sync Request](img/UART-ZeroSync-Read.png)](img/UART-ZeroSync-Read.png)
+<img src="../img/UART-ZeroSync-Read.png" style="vertical-align:middle;margin:0px 0px;border:none">](img/UART-ZeroSync-Read.png)
 
 **Sync Acknowledge (Events 5-6)**
 
 Since neither the MCU nor ASR has any bytes to send and the MCU has received the Ready byte from ASR, the MCU can respond with a Sync Acknowledge. The Sync Acknowledge looks just like the Sync Request, except the message type is 0x31. Finally, the MCU waits for a final Ready byte from ASR to know the transaction is complete:
 
 [*Click image to enlarge:*
-![Zero Sync Acknowledge](img/UART-ZeroSync-Ack.png)](img/UART-ZeroSync-Ack.png)
+<img src="../img/UART-ZeroSync-Ack.png" style="vertical-align:middle;margin:0px 0px;border:none">](img/UART-ZeroSync-Ack.png)
 
 At this point the master and slave are in sync. Neither one has anything to send.
 
@@ -123,7 +123,7 @@ In this example, the Afero Cloud requests the MCU change the value of one of its
 The transaction starts with ASR sending the Ready byte to let the MCU know it has something to send. The transaction ends with ASR sending the Ready byte to signal the operation has completed:
 
 [*Click image to enlarge:*
-![Set MCU From Service Overview](img/UART-SetMCUFromService-Overview.png)](img/UART-SetMCUFromService-Overview.png)
+<img src="../img/UART-SetMCUFromService-Overview.png" style="vertical-align:middle;margin:0px 0px;border:none">](img/UART-SetMCUFromService-Overview.png)
 
 There are eight distinct events:
 
@@ -143,28 +143,28 @@ Let’s look at each event in more detail.
 The transaction begins with ASR sending the Ready byte to signal the MCU it has something to send. The MCU responds by sending a Sync Request message with MCU bytes to send set to zero since it has nothing to send, and ASR bytes to send set to zero since it does not yet know how many bytes ASR wants to send:
 
 [*Click image to enlarge:*
-![Set MCU From Service Receive Request](img/UART-SetMCUFromService-RecvRequest.png)](img/UART-SetMCUFromService-RecvRequest.png)
+<img src="../img/UART-SetMCUFromService-RecvRequest.png" style="vertical-align:middle;margin:0px 0px;border:none">](img/UART-SetMCUFromService-RecvRequest.png)
 
 **Sync Response (Events 3-4)**
 
 The ASR Sync Response message is next, which says it has 12 bytes to send, followed by a Ready byte:
 
-[*Click image to enlarge:*
-![Set MCU From Service ASR Response](img/UART-SetMCUFromService-ASRResponse.png)](img/UART-SetMCUFromService-ASRResponse.png)
+[*Click image to enlarge:*<br>
+<img src="../img/UART-SetMCUFromService-ASRResponse.png" style="vertical-align:middle;margin:0px 0px;border:none">](img/UART-SetMCUFromService-ASRResponse.png)
 
 **Sync Acknowledge (Event 5)**
 
 After receiving the Ready byte, the MCU sends a Sync Acknowledge message that includes the byte count from the ASR Sync Response. The MCU is telling ASR it is ready to receive 12 bytes:
 
-[*Click image to enlarge:*
-![Set MCU From Service Receive Acknowledge](img/UART-SetMCUFromService-RecvAck.png)](img/UART-SetMCUFromService-RecvAck.png)
+[*Click image to enlarge:*<br>
+<img src="../img/UART-SetMCUFromService-RecvAck.png" style="vertical-align:middle;margin:0px 0px;border:none">](img/UART-SetMCUFromService-RecvAck.png)
 
 **Receive Data (Events 6-8)**
 
 Next, ASR sends a Ready byte followed by the 12 bytes of data that make up the actual Set Attribute command. The MCU reads the data:
 
 [*Click image to enlarge:*
-![Set MCU From Service Receive Data](img/UART-SetMCUFromService-RecvData.png)](img/UART-SetMCUFromService-RecvData.png)
+<img src="../img/UART-SetMCUFromService-RecvData.png" style="vertical-align:middle;margin:0px 0px;border:none">](img/UART-SetMCUFromService-RecvData.png)
 
 After sending the data, ASR completes the transaction by sending a Ready byte.
 
@@ -173,7 +173,7 @@ After sending the data, ASR completes the transaction by sending a Ready byte.
 In this example, the MCU changes the attribute value locally and then instigates an Update Attribute transaction:
 
 [*Click image to enlarge:*
-![UART-Update ASR from MCU - Overview](img/UART-UpdateASRFromMCU-Overview.png)](img/UART-UpdateASRFromMCU-Overview.png)
+<img src="../img/UART-UpdateASRFromMCU-Overview.png" style="vertical-align:middle;margin:0px 0px;border:none">](img/UART-UpdateASRFromMCU-Overview.png)
 
 The entire transaction consists of the following events:
 
@@ -191,22 +191,22 @@ Now we’ll look at each event with the timing diagrams.
 
 The communication begins with the MCU sending a Sync Request message. The MCU wants to send Update Attribute data consisting of 11 bytes, so it sends 0x0B in the Sync Request message. ASR then sends a Sync Response:
 
-[*Click image to enlarge:*
-![UART - Update ASR from MCU - Sync Request](img/UART-UpdateASRFromMCU-SyncRequest.png)](img/UART-UpdateASRFromMCU-SyncRequest.png)
+[*Click image to enlarge:*<br>
+<img src="../img/UART-UpdateASRFromMCU-SyncRequest.png" style="vertical-align:middle;margin:0px 0px;border:none">](img/UART-UpdateASRFromMCU-SyncRequest.png)
 
 **Sync Acknowledge (Events 3-4)**
 
 ASR sends a Ready byte, and the MCU sends the Sync Acknowledge, confirming it’s sending 11 bytes:
 
-[*Click image to enlarge:*
-![UART - Update ASR from MCU - Sync Acknowledge](img/UART-UpdateASRFromMCU-SyncAck.png)](img/UART-UpdateASRFromMCU-SyncAck.png)
+[*Click image to enlarge:*<br>
+<img src="../img/UART-UpdateASRFromMCU-SyncAck.png" style="vertical-align:middle;margin:0px 0px;border:none">](img/UART-UpdateASRFromMCU-SyncAck.png)
 
 **Receive Data from MCU (Events 5-7)**
 
 Only after the Sync Acknowledge and the next ASR Ready byte from ASR does the MCU send the actual data:
 
 [*Click image to enlarge:*
-![UART - Update ASR from MCU - Send Data](img/UART-UpdateASRFromMCU-SendData.png)](img/UART-UpdateASRFromMCU-SendData.png)
+<img src="../img/UART-UpdateASRFromMCU-SendData.png" style="vertical-align:middle;margin:0px 0px;border:none">](img/UART-UpdateASRFromMCU-SendData.png)
 
 ASR completes the transaction with a final Ready byte.
 
