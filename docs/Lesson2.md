@@ -9,13 +9,13 @@ This tutorial is designed for the Modulo-1 and Modulo-2 dev boards, but not for 
 
 **2.** For the purposes of this tutorial, we’re going to save you some typing by providing a pre-configured Modulo project.
 
- 2a. First, you will need the appropriate Sample Project. The easiest way to get this is from the Profile Editor system TOOLS menu. From this menu, select SAMPLE PROJECTS > [GITHUB REPOSITORY](http://github.com/aferodeveloper/APE-Project-Profiles). (All Modulo projects, and more, are available from this GitHub repository.)
+*2a.* First, you will need the appropriate Sample Project. The easiest way to get this is from the Profile Editor system TOOLS menu. From this menu, select SAMPLE PROJECTS > [GITHUB REPOSITORY](http://github.com/aferodeveloper/APE-Project-Profiles). (All Modulo projects, and more, are available from this GitHub repository.)
 	
- 2b. On the GitHub web page that opens, click the green CLONE OR DOWNLOAD button then select DOWNLOAD ZIP. Navigate to your Profile Editor project directory to save the zip file.
+*2b.* On the GitHub web page that opens, click the green CLONE OR DOWNLOAD button then select DOWNLOAD ZIP. Navigate to your Profile Editor project directory to save the zip file.
     
- 2c. Once saved, go to the Profile Editor project directory on your filesystem and double-click the file to decompress it. You can keep all the projects in the unzipped project profiles directory, or delete the projects you’re not interested in.
+*2c.* Once saved, go to the Profile Editor project directory on your filesystem and double-click the file to decompress it. You can keep all the projects in the unzipped project profiles directory, or delete the projects you’re not interested in.
 
- 2d. Back in the Afero Profile Editor Startup window, select the OPEN button, navigate to the directory where you unzipped the project, and select the directory that holds the Modulo project you want to use in this lesson.
+*2d.* Back in the Afero Profile Editor Startup window, select the OPEN button, navigate to the directory where you unzipped the project, and select the directory that holds the Modulo project you want to use in this lesson.
 
 **3.** Once the project is open, click DEVICE TYPE in the Navigation pane in the left of the window. To be sure we’re all starting in the same view, your window should look something like this:<br><img src="../img/Mod2_DeviceType.png" style="vertical-align:middle;margin:0px 0px;border:none"><br>
    __Note:__ Notice the MODULE TYPE of the Profile is specified right at the top of the pane (in the example, we’re working with a Modulo-2.) This module type was specified in the pre-built Profile you downloaded; when creating a Profile from scratch, you must specify the module type right from the beginning. Doing so is the first step in the NEW PROFILE window. It’s critical that the module type in the Profile match the hardware you’re using in your project!<br><br>
@@ -27,7 +27,7 @@ Since we’re working with a pre-configured Profile, you don’t need to make an
 
 **5.** For this project, we’ve defined two attributes: one for GPIO 0, which is connected to the LED on the Modulo; and one for GPIO 3, which is tied to the pushbutton. We’ll take a detailed look at the attributes now. Note that selected values are shown in white letters on an orange background.<br>
 
-5a. Click LED ATTRIBUTE, the attribute name for GPIO 0, to open its detailed view:<br><img src="../img/Tut2_LED_Attr.png" style="vertical-align:middle;margin:0px 0px;border:none"><br>     
+*5a.* Click LED ATTRIBUTE, the attribute name for GPIO 0, to open its detailed view:<br><img src="../img/Tut2_LED_Attr.png" style="vertical-align:middle;margin:0px 0px;border:none"><br>     
 
  - ATTRIBUTE NAME is a required field for all attributes. We’ve named this one LED ATTRIBUTE but you can change it in this field.
  - To control the LED from the mobile app, OPERATION MODE must be OUTPUT. This is because Outputs are Read/Write, and sending a command from the mobile app requires writing to an attribute.
@@ -36,7 +36,7 @@ Since we’re working with a pre-configured Profile, you don’t need to make an
  - Change the ACTIVE selector set to LOW. Because the cathode of the LED is connected to GPIO 0, the LED turns on when the pin goes LOW.
  - Don’t select any of the BIND TO ATTRIBUTES buttons.
       
-5b. Click BUTTON ATTRIBUTE, the attribute name for GPIO 3, to open its detailed view:<br><img src="../img/Tut2_Button_Attr.png" style="vertical-align:middle;margin:0px 0px;border:none"><br>
+*5b.* Click BUTTON ATTRIBUTE, the attribute name for GPIO 3, to open its detailed view:<br><img src="../img/Tut2_Button_Attr.png" style="vertical-align:middle;margin:0px 0px;border:none"><br>
 
  - ATTRIBUTE NAME is a required field for all attributes. We’ve named this one BUTTON ATTRIBUTE but you can change it here.
  - Leave GPIO3 OPERATION MODE set to INPUT. This will display the state of the button when pressed in the mobile app.
@@ -45,14 +45,14 @@ Since we’re working with a pre-configured Profile, you don’t need to make an
  - With IS TOGGLE set, the status displayed by the mobile app will switch with every momentary button push. If IS TOGGLE is not set, the state displayed will always reflect the current button state.
  - Leave the DEBOUNCE TIME set to 0, the ACTIVE selector set to HIGH, and don’t select any of the BIND TO ATTRIBUTES buttons.
       
-5c. Click SAVE when you are finished defining project attributes.<br>
+*5c.* Click SAVE when you are finished defining project attributes.<br>
 
 **6.**  To move on to defining the mobile app UI for this project, click UI CONTROLS in the left-hand Navigation pane.<br><br>
    You will probably not be surprised to find that two UI controls have been defined since our project uses two attributes. It’s common, though not a rule, to have one UI control for every attribute. As examples: some attribute values will be used “behind-the-scenes” to calculate the values of other attributes, and you can assign the same control to multiple attributes and multiple controls to the same attribute.<br><br>
    There are two steps to defining the UI controls: a) we first define the “attribute options” for each attribute; and b) we then assign UI controls to each attribute.<br><br>
    **Note:** You might be wondering why defining attribute options is separate from assigning controls. The reason is so you can easily assign multiple controls to the same attribute without having to retype a lot of details (although that doesn’t apply to this Tutorial). To learn more about attribute options, read [Define the Mobile App UI > Define the Attribute Options](../AppUIDef#Options).<br><br>
 
-6a. In the far-right pane under the heading ATTRIBUTE OPTIONS, click the pencil icon in the LED:LED ATTRIBUTE box to open its Attribute Option Details dialog:<br><img src="../img/Les2-LEDAttrOpt.png" style="vertical-align:middle;margin:0px 0px;border:none"><br>
+*6a.* In the far-right pane under the heading ATTRIBUTE OPTIONS, click the pencil icon in the LED:LED ATTRIBUTE box to open its Attribute Option Details dialog:<br><img src="../img/Les2-LEDAttrOpt.png" style="vertical-align:middle;margin:0px 0px;border:none"><br>
 
 You will see that we have defined the following:
 
@@ -70,7 +70,7 @@ Now, again in the far-right pane, click the pencil icon in the BUTTON:BUTTON ATT
  - Again, we don't need any RANGE OPTIONS defined.
  - Click OK to close the Attribute Option Details dialog.
 
-6b. Now we will assign a UI Control to each attribute. There are many types of UI Controls available, but in this project are using the MENU control for both.<br><img src="../img/Dfn_UI_Ctls.png" width="400" style="vertical-align:middle;margin:0px 0px;border:none"><br>
+*6b.* Now we will assign a UI Control to each attribute. There are many types of UI Controls available, but in this project are using the MENU control for both.<br><img src="../img/Dfn_UI_Ctls.png" width="400" style="vertical-align:middle;margin:0px 0px;border:none"><br>
 
 Click the first attribute, LED ATTRIBUTE (I/O 0): MENU, to open it for editing.<br><img src="../img/AttributeDef-LED.png" style="vertical-align:middle;margin:0px 0px;border:none"><br>
       
@@ -79,23 +79,23 @@ Click the first attribute, LED ATTRIBUTE (I/O 0): MENU, to open it for editing.<
 
 Now click BUTTON ATTRIBUTE (I/O 3): MENU to open it.<br><img src="../img/AttributeDef-Button.png" style="vertical-align:middle;margin:0px 0px;border:none"><br>Notice that we’ve also selected the INLINE View Style.
 
-6c. Click SAVE when you are finished defining UI controls.
+*6c.* Click SAVE when you are finished defining UI controls.
 
 **7.**  Click UI CONTROL GROUPS in the left-hand Navigation pane to group your controls.<br>
 
 The left-hand pane, DEFINE THE UI CONTROL GROUPS, displays a representation of the device mobile app UI. At the top of both the mobile app and the Profile Editor is the “groups ribbon”; below are the controls for the selected group. Note that device Settings is a selection only shown in the mobile app groups ribbon, not in the Profile Editor.
 
-7a. We’ve already set up two groups, shown in the groups ribbon and labeled **LED** and **Button**. (We’ve already created groups for this project, but if we hadn’t, you would click <img src="../img/AddGroupIcon.png" style="vertical-align:middle;margin:0px 0px;border:none"> to create a new group.)
+*7a.* We’ve already set up two groups, shown in the groups ribbon and labeled **LED** and **Button**. (We’ve already created groups for this project, but if we hadn’t, you would click <img src="../img/AddGroupIcon.png" style="vertical-align:middle;margin:0px 0px;border:none"> to create a new group.)
 
-7b. On the right, you’ll see all the controls you defined on the UI Controls window, identified by their Default Label. These are the controls available for grouping.
+*7b.* On the right, you’ll see all the controls you defined on the UI Controls window, identified by their Default Label. These are the controls available for grouping.
 
-7c. Click the group labeled **LED** to make it active and ready for editing. The group will be highlighted in orange:<br><img src="../img/Control_Groups_LED.png" style="vertical-align:middle;margin:0px 0px;border:none"><br>
+*7c.* Click the group labeled **LED** to make it active and ready for editing. The group will be highlighted in orange:<br><img src="../img/Control_Groups_LED.png" style="vertical-align:middle;margin:0px 0px;border:none"><br>
 
 Below the selected group, you’ll see the **LED** menu control. We’ve already moved the **LED** menu into the **LED** group, but if we hadn’t, you would add a control by dragging it from the AVAILABLE UI CONTROLS pane on the right into the controls display on the left, below the groups ribbon.<br><br>
 
-7d. To remove a control from a group, simply drag it back to the AVAILABLE UI CONTROLS pane.<br>**Note:** A control can appear in multiple groups, but *must* appear in at least one group or it won’t appear at all in the mobile app UI. That means that even if you have just one UI control, you’ll need to create a UI control group to contain it.<br><br>
+*7d.* To remove a control from a group, simply drag it back to the AVAILABLE UI CONTROLS pane.<br>**Note:** A control can appear in multiple groups, but *must* appear in at least one group or it won’t appear at all in the mobile app UI. That means that even if you have just one UI control, you’ll need to create a UI control group to contain it.<br><br>
 
-7e. Click SAVE when you are finished defining UI control groups.
+*7e.* Click SAVE when you are finished defining UI control groups.
 
 
 **8.** Now that your device Profile is complete, click PUBLISH in the left-hand Navigation pane to install it on your Modulo.
@@ -112,11 +112,11 @@ Before we get started, take a look at the PUBLISH window:
 
 **OK, time to Publish:**
 
-8a. Select the device(s) you want to update by selecting the corresponding orange checkbox(es).
+*8a.* Select the device(s) you want to update by selecting the corresponding orange checkbox(es).
 
-8b. Click PUBLISH.
+*8b.* Click PUBLISH.
 
-8c. The update can take up to one minute. You’ll see an update message in the Device Activity and the SW Version will change once the update has completed.
+*8c.* The update can take up to one minute. You’ll see an update message in the Device Activity and the SW Version will change once the update has completed.
 
 **9.** Try out the new mobile app UI for your device! Notice that the LED is on, which is indicated on the Home screen. Because it’s the Primary Operation defined with a Boolean attribute, tapping the large device icon on the Home screen will toggle the LED on and off.<br><img src="../img/ios_app.png" style="vertical-align:middle;margin:0px 0px;border:none"><br>
 
