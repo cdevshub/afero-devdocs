@@ -26,9 +26,7 @@ Be sure you’ve done the following before starting the steps below:
 
 - You can obtain afLib by going to http://github.com/aferodeveloper/afLib.
 - Follow your [IDE instructions](https://www.arduino.cc/en/Guide/Libraries) on how to install the library.
-
 - afLib contains an Examples directory. In this directory, you’ll find an Arduino sketch as well as a directory containing an Afero device Profile that can be published to your Modulo.
-
 - The examples live in your Documents directory under Arduino/libraries/afLib/examples/.
 
 **2. Register your Afero development board to your account, if you haven’t already done so.**<br>Do this by scanning the QR code on your dev board using the Afero mobile app.
@@ -36,9 +34,7 @@ Be sure you’ve done the following before starting the steps below:
 **3. Load the afBlink Profile in Afero Profile Editor:**
 
 - From the Profile Editor start page, select the OPEN button.
-
 - In the Open dialog, navigate to Arduino/libraries/afLib/examples/afBlink/profile/
-
 - Open the device Profile directory that is appropriate for your developer device.
 
 **4. From the Afero mobile app, make sure your developer device is connected.**
@@ -50,11 +46,8 @@ Be sure you’ve done the following before starting the steps below:
 **7. Now that the developer device is all set, let’s update the Arduino:**
 
 - Open the Arduino IDE and from the File menu, select EXAMPLES > AFLIB > AFBLINK.
-
 - Make sure the BOARD and PORT are set correctly in the Tools menu.
-
 - With the afBlink sketch open, select UPLOAD from the Sketch menu.
-
 - Once the sketch has uploaded, open the Serial Monitor to see output from the example.
 
 **8. Open the Afero mobile app and have some fun controlling your LED!**<br>The uppermost control, labeled “Blink”, lets you start and stop blinking; the lower control, labeled “LED”, displays the state of the module LED in real-time.
@@ -195,7 +188,6 @@ The flow above illustrates the basic messaging pattern:
 **4.** ASR does a couple of things:
 
 - Stores the attribute’s current value and the new desired value.
-
 - Tells the MCU that the attribute value should be set to the desired value.
 
 **5.** When the MCU gets the message, `attrEventCallback()` executes. In that call, you must write code to enable the MCU to make a state change that will correspond to the desired attribute value. This will typically involve some device action (e.g., starting LED blinking).
