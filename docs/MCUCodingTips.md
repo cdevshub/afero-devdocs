@@ -2,10 +2,10 @@
 
 Please factor in the following information when writing your MCU code:
 
-- [Don’t Forget to Call `af_lib_loop()`](../MCUCodingTips#MCU-DoNotForgetafLib)
-- [Instead of delay(), use a function that calls `af_lib_loop()`](../MCUCodingTips#MCU-AvoidDelay)
-- [Adjust the Request Queue Size If Necessary](../MCUCodingTips#MCU-AdjustQueueSize)
-- [Watch Your Memory Usage](../MCUCodingTips#MCU-WatchMemoryUsage)
+- [Don’t Forget to Call `af_lib_loop()`](../MCUCodingTips#dont-forget-to-call-af_lib_loop)
+- [Instead of delay(), use a function that calls `af_lib_loop()`](../MCUCodingTips#instead-of-delay-use-a-function-that-calls-af_lib_loop)
+- [Adjust the Request Queue Size If Necessary](../MCUCodingTips#adjust-the-request-queue-size-if-necessary)
+- [Watch Your Memory Usage](../MCUCodingTips#watch-your-memory-usage)
 
 ## Don’t Forget to Call af_lib_loop()
 
