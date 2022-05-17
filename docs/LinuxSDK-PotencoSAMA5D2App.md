@@ -1032,4 +1032,4 @@ Note that these instructions are very similar to those above and use identical c
 
 Now you are ready to flash the image to the internal eMMC. Take the resulting `afimg` file and flash it onto the SAMA5D2 board using the method outlined in the [Potenco Setup Guide for SAMA5D2](../LinuxSDK-PotencoSAMA5D2#flash).
 
- Next: [Secure Linux SDK Frequently-Asked Questions](../LinuxSDK-FAQ)
+ **&#8674;** *Next:* [Secure Linux SDK Frequently-Asked Questions](../LinuxSDK-FAQ)

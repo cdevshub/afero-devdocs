@@ -306,4 +306,4 @@ This device conforms to RoHS (Restriction of Hazardous Substances) European Unio
 
 This product has been supplied from an environmentally aware manufacturer that complies with the Waste Electrical and Electronic Equipment (WEEE) Directive 2002/96/EC. The “crossed-out wheelie bin” symbol is placed on this product to encourage you to recycle wherever possible.
 
- Next: [ASR-2 Hardware Integration Guide](../ASR2HWInt)
+ **&#8674;** *Next:* [ASR-2 Hardware Integration Guide](../ASR2HWInt)

@@ -238,4 +238,4 @@ Every label must include the following two pieces of information: 1) the QR code
 
 
 
- Next: [Hardware Design Files](../Datasheets)
+ **&#8674;** *Next:* [Hardware Design Files](../Datasheets)

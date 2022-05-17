@@ -20,4 +20,4 @@ The Afero Platform has been designed specifically to get developers up and runni
 
 Afero scales from individual maker prototypes to millions of units. We’ve partnered with Murata and Microchip, two of the most trusted names in electronics manufacturing, to produce our development boards and modules.
 
- Next: [Afero IoT Platform Overview](../SystemOverview)
+**&#8674;** *Next:* [Afero IoT Platform Overview](../SystemOverview)

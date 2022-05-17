@@ -33,8 +33,6 @@ The tool you will use to define your device Profiles is the Afero Profile Editor
 
 **Chrome app users:** If you were previously using the Afero Profile Editor Chrome app, **remove** the Chrome app by going to `chrome://extensions/` in your browser, finding the Afero Profile Editor entry, then clicking the trash icon to the right.
 
-
-
 The Profile Editor takes care of the following:
 
 - Declaration of a Device Type to the Afero Cloud.
@@ -50,7 +48,7 @@ Note that during project development you **do** need an active network connectio
 
 An Afero project is similar to any development environment project; essentially, it’s a container for source files, output files, and a manifest that holds it all together:
 
-![Project Structure](img/APE-ProjectStructure.png)
+<img src="../img/APE-ProjectStructure.png" width="300" style="vertical-align:middle;margin:0px 0px;border:none">
 
 Project files are complete and saved locally. This has a few practical implications:
 
@@ -62,4 +60,4 @@ Avoid making edits directly on project files with tools other than the Afero Pro
 
 
 
- Next: [Select the Project](../SelectProject)
+ **&#8674;** *Next:* [Select the Project](../SelectProject)

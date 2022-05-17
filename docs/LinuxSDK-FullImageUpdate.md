@@ -600,4 +600,4 @@ Request accepted for processing
 
 
 
- Next: [Afero Potenco Setup Guides](../LinuxSDK-PotencoSetupGds)
+ **&#8674;** *Next:* [Afero Potenco Setup Guides](../LinuxSDK-PotencoSetupGds)

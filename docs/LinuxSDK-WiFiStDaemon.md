@@ -181,4 +181,4 @@ These attributes must be part of the device Profile to work properly.
 
 
 
- Next: [WAN Daemon Implementation](../LinuxSDK-WANDaemon)
+ **&#8674;** *Next:* [WAN Daemon Implementation](../LinuxSDK-WANDaemon)

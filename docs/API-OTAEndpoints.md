@@ -40,11 +40,11 @@ Below are two popular questions & answers about version numbers:
 
 - **How does the OTA service know what versions a device is running?**
 
-  When linking, devices send the currently-installed version of each firmware type via **attribute updates**. The Afero OTA service uses globally-unique numeric version numbers to identify a firmware version. These numbers are generated in the system and cannot be changed. However, firmware image records have a version string field that can be used to store user-friendly version numbers.
+    When linking, devices send the currently-installed version of each firmware type via **attribute updates**. The Afero OTA service uses globally-unique numeric version numbers to identify a firmware version. These numbers are generated in the system and cannot be changed. However, firmware image records have a version string field that can be used to store user-friendly version numbers.
 
 - **How do you install an older firmware version on a device?**
 
-  The Afero OTA service does not allow downgrades to a version older than what is currently installed on a device. However, because the OTA service is not aware of the contents of a firmware image binary, you can upload an older, or the same, binary as a new firmware image, which will create a new version number.
+    The Afero OTA service does not allow downgrades to a version older than what is currently installed on a device. However, because the OTA service is not aware of the contents of a firmware image binary, you can upload an older, or the same, binary as a new firmware image, which will create a new version number.
 
 ## About Firmware Pools and Associations
 
@@ -52,4 +52,4 @@ Different types of devices often have some hardware components in common. Not on
 
 This is where the firmware pool comes into play. The firmware for the radio module is written once and only one artifact exists. This firmware is uploaded to the firmware pool and a general firmware record is created in the Afero Platform. To make this firmware available for OTAs, the firmware must be associated with a specific device type.
 
- Next: [OTA API Endpoints](../API-OTAEndpoints-Funcs)
+ **&#8674;** *Next:* [OTA API Endpoints](../API-OTAEndpoints-Funcs)

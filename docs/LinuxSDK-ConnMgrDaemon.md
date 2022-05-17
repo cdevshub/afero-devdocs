@@ -249,4 +249,4 @@ These attributes must be part of the device Profile to work properly.
 
 
 
- Next: [Edge Device Daemon Implementation](../LinuxSDK-EdgeDaemon)
+ **&#8674;** *Next:* [Edge Device Daemon Implementation](../LinuxSDK-EdgeDaemon)

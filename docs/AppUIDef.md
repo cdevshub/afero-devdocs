@@ -223,4 +223,4 @@ It’s possible to preview the UI as you’re creating it, right in the Afero mo
 
 8. When you’re done testing your UI, remove the Preview Device by doing this: In the mobile app, go to the Preview Device > Settings screen, then tap the Remove Device button.
 
- Next: [Define the Rules & Notifications](../RulesDef)
+ **&#8674;** *Next:* [Define the Rules & Notifications](../RulesDef)

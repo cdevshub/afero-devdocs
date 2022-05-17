@@ -15,21 +15,19 @@ The two attributes are described below:
 
 - **65015 - `LINKED_TIMESTAMP` (signed 32-bit long)**
 
-  This is a UNIX Epoch (number of seconds since 00:00:00 1/1/1970) UTC timestamp marking when ASR successfully last linked to the Afero Cloud. The timestamp is returned shortly after ASR reboots and should be reasonably close to actual current time.
+    This is a UNIX Epoch (number of seconds since 00:00:00 1/1/1970) UTC timestamp marking when ASR successfully last linked to the Afero Cloud. The timestamp is returned shortly after ASR reboots and should be reasonably close to actual current time.
 
-  The latency from the Cloud back to the MCU is typically less than 1-2 seconds, but don’t rely on this timestamp being more accurate than +/- 10 seconds (worst case). If your time of day (TOD) requirements are not critical, this is a very convenient way of getting TOD with little work.
+    The latency from the Cloud back to the MCU is typically less than 1-2 seconds, but don’t rely on this timestamp being more accurate than +/- 10 seconds (worst case). If your time of day (TOD) requirements are not critical, this is a very convenient way of getting TOD with little work.
 
 - **65001 - `UTC_OFFSET_DATA` (byte[8])**
 
-  This byte array contains three pieces of information: the current local timezone offset from UTC, the next UTC offset, and a UNIX Epoch timestamp of when the “next” UTC offset is valid. Specifically:
+    This byte array contains three pieces of information: the current local timezone offset from UTC, the next UTC offset, and a UNIX Epoch timestamp of when the “next” UTC offset is valid. Specifically:
 
-  - [0-1] - Little-endian signed int containing the local timezone offset from UTC in minutes
-  - [2-5] - Little-endian unsigned long containing an Epoch timestamp (UTC) for “next” offset validity
-  - [6-7] - Little-endian signed int containing the “next” local timezone offset from UTC in minutes
+    - [0-1] - Little-endian signed int containing the local timezone offset from UTC in minutes
+    - [2-5] - Little-endian unsigned long containing an Epoch timestamp (UTC) for “next” offset validity
+    - [6-7] - Little-endian signed int containing the “next” local timezone offset from UTC in minutes
 
 **Note:** UTC Offset is determined by the Location attributes set (by you) for ASR and **are not dynamic** in any way. The UTC Offset can and will be wrong if the Location in the device configuration is incorrect. You can set the correct Location for your Afero device using the Afero mobile app, or by using the Afero Inspector developer tool at [https://inspector.afero.io](https://inspector.afero.io/).
-
-  
 
 Let’s look at examples of these attributes and the meanings of their values. These attribute values:
 
@@ -55,9 +53,9 @@ After ASR comes online, you can receive a periodic timestamp update from ASR via
 
 - **1201 - ASR_UTC_TIME (signed 32-bit long)**
 
-  This is a UNIX Epoch (number of seconds since 00:00:00 1/1/1970) UTC timestamp, returned by ASR once per minute, starting the next minute (:00 seconds) after the LINKED_TIMESTAMP.
+    This is a UNIX Epoch (number of seconds since 00:00:00 1/1/1970) UTC timestamp, returned by ASR once per minute, starting the next minute (:00 seconds) after the LINKED_TIMESTAMP.
 
-  This timestamp is sent once per minute approximately on the minute (:00 seconds). The current time is synced in ASR via NTP. The timestamp sent to the MCU may be as much as -0/+1 second off, based on processing time and queue handling time within afLib and the MCU.
+    This timestamp is sent once per minute approximately on the minute (:00 seconds). The current time is synced in ASR via NTP. The timestamp sent to the MCU may be as much as -0/+1 second off, based on processing time and queue handling time within afLib and the MCU.
 
 ## afero_clock Example Code
 
@@ -91,4 +89,4 @@ The example Profiles provided in the afero_clock project enable the ASR_UTC_TIME
     - int32_t utc_offset_change_time
     - int32_t asr_utc_time
 
- Next: [Handling Reboot Requests](../RebootRequests)
+ **&#8674;** *Next:* [Handling Reboot Requests](../RebootRequests)

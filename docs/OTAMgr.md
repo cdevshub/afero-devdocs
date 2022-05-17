@@ -99,11 +99,11 @@ Remember that before uploading an image, you must have already used the Profile 
    - Drag & drop the image into the target Image Type folder; or
    - Select the target Image Type folder then navigate to your image file and select it.
 
-   When finished, click NEXT: ADD INFO FOR YOUR FIRMWARE.
+   When finished, click **&#8674;** *Next:* ADD INFO FOR YOUR FIRMWARE.
 
 3. On the next window you’ll add some metadata for your image: image name, description, version string, and tag(s). You will be able to search on this information later if you want to find a specific image quickly, or use one of the fields to filter your images. Press Enter after typing a tag to add more tags.
 
-   When finished, click NEXT: ASSOCIATE DEVICE TYPES.
+   When finished, click **&#8674;** *Next:* ASSOCIATE DEVICE TYPES.
 
 4. All your eligible Device Types appear on the next window. Select those you want to receive the firmware image. Select DONE when you’re finished.
 

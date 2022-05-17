@@ -9,4 +9,4 @@ This section contains tips and “recipes” that you can use when integrating y
 - [Useful Debugging Methods](../DebugMethods)
 - [Handling MCU OTA Updates](../MCU_OTA)
 
- Next: [MCU Coding Tips](../MCUCodingTips)
+ **&#8674;** *Next:* [MCU Coding Tips](../MCUCodingTips)

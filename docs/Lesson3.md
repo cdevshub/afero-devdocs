@@ -6,7 +6,7 @@ This project will provide the mobile user a start/stop control for LED blinking.
 
 In addition, the mobile app UI will demonstrate the use of a second control, used as a read-only indicator, that reflects the state of the blinking LED in real-time. When the LED is blinking on the development board, the remote mobile app will provide a blinking display as well:
 
-<img src="../img/Tut3_afBlink_ios_ui.png" style="vertical-align:middle;margin:0px 0px;border:none">
+<img src="../img/Tut3_afBlink_ios_ui.png" width="200" style="vertical-align:middle;margin:0px 0px;border:none">
 
 First, we’ll run through the example, then take a closer look at how it all works.
 
@@ -29,7 +29,7 @@ Be sure you’ve done the following before starting the steps below:
 - afLib contains an Examples directory. In this directory, you’ll find an Arduino sketch as well as a directory containing an Afero device Profile that can be published to your Modulo.
 - The examples live in your Documents directory under Arduino/libraries/afLib/examples/.
 
-**2. Register your Afero development board to your account, if you haven’t already done so.**<br>Do this by scanning the QR code on your dev board using the Afero mobile app.
+**2. Register your Afero development board to your account, if you haven’t already done so.** Do this by scanning the QR code on your dev board using the Afero mobile app.
 
 **3. Load the afBlink Profile in Afero Profile Editor:**
 
@@ -41,7 +41,7 @@ Be sure you’ve done the following before starting the steps below:
 
 **5. Go to the PUBLISH tab in the Afero Profile Editor and check that your device is online and selected.**
 
-**6. Click PUBLISH.**<br>The Profile will be uploaded over-the-air and in about a minute you should see the UI on your smartphone update to the new Profile UI.
+**6. Click PUBLISH.** The Profile will be uploaded over-the-air and in about a minute you should see the UI on your smartphone update to the new Profile UI.
 
 **7. Now that the developer device is all set, let’s update the Arduino:**
 
@@ -50,7 +50,7 @@ Be sure you’ve done the following before starting the steps below:
 - With the afBlink sketch open, select UPLOAD from the Sketch menu.
 - Once the sketch has uploaded, open the Serial Monitor to see output from the example.
 
-**8. Open the Afero mobile app and have some fun controlling your LED!**<br>The uppermost control, labeled “Blink”, lets you start and stop blinking; the lower control, labeled “LED”, displays the state of the module LED in real-time.
+**8. Open the Afero mobile app and have some fun controlling your LED!**  The uppermost control, labeled “Blink”, lets you start and stop blinking; the lower control, labeled “LED”, displays the state of the module LED in real-time.
 
 ## How It Works
 
@@ -60,7 +60,7 @@ This section gives you a bit more insight into what’s happening behind the sce
 
 The device Profile in this lesson has two GPIO attribute definitions similar to those in Tutorial 2, but has an additional MCU attribute. This MCU attribute is a Boolean, made WRITEABLE so that clicks in the mobile app UI can set the attribute value. We’ve named that attribute “Blink” because it will turn on/off the blinking of the LED.
 
-<img src="../img/Tut3_Blink_Attr.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
+<img src="../img/Tut3_Blink_Attr.png" width="450" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ### Define the Attribute Options
 
@@ -88,7 +88,7 @@ Remember that every UI control must be a member of a UI Control Group even if it
 
 Since both controls belong to the same group, they will both be visible on the same screen in the Afero mobile app. If your application has many controls, you should organize them into groups that will make functional sense to the user when displayed together.
 
-<img src="../img/Tut3_UI_Ctrl_Group.png" style="vertical-align:middle;margin:0px 0px;border:none">
+<img src="../img/Tut3_UI_Ctrl_Group.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
 
 As you saw when you ran through the lesson, this Profile results in a mobile app UI consisting of buttons that control the Modulo LED: tap START and the LED starts blinking; tap STOP and the blinking stops. While the LED is blinking, the “LED" control in the Afero mobile app UI will also change its label to reflect the LED state.
 

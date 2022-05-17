@@ -178,4 +178,4 @@ Follow the instructions that apply to your product’s radio module.
 | ☐    | Upload `.afero` files.                             | At the ***end\*** of each day of manufacturing, save the `.afero` files from each factory programming station and upload to the [Afero ExaVault server](https://afero.exavault.com/).Multiple stations can be run in parallel and upload using the same ExaVault account credentials. | Partner’s Manufacturer          |
 | ☐    | Afero Cloud validation.                            | Afero validates the contents of the `.afero` files and confirms partner PCBs have already been ingested into the Afero Cloud by double-checking against the `.afero` files uploaded after factory programming. | Afero                           |
 
- Next: [Customize QR Code Labels](../CustomizeLabel)
+ **&#8674;** *Next:* [Customize QR Code Labels](../CustomizeLabel)

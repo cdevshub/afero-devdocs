@@ -60,4 +60,4 @@ Note that if the end-user does change the friendly name on the mobile app, the D
 
    
 
- Next: [Define the Device Attributes](../AttrDef)
+ **&#8674;** *Next:* [Define the Device Attributes](../AttrDef)

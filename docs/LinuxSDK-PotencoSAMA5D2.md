@@ -465,4 +465,4 @@ Potenco also acts as an Afero edge device and can communicate with the Afero Clo
 
 If you have any questions or issues with Potenco please use the project's [GitHub Project Issue Tracker](https://github.com/AferoCE/potenco/issues).
 
- Next: [Add an afLib C-Based App to Potenco Build for SAMA5D2](../LinuxSDK-PotencoSAMA5D2App)
+ **&#8674;** *Next:* [Add an afLib C-Based App to Potenco Build for SAMA5D2](../LinuxSDK-PotencoSAMA5D2App)
