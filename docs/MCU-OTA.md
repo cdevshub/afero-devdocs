@@ -12,9 +12,8 @@ At a high level, the steps involved in an MCU OTA update are as described below.
 
 - Use the Afero OTA Manager to [prepare a firmware update](../OTAMgr) for your device. Note that the MCU OTA mechanism can be used to deliver any type of data to your device, not just MCU code.
 
-- Use the Afero Profile Editor to [define MCU OTA handling](../AttrDef#MCUAttrs) for the device Profile involved.
-
-  In order to support receipt of MCU OTA updates, your device Profile must include a few special attributes, including `AF_MCU_OTA_INFO` and `AF_MCU_OTA_TRANSFER`, which convey control information and the transferred data itself, respectively. All special attributes are added for you by the Afero Profile Editor when you select a particular firmware type to be received. Read more about this in the in the Profile Editor User Guide, [Configure the MCU](../AttrDef#ConfigMCU) section.
+- Use the Afero Profile Editor to [define MCU OTA handling](../AttrDef#MCUAttrs) for the device Profile involved.<br><br>
+In order to support receipt of MCU OTA updates, your device Profile must include a few special attributes, including `AF_MCU_OTA_INFO` and `AF_MCU_OTA_TRANSFER`, which convey control information and the transferred data itself, respectively. All special attributes are added for you by the Afero Profile Editor when you select a particular firmware type to be received. Read more about this in the in the Profile Editor User Guide, [Configure the MCU](../AttrDef#ConfigMCU) section.
 
 - You’ll include code in your MCU application to handle the messaging and data transfers involved in an MCU OTA update. The purpose of this page is to help you with that.
 
@@ -23,16 +22,15 @@ At a high level, the steps involved in an MCU OTA update are as described below.
 - You’ll use the Afero OTA Manager to [deploy a firmware image](../OTAMgr#DeployFWImage) to your device.
 
 - The incoming update will be handled as described below. Your MCU code will:
-
-- - Receive an AF_LIB_EVENT_ASR_NOTIFICATION event for attribute AF_MCU_OTA_INFO.
-  - Extract from that notification the incoming file type and amount of data to be received.
-  - Respond that it is ready to receive the data.
-  - Receive the data in the form of AF_LIB_EVENT_ASR_NOTIFICATION events for attribute AF_MCU_OTA_TRANSFER.
-  - For each data chunk received, respond with the amount of data received so far. When all expected data has been received, MCU will respond with AF_MCU_OTA_STOP_TRANSFER_OFFSET.
-  - Calculate a SHA-256 checksum of the data received, and send that checksum with the message AF_OTA_VERIFY_SIGNATURE, which requests validation of the data.
-  - Receive an AF_LIB_EVENT_ASR_NOTIFICATION event for attribute AF_MCU_OTA_INFO, with either:
-    - AF_OTA_APPLY, indicating that the data transfer occurred correctly and the download can be used; or,
-    - AF_OTA_FAIL, indicating that the checksum did not match, and the downloaded data should be discarded.
+    - Receive an AF_LIB_EVENT_ASR_NOTIFICATION event for attribute AF_MCU_OTA_INFO.
+    - Extract from that notification the incoming file type and amount of data to be received.
+    - Respond that it is ready to receive the data.
+    - Receive the data in the form of AF_LIB_EVENT_ASR_NOTIFICATION events for attribute AF_MCU_OTA_TRANSFER.
+    - For each data chunk received, respond with the amount of data received so far. When all expected data has been received, MCU will respond with AF_MCU_OTA_STOP_TRANSFER_OFFSET.
+    - Calculate a SHA-256 checksum of the data received, and send that checksum with the message AF_OTA_VERIFY_SIGNATURE, which requests validation of the data.
+    - Receive an AF_LIB_EVENT_ASR_NOTIFICATION event for attribute AF_MCU_OTA_INFO, with either:
+        - AF_OTA_APPLY, indicating that the data transfer occurred correctly and the download can be used; or,
+        - AF_OTA_FAIL, indicating that the checksum did not match, and the downloaded data should be discarded.
 
 ### Example MCU OTA: Console Output
 
@@ -95,15 +93,36 @@ calling handle_ota_info()
    handle_ota_info: ota_info->state = AF_OTA_APPLY
 ```
 
-|➀| The console output begins when an MCU OTA update is triggered (externally) for this device; for example, by the Afero OTA Manager. At that point the MCU receives notification with the attribute ID = AF_MCU_OTA_INFO, which is treated as a signal to call `handle_ota_info()`.The attribute *value* received by the callback is cast to a pointer to an `af_ota_info_t`, so we can access the fields by name. Within the `ota_info`, the `state` field is AF_OTA_TRANSFER_BEGIN, which indicates that there’s an incoming OTA.The `ota_info` also provides us with incoming data size, file name, and file type. In the example code, we track these details (and more) in the global `ota_state`, but that’s an implementation detail (and don’t confuse the global `ota_state` with the `ota_info->state`!). Track progress however you like; the only requirement is that you *must* keep a running count of the bytes downloaded.At this point, real-world code would probably open a file to save into; in the example we’ll just create a fake file pointer.Once you’re ready to receive the data, you must call `af_lib_set_attribute_bytes()` for attribute AF_MCU_OTA_INFO, including the same value and valueLen parameters you received in the first place. This signals ASR to start sending OTA update data.If you do *not* want the OTA to proceed after you’ve received the AF_OTA_TRANSFER_BEGIN (e.g. if you attempted to open a file for the data, but that operation failed), then you should set the "state" field in the received "value" to AF_OTA_IDLE, and then call `af_lib_set_attribute_bytes()`. 
+**➀** The console output begins when an MCU OTA update is triggered (externally) for this device; for example, by the Afero OTA Manager. At that point the MCU receives notification with the attribute ID = AF_MCU_OTA_INFO, which is treated as a signal to call `handle_ota_info()`.
 
-|➁|  In response to our `set_attribute()` call signalling that the OTA should begin, we receive notification with the attribute ID = AF_MCU_OTA_TRANSFER. This begins the phase during which the actual data transfer takes place; we handle it in `handle_ota_transfer()`.The attribute value in AF_MCU_OTA_TRANSFER notifications consists of the data being transferred (one variable-sized chunk at a time), prepended by 4 bytes indicating the offset into the full data payload represented by the current chunk.After each chunk of data is received, the MCU must respond with how many bytes it has received. To do this, MCU calls `af_lib_set_attribute_bytes()` for attribute AF_MCU_OTA_TRANSFER, with a value equal to the number of bytes of data received so far. When the number of bytes received equals the total bytes expected (i.e. when the transfer is complete), the `received_so_far` value should be set to AF_MCU_OTA_STOP_TRANSFER_OFFSET, which signals that OTA update is complete.As noted previously, the example code calculates the SHA-256 of the data as it is received. Calculation of the SHA is required, and can be done during the transfer, or once it is complete.You will notice that the example code tracks the rate of data transfer–this is not required, but is included for demonstration purposes. 
-|➂| Another chunk of data is received. Note that the amount of data per chunk can vary widely: in this case only 6 bytes came across. 
+The attribute *value* received by the callback is cast to a pointer to an `af_ota_info_t`, so we can access the fields by name. Within the `ota_info`, the `state` field is AF_OTA_TRANSFER_BEGIN, which indicates that there’s an incoming OTA.
+
+The `ota_info` also provides us with incoming data size, file name, and file type. In the example code, we track these details (and more) in the global `ota_state`, but that’s an implementation detail (and don’t confuse the global `ota_state` with the `ota_info->state`!). Track progress however you like; the only requirement is that you *must* keep a running count of the bytes downloaded.
+
+At this point, real-world code would probably open a file to save into; in the example we’ll just create a fake file pointer.
+
+Once you’re ready to receive the data, you must call `af_lib_set_attribute_bytes()` for attribute AF_MCU_OTA_INFO, including the same value and valueLen parameters you received in the first place. This signals ASR to start sending OTA update data.If you do *not* want the OTA to proceed after you’ve received the AF_OTA_TRANSFER_BEGIN (e.g. if you attempted to open a file for the data, but that operation failed), then you should set the "state" field in the received "value" to AF_OTA_IDLE, and then call `af_lib_set_attribute_bytes()`. 
+
+**➁**  In response to our `set_attribute()` call signalling that the OTA should begin, we receive notification with the attribute ID = AF_MCU_OTA_TRANSFER. This begins the phase during which the actual data transfer takes place; we handle it in `handle_ota_transfer()`.
+
+The attribute value in AF_MCU_OTA_TRANSFER notifications consists of the data being transferred (one variable-sized chunk at a time), prepended by 4 bytes indicating the offset into the full data payload represented by the current chunk.
+
+After each chunk of data is received, the MCU must respond with how many bytes it has received. To do this, MCU calls `af_lib_set_attribute_bytes()` for attribute AF_MCU_OTA_TRANSFER, with a value equal to the number of bytes of data received so far. When the number of bytes received equals the total bytes expected (i.e. when the transfer is complete), the `received_so_far` value should be set to AF_MCU_OTA_STOP_TRANSFER_OFFSET, which signals that OTA update is complete.
+
+As noted previously, the example code calculates the SHA-256 of the data as it is received. Calculation of the SHA is required, and can be done during the transfer, or once it is complete.
+
+You will notice that the example code tracks the rate of data transfer–this is not required, but is included for demonstration purposes. 
+
+**➂** Another chunk of data is received. Note that the amount of data per chunk can vary widely: in this case only 6 bytes came across. 
 **Currently, the maximum chunk size is 253 bytes.** 
-|➃| And another chunk. After this one, we snipped out several chunk-transfers, just for readability. 
-|➄| Another chunk…we’re getting close to completion!             |
-|➅| When your code detects that all the expected data has been received, the MCU must request verification of the data it has received. To do this this, your code must include the SHA checksum and the state `AF_OTA_VERIFY_SIGNATURE` in an `af_ota_info_t` struct, and send that in a call to `af_lib_set_attribute_bytes()` for attribute `AF_MCU_OTA_INFO`. 
-|➆ | Finally: in response to the verification request, the MCU callback gets one more AF_LIB_EVENT_ASR_NOTIFICATION, in which the `ota_info->state` either confirms or denies the data was received correctly. If the state = AF_OTA_APPLY, the data SHA verified successfully. If the state is AF_OTA_FAIL, the SHA did not have the expected value, and the data should not be trusted, and your code will typically discard it. 
+
+**➃** And another chunk. After this one, we snipped out several chunk-transfers, just for readability. 
+
+**➄** Another chunk…we’re getting close to completion!             |
+
+**➅** When your code detects that all the expected data has been received, the MCU must request verification of the data it has received. To do this this, your code must include the SHA checksum and the state `AF_OTA_VERIFY_SIGNATURE` in an `af_ota_info_t` struct, and send that in a call to `af_lib_set_attribute_bytes()` for attribute `AF_MCU_OTA_INFO`. 
+
+**➆** Finally: in response to the verification request, the MCU callback gets one more AF_LIB_EVENT_ASR_NOTIFICATION, in which the `ota_info->state` either confirms or denies the data was received correctly. If the state = AF_OTA_APPLY, the data SHA verified successfully. If the state is AF_OTA_FAIL, the SHA did not have the expected value, and the data should not be trusted, and your code will typically discard it. 
 
 At this point, the MCU OTA update is complete! Assuming the data was downloaded and verified, your MCU code should take whatever context-dependent steps are required to install and use it.
 
@@ -113,67 +132,29 @@ The simplified sketch code below provides examples of handlers for AF_MCU_OTA_IN
 
 In order to accept and receive an MCU OTA update, your application code must:
 
-- Handle AF_LIB_EVENT_ASR_NOTIFICATION events for attribute AF_MCU_OTA_INFO, with an attribute value that represents an
+- Handle AF_LIB_EVENT_ASR_NOTIFICATION events for attribute AF_MCU_OTA_INFO, with an attribute value that represents an ```af_ota_info_t``` struct (which is defined in ```af_mcu_ota.h```).
 
-   
+    These AF_MCU_OTA_INFO events inform your MCU code when an MCU OTA update is available, when it’s complete, and so on. The ```af_ota_info_t``` struct contains a lot of information, but one of the highest-level pieces is the ```ota_state_t```. Your code should watch for, and react to the following OTA states:
+    
+     - AF_OTA_IDLE
+     - AF_OTA_TRANSFER_BEGIN
+     - AF_OTA_TRANSFER_END
+     - AF_OTA_APPLY
+     - AF_OTA_FAIL
 
-  ```
-  af_ota_info_t
-  ```
-
-   
-
-  struct (which is defined in
-
-   
-
-  ```
-  af_mcu_ota.h
-  ```
-
-  ). These AF_MCU_OTA_INFO events inform your MCU code when an MCU OTA update is available, when it’s complete, and so on. The
-
-   
-
-  ```
-  af_ota_info_t
-  ```
-
-   
-
-  struct contains a lot of information, but one of the highest-level pieces is the
-
-   
-
-  ```
-  ota_state_t
-  ```
-
-  . Your code should watch for, and react to the following OTA states:
-
-  - AF_OTA_IDLE
-  - AF_OTA_TRANSFER_BEGIN
-  - AF_OTA_TRANSFER_END
-  - AF_OTA_APPLY
-  - AF_OTA_FAIL
-
-  In the example code below, this state-handling functionality is contained in the function `handle_ota_info()`.
+    In the example code below, this state-handling functionality is contained in the function `handle_ota_info()`.
 
 - Handle AF_LIB_EVENT_ASR_NOTIFICATION events for attribute AF_MCU_OTA_TRANSFER.
 
-  
+    AF_MCU_OTA_TRANSFER events represent the actual data transfer; the value in each of these messages is comprised of a chunk of data being sent, plus 4-byte prefix indicating the current offset into the total data payload.
 
-  AF_MCU_OTA_TRANSFER events represent the actual data transfer; the value in each of these messages is comprised of a chunk of data being sent, plus 4-byte prefix indicating the current offset into the total data payload.
-
-  In the example code, we handle AF_MCU_OTA_TRANSFER events in the function `handle_ota_transfer()`.
+    In the example code, we handle AF_MCU_OTA_TRANSFER events in the function `handle_ota_transfer()`.
 
 - Calculate a SHA-256 checksum for the downloaded data. Once the download is complete this checksum must be sent to ASR, where it will be verified. Your code will receive confirmation/denial based upon this verification, and should not use the downloaded data unless the checksum is confirmed.
 
-  In the example code, we calculate the SHA as data arrives because the example does not store the download; in real-world applications you are free to calculate the SHA as data arrives, or after the download is complete. The example code handles this task in `handle_ota_transfer()`.
+    In the example code, we calculate the SHA as data arrives because the example does not store the download; in real-world applications you are free to calculate the SHA as data arrives, or after the download is complete. The example code handles this task in `handle_ota_transfer()`.
 
-The example code provides the skeleton for handling receipt of an incoming MCU OTA update, but does **not** include any procedures required to install, such as an OTA update once downloaded. Because such procedures will be platform-specific, writing that code is your responsibility.
-
-
+**Note:** The example code provides the skeleton for handling receipt of an incoming MCU OTA update, but does **not** include any procedures required to install, such as an OTA update once downloaded. Because such procedures will be platform-specific, writing that code is your responsibility.
 
 ```
 typedef struct {
