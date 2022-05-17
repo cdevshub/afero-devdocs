@@ -118,9 +118,8 @@ void loop() {
 
 - While retrying unsuccessful afLib calls, it is important to call `af_lib_loop()` to ensure that afLib gets time to handle requests. If, for example, we called `set_attribute()` and the call failed due to a full request queue, retrying the call would be pointless unless afLib got time to service the queue.
 
-- It’s important to avoid calling `af_lib_loop()` within `attrEventCallback()`; doing so can have unexpected results. But we know that to make afLib calls robust we should confirm-and-retry, and we know that we must call `af_lib_loop()` *while* we retry. So if the callback tells us we need to call set_attribute, how do we do that robustly?
-
-  Examples #1 and #2 demonstrate a useful pattern: Code in the callback is restricted to setting a flag to indicate a `af_lib_set_attribute()` call is required. Then in the main `loop()`, the flag is checked, `set_attribute()` is called if indicated, and retried as needed until success. This pattern is robust, easy to read, and can reduce redundant code.
+- It’s important to avoid calling `af_lib_loop()` within `attrEventCallback()`; doing so can have unexpected results. But we know that to make afLib calls robust we should confirm-and-retry, and we know that we must call `af_lib_loop()` *while* we retry. So if the callback tells us we need to call set_attribute, how do we do that robustly?<br><br>
+Examples #1 and #2 demonstrate a useful pattern: Code in the callback is restricted to setting a flag to indicate a `af_lib_set_attribute()` call is required. Then in the main `loop()`, the flag is checked, `set_attribute()` is called if indicated, and retried as needed until success. This pattern is robust, easy to read, and can reduce redundant code.
 
 - Example #3 shows a variation in which retrying is limited by a timeout: as above, the code retries `af_lib_set_attribute()`, waiting for AF_SUCCESS. But here a timeout prevents an indefinite cycle of re-trying in the face of some serious condition that is blocking us. If the timeout is exceeded, we assume that communication with afLib is fatally obstructed, so we trigger a reboot by directly manipulating the reset pin.
 

@@ -27,7 +27,7 @@ The two attributes are described below:
   - [2-5] - Little-endian unsigned long containing an Epoch timestamp (UTC) for “next” offset validity
   - [6-7] - Little-endian signed int containing the “next” local timezone offset from UTC in minutes
 
-  UTC Offset is determined by the Location attributes set (by you) for ASR and **are not dynamic** in any way. The UTC Offset can and will be wrong if the Location in the device configuration is incorrect. You can set the correct Location for your Afero device using the Afero mobile app, or by using the Afero Inspector developer tool at [https://inspector.afero.io](https://inspector.afero.io/).
+**Note:** UTC Offset is determined by the Location attributes set (by you) for ASR and **are not dynamic** in any way. The UTC Offset can and will be wrong if the Location in the device configuration is incorrect. You can set the correct Location for your Afero device using the Afero mobile app, or by using the Afero Inspector developer tool at [https://inspector.afero.io](https://inspector.afero.io/).
 
   
 
@@ -72,16 +72,23 @@ The example Profiles provided in the afero_clock project enable the ASR_UTC_TIME
 ### Example Code Notes
 
 - For best results, use an RTC chip and use the Linked Timestamp and UTC Offset attributes to set the RTC. By doing this you’ll have access to a reasonably accurate clock. Remember, the Linked Timestamp is only sent to the MCU when ASR links or re-links to the Afero Cloud.
+
 - The device Profile created using the Afero Profile Editor doesn’t need any specific support for Linked Timestamp or UTC Offset attributes, as they are system attributes and will be presented to the MCU as long as the Afero device Profile has MCU support **enabled**. However, in order to receive the periodic ASR_UTC_TIME attribute updates, you must have selected the RECEIVE UTC TIME checkbox for your device Profile (using the Profile Editor, Attribute Definition window, MCU Configuration section).
+
 - The example code provided in afLib includes some code that protects against accepting LINKED_TIMESTAMP when an MCU application requests that data via `get_attribute`. Since the value returned is the timestamp of when ASR last linked to the Afero Cloud, this value will not update except when ASR re-links its connection. If this level of paranoia isn’t needed, all references and checks to “timestamp_read” can be removed.
+
 - When ASR first boots, it will send an SYSTEM_UTC_OFFSET_DATA attribute update to the MCU; however, all data in this attribute will be zero. Since UTC Offset=0 is valid, you should check for the value of the UTC Offset Change Timestamp (the middle four bytes of the attribute value). If this timestamp is zero then the UTC Offset data is invalid and can be ignored. Once ASR links, you will receive the Linked Timestamp attribute and another UTC Offset attribute with valid data. In the case of a device with no Location or local timezone defined, the UTC_OFFSET_DATA attribute will remain all zeroes and can be safely ignored.
+
 - It is possible to receive a new SYSTEM_UTC_OFFSET_DATA attribute update at any time (for example, the passing of a Daylight Saving Time boundary). As long as the Offset Change Time Timestamp is greater than the Linked Timestamp (or the Current Timestamp if you have an RTC), then the update data should be considered valid and the RTC updated accordingly (typically by subtracting the “old” offset and adding the “new” offset to re-adjust the clock to the new timezone).
+
 - In C/C++, the `strftime()` call can be used to format either timestamp into human-readable forms.
+
 - Data types for the timestamp attribute values are:
-  - int32_t linked_timestamp
-  - int16_t utc_offset_now
-  - int16_t utc_offset_next
-  - int32_t utc_offset_change_time
-  - int32_t asr_utc_time
+
+    - int32_t linked_timestamp
+    - int16_t utc_offset_now
+    - int16_t utc_offset_next
+    - int32_t utc_offset_change_time
+    - int32_t asr_utc_time
 
  Next: [Handling Reboot Requests](../RebootRequests)
