@@ -9,7 +9,6 @@ This tutorial is designed for the Modulo-1 and Modulo-2 dev boards, but not for 
 Open and sign in to the Profile Editor. The Startup window appears:
 <br><img src="../img/APE-StartScreen-Tut.png" style="vertical-align:middle;margin:0px 0px;border:none">
 
-
 **2. For the purposes of this tutorial, we’re going to save you some typing by providing a pre-configured Modulo project.**
 
 *2a.* First, you will need the appropriate Sample Project. The easiest way to get this is from the Profile Editor system TOOLS menu. From this menu, select SAMPLE PROJECTS > [GITHUB REPOSITORY](http://github.com/aferodeveloper/APE-Project-Profiles). (All Modulo projects, and more, are available from this GitHub repository.)

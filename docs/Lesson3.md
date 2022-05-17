@@ -6,7 +6,7 @@ This project will provide the mobile user a start/stop control for LED blinking.
 
 In addition, the mobile app UI will demonstrate the use of a second control, used as a read-only indicator, that reflects the state of the blinking LED in real-time. When the LED is blinking on the development board, the remote mobile app will provide a blinking display as well:
 
-![afBlink App](img/Tut3_afBlink_ios_ui.png)
+<img src="../img/Tut3_afBlink_ios_ui.png" style="vertical-align:middle;margin:0px 0px;border:none">
 
 First, we’ll run through the example, then take a closer look at how it all works.
 
@@ -22,25 +22,42 @@ Be sure you’ve done the following before starting the steps below:
 
 ## The Steps
 
-1. Download and install afLib for Arduino:
-   1. You can obtain afLib by going to http://github.com/aferodeveloper/afLib.
-   2. Follow your [IDE instructions](https://www.arduino.cc/en/Guide/Libraries) on how to install the library.
-   3. afLib contains an Examples directory. In this directory, you’ll find an Arduino sketch as well as a directory containing an Afero device Profile that can be published to your Modulo.
-   4. The examples live in your Documents directory under Arduino/libraries/afLib/examples/.
-2. If you haven’t already done so, register your Afero development board to your account by scanning the QR code on your dev board using the Afero mobile app.
-3. Load the afBlink Profile in Afero Profile Editor:
-   1. From the Profile Editor start page, select the OPEN button.
-   2. In the Open dialog, navigate to Arduino/libraries/afLib/examples/afBlink/profile/
-   3. Open the device Profile directory that is appropriate for your developer device.
-4. From the Afero mobile app, make sure your developer device is connected.
-5. Go to the PUBLISH tab in the Afero Profile Editor and check that your device is online and selected.
-6. Click PUBLISH. The Profile will be uploaded over-the-air and in about a minute you should see the UI on your smartphone update to the new Profile UI.
-7. Now that the developer device is all set, let’s update the Arduino:
-   1. Open the Arduino IDE and from the File menu, select EXAMPLES > AFLIB > AFBLINK.
-   2. Make sure the BOARD and PORT are set correctly in the Tools menu.
-   3. With the afBlink sketch open, select UPLOAD from the Sketch menu.
-   4. Once the sketch has uploaded, open the Serial Monitor to see output from the example.
-8. Open the Afero mobile app and have some fun controlling your LED! The uppermost control, labeled “Blink”, lets you start and stop blinking; the lower control, labeled “LED”, displays the state of the module LED in real-time.
+**1. Download and install afLib for Arduino:**
+
+- You can obtain afLib by going to http://github.com/aferodeveloper/afLib.
+- Follow your [IDE instructions](https://www.arduino.cc/en/Guide/Libraries) on how to install the library.
+
+- afLib contains an Examples directory. In this directory, you’ll find an Arduino sketch as well as a directory containing an Afero device Profile that can be published to your Modulo.
+
+- The examples live in your Documents directory under Arduino/libraries/afLib/examples/.
+
+**2. Register your Afero development board to your account, if you haven’t already done so.**<br>Do this by scanning the QR code on your dev board using the Afero mobile app.
+
+**3. Load the afBlink Profile in Afero Profile Editor:**
+
+- From the Profile Editor start page, select the OPEN button.
+
+- In the Open dialog, navigate to Arduino/libraries/afLib/examples/afBlink/profile/
+
+- Open the device Profile directory that is appropriate for your developer device.
+
+**4. From the Afero mobile app, make sure your developer device is connected.**
+
+**5. Go to the PUBLISH tab in the Afero Profile Editor and check that your device is online and selected.**
+
+**6. Click PUBLISH.**<br>The Profile will be uploaded over-the-air and in about a minute you should see the UI on your smartphone update to the new Profile UI.
+
+**7. Now that the developer device is all set, let’s update the Arduino:**
+
+- Open the Arduino IDE and from the File menu, select EXAMPLES > AFLIB > AFBLINK.
+
+- Make sure the BOARD and PORT are set correctly in the Tools menu.
+
+- With the afBlink sketch open, select UPLOAD from the Sketch menu.
+
+- Once the sketch has uploaded, open the Serial Monitor to see output from the example.
+
+**8. Open the Afero mobile app and have some fun controlling your LED!**<br>The uppermost control, labeled “Blink”, lets you start and stop blinking; the lower control, labeled “LED”, displays the state of the module LED in real-time.
 
 ## How It Works
 
@@ -50,25 +67,21 @@ This section gives you a bit more insight into what’s happening behind the sce
 
 The device Profile in this lesson has two GPIO attribute definitions similar to those in Tutorial 2, but has an additional MCU attribute. This MCU attribute is a Boolean, made WRITEABLE so that clicks in the mobile app UI can set the attribute value. We’ve named that attribute “Blink” because it will turn on/off the blinking of the LED.
 
-![Blink Attribute](img/Tut3_Blink_Attr.png)
+<img src="../img/Tut3_Blink_Attr.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ### Define the Attribute Options
 
 We plan to use menu controls to represent the two GPIO attributes defined in this project. We’d like to have user-friendly labels representing the GPIO values in the mobile app UI. To do this, we’ll define attribute options consisting of Value Options, as follows.
 
-- For the “Blink” attribute, which is set as the Primary Operation:
+- **For the “Blink” attribute, which is set as the Primary Operation:**
+    - Value option “false” is mapped to label “Stop”.
+    - Value option “true” is mapped to label “Start” and set to Running State. This will make the device icon highlight when blinking starts.
+<br><img src="../img/Tut3_Blink_Attr_Option.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
 
-- - Value option “false” is mapped to label “Stop”.
-  - Value option “true” is mapped to label “Start” and set to Running State. This will make the device icon highlight when blinking starts.
-
-- 
-
-- For the "Modulo LED" attribute:
-
-- - Value option “1” is mapped to label “ON” and set to Running State.
-  - Value option “0” is mapped to label “OFF”.
-
-- 
+- **For the "Modulo LED" attribute:**
+    - Value option “1” is mapped to label “ON” and set to Running State.
+    - Value option “0” is mapped to label “OFF”.
+<br><img src="../img/Tut3_LED_Attr_Option.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ### Define the UI Controls
 
@@ -82,7 +95,7 @@ Remember that every UI control must be a member of a UI Control Group even if it
 
 Since both controls belong to the same group, they will both be visible on the same screen in the Afero mobile app. If your application has many controls, you should organize them into groups that will make functional sense to the user when displayed together.
 
-![UI Control Group](img/Tut3_UI_Ctrl_Group.png)
+<img src="../img/Tut3_UI_Ctrl_Group.png" style="vertical-align:middle;margin:0px 0px;border:none">
 
 As you saw when you ran through the lesson, this Profile results in a mobile app UI consisting of buttons that control the Modulo LED: tap START and the LED starts blinking; tap STOP and the blinking stops. While the LED is blinking, the “LED" control in the Afero mobile app UI will also change its label to reflect the LED state.
 
@@ -169,45 +182,32 @@ void loop() {
 
 And there it is: while variable “blinking” is true, the MCU calls `setModuloLED()` every BLINK_INTERVAL (0.5 seconds) to set the GPIO attribute to the opposite state. In response to that call, ASR updates the attribute, and then sends an update message, which causes the MCU to execute `attrEventCallback()`.
 
-In a typical product containing an MCU, any LED indicator in the device would likely be connected directly to the MCU, whereas in this example we have used the LED on the dev board. The difference is that in this lesson, the MCU changes the LED state by making a `af_lib_set_attribute()` call, which causes ASR to make the change and send an update; whereas in a product, the MCU would probably set the LED directly. We used this design not only for setup simplicity, but also to emphasize the way attributes are affected by making `af_lib_set_attribute()` calls.
-
-
+**Note:** In a typical product containing an MCU, any LED indicator in the device would likely be connected directly to the MCU, whereas in this example we have used the LED on the dev board. The difference is that in this lesson, the MCU changes the LED state by making a `af_lib_set_attribute()` call, which causes ASR to make the change and send an update; whereas in a product, the MCU would probably set the LED directly. We used this design not only for setup simplicity, but also to emphasize the way attributes are affected by making `af_lib_set_attribute()` calls.
 
 The flow above illustrates the basic messaging pattern:
 
-1. A user action on the mobile app UI becomes a message to set the value of an attribute on a specific device.
+**1.** A user action on the mobile app UI becomes a message to set the value of an attribute on a specific device.
 
-2. The app sends the “set attribute value” message to the Afero Cloud, which broadcasts the message.
+**2.** The app sends the “set attribute value” message to the Afero Cloud, which broadcasts the message.
 
-3. The ASR for the targeted device receives the message that the attribute value should be set.
+**3.** The ASR for the targeted device receives the message that the attribute value should be set.
 
-4. ASR does a couple of things:
+**4.** ASR does a couple of things:
 
-   1. Stores the attribute’s current value and the new desired value.
-   2. Tells the MCU that the attribute value should be set to the desired value.
+- Stores the attribute’s current value and the new desired value.
 
-5. When the MCU gets the message, `attrEventCallback()` executes. In that call, you must write code to enable the MCU to make a state change that will correspond to the desired attribute value. This will typically involve some device action (e.g., starting LED blinking).
+- Tells the MCU that the attribute value should be set to the desired value.
 
-6. After
+**5.** When the MCU gets the message, `attrEventCallback()` executes. In that call, you must write code to enable the MCU to make a state change that will correspond to the desired attribute value. This will typically involve some device action (e.g., starting LED blinking).
 
-    
+**6.** After ```attrEventCallback()``` runs, afLib informs ASR, which then:
 
-   ```
-   attrEventCallback()
-   ```
+- Stores the new current value of the attribute, which should equal the desired value.
+- Sends the attribute value back to the Afero Cloud.
 
-    
+**7.** The Afero Cloud broadcasts the new attribute value.
 
-   runs, afLib informs ASR, which then:
-
-   
-
-   1. Stores the new current value of the attribute, which should equal the desired value.
-   2. Sends the attribute value back to the Afero Cloud.
-
-7. The Afero Cloud broadcasts the new attribute value.
-
-8. The mobile app receives the broadcast and updates the UI, so the end-user knows the request has been filled.
+**8.** The mobile app receives the broadcast and updates the UI, so the end-user knows the request has been filled.
 
 ## System Attributes
 
@@ -288,9 +288,9 @@ The ASR_STATE attribute can have one of a small range of values, or “states”
 
 Let’s take a look at how your code can use three of these events:
 
-- [0 = Rebooted](../Lesson3#ASR_State-0)
-- [4 = Initialized](../Lesson3#ASR_State-4)
-- [3 = Update Ready to Apply (Reboot Requested)](../Lesson3#ASR_State-3)
+- [0 = Rebooted](../Lesson3#what-to-do-when-you-receive-the-rebooted-state-message)
+- [4 = Initialized](../Lesson3#waiting-until-initialized)
+- [3 = Update Ready to Apply (Reboot Requested)](../Lesson3#how-to-handle-a-reboot-request)
 
 #### What to Do When You Receive the “Rebooted” State Message
 
