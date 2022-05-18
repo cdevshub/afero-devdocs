@@ -20,7 +20,7 @@ At a high level, this is how it works:
 
 **8.** Update success/failure is reported back to Afero.
 
-**&check; Note:** In addition, you'll have to prepare your application code to accept an MCU OTA update. Instructions are on this page: [Handling MCU OTA Updates](../MCU-OTA).
+<mark>**&check; Note:** In addition, you'll have to prepare your application code to accept an MCU OTA update. Instructions are on this page: [Handling MCU OTA Updates](../MCU-OTA).</mark>
 
 ## The OTA Manager and the Profile Editor Work Together
 
@@ -48,7 +48,7 @@ Before you can upload a firmware image, you must define at least one **Image Typ
 
 Image types are shown in the OTA Manager as folders; again, you should name them based on the “types” of firmware images you plan to use for your MCU updates. Types could include bootloader, application, or any specific identifier you choose to categorize your firmware.
 
-**&check; Note:** You can create up to **100 Image Types**.
+<mark>**&check; Note:** You can create up to **100 Image Types**.</mark>
 
 
 
@@ -78,7 +78,7 @@ If you want to change the name or description of an existing Image Type, you can
 
 When you are ready to upload a firmware image, start from the OTA Manager main window.
 
-**&check; Note:** Remember that before uploading an image, you must have already used the Profile Editor to create and publish a device Profile that has a firmware Image Type selected. You do this on the Attributes Definition window > MCU Configuration pane > Firmware OTA Updates section. Read [Configure the MCU](../AttrDef#ConfigMCU) for more details.
+<mark>**&check; Note:** Remember that before uploading an image, you must have already used the Profile Editor to create and publish a device Profile that has a firmware Image Type selected. You do this on the Attributes Definition window > MCU Configuration pane > Firmware OTA Updates section. Read [Configure the MCU](../AttrDef#ConfigMCU) for more details.</mark>
 
 **1.** From the upper-right of the window, select +UPLOAD NEW IMAGE. The three-step upload wizard appears.
 

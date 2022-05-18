@@ -36,7 +36,7 @@ A rule is defined by specifying at least one condition in which an attribute you
 
 **5.** Define the CONDITION(S), or triggering events, by selecting an ATTRIBUTE and the corresponding VALUE it must report to trigger the notification.
 
-**&check; Note:** If you list more than one condition, **all** conditions must be met before a notification is triggered.
+<mark>**&check; Note:** If you list more than one condition, **all** conditions must be met before a notification is triggered.</mark>
 
 **6.** To create another rule, simply click + RULE.
 

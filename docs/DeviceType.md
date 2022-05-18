@@ -18,7 +18,7 @@ After selecting a project on the Startup window, the Profile Editor opens to the
 
 **2.** The POWER OPTIMIZATION section provides controls and information regarding battery power consumption.
 
-**&check; Note:** The Power Optimization calculations apply only to projects using either the Modulo-1 or Modulo-1B modules.
+<mark>**&check; Note:** The Power Optimization calculations apply only to projects using either the Modulo-1 or Modulo-1B modules.</mark>
 
 - Select an ADVERTISING INTERVAL (in seconds) for Bluetooth. If you’re running on battery power, the shorter the interval, the more battery power is consumed. However, at higher intervals the responsiveness of the device will be negatively affected due to lag time.
 - Once you’ve selected an interval, the DAILY AVERAGE CURRENT field will display the projected average current required by Modulo-1 or Modulo-1B for that interval while idle (the module is said to be idle when performing no function other than advertising).
