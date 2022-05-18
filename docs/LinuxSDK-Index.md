@@ -8,7 +8,7 @@ The documentation set outlined below supports the Afero Secure Linux Device SDK.
 
 - [Attribute Daemon Client Implementation](../LinuxSDK-AttrDaemon)
 
-- - [Defining Your Own Attributes](../LinuxSDK-DefineAttrs)
+    - [Defining Your Own Attributes](../LinuxSDK-DefineAttrs)<br><br>
 
 - [Wi-Fi Station Daemon Implementation](../LinuxSDK-WiFiStDaemon)
 
@@ -25,4 +25,5 @@ The documentation set outlined below supports the Afero Secure Linux Device SDK.
 We are also building a collection of Potenco setup guides. We are currently offering the following:
 
 - [Potenco Setup for BBGW Board](../LinuxSDK-PotencoBBGW)
+
 - [Potenco Setup for SAMA5D2 Board](../LinuxSDK-PotencoSAMA5D2)
