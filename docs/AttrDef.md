@@ -152,47 +152,47 @@ Use the table below to understand the values in the Queuing Policy drop-down men
 
 Depending on whether your MCU device is a Potenco or another MCU device, the interface for defining the attributes will differ. Go to the section relevant for your MCU device:
 
-- [Define Potenco Attributes](../AttrDef#HubAttributes)
-- [Define (Non-Potenco) MCU Attributes](../AttrDef#MCUAttributes)
+- [Define Potenco Attributes](../AttrDef#define-potenco-attributes)
+- [Define (Non-Potenco) MCU Attributes](../AttrDef#define-non-potenco-mcu-attributes)
 
 ### Define Potenco Attributes
 
 First you will configure your Potenco, then add attributes:
 
-1. Once you’ve clicked ATTRIBUTES in the right-hand navigation bar, you’ll see the DEFINE THE MCU ATTRIBUTES window:![Potenco Configuration](img/APE-PotencoConfig.png)
+**1.** Once you’ve clicked ATTRIBUTES in the right-hand navigation bar, you’ll see the DEFINE THE MCU ATTRIBUTES window:<br>
+<img src="../img/APE-PotencoConfig.png" width="300" style="vertical-align:middle;margin:0px 0px;border:none">
 
-2. In the Supported Network Interfaces pane, select all the network interfaces that your device supports. Select from WI-FI, ETHERNET, and WAN.
+**2.** In the Supported Network Interfaces pane, select all the network interfaces that your device supports. Select from WI-FI, ETHERNET, and WAN.
 
-3. In the Device Configuration pane, if you want your MCU to receive the UTC time updates from ASR, select the RECEIVE UTC TIME checkbox. Read more in [Using the Afero Cloud to Keep Time on the MCU](../SetMCUTime).
+**3.** In the Device Configuration pane, if you want your MCU to receive the UTC time updates from ASR, select the RECEIVE UTC TIME checkbox. Read more in [Using the Afero Cloud to Keep Time on the MCU](../SetMCUTime).
 
-4. Now you’re ready to add an attribute. Click the + DEVICE ATTRIBUTE button to open the device attribute editor:![Potenco Attribute Editor](img/APE-PotencoAttrEditor.png)
+**4.** Now you’re ready to add an attribute. Click the + DEVICE ATTRIBUTE button to open the device attribute editor:<br>
+<img src="../img/APE-PotencoAttrEditor.png" width="400" style="vertical-align:middle;margin:0px 0px;border:none">
 
-5. Complete the fields using the information in the table below:
+**5.** Complete the fields using the information in the table below:
 
    | FIELD          | DESCRIPTION                                                  |
    | :------------- | :----------------------------------------------------------- |
    | Attribute ID   | Accept the default attribute ID that pre-populates the field, or type another number between 1 and 1023, inclusive. The number must be unique to the Profile. |
    | Attribute Name | Type a name that will help you identify this attribute in other contexts. This name is not visible to the end-user. |
    | Default Value  | Type a value that will be the initial setting for this function. Keep in mind that the Default Value must be compatible with the Data Type; if it’s not, you’ll be warned when you try to save. Also remember that every time a device loses power and restarts, default values are restored. Think about how this could affect the end-user. |
-   | Data Type      | ASR uses the data type to allocate the storage size for the attribute. Select from the following:SINT8 - Signed integer (8 bit)SINT16 - Signed integer (16 bit)SINT32 - Signed integer (32 bit)SINT64 - Signed integer (64 bit)Q_15_16 - Signed fixed-point integer (32 bit)BOOLEAN - Logical true/falseUTF8S - String encoded as UTF-8BYTES - Byte array |
+   | Data Type      | ASR uses the data type to allocate the storage size for the attribute. Select from the following:<br>&bull; SINT8 - Signed integer (8 bit)<br>&bull; SINT16 - Signed integer (16 bit)<br>&bull; SINT32 - Signed integer (32 bit)<br>&bull; SINT64 - Signed integer (64 bit)<br>&bull; Q_15_16 - Signed fixed-point integer (32 bit)BOOLEAN - Logical true/false<br>&bull; UTF8S - String encoded as UTF-8BYTES - Byte array |
    | Max Size       | Maximum size, in bytes, of the attribute data. The max size is pre-defined for all data types, with UTF8S and BYTES the highest at 1536 bytes. Keep in mind that attribute memory is preallocated in ASR, so choose a max that will definitely handle your application needs; if you exceed allocated space at runtime, you will almost certainly overwrite something else. |
    | Read/Write     | MCU attributes are Read-Only by default. If you need to write attributes to your device, then select the WRITE checkbox as well. |
 
-6. Once you’ve defined all your attributes, click SAVE in the upper-right corner of the window.
+**6.** Once you’ve defined all your attributes, click SAVE in the upper-right corner of the window.
 
 ### Define (Non-Potenco) MCU Attributes
 
 First you will configure your MCU, then add attributes:
 
-1. Click the MCU CONFIGURATION toggle switch to turn it ON and select the protocol your MCU is using, either SPI or UART.
+**1.** Click the MCU CONFIGURATION toggle switch to turn it ON and select the protocol your MCU is using, either SPI or UART.
 
-   For the “Plumo-2D” Module Type, only UART protocol is supported.
+**&check;Note:** For the “Plumo-2D” Module Type, only UART protocol is supported.
 
-   
+<img src="../img/MCU-Config.png" width="600" style="vertical-align:middle;margin:0px 0px;border:none">
 
-   ![MCU Firmware Updates](img/MCU-Config.png)
-
-2. If you have selected UART, you must select the following transmission options from the drop-down menus:
+**2.** If you have selected UART, you must select the following transmission options from the drop-down menus:
 
    | OPTION     | DESCRIPTION                                                  |
    | :--------- | :----------------------------------------------------------- |
@@ -201,30 +201,31 @@ First you will configure your MCU, then add attributes:
    | Data Width | Number of bits per data frame. Select from 5, 6, 7, 8, or 9. |
    | Stop Bits  | Number of bits used to signal the end of the data transmission. Select from 1, 1.5, or 2. |
 
-3. **The RECEIVE UTC TIME setting applies only to ASR-2 and Modulo-2**: If you want your MCU to receive the UTC time updates from ASR, select the RECEIVE UTC TIME checkbox. Read more in [Using the Afero Cloud to Keep Time on the MCU](../SetMCUTime).
+**3.** **The RECEIVE UTC TIME setting applies only to ASR-2 and Modulo-2**: If you want your MCU to receive the UTC time updates from ASR, select the RECEIVE UTC TIME checkbox. Read more in [Using the Afero Cloud to Keep Time on the MCU](../SetMCUTime).
 
-4. Use the FIRMWARE OTA UPDATES section if you are planning to send firmware image updates to your MCU over-the-air using the OTA Manager. You must select at least one firmware Image Type checkbox to enable OTA firmware updates for your MCU.
+**4.** Use the FIRMWARE OTA UPDATES section if you are planning to send firmware image updates to your MCU over-the-air using the OTA Manager. You must select at least one firmware Image Type checkbox to enable OTA firmware updates for your MCU.
 
    If you don’t see any Image Types, or need an Image Type that isn’t shown, go to the [Afero OTA Manager](https://otamanager.afero.io/) and create a new Image Type. Once you’ve saved this new Image Type, return to the Profile Editor to select the Image Type and complete your Profile.
 
    For more information on preparing your MCU application code to receive OTA updates, please read [Handling MCU OTA Updates](../MCU_OTA).
 
-5. Now you’re ready to add an MCU attribute. Click the + MCU ATTRIBUTE button to open the MCU attribute definition editor:![MCU Attribute](img/Define_MCU_Attr.png)
+**5.** Now you’re ready to add an MCU attribute. Click the + MCU ATTRIBUTE button to open the MCU attribute definition editor:<br>
+<img src="../img/Define_MCU_Attr.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
 
-6. Complete the fields using the information in the table below:
+**6.** Complete the fields using the information in the table below:
 
    | FIELD               | DESCRIPTION                                                  |
    | :------------------ | :----------------------------------------------------------- |
    | Attribute ID        | Accept the default attribute ID that pre-populates the field, or type another number between 1 and 1023, inclusive. The number must be unique to the Profile. |
    | Attribute Name      | Type a name that will help you identify this attribute in other contexts. This name is not visible to the end-user. |
    | Default Value       | Type a value that will be the initial setting for this function. Keep in mind that the Default Value must be compatible with the Data Type; if it’s not, you’ll be warned when you try to save. Also remember that every time a device loses power and restarts, default values are restored. Think about how this could affect the end-user. |
-   | Data Type           | ASR uses the data type to allocate the storage size for the attribute. Select from the following:SINT8 - Signed integer (8 bit)SINT16 - Signed integer (16 bit)SINT32 - Signed integer (32 bit)SINT64 - Signed integer (64 bit)Q_15_16 - Signed fixed-point integer (32 bit)BOOLEAN - Logical true/falseUTF8S - String encoded as UTF-8BYTES - Byte array |
+   | Data Type           | ASR uses the data type to allocate the storage size for the attribute. Select from the following:<br>&bull; SINT8 - Signed integer (8 bit)<br>&bull; SINT16 - Signed integer (16 bit)<br>&bull; SINT32 - Signed integer (32 bit)<br>&bull; SINT64 - Signed integer (64 bit)<br>&bull; Q_15_16 - Signed fixed-point integer (32 bit)<br>&bull; BOOLEAN - Logical true/false<br>&bull; UTF8S - String encoded as UTF-8<br>&bull; BYTES - Byte array |
    | Max Size            | Maximum size, in bytes, of the attribute data. The max size is pre-defined for all data types, with UTF8S and BYTES the highest at 255 bytes. Keep in mind that attribute memory is preallocated in ASR, so choose a max that will definitely handle your application needs; if you exceed allocated space at runtime, you will almost certainly overwrite something else. |
    | Read/Write          | MCU attributes are Read-Only by default. If you need to write attributes to your device, then select the WRITE checkbox as well. |
    | Use ASR Timestamps  | Refer to the [Use ASR Timestamps](../AttrDef#UseTimestamp) section above. |
    | Queue Configuration | Refer to the [Queue Configuration](../AttrDef#QueueConfig) section above. To understand the queuing policy options, read [All About Queuing](../AttrDef#queuepolicy). |
 
-7. Once you’ve defined all your attributes, click SAVE in the upper-right corner of the window.
+**7.** Once you’ve defined all your attributes, click SAVE in the upper-right corner of the window.
 
 #### MCU Attribute Tips
 
