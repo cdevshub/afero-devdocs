@@ -18,7 +18,6 @@ Do the following to prepare for publishing:
 
 <img src="../img/Publish.png" width="700" style="vertical-align:middle;margin:0px 0px;border:none">
    
-
 ### QR Code Generator
 
 It might be convenient to generate a QR code on the fly. This would be helpful, for example, if you soldered your Afero module onto a board and made it inaccessible for subsequent scanning. To use the generator, click the QR CODE GENERATOR button. In the window that appears, type the Association ID, click GENERATE, and your code will appear. To save the code as a Scalable Vector Graphics (SVG) file, click the SAVE AS SVG button. To generate your device’s QR code, you can also click the little QR code icon just to the right of your Association ID in the Developer Device table.
@@ -29,7 +28,7 @@ The first section lists all devices that belong to your account, including the d
 
 For each device, you’ll see:
 
-| Field   | Description |
+| FIELD   | DESCRIPTION |
 | --------------- | ------------------------------------------------------------ |
 |Checkbox    |Use the checkbox(es) in the first column to select the device(s) to which you want to publish the active Profile. If you see a red exclamation mark<img src="../img/RedBang.png" width="25" style="vertical-align:middle;margin:0px 0px;border:none">(as shown above), it could mean:<br><br>&bull; The Module Type is not compatible with the Module Type of the active Profile.<br>&bull; The device has a firmware update pending. Cycle the power on the device to trigger the firmware update. You’ll be able to see the update progress in the mobile app.<br><br> Hover your cursor over the exclamation mark to reveal the popup with specific information. |
 | Friendly Name   | This is the friendly device name the end-user will see in the Afero mobile app (and which they can edit in the mobile app). You can edit the name here before publishing: hover your cursor over the name and click once the pencil icon appears. Type the new name then click the checkmark to save. |
@@ -49,7 +48,7 @@ Activities listed include attribute changes (e.g., you can watch the effect of a
 
 For each event you will see:
 
-| Field | Description                        |
+| FIELD | DESCRIPTION                        |
 | --------- | ------------------------------------------------------------ |
 | Timestamp | The time when the activity occurred.                         |
 | Attribute | If an attribute was changed by the activity, it is identified here using its name and unique numeric identifier. |

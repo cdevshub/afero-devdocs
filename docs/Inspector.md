@@ -8,7 +8,7 @@ You can open the Inspector by going to [https://inspector.afero.io](https://insp
 
 After you sign in, the Inspector Home window appears:
 
-![Inspector Home Window](img/InspectorMain.png)
+<img src="../img/InspectorMain.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
 
 This window offers you the following information and actions:
 
@@ -16,32 +16,38 @@ This window offers you the following information and actions:
 
 - A “card” is shown for each of your associated devices. Within each card you’ll see:
 
-- - Device icon - Can be changed on the Profile Editor’s Device Type window.
-  - Device’s friendly name - Can be changed in the DEVICE INFORMATION pane of Inspector, on the mobile app, and on the Profile Editor’s Publish window.
-  - Device ID (alpha-numeric string under the device name) - Click the Device ID to copy the ID to your clipboard.
-  - Connectivity status - Online or offline.
+    - Device icon - Can be changed on the Profile Editor’s Device Type window.
+  
+    - Device’s friendly name - Can be changed in the DEVICE INFORMATION pane of Inspector, on the mobile app, and on the Profile Editor’s Publish window.
+    
+    - Device ID (alpha-numeric string under the device name) - Click the Device ID to copy the ID to your clipboard.
+    
+    - Connectivity status - Online or offline.
 
 - View details for any of your devices by selecting the associated card; click the friendly name directly, not the Device ID. (Read more in [Device Details Window](../Inspector#InspectorDeviceDetails).)
 
 - The icons in the upper-right of the window are links to the following:
 
-  - ![Inspector Home Window Icon](img/Inspector-HomeIcon.png)- Returns you to this Home window from the Device Details or Account Information windows.
-  - ![Inspector Account Icon](img/Inspector-AccountIcon.png)- Opens a window with your account information. (Read more in [Developer Account Information](../Inspector#UserInfo).)
-  - ![Inspector User Guide Icon](img/Inspector-UserGuideIcon.png)- Opens this Inspector User Guide in a new window.
-  - ![Inspector Sign Out Icon](img/Inspector-SignOutIcon.png)- Signs you out from Inspector.
+    <img src="../img/Inspector-HomeIcon.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none">- Returns you to this Home window from the Device Details or Account Information windows.
+    
+    <img src="../img/Inspector-AccountIcon.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none">- Opens a window with your account information. (Read more in [Developer Account Information](../Inspector#UserInfo).)
+    
+    <img src="../img/Inspector-UserGuideIcon.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none">- Opens this Inspector User Guide in a new window.
+    
+    <img src="../img/Inspector-SignOutIcon.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none">- Signs you out of Inspector.
 
 ## Device Details Window
 
 After you select a device card in the Home window, that device’s Details window opens. To look at the details for a different device, use the left-hand Navigation pane, where all the devices associated with your account are listed, identified by their friendly names. Devices with an orange dot are online; devices with a greyed-out dot are offline.
 
-![Inspector Device Details Window](img/Inspector-DeviceDetails.png)
+<img src="../img/Inspector-DeviceDetails.png" width="700" style="vertical-align:middle;margin:0px 0px;border:none">
 
 The selected device details are presented in the following panes:
 
-- [Attribute Tabs](../Inspector#Attributes)
-- [Connection - Wi-Fi/Bluetooth Signal Strength](../Inspector#SignalStrength)
-- [Device Log](../Inspector#Log)
-- [Device Information](../Inspector#Info)
+- [Attribute Tabs](../Inspector#attribute-tabs)
+- [Connection - Wi-Fi/Bluetooth Signal Strength](../Inspector#connection-wi-fibluetooth-signal-strength)
+- [Device Log](../Inspector#device-log)
+- [Device Information](../Inspector#device-information)
 
 ### Attribute Tabs
 
@@ -49,11 +55,14 @@ The attributes relevant to the selected device are displayed in two tabs: [Devic
 
 You can download the information and even edit the READ/WRITE attributes from these windows.
 
-- Click![Inspector Download Icon](img/Inspector-DownloadIcon.png)(there is one on each tab) to download the attribute information to a file in JSON format.
+- Click<img src="../img/Inspector-DownloadIcon.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none">(there is one on each tab) to download the attribute information to a file in JSON format.
+
 - You can sort on the Attribute ID, Attribute Name, or Last Update columns. Click the associated arrow to select that column for sort (the arrow will turn orange), plus reverse the sort order.
-- You can edit READ/WRITE attribute values in real-time when the device is online; these values are indicated with a pencil icon. Click the pencil to edit and update a value:
-  ![Edit Attribute Value](img/Inspector-EditValue.png)
-  Click![Save Icon](img/Inspector-SaveIcon.png)to save an edit and update the value, or![Dismiss Icon](img/Inspector-DismissIcon.png)to dismiss the edit box with no update. If the value you type is invalid or if your device is offline, you’ll see an error message (in orange text) below the edit value field.
+
+- You can edit READ/WRITE attribute values in real-time when the device is online; these values are indicated with a pencil icon. Click the pencil to edit and update a value:<br>
+<img src="../img/Inspector-EditValue.png" width="300" style="vertical-align:middle;margin:0px 0px;border:none">
+
+    Click<img src="../img/Inspector-SaveIcon.png" width="25" style="vertical-align:middle;margin:0px 0px;border:none">to save an edit and update the value, or<img src="../img/Inspector-DismissIcon.png" width="25" style="vertical-align:middle;margin:0px 0px;border:none">to dismiss the edit box with no update. If the value you type is invalid or if your device is offline, you’ll see an error message (in orange text) below the edit value field.
 
 #### Device Attributes
 
@@ -75,7 +84,7 @@ The attributes shown in the AFERO SYSTEM ATTRIBUTES tab are generally set by the
 
 For the selected device, this pane displays either the Received Signal Strength Indicator (RSSI) signal status for Wi-Fi or, if the device is connected via Bluetooth and a hub, the signal strength (in dBm), as seen by the hub(s).
 
-Click![Inspector Collapse Icon](img/Inspector-CollapseIcon.png)to show/hide this pane.
+Click<img src="../img/Inspector-CollapseIcon.png" width="25" style="vertical-align:middle;margin:0px 0px;border:none">to show/hide this pane.
 
 #### Wi-Fi Connection
 
@@ -85,7 +94,7 @@ For devices connected via Wi-Fi, the following information is displayed (see abo
 | :----------------- | :----------------------------------------------------------- | :------------ |
 | Wi-Fi SSID         | Name of the Wi-Fi network the device is connected to.        | SHAW-66E150   |
 | Wi-Fi Bars         | Wi-Fi signal strength for UI purposes.                       | -48           |
-| Wi-Fi Steady State | Wi-Fi connection state when last stable. The value is used to communicate the Wi-Fi state to the applications outside the Wi-Fi setup.Possible values are:0 = Not Connected1 = Pending2 = Connected3 = Unknown Failure4 = Association Failed5 = Handshake Failed6 = Echo Failed7 = SSID (Network Name) Not Found8 = NTP (Network Time Protocol) Failed | 2 (Connected) |
+| Wi-Fi Steady State | Wi-Fi connection state when last stable. The value is used to communicate the Wi-Fi state to the applications outside the Wi-Fi setup.<br><br>Possible values are:<br>0 = Not Connected<br>1 = Pending<br>2 = Connected<br>3 = Unknown Failure<br>4 = Association Failed<br>5 = Handshake Failed<br>6 = Echo Failed<br>7 = SSID (Network Name) Not Found<br>8 = NTP (Network Time Protocol) Failed | 2 (Connected) |
 
 #### Bluetooth Connection
 
@@ -100,13 +109,13 @@ For devices connected via Bluetooth and a hub, the RSSI is primarily a function 
 
 This section lists the activity (events) between this device and Afero in real-time.
 
-- You can filter the log contents by typing a search string in the search box![Inspector Log Search Box](img/Inspector-SearchBox.png). Clear the search results by clicking![Inspector Clear Filter Icon](img/Inspector-ClearFilterIcon.png).
-- Click![Inspector Download Icon](img/Inspector-DownloadIcon.png)to download the log contents to a file. Note that this file also contains the current RSSI connectivity data.
-- Click![Inspector Clear Log Icon](img/Inspector-ClearLogIcon.png)to remove the current log contents.
+- You can filter the log contents by typing a search string in the search box<img src="../img/Inspector-SearchBox.png" width="200" style="vertical-align:middle;margin:0px 0px;border:none">. Clear the search results by clicking<img src="../img/Inspector-ClearFilterIcon.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none">
+- Click<img src="../img/Inspector-DownloadIcon.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none">to download the log contents to a file. Note that this file also contains the current RSSI connectivity data.
+- Click<img src="../img/Inspector-ClearLogIcon.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none">to remove the current log contents.
 
 ### Device Information
 
-This section contains details that you have defined for the device in the Afero Profile Editor, as well as system-assigned information, such as device location. Click![Inspector Download Icon](img/Inspector-DownloadIcon.png)to download the device information to a file.
+This section contains details that you have defined for the device in the Afero Profile Editor, as well as system-assigned information, such as device location. Click<img src="../img/Inspector-DownloadIcon.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none">to download the device information to a file.
 
 | FIELD              | DESCRIPTION                                                  | EXAMPLE                              |
 | :----------------- | :----------------------------------------------------------- | :----------------------------------- |
@@ -120,7 +129,7 @@ This section contains details that you have defined for the device in the Afero 
 
 ## Developer Account Information
 
-To view your account information, click![Inspector Account Icon](img/Inspector-AccountIcon.png)in the upper-right of the window. Most of the information in this section was provided by you when registering for an Afero developer account:
+To view your account information, click<img src="../img/Inspector-AccountIcon.png" width="25" style="vertical-align:middle;margin:0px 0px;border:none">in the upper-right of the window. Most of the information in this section was provided by you when registering for an Afero developer account:
 
 | FIELD            | DESCRIPTION                                                  | EXAMPLE                                                |
 | :--------------- | :----------------------------------------------------------- | :----------------------------------------------------- |

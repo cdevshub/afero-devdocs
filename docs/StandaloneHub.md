@@ -9,27 +9,29 @@ This Raspberry Pi release includes the following:
 
 To set up an Afero Developer Hub, please use the information in the sections below:
 
-- [Caveats and Considerations](../StandaloneHub#HubbyCaveats)
+- [Caveats and Considerations](../StandaloneHub#caveats-and-considerations)
 
-- [Hardware Requirements](../StandaloneHub#HubbyHWReqs)
+- [Hardware Requirements](../StandaloneHub#hardware-requirements)
 
-- [Set Up the Raspberry Pi](../StandaloneHub#RaspPiSetup)
+- [Set Up the Raspberry Pi](../StandaloneHub#set-up-the-raspberry-pi)
 
-- [Install the Afero Hub Software](../StandaloneHub#HubbyInstallOptions)
+- [Install the Afero Hub Software](../StandaloneHub#install-the-afero-hub-software)
 
-- - [Install the Hub Software via APT Repository (Recommended)](../StandaloneHub#HubbyInstallAPT)
-  - [Install the Hub Software Manually](../StandaloneHub#HubbyManPkgInstall)
+    - [Install the Hub Software via APT Repository (Recommended)](../StandaloneHub#install-the-hub-software-via-apt-repository-recommended)
+    
+    - [Install the Hub Software Manually](../StandaloneHub#install-the-hub-software-manually)
 
-- [Add the Virtual-Hub Device to Your Account](../StandaloneHub#HubbyConfigure)
+- [Add the Virtual-Hub Device to Your Account](../StandaloneHub#add-the-virtual-hub-device-to-your-account)
 
-- [Manage the Afero Hub Software](../StandaloneHub#HubbyManage)
+- [Manage the Afero Hub Software](../StandaloneHub#manage-the-afero-hub-software)
 
-- - [Start, Stop, and Restart the Hub Software](../StandaloneHub#HubbyStartStopRestart)
-  - [Manage the Virtual-Hub Device](../StandaloneHub#HubbyVirtualDevice)
-  - [Remove, Reinstall, and Update the Hub Software](../StandaloneHub#HubbyRemoveEtc)
-
-- [Get Support](../StandaloneHub#HubbySupport)
-
+    - [Start, Stop, and Restart the Hub Software](../StandaloneHub#start-stop-and-restart-the-hub-software)
+    
+    - [Manage the Virtual-Hub Device](../StandaloneHub#manage-the-virtual-hub-device)
+  
+    - [Remove, Reinstall, and Update the Hub Software](../StandaloneHub#remove-reinstall-and-update-the-hub-software)
+    
+- [Get Support](../StandaloneHub#get-support)
 ## Caveats and Considerations
 
 - We recommend running the Developer Hub on the latest Raspbian “Buster” OS, however any version of Buster, and any version of Stretch (version 2017-08-16 or newer) are supported. Raspian can be downloaded from https://www.raspberrypi.org/downloads/raspbian/.
@@ -47,20 +49,24 @@ We require ARM-based systems running Debian Linux or any Debian variant:
 
 - **Raspberry Pi Zero (non-wireless)** - This configuration will work as a hub but is not recommended because of these additional hardware requirements:
 
-- - USB Wi-Fi adapter ([such as this product on Amazon.com](https://www.amazon.com/Edimax-EW-7811Un-150Mbps-Raspberry-Supports/dp/B003MTTJOY)).
-  - USB Bluetooth 4.0 USB adapter ([such as this product on Amazon.com](https://www.amazon.com/Plugable-Bluetooth-Adapter-Raspberry-Compatible/dp/B009ZIILLI/)).
-  - Micro-USB “OTG” cable and USB hub to connect adapters to the Pi.
+    - USB Wi-Fi adapter ([such as this product on Amazon.com](https://www.amazon.com/Edimax-EW-7811Un-150Mbps-Raspberry-Supports/dp/B003MTTJOY)).
+    
+    - USB Bluetooth 4.0 USB adapter ([such as this product on Amazon.com](https://www.amazon.com/Plugable-Bluetooth-Adapter-Raspberry-Compatible/dp/B009ZIILLI/)).
+    
+    - Micro-USB “OTG” cable and USB hub to connect adapters to the Pi.
 
 - **Raspberry Pi 1 or 2 Model B or B+** - This configuration will work as a hub but is not recommended because of these additional hardware requirements:
 
-- - USB Wi-Fi adapter ([such as this product on Amazon.com](https://www.amazon.com/Edimax-EW-7811Un-150Mbps-Raspberry-Supports/dp/B003MTTJOY)).
-  - USB Bluetooth 4.0 USB adapter ([such as this product on Amazon.com](https://www.amazon.com/Plugable-Bluetooth-Adapter-Raspberry-Compatible/dp/B009ZIILLI/)).
-  - External power supply; USB power will not be sufficient.
+    - USB Wi-Fi adapter ([such as this product on Amazon.com](https://www.amazon.com/Edimax-EW-7811Un-150Mbps-Raspberry-Supports/dp/B003MTTJOY)).
+    
+    - USB Bluetooth 4.0 USB adapter ([such as this product on Amazon.com](https://www.amazon.com/Plugable-Bluetooth-Adapter-Raspberry-Compatible/dp/B009ZIILLI/)).
+    
+    - External power supply; USB power will not be sufficient.
 
 - **Other ARM-based Debian Linux systems** - These have not been tested, but should also work…
 
-- - As long as you have Bluetooth hardware supported by BlueZ.
-  - Any internet connectivity is supported.
+    - As long as you have Bluetooth hardware supported by BlueZ.
+    - Any internet connectivity is supported.
 
 We will be adding support for other small computing systems as demand and time permits.
 
@@ -70,23 +76,17 @@ The Afero Hub Software is not particularly platform- or architecture-specific an
 
 The Raspbian OS allows you to configure the Wi-Fi network from your local PC before booting it in the Raspberry Pi.
 
-1. Install the Raspbian OS to an appropriate SD card (8GB or larger) via the instructions at https://www.raspberrypi.org/documentation/installation/installing-images/.
+**1.** Install the Raspbian OS to an appropriate SD card (8GB or larger) via the instructions at https://www.raspberrypi.org/documentation/installation/installing-images/.
 
-2. Remove and re-insert the SD card into your computer.
+**2.** Remove and re-insert the SD card into your computer.
 
-3. Open the SD card image, which will have the volume name of “boot”.
+**3.** Open the SD card image, which will have the volume name of “boot”.
 
-4. Using a text editor like Notepad for Windows, TextEdit for macOS, or your favorite plain text editor program (
+**4.** Using a text editor like Notepad for Windows, TextEdit for macOS, or your favorite plain text editor program (do not use a document program like Word or Pages), do the following:
 
-   do not
+4a. Create a file on the SD card named “wpa_supplicant.conf”.
 
-    
-
-   use a document program like Word or Pages), do the following:
-
-   1. Create a file on the SD card named “wpa_supplicant.conf”.
-
-   2. Paste the text shown below into this file, replacing the Wi-Fi network SSID (network name) and password with the proper values for your Wi-Fi network. If you reside outside the US, replace the “country” setting with the proper two-letter country code.
+4b. Paste the text shown below into this file, replacing the Wi-Fi network SSID (network name) and password with the proper values for your Wi-Fi network. If you reside outside the US, replace the “country” setting with the proper two-letter country code.
 
       ```
       country=US
@@ -101,16 +101,17 @@ The Raspbian OS allows you to configure the Wi-Fi network from your local PC bef
       }
       ```
 
-   3. Save the file.
+4c. Save the file.
 
-5. (Optional) If you do not have a keyboard and monitor to attach to the Pi, you can use a secure shell connection to the Pi to connect over your network: Using your text editor, create a file named “ssh” or “ssh.txt”. The contents of this file don’t matter, as long as the file exists on the “boot” SD card and is named “ssh”. This allows you to use the “ssh” command to connect to the Pi over your network.
+**5.** (Optional) If you do not have a keyboard and monitor to attach to the Pi, you can use a secure shell connection to the Pi to connect over your network: Using your text editor, create a file named “ssh” or “ssh.txt”. The contents of this file don’t matter, as long as the file exists on the “boot” SD card and is named “ssh”. This allows you to use the “ssh” command to connect to the Pi over your network.
 
-6. Unmount the SD card and remove it from your computer. Insert it into the Raspberry Pi, and power up the Pi. In subsequent steps, you will work on the Pi.
+**6.** Unmount the SD card and remove it from your computer. Insert it into the Raspberry Pi, and power up the Pi. In subsequent steps, you will work on the Pi.
 
-7. And finally, please take these important security steps after your Pi is set up and working:
+**7.** And finally, please take these important security steps after your Pi is set up and working:
 
-   1. Change the default password for the “pi” user using the `passwd` command.
-   2. Replace the plaintext Wi-Fi password in the file `/etc/wpa_supplicant/wpa_supplicant.conf` with an encrypted version using the `wpa_passphrase` utility.
+7a. Change the default password for the “pi” user using the `passwd` command.
+
+7b. Replace the plaintext Wi-Fi password in the file `/etc/wpa_supplicant/wpa_supplicant.conf` with an encrypted version using the `wpa_passphrase` utility.
 
 ## Install the Afero Hub Software
 
@@ -120,74 +121,62 @@ You can install the Afero Hub Software in either of two ways. The first, [via AP
 
 Afero provides a Debian Repository for the packages we publish. If you add our repository to your system’s Advanced Packaging Tool (APT) sources list, you can install and update packages through the normal Debian package tools, such as `aptitude` and `apt-get`.
 
-1. Run the following commands to download a script that will add Afero to your APT sources:
+**1.** Run the following commands to download a script that will add Afero to your APT sources:
 
-   ```
-   $ wget https://cdn.afero.io/repo/deb/addrepo.sh
-   $ bash ./addrepo.sh
-   ```
+```
+$ wget https://cdn.afero.io/repo/deb/addrepo.sh
+$ bash ./addrepo.sh
+```
 
    - This script adds the Afero repo information and signing key to your system configuration.
    - Select **y** to run `apt-get update` as part of the script. This will take a few minutes to run.
 
-   ```
-   $ sudo apt-get install afero-hub
-   ```
+     ```
+     $ sudo apt-get install afero-hub
+     ```
 
    This will fetch the afero-ble and afero-hub packages as well as any other prerequisite packages you may need.
 
-2. During installation, you will be prompted to accept the [Afero Developer Terms of Service](https://www.afero.io/legal#developer), which is the license that covers your use of the Afero ble and hub packages.
+**2.** During installation, you will be prompted to accept the [Afero Developer Terms of Service](https://www.afero.io/legal#developer), which is the license that covers your use of the Afero ble and hub packages.
 
-3. Skip down to [Add the Virtual-Hub Device to Your Account](../StandaloneHub#HubbyConfigure) to continue.
+**3.** Skip down to [Add the Virtual-Hub Device to Your Account](../StandaloneHub#add-the-virtual-hub-device-to-your-account) to continue.
 
 ### Install the Hub Software Manually
 
-1. If you don’t wish to use our package repository, or if you’re installing these packages offline, you may download them manually from the following URLs:
+**1.** If you don’t wish to use our package repository, or if you’re installing these packages offline, you may download them manually from the following URLs:
 
    - https://cdn.afero.io/repo/deb/afero-ble_latest_armhf.deb
    - https://cdn.afero.io/repo/deb/afero-hub_latest_armhf.deb
 
-   If you intend to install these packages offline, you will also need to download the `html2text, qrencode, libqrencode3, and bluetooth` packages, either from a connected Debian system (with the command: `apt-get download html2text bluetooth qrencode libqrencode3 libpng12-0`), or fetch them online from https://packages.debian.org/stretch/allpackages/.
+If you intend to install these packages offline, you will also need to download the `html2text, qrencode, libqrencode3, and bluetooth` packages, either from a connected Debian system (with the command: `apt-get download html2text bluetooth qrencode libqrencode3 libpng12-0`), or fetch them online from https://packages.debian.org/stretch/allpackages/.
 
-2. Install these packages with the following commands:
+**2.** Install these packages with the following commands:
 
-   ```
-   $ sudo dpkg -i html2text*.deb libpng12-0*deb libqrencode3*.deb qrencode*deb bluetooth*deb
-   $ sudo reboot
-   $ sudo dpkg -i afero-ble*.deb
-   ```
+```
+$ sudo dpkg -i html2text*.deb libpng12-0*deb libqrencode3*.deb qrencode*deb bluetooth*deb
+$ sudo reboot
+$ sudo dpkg -i afero-ble*.deb
+```
 
-3. You will be prompted to accept the [Afero Developer Terms of Service](https://www.afero.io/legal#developer), which is the license that covers your use of the Afero ble and hub packages.
+**3.** You will be prompted to accept the [Afero Developer Terms of Service](https://www.afero.io/legal#developer), which is the license that covers your use of the Afero ble and hub packages.
 
    ```
    $ sudo dpkg -i afero-hub*.deb
    ```
 
-4. Continue with [Add the Virtual-Hub Device to Your Account](../StandaloneHub#HubbyConfigure).
+**4.** Continue with [Add the Virtual-Hub Device to Your Account](../StandaloneHub#add-the-virtual-hub-device-to-your-account).
 
 ## Add the Virtual-Hub Device to Your Account
 
 The installation of the Hub Software package will create a virtual-hub device that you can connect to your Afero account by scanning a QR code, just as with other devices such as Modulo. Follow the steps below:
 
-1. **Accept Terms of Service** - During installation, you must accept the [Afero Developer Terms of Service](https://www.afero.io/legal#developer) before the packages will install.
+**1.** **Accept Terms of Service** - During installation, you must accept the [Afero Developer Terms of Service](https://www.afero.io/legal#developer) before the packages will install.
 
-2. Scan QR code with Afero mobile app
+**2.** Scan QR code with Afero mobile app - The package installation will present a QR code on your screen. Launch the Afero mobile app on your smartphone, and tap ADD DEVICE to add a device to your account, then scan the QR code.
 
-    
+If the QR code won’t scan for some reason, tap MANUALLY ADD DEVICE and type the alphanumeric Association ID listed below the QR code.
 
-   \- The package installation will present a QR code on your screen. Launch the Afero mobile app on your smartphone, and tap
-
-    
-
-   ADD DEVICE
-
-    
-
-   to add a device to your account, then scan the QR code.
-
-   If the QR code won’t scan for some reason, tap MANUALLY ADD DEVICE and type the alphanumeric Association ID listed below the QR code.
-
-3. The software will then connect to the Afero Cloud to associate the Hub Software with your account.
+**3.** The software will then connect to the Afero Cloud to associate the Hub Software with your account.
 
 **At this point, installation is complete, and your Developer Hub is ready to use!** For future reference, we’ve included instructions for managing your hub, directly below.
 
@@ -227,19 +216,19 @@ Under normal circumstances, you should not have to manually stop and restart the
 
 - To **manually stop** the daemons, use:
 
-  ```
-  $ sudo systemctl stop beetle
-  ```
+    ```
+    $ sudo systemctl stop beetle
+    ```
 
-  Stopping the beetle daemon will automatically stop the hubby daemon.
+    Stopping the beetle daemon will automatically stop the hubby daemon.
 
 - To **manually start** the daemons, use:
 
-  ```
-  $ sudo systemctl start hubby
-  ```
+    ```
+    $ sudo systemctl start hubby
+    ```
 
-  Starting the hubby daemon will automatically start the beetle daemon.
+    Starting the hubby daemon will automatically start the beetle daemon.
 
 ### Manage the Virtual-Hub Device
 
@@ -263,46 +252,38 @@ You can remove, re-install, and update these packages using normal Debian packag
 
 - To remove the software but keep your configuration intact (to preserve your virtual-hub device), run:
 
-  ```
-  $ sudo apt-get remove afero-hub afero-ble
-  ```
+    ```
+    $ sudo apt-get remove afero-hub afero-ble
+    ```
 
 - To remove the software along with your associated configuration, first remove the virtual-hub device from your Afero account via the mobile app, then run:
 
-  ```
-  $ sudo apt-get remove --purge afero-hub afero-ble
-  ```
-
-- If you installed the packages manually (rather than through
-
-   
-
-  ```
-  apt-get
-  ```
-
-  ), do one of the following.
-
-  - To remove the software but leave the virtual-hub device intact, run:
-
     ```
-    $ sudo dpkg -r afero-hub afero-ble
+    $ sudo apt-get remove --purge afero-hub afero-ble
     ```
 
-  - To remove both the package **and** the virtual-hub device, run:
+- If you installed the packages manually (rather than through `apt-get`), do one of the following.
 
-    ```
-    $ sudo dpkg -P afero-hub afero-ble
-    ```
+    - To remove the software but leave the virtual-hub device intact, run:
+
+        ```
+        $ sudo dpkg -r afero-hub afero-ble
+        ```
+
+    - To remove both the package **and** the virtual-hub device, run:
+
+        ```
+        $ sudo dpkg -P afero-hub afero-ble
+        ```
 
 - When we release a new version of the Hub Software, you can update the packages through the normal `apt-get` process:
 
-  ```
-  $ sudo apt-get install --only-upgrade afero-ble
-  $ sudo apt-get install --only-upgrade afero-hub
-  ```
+	```
+	$ sudo apt-get install --only-upgrade afero-ble   
+	$ sudo apt-get install --only-upgrade afero-hub
+	```
 
-  Upgrading the packages will preserve the virtual-hub device attached to your account.
+    Upgrading the packages will preserve the virtual-hub device attached to your account.
 
 ## Get Support
 
