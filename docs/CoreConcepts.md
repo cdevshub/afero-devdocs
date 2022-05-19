@@ -50,8 +50,9 @@ All the information that we’ve defined for the light bulb – the attributes a
 
 We create a device Profile for the light bulb using the Afero Profile Editor app. The Profile Editor systematically gathers the information it needs so it can create three definitions:
 
-| Some basic information about the type of light bulb          | ⟶    | Device Type Definition      |
+| INFORMATION          |    | DEFINITION      |
 | ------------------------------------------------------------ | ---- | --------------------------- |
+| Some basic information about the type of light bulb          | ⟶    | Device Type Definition      |
 | The light bulb’s attributes and possible values              | ⟶    | Device Attribute Definition |
 | The UI controls that represent the light bulb’s attributes in the mobile app | ⟶    | Mobile App UI Definition    |
 

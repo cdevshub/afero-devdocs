@@ -278,12 +278,12 @@ You can remove, re-install, and update these packages using normal Debian packag
 
 - When we release a new version of the Hub Software, you can update the packages through the normal `apt-get` process:
 
-	```
+```
 	$ sudo apt-get install --only-upgrade afero-ble   
 	$ sudo apt-get install --only-upgrade afero-hub
-	```
+```
 
-    Upgrading the packages will preserve the virtual-hub device attached to your account.
+Upgrading the packages will preserve the virtual-hub device attached to your account.
 
 ## Get Support
 

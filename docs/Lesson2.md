@@ -4,7 +4,7 @@ Before you start, we assume that you’ve already run through [Tutorial 1: Linki
 
 This tutorial is designed for the Modulo-1 and Modulo-2 dev boards, but not for the Modulo-1B.
 
-**1.  If you haven’t already, download the Afero Profile Editor, for [Windows](http://cdn.afero.io/latest-ape/win) or [macOS](http://cdn.afero.io/latest-ape/mac).**
+**1.  If you haven’t already, download the Afero Profile Editor, for [Windows <img src="../img/windows.svg" alt="drawing" width="25" style="vertical-align:middle;margin:0px 0px;border:none">](http://cdn.afero.io/latest-ape/win) or [macOS <img src="../img/macos.svg" alt="drawing" width="25" style="vertical-align:middle;margin:0px 0px;border:none">](http://cdn.afero.io/latest-ape/mac).**
 
 Open and sign in to the Profile Editor. The Startup window appears:
 
