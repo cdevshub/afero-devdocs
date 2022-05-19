@@ -21,7 +21,7 @@ The Afero Secure Linux Device SDK relies on several Linux components, including 
 
 Each component in an Afero Linux device functions as follows:
 
-| Component | Description|
+| COMPONENT | DESCRIPTION |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Edge Device daemon (edged)](../LinuxSDK-Overview#edge-device-daemon-edged) | Provides edge device functionality for the Linux device.     |
 | [Attribute daemon (attrd)](../LinuxSDK-Overview#LinuxSDK-Overview/#attribute-daemon-attrd)  | Provides interprocess communication based on Afero attributes. |
@@ -140,9 +140,7 @@ The Connection Manager daemon has two main responsibilities:
 - Switching the IP network between the Wi-Fi, wireless modem, and Ethernet interfaces; and
 - Maintaining firewalls that dynamically open and close IP addresses to allow only afero.io traffic.
 
-Firewall functionality is optional; you can disable the firewall by invoking connmgr with the -d option.
-
-
+<mark>**&check; Note:**  Firewall functionality is optional; you can disable the firewall by invoking connmgr with the -d option.</mark>
 
 The Connection Manager chooses the network interface based on a fixed priority. Ethernet has highest priority, but if it’s down, the Connection Manager chooses Wi-Fi. If Wi-Fi is down, the Connection Manager falls back to wireless modem.
 

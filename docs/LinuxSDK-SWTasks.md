@@ -1,6 +1,6 @@
 # Software Tasks for Creating an Afero Secure Linux Device
 
-There are a number of software tasks that must be finished to produce a fully-functional, production-ready device. The first section below goes over the [high-level software tasks](../LinuxSDK-SWTasks#HiLevelSW) that must be completed; the next section describes the [miscellaneous integration tasks](../LinuxSDK-SWTasks#MiscTasks).
+There are a number of software tasks that must be finished to produce a fully-functional, production-ready device. The first section below goes over the [high-level software tasks](../LinuxSDK-SWTasks#high-level-software-tasks) that must be completed; the next section describes the [miscellaneous integration tasks](../LinuxSDK-SWTasks#miscellaneous-afero-integration-tasks).
 
 The instructions in this section describe the process generically; you can use the instructions as a building block to create a working system for any architecture of your choice. See [Afero Potenco Setup Guide for BeagleBone Green Wireless Board](../LinuxSDK-PotencoBBGW) for one example.
 
@@ -8,13 +8,13 @@ The instructions in this section describe the process generically; you can use t
 
 At a high level, developing an Afero Linux device is like developing any other Linux-based embedded system. You must do the following:
 
-1. [Define the Partition Scheme](../LinuxSDK-SWTasks#DefinePartition)
-2. [Create a Build System](../LinuxSDK-SWTasks#CreateBuildSys)
-3. [Implement an OTA Scheme](../LinuxSDK-SWTasks#ImplOTA)
-4. [Implement Device-Specific Functionality](../LinuxSDK-SWTasks#DeviceSpecFunc)
-5. [Implement Factory Diagnostics](../LinuxSDK-SWTasks#ImplFactDiag)
-6. [Secure Your Hardware](../LinuxSDK-SWTasks#SecureHW)
-7. [Get Certifications](../LinuxSDK-SWTasks#GetCerts)
+1. [Define the Partition Scheme](../LinuxSDK-SWTasks#1-define-the-partition-scheme)
+2. [Create a Build System](../LinuxSDK-SWTasks#2-create-a-build-system)
+3. [Implement an OTA Scheme](../LinuxSDK-SWTasks#3-implement-an-ota-scheme)
+4. [Implement Device-Specific Functionality](../LinuxSDK-SWTasks#4-implement-device-specific-functionality)
+5. [Implement Factory Diagnostics](../LinuxSDK-SWTasks#5-implement-factory-diagnostics)
+6. [Secure Your Hardware](../LinuxSDK-SWTasks#6-secure-your-hardware)
+7. [Obtain Required Certifications](../LinuxSDK-SWTasks#7-obtain-required-certifications)
 
 In the following sections we discuss specific requirements for each of these steps when you’re building an Afero secure Linux device.
 
@@ -69,7 +69,7 @@ The device-specific code implements the features that make your device do someth
 
 **Requirement** If you have special Wi-Fi requirements – for example, if you’re building a Wi-Fi access point – you'll have to modify the Wi-Fi Station daemon and the Connection Manager. These components are also in the af-conn repository and more details are given in [Wi-Fi Station Daemon Implementation](../LinuxSDK-WiFiStDaemon) and the [Connection Manager Daemon Implementation](../LinuxSDK-ConnMgrDaemon).
 
-In addition, there are integration tasks, discussed below in the [Miscellaneous Afero Integration Tasks](../LinuxSDK-SWTasks#MiscTasks) section.
+In addition, there are integration tasks, discussed below in the [Miscellaneous Afero Integration Tasks](../LinuxSDK-SWTasks#miscellaneous-afero-integration-tasks) section.
 
 ### 5. Implement Factory Diagnostics
 
@@ -116,13 +116,13 @@ In addition, your device must undergo testing at Afero before you can sell it.
 
 This section captures some miscellaneous integration tasks required to get the Afero Linux SDK package running. We will discuss the following tasks:
 
-- [Init Scripts](../LinuxSDK-SWTasks#InitScripts)
-- [Logging](../LinuxSDK-SWTasks#Logging)
-- [Reporting hubby State Using LEDs](../LinuxSDK-SWTasks#hubbyStateLED)
-- [Network Capabilities Script](../LinuxSDK-SWTasks#NetworkCapScript)
-- [COMMAND Attribute](../LinuxSDK-SWTasks#COMMANDattr)
-- [REBOOT_REASON Attribute](../LinuxSDK-SWTasks#REBOOT_REASONattr)
-- [Network Interface Names File](../LinuxSDK-SWTasks#NetInterNames)
+- [Init Scripts](../LinuxSDK-SWTasks#init-scripts)
+- [Logging](../LinuxSDK-SWTasks#logging)
+- [Reporting hubby State Using LEDs](../LinuxSDK-SWTasks#reporting-hubby-state-using-leds)
+- [Network Capabilities Script](../LinuxSDK-SWTasks#network-capabilities-script)
+- [COMMAND Attribute](../LinuxSDK-SWTasks#command-attribute)
+- [REBOOT_REASON Attribute](../LinuxSDK-SWTasks#reboot_reason-attribute)
+- [Network Interface Names File](../LinuxSDK-SWTasks#network-interface-names-file)
 
 ### Init Scripts
 

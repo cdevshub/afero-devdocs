@@ -18,13 +18,12 @@ List device(s) associated with the specified account.
 
 | RESOURCE URL                                                 | HTTP METHOD | REQUEST HEADERS                                              | REQUEST PAYLOAD |
 | :----------------------------------------------------------- | :---------- | :----------------------------------------------------------- | :-------------- |
-| *For all devices:* v1/accounts/{accountId}/devices*For single device:* v1/accounts/{accountId}/devices/{deviceId} | GET         | `{  "Content-Type": "application/json",  "Accept": "application/json",  "Authorization": "Bearer <*access_token*>" }` | Not applicable. |
+| *For all devices:*<br>v1/accounts/{accountId}/devices<br><br>*For single device:*<br> v1/accounts/{accountId}/devices/{deviceId} | GET         | `{  "Content-Type": "application/json",  "Accept": "application/json",  "Authorization": "Bearer <*access_token*>" }` | Not applicable. |
 
 ### Example Response, with State Expansion
 
-```
 http://api.afero.io/v1/accounts/acdf8add-915f-495e-8156-b4cfad3fd402/devices?expansions=state
-```
+
 
 The response below includes details for two devices. Note that this view includes the `deviceState` key and associated data.
 
@@ -86,9 +85,8 @@ The response below includes details for two devices. Note that this view include
 
 ### Example Response, with Tags Expansion
 
-```
+
 http://api.afero.io/v1/accounts/acdf8add-915f-495e-8156-b4cfad3fd402/devices?expansions=tags
-```
 
 This is a partial response, showing data for just one device to illustrate the data displayed when the tags expansion is applied. In this case, we see the `deviceTags` key and associated data.
 
@@ -119,9 +117,7 @@ This is a partial response, showing data for just one device to illustrate the d
 
 ### Example Response, with Attributes Expansion
 
-```
 http://api.afero.io/v1/accounts/acdf8add-915f-495e-8156-b4cfad3fd402/devices?expansions=attributes
-```
 
 This is a partial response, showing data for just one device to illustrate the data displayed when the attributes expansion is applied. In this case, we see the `attributes` key and associated data.
 

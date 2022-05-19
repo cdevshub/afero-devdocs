@@ -11,8 +11,9 @@ To thoroughly understand the OTA API, don’t skip these sections!
 
 ## Definitions
 
-| **OTA Service**                     | A RESTful web service that is responsible for determining a device’s update eligibility and delivering software updates. |
+| TERM                  | DEFINITION |
 | ----------------------------------- | ------------------------------------------------------------ |
+| **OTA Service**                     | A RESTful web service that is responsible for determining a device’s update eligibility and delivering software updates. |
 | **Device/Peripheral**               | Any device in the Afero IoT ecosystem that can receive over-the-air updates. |
 | **Firmware Image/ Firmware Binary** | A piece of software that can be installed on a device to enhance its current functionality. It is specific to a device type. |
 | **Firmware Pool**                   | A group of firmware images that are hardware-specific, but can be assigned to a specific partner and device type to make them available for OTAs. Read more below in [About Firmware Pools and Associations](../API-OTAEndpoints#aboutfwpool). |

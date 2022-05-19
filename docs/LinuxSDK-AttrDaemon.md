@@ -8,11 +8,11 @@ The Attribute daemon is the central nervous system for the device. It communicat
 
 This page contains the following sections:
 
-- [What Are Attributes?](../LinuxSDK-AttrDaemon#WhatAreAttrs)
-- [System Attributes and hubby](../LinuxSDK-AttrDaemon#SysAttrhubby)
-- [Writing an Attribute Client](../LinuxSDK-AttrDaemon#WritingAttrClient)
-- [Handling Endian Issues](../LinuxSDK-AttrDaemon#EndianIssues)
-- [Attribute Client API Reference](../LinuxSDK-AttrDaemon#AttrClientAPI)
+- [What Are Attributes?](../LinuxSDK-AttrDaemon#what-are-attributes)
+- [System Attributes and hubby](../LinuxSDK-AttrDaemon#system-attributes-and-hubby)
+- [Writing an Attribute Client](../LinuxSDK-AttrDaemon#writing-an-attribute-client)
+- [Handling Endian Issues](../LinuxSDK-AttrDaemon#handling-endian-issues)
+- [Attribute Client API Reference](../LinuxSDK-AttrDaemon#attribute-client-api-reference)
 
 ## What Are Attributes?
 
@@ -35,9 +35,9 @@ The following is a list of Afero attributes that are used or owned by device dae
 | ID    | NAME                    | TYPE       | OWNER    | ATTRD FLAGS  | DESCRIPTION                                                  |
 | :---- | :---------------------- | :--------- | :------- | :----------- | :----------------------------------------------------------- |
 | 51600 | REPORT_RSSI_CHANGES     | INT8       | ATTRD    | WRITE NOTIFY | Tells the Wi-Fi Station daemon and the WAN daemon to report signal strength changes periodically. |
-| 51611 | HUBBY_STATE             | INT8       | HUBBY    | NOTIFY       | State of hubby: 0 - Unknown  1 - Connected to the Afero Cloud 2 - Unable to connect to the Afero Cloud |
+| 51611 | HUBBY_STATE             | INT8       | HUBBY    | NOTIFY       | State of hubby:<br> 0 - Unknown<br>1 - Connected to the Afero Cloud<br>2 - Unable to connect to the Afero Cloud |
 | 51612 | OTA_UPGRADE_PATH        | UTF8S[128] | HUBBY    | NOTIFY       | The attribute ID for transferring the OTA update image path to the OTA Manager. The value is a null-terminated string containing the path of the OTA images. The header is stored in the file with a name using a “.hdr” extension. The OTA update binary is stored in the file with a name using a “.img” extension. |
-| 51613 | DEBUG_LEVEL             | INT8       | ATTRD    | WRITE        | The debug level (0-3) of the Attribute daemon. Debug levels are: 0 - All debug messages off 1 - LOG_DEBUG1; shows all attribute traffic for attrd 2 - LOG_DEBUG2; shows all IPC traffic 3 - LOG_DEBUG3; verbose |
+| 51613 | DEBUG_LEVEL             | INT8       | ATTRD    | WRITE        | The debug level (0-3) of the Attribute daemon. Debug levels are:<br>0 - All debug messages off<br>1 - LOG_DEBUG1; shows all attribute traffic for attrd<br>2 - LOG_DEBUG2; shows all IPC traffic <br>3 - LOG_DEBUG3; verbose |
 | 51614 | DEBUG_LEVEL             | INT8       | WIFISTAD | WRITE        | The debug level (0-3) of the Wi-Fi Station daemon. See 51613 above for level definitions. |
 | 51615 | DEBUG_LEVEL             | INT8       | WAND     | WRITE        | The debug level (0-3) of the WAN daemon. See 51613 above for level definitions. |
 | 51616 | DEBUG_LEVEL             | INT8       | CONNMGR  | WRITE        | The debug level (0-3) of the Connection Manager daemon. See 51613 above for level definitions. |
@@ -47,23 +47,23 @@ The following is a list of Afero attributes that are used or owned by device dae
 | 65001 | UTC_OFFSET_DATA         | BYTES[8]   | HUBBY    | WRITE NOTIFY | Contains the current UTC offset in minutes, the next timestamp to change the UTC offset, and the new UTC offset to apply at the previous timestamp, in that order (2-bytes signed short, 4-bytes int, 2-bytes signed short). |
 | 65004 | CONFIGURED_SSID         | UTF8S[33]  | WIFISTAD | NOTIFY       | The SSID the device is currently configured to use.          |
 | 65005 | WIFI_RSSI               | INT8       | WIFISTAD | NOTIFY       | The Wi-Fi Receive Signal Strength Indicator.                 |
-| 65006 | WIFI_STEADY_STATE       | INT8       | WIFISTAD | NOTIFY       | Used to communicate the Wi-Fi state to the apps outside the Wi-Fi setup. Wi-Fi steady state possibilities: 0 = Not Connected 1 = Pending 2 = Connected 3 = Unknown Failure, 4 = Association Failed 5 = Handshake Failed 6 = Echo Failed 7 = SSID Not Found |
-| 65007 | WIFI_SETUP_STATE        | INT8       | WIFISTAD | NOTIFY       | Wi-Fi setup state: 0 = Not Connected 1 = Pending 2 = Connected 3 = Unknown Failure 4 = Association Failed 5 = Handshake Failed 6 = Echo Failed 7 = SSID Not Found Used during the W-Fi setup process to let the apps know what state the W-Fi connection is in. |
-| 65008 | NETWORK_TYPE            | INT8       | CONNMGR  | NOTIFY       | -1 - NONE  0 - Ethernet  1 - WLAN  2 - WAN                   |
+| 65006 | WIFI_STEADY_STATE       | INT8       | WIFISTAD | NOTIFY       | Used to communicate the Wi-Fi state to the apps outside the Wi-Fi setup. Wi-Fi steady state possibilities:<br>0 = Not Connected<br>1 = Pending<br>2 = Connected<br>3 = Unknown Failure<br>4 = Association Failed<br>5 = Handshake Failed<br>6 = Echo Failed<br>7 = SSID Not Found |
+| 65007 | WIFI_SETUP_STATE        | INT8       | WIFISTAD | NOTIFY       | Wi-Fi setup state:<br>0 = Not Connected<br>1 = Pending<br>2 = Connected<br>3 = Unknown Failure<br>4 = Association Failed<br>5 = Handshake Failed<br>6 = Echo Failed<br>7 = SSID Not Found Used during the W-Fi setup process to let the apps know what state the W-Fi connection is in. |
+| 65008 | NETWORK_TYPE            | INT8       | CONNMGR  | NOTIFY       | -1 - NONE<br>0 - Ethernet<br>1 - WLAN<br>2 - WAN                   |
 | 65019 | REBOOT_REASON           | UTF8S[100] | ATTRD    | NOTIFY       | Reason the device rebooted the last time.                    |
-| 65022 | NET_CAPABILITIES        | INT8       | CONNMGR  | NOTIFY       | Bitfield indicating which network interfaces this hardware contains: bit 0 - Wi-Fi 1 bit 1 - WAN 1 bit 2 - Ethernet 1 |
-| 65024 | WIFI_ITF_STATE          | INT8       | CONNMGR  |              | Network interface state: 0 - Not Available/Broken 1 - Disabled 2 - Pending 3 - Up |
+| 65022 | NET_CAPABILITIES        | INT8       | CONNMGR  | NOTIFY       | Bitfield indicating which network interfaces this hardware contains:<br>bit 0 - Wi-Fi 1<br>bit 1 - WAN 1<br>bit 2 - Ethernet 1 |
+| 65024 | WIFI_ITF_STATE          | INT8       | CONNMGR  |              | Network interface state:<br>0 - Not Available/Broken<br>1 - Disabled<br>2 - Pending<br>3 - Up |
 | 65025 | WIFI_IPADDR             | BYTES[4]   | CONNMGR  |              | Local IPv4 address of the network interface in network byte order (Big Endian). |
 | 65026 | WIFI_UPTIME             | INT32      | CONNMGR  |              | Uptime in seconds.                                           |
 | 65027 | WIFI_DL_DATA_USAGE      | INT32      | CONNMGR  |              | Downlink data usage in bytes.                                |
 | 65028 | WIFI_UL_DATA_USAGE      | INT32      | CONNMGR  |              | Uplink data usage in bytes.                                  |
 | 65029 | WIFI_MAC_ADDR           | UINT8[6]   | CONNMGR  |              | MAC address of Wi-Fi interface.                              |
-| 65030 | WIFI_KEY_MGMT           | INT8       | WIFISTAD |              | Key management for the interface. Supported at this time: 0 - None 1 - WPA PSK 2 - WPA-EAP 3 - IEEE 802.1X |
-| 65031 | WIFI_GROUP_CIPHER       | INT8       | WIFISTAD |              | Group (multicast and broadcast) cipher. Supported at this time: 0 - None 1 - WEP 40 bit 2 - WEP 104 bit 3 - TKIP 4 - AES CCMP |
-| 65032 | WIFI_PAIRWISE_CIPHER    | INT8       | WIFISTAD |              | Pairwise (unicast) cipher. Supported at this time: 0 - None 1 - WEP 40 bit 2 - WEP 104 bit 3 - TKIP 4 - AES CCMP |
+| 65030 | WIFI_KEY_MGMT           | INT8       | WIFISTAD |              | Key management for the interface. Supported at this time:<br>0 - None<br>1 - WPA PSK<br>2 - WPA-EAP<br>3 - IEEE 802.1X |
+| 65031 | WIFI_GROUP_CIPHER       | INT8       | WIFISTAD |              | Group (multicast and broadcast) cipher. Supported at this time:<br>0 - None<br>1 - WEP 40 bit<br>2 - WEP 104 bit<br>3 - TKIP<br>4 - AES CCMP |
+| 65032 | WIFI_PAIRWISE_CIPHER    | INT8       | WIFISTAD |              | Pairwise (unicast) cipher. Supported at this time:<br>0 - None<br>1 - WEP 40 bit<br>2 - WEP 104 bit<br>3 - TKIP<br>4 - AES CCMP |
 | 65034 | WAN_RSRP                | INT16      | WAND     | NOTIFY       | Reference Signal Receive Power. This attribute should be reported when Report RSSI Changes attribute (51600) is nonzero. |
 | 65035 | WAN_BARS                | INT8       | WAND     | NOTIFY       | Signal strength in bars. This attribute should be reported when Report RSSI Changes attribute (51600) is nonzero. |
-| 65037 | WAN_ITF_STATE           | INT8       | WAND     |              | Network interface state: 0 - Not Available/Broken 1 - Disabled 2 - Pending 3 - Up |
+| 65037 | WAN_ITF_STATE           | INT8       | WAND     |              | Network interface state:<br>0 - Not Available/Broken<br>1 - Disabled<br>2 - Pending<br>3 - Up |
 | 65038 | WAN_IPADDR              | BYTES[4]   | CONNMGR  |              | Local IPv4 address of the network interface in network byte order (Big Endian). |
 | 65039 | WAN_UPTIME              | INT32      | CONNMGR  |              | Uptime in seconds.                                           |
 | 65040 | WAN_DL_DATA_USAGE       | INT32      | CONNMGR  |              | Downlink data usage in kilobytes.                            |
@@ -71,9 +71,9 @@ The following is a list of Afero attributes that are used or owned by device dae
 | 65042 | WAN_IMEISV              | UTF8S[32]  | WAND     |              | Modem International Mobile Equipment Identifier with Software Version. |
 | 65043 | WAN_IMSI                | UTF8S[32]  | WAND     |              | SIM International Mobile Subscriber Identity.                |
 | 65044 | WAN_ICCID               | UTF8S[32]  | WAND     |              | SIM Integrated Circuit Card Identity.                        |
-| 65045 | WAN_RAT                 | INT8       | WAND     |              | Current Radio Access Technology: 0 - Unknown 1 - GSM 2 - EGPRS (EDGE) 3 - CDMA 1x 4 - UMTS (WCDMA) 5 - EvDO 6 - LTE |
-| 65046 | WAN_REG_STATE           | INT8       | WAND     |              | Registration state. Tentatively: 0 - Not registered 1 - Registered with a network 2 - Searching 3 - Registration denied by the visible network 4 - Registration state is unknown |
-| 65047 | WAN_PS_STATE            | INT8       | WAND     |              | Packet-switched domain attach state of the mobile: 0 - Detached 1 - Attached 2 - Unknown |
+| 65045 | WAN_RAT                 | INT8       | WAND     |              | Current Radio Access Technology:<br>0 - Unknown<br>1 - GSM<br>2 - EGPRS (EDGE)<br>3 - CDMA 1x<br>4 - UMTS (WCDMA)<br>5 - EvDO<br>6 - LTE |
+| 65046 | WAN_REG_STATE           | INT8       | WAND     |              | Registration state. Tentatively:<br>0 - Not registered<br>1 - Registered with a network<br>2 - Searching<br>3 - Registration denied by the visible network<br>4 - Registration state is unknown |
+| 65047 | WAN_PS_STATE            | INT8       | WAND     |              | Packet-switched domain attach state of the mobile:<br>0 - Detached<br>1 - Attached<br>2 - Unknown |
 | 65048 | WAN_MCC                 | UTF8S[8]   | WAND     |              | Mobile Country Code (MCC) of operator.                       |
 | 65049 | WAN_MNC                 | UTF8S[8]   | WAND     |              | Mobile Network Code (MNC) of operator.                       |
 | 65050 | WAN_LAC                 | INT32      | WAND     |              | Location Area Code (LAC) or cell ID (28 bits).               |
@@ -81,10 +81,10 @@ The following is a list of Afero attributes that are used or owned by device dae
 | 65052 | WAN_ROAMING_STATE       | INT8       | WAND     |              | Roaming status: 0 - Home 1 - Roaming 2 - Unknown             |
 | 65053 | WAN_PLMN                | UTF8S[32]  | WAND     |              | Short name of Public Land Mobile Network (PLMN) on which the modem is camped. |
 | 65054 | WAN_APN                 | UTF8S[100] | WAND     |              | Access Point Name (APN) providing IP connectivity.           |
-| 65055 | WAN_SIM_STATUS          | INT8       | WAND     |              | Indicates the state of the card. Valid values: 0 - Absent 1 - Present 2 - Error 3 - Unknown |
+| 65055 | WAN_SIM_STATUS          | INT8       | WAND     |              | Indicates the state of the card. Valid values:<br>0 - Absent<br>1 - Present<br>2 - Error<br>3 - Unknown |
 | 65056 | WAN_DL_BIT_RATE         | INT32      | WAND     |              | Downlink bit rate in bits per second.                        |
 | 65057 | WAN_UL_BIT_RATE         | INT32      | WAND     |              | Uplink bit rate in bits per second.                          |
-| 65059 | ETH_ITF_STATE           | INT8       | CONNMGR  |              | Network interface state: 0 - Not Available/Broken 1 - Disabled 2 - Pending 3 - Up |
+| 65059 | ETH_ITF_STATE           | INT8       | CONNMGR  |              | Network interface state:<br>0 - Not Available/Broken<br>1 - Disabled<br>2 - Pending<br>3 - Up |
 | 65060 | ETH_IPADDDR             | BYTES[4]   | CONNMGR  |              | Local IPv4 address of the network interface.                 |
 | 65061 | ETH_UPTIME              | INT32      | CONNMGR  |              | Uptime in seconds.                                           |
 | 65062 | ETH_DL_DATA_USAGE       | INT32      | CONNMGR  |              | Downlink data usage in kilobytes.                            |
@@ -419,7 +419,7 @@ The Attribute Client is described in greater detail in the [Attribute Client API
 
 ### Adding Your Own Attributes and Daemons
 
- If you want to add attributes that are supported by the attribute system you’ll need to modify the `af_attr_def.h` file. The attributes are defined in the _ATTRIBUTES macro. The format for a single attribute is:_
+ If you want to add attributes that are supported by the attribute system you’ll need to modify the `af_attr_def.h` file. The attributes are defined in the \_ATTRIBUTES macro. The format for a single attribute is:
 
 `_ATTRDEF(<attributeID>, <short_name>, 0, <get_timeout>, <short_owner_name>, <flags>),`
 
@@ -433,7 +433,20 @@ To add an attribute to an existing daemon you just create a new entry in the _AT
 
 If you want to create a new daemon, you add the name to the _OWNERS macro:
 
-`#define _OWNERS              \        _OWNERDEF(UNKNOWN),  \        _OWNERDEF(ATTRD),    \        _OWNERDEF(ATTRTEST), \        _OWNERDEF(FSD),      \        _OWNERDEF(WAN),      \        _OWNERDEF(CONNMGR),  \        _OWNERDEF(WIFISTAD), \        _OWNERDEF(HUBBY),    \        _OWNERDEF(EDGED),    \        _OWNERDEF(OTAMGR),   \        _OWNERDEF(MYCLIENT), \`
+```
+#define _OWNERS              \ 
+        _OWNERDEF(UNKNOWN),  \ 
+        _OWNERDEF(ATTRD),    \ 
+        _OWNERDEF(ATTRTEST), \ 
+        _OWNERDEF(FSD),      \ 
+        _OWNERDEF(WAN),      \ 
+        _OWNERDEF(CONNMGR),  \ 
+        _OWNERDEF(WIFISTAD), \ 
+        _OWNERDEF(HUBBY),    \ 
+        _OWNERDEF(EDGED),    \ 
+        _OWNERDEF(OTAMGR),   \ 
+        _OWNERDEF(MYCLIENT), \
+```
 
 Then you can add an attribute to the _ATTRIBUTES macro. In this example we provide a debug level attribute.
 
@@ -445,7 +458,7 @@ Whenever you modify the attribute definitions you need to recompile the Attribut
 
 Afero attributes are all in Little Endian byte order. You should write your code to support both Little Endian and Big Endian architectures in case you decide to migrate your code to a different architecture. The Attribute Client library provides the following functions to help convert integers between host byte order and Little Endian.
 
-| FUNCTION               | DESCRIPTION                                                  |
+| FUNCTION        | DESCRIPTION                                                  |
 | :--------------------- | :----------------------------------------------------------- |
 | `af_attr_store_uint16` | Stores a 16-bit unsigned integer in host byte order to an attribute value buffer in Little Endian byte order. |
 | `af_attr_store_int16`  | Stores a 16-bit signed integer in host byte order to an attribute value buffer in Little Endian byte order. |
@@ -525,7 +538,7 @@ Used in conjunction with the `af_attr_get` function. This function is called whe
 
 ### af_attr_open
 
-Prototype
+#####Prototype
 
 ```
 int af_attr_open (struct event_base *base, char *clientName, uint16_t numListenRanges, 
@@ -535,7 +548,7 @@ int af_attr_open (struct event_base *base, char *clientName, uint16_t numListenR
     af_attr_status_callback_t closeCb, af_attr_status_callback_t openCb, void *context);
 ```
 
-Parameters
+#####Parameters
 
 | `base`            | Event base for the daemon’s event loop. You need to set up the event loop using `event_base_new()` before calling this function. |
 | ----------------- | ------------------------------------------------------------ |
@@ -549,23 +562,23 @@ Parameters
 | `openCb`          | Attribute Client library either opened successfully or failed to open. |
 | `context`         | Reference context for all of the callbacks.                  |
 
-Description
+#####Description
 
 Opens a connection to the Attribute daemon.
 
-Return Value
+#####Return Value
 
 Returns an error code on failure. If the return value is AF_ATTR_STATUS_OK, you need to wait for the `open` callback to complete before you can know the final status of the `open` operation.
 
 ### af_attr_set
 
-Prototype
+#####Prototype
 
 ```
 int af_attr_set (uint32_t attributeId, uint8_t *value, int length, af_attr_set_response_callback_t setCB, void *setContext);
 ```
 
-Parameters
+#####Parameters
 
 | `attributeId` | ID of the attribute to set.                                  |
 | ------------- | ------------------------------------------------------------ |
@@ -574,7 +587,7 @@ Parameters
 | `setCB`       | Callback that is called to indicate if the `set` was successful or not. |
 | `setContext`  | Reference context for the `set` callback.                    |
 
-Description
+#####Description
 
 Sets the attribute with the specified ID to the specified value. All attributes are byte arrays with a length. This means that the attribute value is not necessarily a null-terminated string.
 
@@ -582,42 +595,42 @@ If the client is the owner of the attribute and the notify bit is set in the att
 
 If the client is not the owner of the attribute, the setting is propagated to the Attribute daemon and then to the owner. If the owner allows the change and the Notify bit is set in the attribute’s flags, the change is propagated to the interested listeners too.
 
-Return Value
+#####Return Value
 
 Returns an error code on failure. If the return value is AF_ATTR_STATUS_OK, you need to wait for the callback to complete before you can know the final status of the `set` operation.
 
 ### af_attr_get
 
-Prototype
+#####Prototype
 
 ```
 int af_attr_get (uint32_t attributeId, af_attr_get_response_callback_t cb, void *context);
 ```
 
-Parameters
+#####Parameters
 
 | `attributeId` | ID of the attribute to `get`.                                |
 | ------------- | ------------------------------------------------------------ |
 | `cb`          | Callback that is called to return the value of the attribute. |
 | `context`     | Reference context for the `get` callback.                    |
 
-Description
+#####Description
 
 Gets the attribute with the specified ID. This is an asynchronous call, and the result is returned using the specified callback function. This function requests the attribute value from the Attribute daemon, who forwards the request to the client that owns the attribute. The owner returns the value of the attribute to the Attribute daemon, who returns it to the requesting client via the callback.
 
-Return Value
+#####Return Value
 
 Returns an error code on failure. If the return value is AF_ATTR_STATUS_OK, you need to wait for the callback to complete before you can know the final status of the `get` operation.
 
 ### af_attr_send_get_response
 
-Prototype
+#####Prototype
 
 ```
 int af_attr_send_get_response (int status, uint16_t getId, uint8_t *value, int length);
 ```
 
-Parameters
+#####Parameters
 
 | `status` | Status value you can set if you can’t return the specified attribute. |
 | -------- | ------------------------------------------------------------ |
@@ -625,120 +638,118 @@ Parameters
 | `value`  | Byte buffer containing the attribute value to be returned.   |
 | `length` | Length of the request to be returned.                        |
 
-Description
+#####Description
 
 Sends a response to a `get` request received from the `af_attr_get_request_callback_t` in the af_attr_open function. This function sends the response to the Attribute daemon, who forwards it to the requesting client.
 
-Return Value
+#####Return Value
 
 Returns an error code on failure or AF_STATUS_OK if the response was successfully sent to the Attribute daemon.
 
 ### af_attr_close
 
-Prototype
+#####Prototype
 
 ```
 void af_attr_close (void);
 ```
 
-Description
+#####Description
 
 Closes the Attribute Client library. Calling this function will not call the `close` callback function specified in the `af_attr_open function`.
 
 ### af_attr_store_uint16
 
-Prototype
+#####Prototype
 
 ```
 void af_attr_store_uint16(uint8_t *dst, uint16_t value);
 ```
 
-Description
+#####Description
 
 Stores the specified 16-bit unsigned integer value into the specified destination attribute value buffer in Little Endian byte order. This is a convenience function that works on both Big Endian and Little Endian architectures. If the `dst` parameter is NULL, this function has no effect.
 
 ### af_attr_get_uint16
 
-Prototype
+#####Prototype
 
 ```
 uint16_t af_attr_get_uint16(uint8_t *src);
 ```
 
-Description
+#####Description
 
 Returns the 16-bit unsigned integer value from the specified source attribute value buffer in Little Endian byte order. This is a convenience function that works on both Big Endian and Little Endian architectures. If the `src` parameter is NULL, this function returns 0.
 
 ### af_attr_store_int16
 
-Prototype
+#####Prototype
 
 ```
 void af_attr_store_int16(uint8_t *dst, int16_t value);
 ```
 
-Description
+#####Description
 
 Stores the specified 16-bit signed integer value into the specified destination attribute value buffer in Little Endian byte order. This is a convenience function that works on both Big Endian and Little Endian architectures. If the `dst` parameter is NULL, this function has no effect.
 
 ### af_attr_get_int16
 
-Prototype
-
-
+#####Prototype
 
 ```
 int16_t af_attr_get_int16(uint8_t *src);
 ```
 
-Description
+#####Description
 
 Returns the 16-bit signed integer value from the specified source attribute value buffer in Little Endian byte order. This is a convenience function that works on both Big Endian and Little Endian architectures. If the `src` parameter is NULL, this function returns 0.
 
 ### af_attr_store_uint32
 
-Prototype
+#####Prototype
 
 ```
 void af_attr_store_uint32(uint8_t *dst, uint32_t value);
 ```
 
-Description
+#####Description
 
 Stores the specified 32-bit unsigned integer value into the specified destination attribute value buffer in Little Endian byte order. This is a convenience function that works on both Big Endian and Little Endian architectures. If the `dst` parameter is NULL, this function has no effect.
 
 ### af_attr_get_uint32
 
-Prototype
+#####Prototype
 
 ```
 uint32_t af_attr_get_uint32(uint8_t *src);
 ```
 
-Description
+#####Description
 
 Returns the 32-bit unsigned integer value from the specified source attribute value buffer in Little Endian byte order. This is a convenience function that works on both Big Endian and Little Endian architectures. If the `src` parameter is NULL, this function returns 0.
 
 ### af_attr_store_int32
 
-Prototype
+#####Prototype
 
 ```
 void af_attr_store_int32(uint8_t *dst, int32_t value);
 ```
 
-Description
+#####Description
 
 Stores the specified 32-bit signed integer value into the specified destination attribute value buffer in Little Endian byte order. This is a convenience function that works on both Big Endian and Little Endian architectures. If the `dst` parameter is NULL, this function has no effect.
 
 ### af_attr_get_int32
 
-Prototype
+#####Prototype
 
 ```
 int32_t af_attr_get_int32(uint8_t *src);
 ```
 
-Description
+#####Description
 
 Returns the 32-bit signed integer value from the specified source attribute value buffer in Little Endian byte order. This is a convenience function that works on both Big Endian and Little Endian architectures. If the `src` parameter is NULL, this function returns 0.
