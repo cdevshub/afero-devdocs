@@ -157,7 +157,7 @@ Before we get started, take a look at the PUBLISH window:
 
 Notice that the LED is on, which is indicated on the Home screen. Because it’s the Primary Operation defined with a Boolean attribute, tapping the large device icon on the Home screen will toggle the LED on and off.
 
-<img src="../img/ios_app.png" width="600" style="vertical-align:middle;margin:0px 0px;border:none"><br>
+<img src="../img/ios_app.png" width="800" style="vertical-align:middle;margin:0px 0px;border:none"><br>
 
 You should now be able to control the Modulo LED using the LED buttons on your smartphone, and the pushbutton on the Modulo board should toggle the On/Off Button control in the mobile app UI.
 

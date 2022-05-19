@@ -6,23 +6,23 @@ When defining attributes in a Profile for Afero devices, it’s important to mod
 
 Below are four guidelines to help you take maximum advantage of the Afero attribute model.
 
-###  Start with the Client Application
+###  &#10004; Start with the Client Application
 
 The best way to implement an efficient data model is to start with the client application team. Build the list of things they want to represent in the user interface and work backwards to determine the attributes required to support those features.
 
 For most applications, you can simply take the interesting local variables you have in your firmware and make them Afero attributes; such as a Boolean that holds whether the device is powered on or off.
 
-###  Store One Value Per Attribute
+###  &#10004; Store One Value Per Attribute
 
 In general, it’s a good idea to store only one value per attribute. This makes for a cleaner history and reporting data, as well as making things better for the client applications. The one time you may want to consider storing multiple values in an attribute is when they are all part of a single transaction. For example, a command attribute that takes a command type followed by command parameters is better sent as one attribute so that all the data can be parsed at the same time.
 
 Storing things like comma-separated strings or json objects as attribute values will definitely limit what can be done when reporting on those values. It will also increase the size of the attribute value and reduce response time.
 
-###  Use Smallest Size Needed
+###  &#10004; Use Smallest Size Needed
 
 Whenever possible, express data in the smallest form possible. Usually this just means using the correct data type for the actual value. Expressing data types like numbers is not only inefficient from a size point of view, it complicates comparisons when doing reporting over a large data set.
 
-###  Minimize Update Frequency
+###  &#10004; Minimize Update Frequency
 
 For frequency, no more than one write/update per second is preferable. Much slower than that, if possible, is recommended. Remember, a high update rate can affect your overall solution cost. If a device reports attribute values rapidly during operation even if those values haven’t changed, those updates will cause excessive traffic between the MCU and ASR. Also, there’s no need to write a group of related attributes if only one has changed. Only send updates that are meaningful to you.
 
@@ -34,8 +34,8 @@ The MCU can sample as often as desired; there’s no limit on attribute reads si
 
 One way to build a attribute model for your device is to organize all the attribute information in a table, one attribute per row. Assign each attribute a number using column *1*. MCU attributes can be numbered 1-1023.
 
-| *1* NO. | *2* FEATURE | *3* DESCRIPTION | *4* STATES | *5* DATA TYPE | *6* WRITABILITY | *7* DEFAULT VALUE | *8* UI CONTROL | *9* SEND FREQUENCY | *10* DEPENDENCIES |
-| :------ | :---------- | :-------------- | :--------- | :------------ | :-------------- | :---------------- | :------------- | :----------------- | :---------------- |
+| *1*<br>NO. | *2*<br>FEATURE | *3*vDESCRIPTION | *4*<br>STATES | *5*<br>DATA TYPE | *6*<br>WRITABILITY | *7*<br>DEFAULT VALUE | *8*<br>UI CONTROL | *9*<br>SEND FREQUENCY | *10*<br>DEPENDENCIES |
+| :------: | :----------: | :--------------: | :---------: | :------------: | :--------------: | :----------------: | :-------------: | :-----------------: | :----------------: |
 | 1       |             |                 |            |               |                 |                   |                |                    |                   |
 | 2       |             |                 |            |               |                 |                   |                |                    |                   |
 | ⋮       |             |                 |            |               |                 |                   |                |                    |                   |
@@ -63,7 +63,7 @@ Let’s use the table to define the Start button characteristics. We’ll later 
 
 | NO.  | FEATURE      | DESCRIPTION                                        | STATES    | DATA TYPE | WRITABILITY | DEFAULT VALUE | UI CONTROL | SEND FREQUENCY | DEPENDENCIES                  |
 | :--- | :----------- | :------------------------------------------------- | :-------- | :-------- | :---------- | :------------ | :--------- | :------------- | :---------------------------- |
-| 1    | Start Button | Button that starts/stops the currently-set action. | StopStart | Boolean   | Read/Write  | Stop          | Menu       | On Change      | Any Cooking Mode is selected. |
+| 1    | Start Button | Button that starts/stops the currently-set action. | &bull; Stop<br>&bull; Start | Boolean   | Read/Write  | Stop          | Menu       | On Change      | Any Cooking Mode is selected. |
 
 - The Start button has only two states, Start and Stop, so we can model it with a Boolean attribute. Of course, we could use an Integer, or even a String, but remember that we should try to use the smallest attribute that is suited to the range of values required.
 - Being a physical control, the Start button allows the end-user to change the value of its associated attribute, so it must be defined as a Read/Write attribute.
@@ -78,7 +78,7 @@ The next feature we’ll look at is the cooking mode. On the physical oven unit,
 
 | NO.  | FEATURE           | DESCRIPTION                        | STATES                                                       | DATA TYPE | WRITABILITY | DEFAULT VALUE | UI CONTROL | SEND FREQUENCY | DEPENDENCIES                                   |
 | :--- | :---------------- | :--------------------------------- | :----------------------------------------------------------- | :-------- | :---------- | :------------ | :--------- | :------------- | :--------------------------------------------- |
-| 2    | Cooking Mode Dial | Selector for setting cooking mode. | 1 = Bake 2 = Convection 3 = Broil 4 = Toast 5 = Warm 6 =Reheat | SINT8     | Read/Write  |               | Menu       | On Change      | Feature is available when unit is not cooking. |
+| 2    | Cooking Mode Dial | Selector for setting cooking mode. | 1 = Bake<br>2 = Convection<br> 3 = Broil<br> 4 = Toast<br> 5 = Warm<br> 6 = Reheat | SINT8     | Read/Write  |               | Menu       | On Change      | Feature is available when unit is not cooking. |
 
 - This toaster oven offers six cooking options: Bake, Convection, Broil, Toast, Warm, and Reheat. To accommodate these options, we need an 8-byte signed integer (SINT8). Each baking option will map to a numeric value, as shown.
 - Because the end-user will be setting the cooking method, this attribute must be Read/Write.
@@ -93,7 +93,7 @@ This toaster oven requires you set how many slices you want to toast in the oven
 
 | NO.  | FEATURE                | DESCRIPTION                                       | STATES  | DATA TYPE | WRITABILITY | DEFAULT VALUE | UI CONTROL | SEND FREQUENCY | DEPENDENCIES                      |
 | :--- | :--------------------- | :------------------------------------------------ | :------ | :-------- | :---------- | :------------ | :--------- | :------------- | :-------------------------------- |
-| 3    | Number of Toast Slices | Toggle to set number of slices you plan to toast. | 1–3 4–6 | Boolean   | Read/Write  | 1–3           | Menu       | On Change      | Cooking Mode *Toast* is selected. |
+| 3    | Number of Toast Slices | Toggle to set number of slices you plan to toast. | 1–3<br> 4–6 | Boolean   | Read/Write  | 1–3           | Menu       | On Change      | Cooking Mode *Toast* is selected. |
 
 - The two options for *number of slices* are: 1-3 and 4-6. A Boolean data type can accommodate these two possible values.
 - As usual, because the user must be able to select number of slices, the attribute must be Read/Write.
@@ -108,7 +108,7 @@ This toaster oven requires you set how many slices you want to toast in the oven
 
 | NO.  | FEATURE     | DESCRIPTION                            | STATES                                                       | DATA TYPE | WRITABILITY | DEFAULT VALUE | UI CONTROL | SEND FREQUENCY | DEPENDENCIES                      |
 | :--- | :---------- | :------------------------------------- | :----------------------------------------------------------- | :-------- | :---------- | :------------ | :--------- | :------------- | :-------------------------------- |
-| 4    | Toast Shade | Selector for setting toast “doneness”. | Range from 1-10, increments of 1, where labels show:  1 = Defrost  3 = Light  5 = Medium  7 = Dark 10 = Very Dark | SINT8     | Read/Write  | Medium (5)    | Slider     | On Change      | Cooking Mode *Toast* is selected. |
+| 4    | Toast Shade | Selector for setting toast “doneness”. | Range from 1-10, increments of 1, where labels show:<br>1 = Defrost<br>3 = Light<br>5 = Medium<br>7 = Dark <br>10=Very&nbsp;Dark | SINT8     | Read/Write  | Medium (5)    | Slider     | On Change      | Cooking Mode *Toast* is selected. |
 
 - Toast shade has range of settings, from defrost to very dark. We can constrain user selections to discrete values, 1-10, so a data type of SINT8 will do the trick.
 - Because this is a setting the user makes, it must be Read/Write.
@@ -136,7 +136,7 @@ This oven accommodates the entry and reporting of both Celsius and Fahrenheit te
 
 | NO.  | FEATURE      | DESCRIPTION               | STATES | DATA TYPE | WRITABILITY | DEFAULT VALUE | UI CONTROL | SEND FREQUENCY | DEPENDENCIES                 |
 | :--- | :----------- | :------------------------ | :----- | :-------- | :---------- | :------------ | :--------- | :------------- | :--------------------------- |
-| 6    | Degree Units | Toggle between °C and °F. | °C °F  | Boolean   | Read/Write  | °F            | Menu       | On Change      | Feature is always available. |
+| 6    | Degree Units | Toggle between °C and °F. | °C<br>°F  | Boolean   | Read/Write  | °F            | Menu       | On Change      | Feature is always available. |
 
 - The Degree Units setting has two possible values (°C and °F), so a Boolean data type will be sufficient.
 - The attribute must be Read/Write so the end-user can toggle it.
@@ -196,7 +196,7 @@ Once a set timer has run down, it will ring until the end-user shuts it off.
 
 | NO.  | FEATURE    | DESCRIPTION                                                  | STATES     | DATA TYPE | WRITABILITY | DEFAULT VALUE | UI CONTROL | SEND FREQUENCY | DEPENDENCIES                              |
 | :--- | :--------- | :----------------------------------------------------------- | :--------- | :-------- | :---------- | :------------ | :--------- | :------------- | :---------------------------------------- |
-| 10   | Timer Ring | Ringer that goes off when timer reaches zero. Rings until shut off. | SilentRing | Boolean   | Read/Write  | Silent        | Menu       | On Change      | Timer must have run down to zero to ring. |
+| 10   | Timer Ring | Ringer that goes off when timer reaches zero. Rings until shut off. | Silent<br>Ring | Boolean   | Read/Write  | Silent        | Menu       | On Change      | Timer must have run down to zero to ring. |
 
 - The timer is either On (Ringing) or Off (Stopped), so a Boolean data type will work.
 - The user must be able to turn the ringer of so it must be Read/Write.
@@ -212,9 +212,9 @@ The table below lays out the data model. You can even use the *No.* and *Feature
 | NO.  | FEATURE                | DESCRIPTION                                                  | STATES                                                       | DATA TYPE | WRITABILITY | DEFAULT VALUE   | UI CONTROL | SEND FREQUENCY | DEPENDENCIES                                               |
 | :--- | :--------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :-------- | :---------- | :-------------- | :--------- | :------------- | :--------------------------------------------------------- |
 | 1    | Start Button           | Button that starts/stops the currently-set action.           | StartStop                                                    | Boolean   | Read/Write  | Stop            | Menu       | On Change      | Any Cooking Mode is selected.                              |
-| 2    | Cooking Mode           | Selector for setting cooking mode.                           | 1 = Bake 2 = Convection 3 = Broil 4 = Toast 5 = Warm 6 = Reheat | SINT8     | Read/Write  | Bake            | Menu       | On Change      | Feature is available when unit is not cooking.             |
-| 3    | Number of Toast Slices | Toggle to set number of slices you plan to toast.            | 1–3 4–6                                                      | Boolean   | Read/Write  | 1–3             | Menu       | On Change      | Cooking Mode *Toast* is selected.                          |
-| 4    | Toast Shade            | Selector for setting toast “doneness”.                       | Range from 1–10, increments of 1, where labels reflect:  1 = Defrost  3 = Light  5 = Medium  7 = Dark 10 = Very Dark | SINT8     | Read/Write  | Medium (5)      | Slider     | On Change      | Cooking Mode *Toast* is selected.                          |
+| 2    | Cooking Mode           | Selector for setting cooking mode.                           | 1 = Bake<br>2&nbsp;=&nbsp;Convection<br>3 = Broil<br>4 = Toast<br>5 = Warm<br>6 = Reheat | SINT8     | Read/Write  | Bake            | Menu       | On Change      | Feature is available when unit is not cooking.             |
+| 3    | Number of Toast Slices | Toggle to set number of slices you plan to toast.            | 1–3<br>4–6                                                      | Boolean   | Read/Write  | 1–3             | Menu       | On Change      | Cooking Mode *Toast* is selected.                          |
+| 4    | Toast Shade            | Selector for setting toast “doneness”.                       | Range from 1–10, increments of 1, where labels reflect:<br>1 = Defrost<br>3 = Light<br>5 = Medium<br>7 = Dark<br>10 = Very Dark | SINT8     | Read/Write  | Medium (5)      | Slider     | On Change      | Cooking Mode *Toast* is selected.                          |
 | 5    | Bagel                  | Toggle to set bagel function (adds time to toast cycle).     | BagelBread                                                   | Boolean   | Read/Write  | Off             | Switch     | On Change      | Cooking Mode *Toast* is selected.                          |
 | 6    | Degree Units           | Toggle between °C and °F.                                    | °C °F                                                        | Boolean   | Read/Write  | °F              | Menu       | On Change      | Feature is always available.                               |
 | 7    | Current Temp           | Display of current oven temperature.                         | 100–500 °F                                                   | SINT8     | Read-Only   | None            | Value      | On Change      | Cooking Mode *Bake*, *Convection*, or *Broil* is selected. |

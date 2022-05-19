@@ -4,14 +4,14 @@ This section describes the overall architecture of the Afero Secure Linux Device
 
 This page contains the following sections:
 
-- [System Diagram](../LinuxSDK-Overview#SysDiag)
-- [The Afero Secure Device on Linux](../LinuxSDK-Overview#OnLinux)
-- [Afero Linux SDK Components](../LinuxSDK-Overview#LinuxSDKComponents)
-- [Software Dependencies](../LinuxSDK-Overview#SWDependencies)
+- [System Diagram](../LinuxSDK-Overview#system-diagram)
+- [The Afero Secure Device on Linux](../LinuxSDK-Overview#the-afero-secure-device-on-linux)
+- [Afero Linux SDK Components](../LinuxSDK-Overview#afero-linux-sdk-components)
+- [Software Dependencies](../LinuxSDK-Overview#software-dependencies)
 
 ## System Diagram
 
-![Linux Edge Device Architecture](img/LinuxEdgeDeviceStrategy.png)
+<img src="../img/LinuxEdgeDeviceStrategy.png" width="700" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ## The Afero Secure Device on Linux
 
@@ -21,17 +21,18 @@ The Afero Secure Linux Device SDK relies on several Linux components, including 
 
 Each component in an Afero Linux device functions as follows:
 
-| [Edge Device daemon (edged)](../LinuxSDK-Overview#edgedSummary) | Provides edge device functionality for the Linux device.     |
+| Component | Description|
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Attribute daemon (attrd)](../LinuxSDK-Overview#attrdSummary) | Provides interprocess communication based on Afero attributes. |
-| [hubby](../LinuxSDK-Overview#hubbySummary) | Provides core Afero device and Cloud service communication functionality for both hub and/or edge devices. |
-| [beetle](../LinuxSDK-Overview#beetleSummary) | Provides hubby with a Bluetooth low energy interface.        |
-| [Afero Security daemon (afsecd)](../LinuxSDK-Overview#afsecdSummary) | Provides hubby with an interface to the Afero Hardware Security Module (HSM). |
-| [Afero IPC Library (af-ipc)](../LinuxSDK-Overview#af-ipcSummary) | Provides a common, simple, low-level interprocess communication system based on Unix domain sockets. |
-| [Wi-Fi Station daemon (wifistad)](../LinuxSDK-Overview#wifistadSummary) | Controls the WPA Supplicant and allows the Afero mobile app to set up the user’s Wi-Fi using Bluetooth. |
-| [WAN daemon (wand)](../LinuxSDK-Overview#wandSummary) | Maintains a WCDMA/LTE modem internet connection for hubs that have cellular connectivity. |
-| [Connection Manager daemon (connmgr)](../LinuxSDK-Overview#connmgrSummary) | Dynamically selects network interfaces to route data to the internet. It also maintains a very tight firewall using iptables. |
-| [OTA Manager (otamgr)](../LinuxSDK-Overview#otamgrSummary) | Updates the Afero software using OTA images signed with Afero keys and verified using the Afero Hardware Security Module, and delivers Linux update packages to the system. |
+| [Edge Device daemon (edged)](../LinuxSDK-Overview#edge-device-daemon-edged) | Provides edge device functionality for the Linux device.     |
+| [Attribute daemon (attrd)](../LinuxSDK-Overview#LinuxSDK-Overview/#attribute-daemon-attrd)  | Provides interprocess communication based on Afero attributes. |
+| [hubby](../LinuxSDK-Overview#hubby) | Provides core Afero device and Cloud service communication functionality for both hub and/or edge devices. |
+| [beetle](../LinuxSDK-Overview#beetle) | Provides hubby with a Bluetooth low energy interface.        |
+| [Afero Security daemon (afsecd)](../LinuxSDK-Overview#afero-security-daemon-afsecd) | Provides hubby with an interface to the Afero Hardware Security Module (HSM). |
+| [Afero IPC Library (af-ipc)](../LinuxSDK-Overview#afero-ipc-library-af-ipc) | Provides a common, simple, low-level interprocess communication system based on Unix domain sockets. |
+| [Wi-Fi Station daemon (wifistad)](../LinuxSDK-Overview#wi-fi-station-daemon-wifistad) | Controls the WPA Supplicant and allows the Afero mobile app to set up the user’s Wi-Fi using Bluetooth. |
+| [WAN daemon (wand)](../LinuxSDK-Overview#wan-daemon-wand) | Maintains a WCDMA/LTE modem internet connection for hubs that have cellular connectivity. |
+| [Connection Manager daemon (connmgr)](../LinuxSDK-Overview#connection-manager-daemon-connmgr) | Dynamically selects network interfaces to route data to the internet. It also maintains a very tight firewall using iptables. |
+| [OTA Manager (otamgr)](../LinuxSDK-Overview#ota-manager-otamgr) | Updates the Afero software using OTA images signed with Afero keys and verified using the Afero Hardware Security Module, and delivers Linux update packages to the system. |
 
 ### Edge Device Daemon (edged)
 
