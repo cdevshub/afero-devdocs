@@ -4,20 +4,16 @@ The Afero Linux SDK supports Over-the-Air (OTA) image replacement of the entire 
 
 This page contains the following sections:
 
-- [Introduction](../LinuxSDK-FullImageUpdate#intro)
-
-- - [OTA Image Concepts](../LinuxSDK-FullImageUpdate#otaconcepts)
-  - [The Journey of an OTA Image](../LinuxSDK-FullImageUpdate#otajourney)
-  - [Use Case](../LinuxSDK-FullImageUpdate#otausecase)
-  - [OTA Design and Best Practices](../LinuxSDK-FullImageUpdate#otadesign)
-
-- [The OTA Image Update Steps](../LinuxSDK-FullImageUpdate#stepoverview)
-
-- - [1. Create the OTA Image](../LinuxSDK-FullImageUpdate#createimage)
-  - [2. Deploy the OTA Image to a Device](../LinuxSDK-FullImageUpdate#deployimage)
-  - [3. Install Image on Device Using otamgr Daemon](../LinuxSDK-FullImageUpdate#otamanager)
-
-- [OTA Python Tools Reference](../LinuxSDK-FullImageUpdate#otatoolref)
+- [Introduction](../LinuxSDK-FullImageUpdate#introduction)
+    - [OTA Image Concepts](../LinuxSDK-FullImageUpdate#ota-image-concepts)
+    - [The Journey of an OTA Image](../LinuxSDK-FullImageUpdate#the-journey-of-an-ota-image)
+    - [Use Case](../LinuxSDK-FullImageUpdate#use-case)
+    - [OTA Design and Best Practices](../LinuxSDK-FullImageUpdate#ota-design-and-best-practices)
+- [The OTA Image Update Steps](../LinuxSDK-FullImageUpdate#the-ota-image-update-steps)
+    - [1. Create the OTA Image](../LinuxSDK-FullImageUpdate#1-create-the-ota-image)
+    - [2. Deploy the OTA Image to a Device](../LinuxSDK-FullImageUpdate#2-deploy-the-ota-image-to-a-device)
+    - [3. Install Image on Device Using otamgr Daemon](../LinuxSDK-FullImageUpdate#3-install-image-on-device-using-otamgr-daemon)
+- [OTA Python Tools Reference](../LinuxSDK-FullImageUpdate#ota-python-tools-reference)
 
 ## Introduction
 
@@ -33,7 +29,7 @@ Behind the scenes, Afero adds a header to your OTA image. The header contains a 
 
 The diagram below shows a high-level view of the journey of an OTA image from your system to the OTA service to the device:
 
-![OTA Journey](img/OTA-Journey.png)
+<img src="../img/OTA-Journey.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
 
 Following the illustrated flow:
 
@@ -62,7 +58,7 @@ The embedded Linux system consists of the following components: bootloader(s), k
 
 The option selected depends on memory space availability, as well as other factors. Sometimes, a single OTA image may be the practical choice. However, if there is enough memory space, it may be desirable to build a fallback mechanism in case of an update failure; that is, create two non-volatile storage partitions for storing the software images - one active, and one for update. In this case, the second partition is updated with the OTA image, and then verified before the system is switched to use it. In case of failure, the system continues to use image in the previous working partition.
 
-![OTA Image Partitions](img/OTAImagePartitions.png)
+<img src="../img/OTAImagePartitions.png" width="250" style="vertical-align:middle;margin:0px 0px;border:none">
 
 The advantage of using two partitions is that it allows the system update to be done as a whole and validated before use. The disadvantage is that it requires doubling the non-volatile storage size.
 
@@ -70,20 +66,19 @@ We strongly recommend the two partitions approach to the full OTA image update. 
 
 ## The OTA Image Update Steps
 
-Follow the instructions outlined below to perform a full OTA image update. (The steps include the use of the Python script tools Afero provides. These scripts are described in detail in the section, [OTA Python Tools Reference](../LinuxSDK-FullImageUpdate#otatoolref)).
+Follow the instructions outlined below to perform a full OTA image update. (The steps include the use of the Python script tools Afero provides. These scripts are described in detail in the section, [OTA Python Tools Reference](../LinuxSDK-FullImageUpdate#ota-python-tools-reference)).
 
-1. Create the OTA image
+**1.** [Create the OTA image](../LinuxSDK-FullImageUpdate#1-create-the-ota-image), which includes:
 
-   , which includes:
+- Customizing the configuration file
+- Creating an OTA record
+- Incorporating the OTA record into your build
+- Uploading the image file to the OTA service
 
-   - Customizing the configuration file
-   - Creating an OTA record
-   - Incorporating the OTA record into your build
-   - Uploading the image file to the OTA service
+**2.** [Deploy the OTA image](../LinuxSDK-FullImageUpdate#2-deploy-the-ota-image-to-a-device) by pushing the OTA image file to the Linux device.
 
-2. [Deploy the OTA image](../LinuxSDK-FullImageUpdate#deployimage) by pushing the OTA image file to the Linux device.
+**3.** [Install the OTA image](../LinuxSDK-FullImageUpdate#3-install-image-on-device-using-otamgr-daemon) on the device using the otamgr daemon.
 
-3. [Install the OTA image](../LinuxSDK-FullImageUpdate#otamanager) on the device using the otamgr daemon.
 
 ### 1. Create the OTA Image
 
@@ -93,86 +88,57 @@ This section focuses on how to create your OTA image, including integrating the 
 
 Set up the build environment using the following instructions, as appropriate:
 
-- For the Atmel SAMA5D2, follow the instructions in [Build the SAMA5D2 Linux OS Image](../LinuxSDK-PotencoSAMA5D2#bldpotosimage) to set up the SAMA5D2 Yocto build.
-- For the BeagleBone Green Wireless, follow the instructions in [Build the BBGW Linux OS Image](../LinuxSDK-PotencoBBGW#bldpotosimage) to set up the BBGW Yocto build.
+- For the Atmel SAMA5D2, follow the instructions in [Build the SAMA5D2 Linux OS Image](../LinuxSDK-PotencoSAMA5D2#build-the-sama5d2-linux-os-image) to set up the SAMA5D2 Yocto build.
+- For the BeagleBone Green Wireless, follow the instructions in [Build the BBGW Linux OS Image](../LinuxSDK-PotencoBBGW#build-the-potenco-os-image) to set up the BBGW Yocto build.
+
 
 #### Set Up the Environment
 
 **Note!** The instructions below assume you are developing on an Atmel SAMA5D2 board. If you are on a BeagleBone Green Wireless board, you can use the instructions below, but substitute the appropriate directory paths. If you have questions, contact the Afero Customer Enablement Team (“ace@afero.io”).
 
-1. Type the following:
+**1.** Type the following:
 
-   ```
-   $ cd ~/sama5/poky
-   $ source oe-init-build-env build-microchip
-   ```
+```
+$ cd ~/sama5/poky
+$ source oe-init-build-env build-microchip
+```
 
-2. Locate Yocto’s TMPDIR directory:
+**2.** Locate Yocto’s TMPDIR directory:
 
-   ```
-   $ bitbake -e | grep ^TMPDIR
-   TMPDIR="/home/john/sama5/poky/build-microchip/tmp"
-   ```
+```
+$ bitbake -e | grep ^TMPDIR
+TMPDIR="/home/john/sama5/poky/build-microchip/tmp"
+```
 
-3. Go to the Yocto build’s
+**3.** Go to the Yocto build’s `tmp` directory; if it doesn’t already exist, create it:
 
-    
+```
+$ mkdir -p tmp
+$ cd tmp
+```
 
-   ```
-   tmp
-   ```
+Note that we are using the `tmp` directory as a workspace for the OTA update tools.
 
-    
+**4.** Clone the Afero partner OTA tools repository. If you don’t delete the Yocto build’s `tmp` directory, then you only have to do this once:
 
-   directory; if it doesn’t already exist, create it:
+```
+$ git clone git@github.com:AferoCE/partner-hub-ota-tools.git
+```
 
-   ```
-   $ mkdir -p tmp
-   $ cd tmp
-   ```
+You should see the following files in the directory:
 
-   Note that we are using the
-
-    
-
-   ```
-   tmp
-   ```
-
-    
-
-   directory as a workspace for the OTA update tools.
-
-4. Clone the Afero partner OTA tools repository. If you don’t delete the Yocto build’s
-
-    
-
-   ```
-   tmp
-   ```
-
-    
-
-   directory, then you only have to do this once:
-
-   ```
-   $ git clone git@github.com:AferoCE/partner-hub-ota-tools.git
-   ```
-
-   You should see the following files in the directory:
-
-   ```
-   $ cd partner-hub-ota-tools
-   $ ls -la
-   drwxr-xr-x 8 john dialout  4096 Oct 28 13:58 .git
-   -rw-r--r-- 1 john dialout   622 Oct 16 16:03 partner-ota-conf.json
-   -rwxr-xr-x 1 john dialout  7731 Oct 28 13:29 partner-ota-hub-deploy.py
-   -rwxr-xr-x 1 john dialout 14244 Oct 28 13:51 partner-ota-hub-uploader.py
-   ```
+```
+$ cd partner-hub-ota-tools
+$ ls -la
+drwxr-xr-x 8 john dialout  4096 Oct 28 13:58 .git
+-rw-r--r-- 1 john dialout   622 Oct 16 16:03 partner-ota-conf.json
+-rwxr-xr-x 1 john dialout  7731 Oct 28 13:29 partner-ota-hub-deploy.py
+-rwxr-xr-x 1 john dialout 14244 Oct 28 13:51 partner-ota-hub-uploader.py
+```
 
 #### Customize the Configuration File
 
-Read details in [About the Configuration File](../LinuxSDK-FullImageUpdate#configfile). Use your favorite editor to edit the configuration file `partner-ota-conf.json`. Fill in the following fields and save it:
+Read details in [About the Configuration File](../LinuxSDK-FullImageUpdate#about-the-configuration-file). Use your favorite editor to edit the configuration file `partner-ota-conf.json`. Fill in the following fields and save it:
 
 ```
 $ vim partner-ota-conf.json
@@ -201,7 +167,7 @@ Contact the Afero Enablement team (“ace@afero.io”) if you have any problem w
 
 #### Create the OTA Record
 
-Read details in the reference sections below, [About the OTA Record](../LinuxSDK-FullImageUpdate#otarecord) and [Using the partner-ota-hub-uploader.py Script](../LinuxSDK-FullImageUpdate#stage1createrecord).
+Read details in the reference sections below, [About the OTA Record](../LinuxSDK-FullImageUpdate#about-the-ota-record) and [Using the partner-ota-hub-uploader.py Script](../LinuxSDK-FullImageUpdate#using-the-partner-ota-hub-uploaderpy-script).
 
 Run the `partner-ota-hub-uploader.py` tool with the option `--createOTARecord` to create an OTA record file using the above modified configuration file. Note: You must specify a build number with the -n option:
 
@@ -217,123 +183,70 @@ Assuming success, the OTA record file is generated and saved; for example, as th
 
 #### Run and Package the Build
 
-1. Run the build. The example below shows BitBake compiling and building the image for
+**1.** Run the build. The example below shows BitBake compiling and building the image for
+`BUILD_TYPE=prod` (as you normally would):
 
-    
+```
+$ cd ../..
+$ BUILD_TYPE=prod BUILD_TARGET=debug BUILD_PROFILE=potenco bitbake core-image-minimal
+```
 
-   ```
-   BUILD_TYPE=prod
-   ```
+**2.** In this step, package your build image as you like. Below is an example of copying the tar rootfs image to the `partner-hub-ota-tools` directory:
 
-    
+```
+$ cd tmp/partner-hub-ota-tools
+$ cp ../deploy/images/sama5d2-xplained-emmc/core-image-minimal-sama5d2-xplained-emmc.tar.gz   hub_update.bin
+```
 
-   (as you normally would):
+**3.** Upload the image file to the Afero OTA service (i.e., `hub_update.bin`), using the same default configuration file and build number as used above:
 
-   ```
-   $ cd ../..
-   $ BUILD_TYPE=prod BUILD_TARGET=debug BUILD_PROFILE=potenco bitbake core-image-minimal
-   ```
-
-2. In this step, package your build image as you like. Below is an example of copying the tar rootfs image to the
-
-    
-
-   ```
-   partner-hub-ota-tools
-   ```
-
-    
-
-   directory:
-
-   ```
-   $ cd tmp/partner-hub-ota-tools
-   $ cp ../deploy/images/sama5d2-xplained-emmc/core-image-minimal-sama5d2-xplained-emmc.tar.gz   hub_update.bin
-   ```
-
-3. Upload the image file to the Afero OTA service (i.e.,
-
-    
-
-   ```
-   hub_update.bin
-   ```
-
-   ), using the same default configuration file and build number as used
-
-    
-
-   above
-
-   :
-
-   ```
-   $ python partner-ota-hub-uploader.py -n <your build number> --uploadOTAImage
-    You are done!
-   ```
+```
+$ python partner-ota-hub-uploader.py -n <your build number> --uploadOTAImage
+You are done!
+```
 
 ### 2. Deploy the OTA Image to a Device
 
 Deploying an OTA image can be independent of the creating the image. In this section, it is assumed that you have already uploaded your OTA image to the Afero OTA service and now you want to deploy this uploaded image to an device. Currently, we only support deploying image one at a time using this tool.
 
-1. Make sure you have already cloned the Afero partner tools and edited the configuration file, as described above in [Set Up the Environment](../LinuxSDK-FullImageUpdate#setupenv) and [Customize the Configuration File](../LinuxSDK-FullImageUpdate#editconfigfile).
+**1.** Make sure you have already cloned the Afero partner tools and edited the configuration file, as described above in [Set Up the Environment](../LinuxSDK-FullImageUpdate#set-up-the-environment) and [Customize the Configuration File](../LinuxSDK-FullImageUpdate#customize-the-configuration-file).
 
-2. Display your OTA images for the deviceTypeId and partnerId by typing the following:
+**2.** Display your OTA images for the deviceTypeId and partnerId by typing the following:
 
-   ```
-   $ python partner-ota-hub-deploy.py --list
-   ```
+```
+$ python partner-ota-hub-deploy.py --list
+```
 
-   Example output for the above command is shown below. Note that
+Example output for the above command is shown below. Note that `imageId` is what you need for the OTA deployment:
 
-    
+```
+$ python partner-ota-hub-deploy.py --list
+ 
+----  List of HUB FULL OTA images ----
 
-   ```
-   imageId
-   ```
+partnerId   : 4f7de484-cf23-478d-90a7-412104d5120b
+deviceTypeId: a6542896-8464-48e1-b12f-664a57e4e703
 
-    
+Total Number of Images: 2
+Image Id    Version          Name                  Description                  
+----------  ---------------  --------------------- ------------------------------
+49856       1.0.1            Potenco-test          OTA Image description 
+49867       1.0.2d           Potenco-test          OTA Image description
+```
 
-   is what you need for the OTA deployment:
+**3.** Look up your `deviceId` from your mobile app. Your `deviceId` should look something like this: 012359551bf18eba.
 
-   ```
-   $ python partner-ota-hub-deploy.py --list
-     
-   ----  List of HUB FULL OTA images ----
-    
-   partnerId   : 4f7de484-cf23-478d-90a7-412104d5120b
-   deviceTypeId: a6542896-8464-48e1-b12f-664a57e4e703
-    
-   Total Number of Images: 2
-   Image Id    Version          Name                  Description                  
-   ----------  ---------------  --------------------- ------------------------------
-   49856       1.0.1            Potenco-test          OTA Image description 
-   49867       1.0.2d           Potenco-test          OTA Image description
-   ```
+**4.** Use the `partner-ota-hub-deploy.py` with the option `-i <imageId>` and `-d <deviceId>` to deploy your OTA images to the device with that ID:
 
-3. Look up your `deviceId` from your mobile app. Your `deviceId` should look something like this: 012359551bf18eba.
+```
+$ python partner-ota-hub-deploy.py -i <imageId> and -d <deviceId>
+```
 
-4. Use the
+For example:
 
-    
-
-   ```
-   partner-ota-hub-deploy.py
-   ```
-
-    
-
-   with the option -i <imageId> and -d <deviceId> to deploy your OTA images to the device with that ID:
-
-   ```
-   $ python partner-ota-hub-deploy.py -i <imageId> and -d <deviceId>
-   ```
-
-   For example:
-
-   ```
-   $ python partner-ota-hub-deploy.py -i 49867 -d 012359551bf18eba
-   ```
+```
+$ python partner-ota-hub-deploy.py -i 49867 -d 012359551bf18eba
+```
 
 #### Example of Linux Device OTA: Tracing the Logs
 
@@ -384,7 +297,7 @@ sh: /sbin/sysupgrade: No such file or directory
 
 ### 3. Install Image on Device Using otamgr Daemon
 
-Once the OTA image has been deployed to the device and hubby has informed the otamgr daemon (via an Afero attribute) the location of the validated firmware in the filesystem, the otamgr daemon can install the image on the device. Please refer to [OTA Manager (otamgr)](../LinuxSDK-Overview#otamgrSummary) and [OTA Manager Daemon](../LinuxSDK-OTAManager) for details.
+Once the OTA image has been deployed to the device and hubby has informed the otamgr daemon (via an Afero attribute) the location of the validated firmware in the filesystem, the otamgr daemon can install the image on the device. Please refer to [OTA Manager (otamgr)](../LinuxSDK-Overview#ota-manager-otamgr) and [OTA Manager Daemon Implementation](../LinuxSDK-OTAManager) for details.
 
 ## OTA Python Tools Reference
 
@@ -407,7 +320,7 @@ Afero provides a Python script to help with the following two tasks:
 - Create an OTA record file, and then
 - Upload the generated OTA image file to the Afero Cloud OTA service.
 
-The script is called “`partner-ota-hub-uploader.py`” and is used to generate an OTA record for the full OTA image that you plan to upload, then is used to perform the upload as well. The script is used as a command line tool with input parameters and a JSON configuration file. This tool should be part of the build for the product release. Read more above in [Create the OTA Image](../LinuxSDK-FullImageUpdate#createimage).
+The script is called “`partner-ota-hub-uploader.py`” and is used to generate an OTA record for the full OTA image that you plan to upload, then is used to perform the upload as well. The script is used as a command line tool with input parameters and a JSON configuration file. This tool should be part of the build for the product release. Read more above in [Create the OTA Image](../LinuxSDK-FullImageUpdate#1-create-the-ota-image).
 
 The script interacts with the backend of the Afero Cloud OTA service using the RESTful service API endpoints. The OTA service keeps records on the OTA images and each OTA record is used to evaluate whether a device is eligible for update by examining the version information, among other information. For convenience, some of the information required for the OTA record and access privileges are put in the JSON configuration file.
 
@@ -488,22 +401,18 @@ Option details are provided below:
 | OPTION | DESCRIPTION                                                  |
 | :----- | :----------------------------------------------------------- |
 | -h     | Displays help text.                                          |
-| -d     | Identifies this as a debug build. `--d`: Use to append the letter “d” to the end of version string in the OTA record. |
+| -d     | Identifies this as a debug build.<br><br>`--d`: Use to append the letter “d” to the end of version string in the OTA record. |
 | -s     | Skip search for BitBake’s TMPDIR. This option can be used for testing, or by advance users. The script integrates the OTA record into the BitBake build; the output OTA record is stored in the `$TMPDIR` (of the Yocto build). This option allows the user to skip using the `$TMPDIR`, and store the OTA record file in the current running directory. |
-| -n     | The build number from the build server for this build. For example, Jenkins build server starts each build with build number one (1), and increment it by one for each subsequent build. `--buildNum`: Use to append this build number to the end of version field to form the version string in the OTA record. The version string is used to keep track of the OTA build. |
-| -c     | Specifies the use of the default JSON configuration filename and location: `partner-ota-conf.json`, residing in the same directory as the Python script. `--conf`: Use to specify a different configuration filename and/or directory path from the defaults identified above. `--createOTARecord`: Use to generate an OTA record. Upon success, an output file called “`full-ota-record.json`” is generated. `--uploadOTAImage`: Use to upload the OTA file, with the filename designated in the configuration file, in the `imageFiles` field. |
+| -n     | The build number from the build server for this build. For example, Jenkins build server starts each build with build number one (1), and increment it by one for each subsequent build.<br><br>`--buildNum`: Use to append this build number to the end of version field to form the version string in the OTA record. The version string is used to keep track of the OTA build. |
+| -c     | Specifies the use of the default JSON configuration filename and location: `partner-ota-conf.json`, residing in the same directory as the Python script.<br><br>`--conf`: Use to specify a different configuration filename and/or directory path from the defaults identified above.<br><br>`--createOTARecord`: Use to generate an OTA record. Upon success, an output file called “`full-ota-record.json`” is generated.<br><br>`--uploadOTAImage`: Use to upload the OTA file, with the filename designated in the configuration file, in the `imageFiles` field. |
 
 #### Using the partner-ota-hub-uploader.py Script
 
 This Python script is intended to be used in two different stages: 1) creating the OTA record, and 2) uploading the OTA image.
 
-The same options should be used for both the `createOTARecord` and `uploadOTAImage` calls.
+<mark>**&#x26A0; Caution!**  The same options should be used for both the `createOTARecord` and `uploadOTAImage` calls.<br><br>The OTA record created with `createOTARecord` call is intended to be subsequently used in `uploadOTAImage`; that is, `the full-ota-record.json` is used by `uploadOTAImage`.</mark>
 
-The OTA record created with `createOTARecord` call is intended to be subsequently used in `uploadOTAImage`; that is, `the full-ota-record.json` is used by `uploadOTAImage`.
-
-
-
-Stage 1. Create the OTA Record
+##### **Stage 1. Create the OTA Record**
 
 You must create an OTA record before building the actual image. An example of how to use the Python script is given below, where the build number is 10 and a user-provided JSON configuration file:
 
@@ -534,7 +443,7 @@ $ cat full_ota_record.json
 }
 ```
 
-Stage 2. Upload the OTA Image
+##### **Stage 2. Upload the OTA Image**
 
 After you have built the image, injected the `full-ota-record.json` file in the appropriate place in the filesystem, and packaged the OTA image, the OTA image must be uploaded to the Afero OTA service using the command:
 
@@ -586,10 +495,10 @@ Option details are provided below:
 | OPTION | DESCRIPTION                                                  |
 | :----- | :----------------------------------------------------------- |
 | -h     | Displays help text.                                          |
-| -l     | Displays a list of OTA images on the OTA service. This shows the `imageId` that might be needed for OTA deployment. `--list`: When this option is specified, no OTA deployment is enabled. |
-| -c     | Specifies the use of the default JSON configuration filename and location: `partner-ota-conf.json`, residing in the same directory as the Python script. `--conf`: Use to specify a different configuration filename and/or directory path from the defaults specified above. |
-| -d     | Specifies the `deviceId` for the device that the full OTA image is to be applied to. `--device`: Used in conjunction with `--imageId` option for deploying an OTA image to a device. |
-| -i     | Specifies the uploaded OTA `imageId` that the full OTA image is to be applied to. `--imageId`: Used in conjunction with `--device` option for deploying an OTA image to a device. |
+| -l     | Displays a list of OTA images on the OTA service. This shows the `imageId` that might be needed for OTA deployment.<br><br>`--list`: When this option is specified, no OTA deployment is enabled. |
+| -c     | Specifies the use of the default JSON configuration filename and location: `partner-ota-conf.json`, residing in the same directory as the Python script.<br><br>`--conf`: Use to specify a different configuration filename and/or directory path from the defaults specified above. |
+| -d     | Specifies the `deviceId` for the device that the full OTA image is to be applied to.<br><br>`--device`: Used in conjunction with `--imageId` option for deploying an OTA image to a device. |
+| -i     | Specifies the uploaded OTA `imageId` that the full OTA image is to be applied to.<br><br>`--imageId`: Used in conjunction with `--device` option for deploying an OTA image to a device. |
 
 Below is an example of deploying an OTA image, using `deviceId` = 012359551jr17eba, OTA imageId = 49712:
 

@@ -4,9 +4,9 @@ The Wi-Fi Station daemon (wifistad) is event-based and designed to manage the Wi
 
 This page contains the following sections:
 
-- [Platform Dependency](../LinuxSDK-WiFiStDaemon#platdepend)
-- [Event-Driven Design](../LinuxSDK-WiFiStDaemon#event-driven)
-- [Wi-Fi Station Daemon System Components](../LinuxSDK-WiFiStDaemon#wifistadcomps)
+- [Platform Dependency](../LinuxSDK-WiFiStDaemon#platform-dependency)
+- [Event-Driven Design](../LinuxSDK-WiFiStDaemon#event-driven-design)
+- [Wi-Fi Station Daemon System Components](../LinuxSDK-WiFiStDaemon#wi-fi-station-daemon-system-components)
 
 ## Platform Dependency
 
@@ -59,7 +59,9 @@ When wpa_manager is in the WPA_STATE_NOT_READY state, all activities related to 
 
 Once wpa_manager is in the WPA_STATE_READY state, activities related to Wi-Fi are allowed. We also have WPA_STATE_CONNECTING and WPA_STATE_CONNECTED states, which differentiate steps in the Wi-Fi set-up process: handshake, authentication, and connection. This set-up process takes some time, depending on the access point in use.
 
-WPA State Diagram:![WPA State Diagram](img/WPAStateDiagram.png)
+*WPA State Diagram:*<br>
+<img src="../img/WPAStateDiagram.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
+
 
 Similarly, wifistad supports the states shown below. Only the first four states are currently supported; they mirror the wpa_manager’s state transition process, so we won’t go into the details.
 
@@ -79,9 +81,9 @@ typedef enum {
 
 The Wi-Fi Station daemon has the following components:
 
-- [WPA manager](../LinuxSDK-WiFiStDaemon#wpamgmt) - Interfaces with wpa_supplicant and intercepts its events; performs Wi-Fi scan, Wi-Fi network setup, and terminations.
-- [wifi_event.sh script](../LinuxSDK-WiFiStDaemon#wifi_eventscript) - Provides a hook for developers to modify/enhance Wi-Fi network functionality.
-- [Attribute management](../LinuxSDK-WiFiStDaemon#attrmgmt) - Works with attrd and hubby to assist users setting up Wi-Fi using the Afero mobile app for iOS or Android.
+- [WPA manager](../LinuxSDK-WiFiStDaemon#wpa-manager) - Interfaces with wpa_supplicant and intercepts its events; performs Wi-Fi scan, Wi-Fi network setup, and terminations.
+- [wifi_event.sh script](../LinuxSDK-WiFiStDaemon#wifi_eventsh-script) - Provides a hook for developers to modify/enhance Wi-Fi network functionality.
+- [Attribute management](../LinuxSDK-WiFiStDaemon#attribute-management) - Works with attrd and hubby to assist users setting up Wi-Fi using the Afero mobile app for iOS or Android.
 
 The implementation uses two event loops:
 
@@ -125,9 +127,7 @@ network={
 }
 ```
 
-It is very important to disable the Wi-Fi network configuration so it doesn’t interfere with wifistad functionality.
-
-
+<mark>**&check; Note:**   It is very important to disable the Wi-Fi network configuration so it doesn’t interfere with wifistad functionality.</mark>
 
 #### WPA SCAN and SSID List
 
@@ -139,7 +139,7 @@ wifistad performs the scan list and extracts and formats the AP list information
 
 Depending on the platform, there may be a need to implement certain functionality when Wi-Fi is connected or disconnected. The `wifi_event.sh` script provides the hook to do that. wifistad is notified when Wi-Fi is connected, and calls `wifi_event.sh` with the connected parameter. When Wi-Fi disconnects, it invokes `wifi_event.sh` with “disconnected”. This gives a third-party developer a mechanism for modifying network functionality in the script, without having to change the daemon code.
 
-Usage
+#####Usage
 
 ```
 ./wifi_event.sh [connected | disconnected ]
@@ -147,7 +147,7 @@ Usage
 
 Currently, calling `wifi_event.sh connected` terminates the udhcpc process and then restarts it. As the udhcpc process is not notified when an AP is changed, this provides a convenient way to obtain a new IP address.
 
-Example
+#####Example
 
 ```
 /usr/lib/af-conn/wifi_event.sh connected 
@@ -169,15 +169,15 @@ The following Wi-Fi related attributes are supported by wifstad:
 | :---- | :----------------- | :--- | :---- | :------ | :---- | :------------------------------------------------- | :----------------------------------------------------------- |
 | 65010 | Wi-Fi Credentials  | 255  | BYTES | -       | -     | RW PH                                              | The encrypted (with the shared secret) Wi-Fi credentials.    |
 | 65009 | Wi-Fi SSID List    | 2048 | BYTES | -       | -     | RW PH                                              | The encrypted (with the shared secret) list of Wi-Fi SSIDs that the hub can see. |
-| 65008 | Network Type       | 1    | SINT8 | -       | -1–2  | -                                                  | -1 = NONE  0 = Ethernet  1 = WLAN  2 = WAN                   |
-| 65007 | Wi-Fi Setup State  | 1    | SINT8 | 0       | 0–2   | RH                                                 | Wi-Fi set-up state: 0 - Not Connected 1 - Pending 2 - Connected 3 - Unknown Failure 4 - Association Failed 5 - Handshake Failed 6 - Echo Failed 7 - SSID Not Found This attribute is used during the Wi-Fi setup process to let the apps know what state the Wi-Fi connection is in. |
-| 65006 | Wi-Fi Steady State | 1    | SINT8 | 0       | 0–5   | R                                                  | Wi-Fi steady state: 0 - Not Connected 1 - Pending 2 - Connected 3 - Unknown Failure 4 - Association Failed 5 - Handshake Failed 6 - Echo Failed 7 - SSID Not Found This attribute is used to communicate the Wi-Fi state to the apps outside of the Wi-Fi setup. |
+| 65008 | Network Type       | 1    | SINT8 | -       | -1–2  | -                                                  | -1 = NONE<br>0 = Ethernet<br>1 = WLAN<br>2 = WAN                   |
+| 65007 | Wi-Fi Setup State  | 1    | SINT8 | 0       | 0–2   | RH                                                 | Wi-Fi set-up state:<br>0 - Not Connected<br>1 - Pending<br>2 - Connected<br>3 - Unknown Failure<br>4 - Association Failed<br>5 - Handshake Failed<br>6 - Echo Failed<br>7 - SSID Not Found<br>This attribute is used during the Wi-Fi setup process to let the apps know what state the Wi-Fi connection is in. |
+| 65006 | Wi-Fi Steady State | 1    | SINT8 | 0       | 0–5   | R                                                  | Wi-Fi steady state:<br>0 - Not Connected<br>1 - Pending<br>2 - Connected<br>3 - Unknown Failure<br>4 - Association Failed<br>5 - Handshake Failed<br>6 - Echo Failed<br>7 - SSID Not Found<br>This attribute is used to communicate the Wi-Fi state to the apps outside of the Wi-Fi setup. |
 | 65005 | Wi-Fi Bars         | 1    | SINT8 | 0       | -     | R                                                  | Integer read-only attribute: Wi-Fi signal strength for UI purposes. |
 | 65004 | Configured SSID    | 33   | UTF8S | 0       | -     | R                                                  | The SSID the hub is currently configured to use.             |
 
 Developers can add and support their own attributes by first adding the attributes into the attrd database, then implementing the `get` and `set` functionality of these attributes.
 
-These attributes must be part of the device Profile to work properly.
+<mark>**&check; Note:**  These attributes must be part of the device Profile to work properly.
 
 
 

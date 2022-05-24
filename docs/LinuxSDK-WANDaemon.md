@@ -2,17 +2,17 @@
 
 The WAN system has the following parts that work together. Each component is described in detail on this page:
 
-- [wancontrol script](../LinuxSDK-WANDaemon#wancontrol) - Bash script that controls the power states of the modem. You will need to customize this script for your modem.
+- [wancontrol script](../LinuxSDK-WANDaemon#wancontrol-script) - Bash script that controls the power states of the modem. You will need to customize this script for your modem.
 
-- [atcmd executable](../LinuxSDK-WANDaemon#atcmdexec) - Linux executable to send AT commands that is suitable for scripting. You should not need to customize this code.
+- [atcmd executable](../LinuxSDK-WANDaemon#atcmd-executable) - Linux executable to send AT commands that is suitable for scripting. You should not need to customize this code.
 
-- [wannetwork script](../LinuxSDK-WANDaemon#wannetwork) - Bash script that brings up the WAN network interface and sets up the routing and DNS servers. You will need to customize this code for your OS.
+- [wannetwork script](../LinuxSDK-WANDaemon#wannetwork-script) - Bash script that brings up the WAN network interface and sets up the routing and DNS servers. You will need to customize this code for your OS.
 
-- [Radio Interface Layer (RIL)](../LinuxSDK-WANDaemon#ril) - Static library that manages an AT command interface for network setup, RF environment monitoring, and debugging. You will need to customize this code for your modem.
+- [Radio Interface Layer (RIL)](../LinuxSDK-WANDaemon#radio-interface-layer-ril) - Static library that manages an AT command interface for network setup, RF environment monitoring, and debugging. You will need to customize this code for your modem.
 
-- - [AT command interface](../LinuxSDK-WANDaemon#atcomdif) - Part of the RIL that provides general purpose AT command utilities. You may need to modify this code for your modem.
+    - [AT command interface](../LinuxSDK-WANDaemon#at-command-interface) - Part of the RIL that provides general purpose AT command utilities. You may need to modify this code for your modem.
 
-- [WAN daemon components](../LinuxSDK-WANDaemon#wandcomps) - Linux executable that binds all of these pieces together. You may not need to customize this code.
+- [WAN daemon components](../LinuxSDK-WANDaemon#wan-daemon-components) - Linux executable that binds all of these pieces together. You may not need to customize this code.
 
 The sections on this page discuss each of these parts in more detail with an emphasis on the motivation for each part’s design. If you must customize anything for a particular modem, the requirements are presented.
 
@@ -86,9 +86,10 @@ If the AT command returns an error, the atcmd executable prints the error return
 
 The atcmd executable has two optional switches:
 
-| `‑d` | Allows you to specify the serial device that the AT command is sent to.The default is `/dev/ttyACM0`, although this can be changed by changing the DEFAULT_DEVICE in `atcmd.c`. This is useful because the WAN daemon uses `/dev/ttyACM0` while it’s running on the Afero Secure Hub.To talk to the modem while the WAN daemon is running you have to use `/dev/ttyACM2`; otherwise you’ll cause the WAN daemon to restart the modem.`root@bento:~# /usr/bin/atcmd -d /dev/ttyACM2 ati HL7548 root@bento:~#` |
+| SWITCH | DESCRIPTION |
 | ---- | ------------------------------------------------------------ |
-| `‑w` | Allows you to specify the time in seconds for the AT command to execute before timing out.The default timeout is 15 seconds. Some AT commands take longer than 15 seconds to execute; for these commands, you must use the -w command-line option to specify a longer timeout.`root@bento:~# /usr/bin/atcmd -w 120 at+cops=? +COPS: (2,"AT&T","AT&T","310410",7),(1,"Verizon","Verizon","311480",7),(1,"","","312770",7),(1,"","","310830",7),(1,"Sprint","Sprint","310120",7),(1,"T-Mobile","T-Mobile","310260",7) root@bento:~#` |
+| `‑d` | Allows you to specify the serial device that the AT command is sent to.The default is `/dev/ttyACM0`, although this can be changed by changing the DEFAULT_DEVICE in `atcmd.c`. This is useful because the WAN daemon uses `/dev/ttyACM0` while it’s running on the Afero Secure Hub.To talk to the modem while the WAN daemon is running you have to use `/dev/ttyACM2`; otherwise you’ll cause the WAN daemon to restart the modem.<br><br>root@bento:~# /usr/bin/atcmd -d /dev/ttyACM2 ati<br>HL7548<br>root@bento:~# |
+| `‑w` | Allows you to specify the time in seconds for the AT command to execute before timing out.The default timeout is 15 seconds. Some AT commands take longer than 15 seconds to execute; for these commands, you must use the -w command-line option to specify a longer timeout.<br><br>root@bento:~# /usr/bin/atcmd -w 120 at+cops=?<br>+COPS: (2,"AT&T","AT&T","310410",7),(1,"Verizon","Verizon","311480",7),(1,"","","312770",7),(1,"","","310830",7),<br>(1,"Sprint","Sprint","310120",7),(1,"T-Mobile","T-Mobile","310260",7) root@bento:~# |
 
 ## wannetwork Script
 
@@ -109,8 +110,9 @@ The wannetwork script has the following API:
 
 Where:
 
-| `up`        | Brings the network up. You will need to specify network parameters when you bring the network up. |
+| OPTION        | DESCRIPTION  |
 | ----------- | ------------------------------------------------------------ |
+| `up`        | Brings the network up. You will need to specify network parameters when you bring the network up. |
 | `down`      | Brings the network down cleanly so that you can bring the network up again. |
 | `ip_v4`     | IPv4 address of the modem network interface. This is usually provided by the modem. |
 | `subnet_v4` | IPv4 subnet specifier. For example, for 255.255.255.0 networks, the subnet is 24. |
@@ -147,25 +149,29 @@ To understand the RIL, it is helpful to understand the sequence of operations ne
 
 After the WAN daemon powers up the WAN (using the wancontrol script) it brings up the data connection by interacting with the RIL as follows:
 
-1. The WAN daemon calls `ril_init()` to initialize the RIL. This function does the following:
+**1.** The WAN daemon calls `ril_init()` to initialize the RIL. This function does the following:
 
-2. 1. Starts the AT command event handler.
-   2. Turns off AT command echo.
-   3. Gets some modem and SIM parameters for debugging.
-   4. Sets up AT event reporting.
-   5. Initializes an internal cache with the modem’s PDP context profile list.
+1a. Starts the AT command event handler.
 
-3. The WAN daemon gets the SIM ICCID using the `ril_lock_wan_status()` function, retrieving the ICCID from the returned `ril_wan_status_t` structure.
+1b. Turns off AT command echo.
 
-4. Based on the ICCID and the contents of the `/etc/wan/carriers` file, the WAN daemon determines the APN and PPP authentication parameters.
+1c. Gets some modem and SIM parameters for debugging.
 
-5. The WAN daemon calls the `ril_select_network()` function. This function sets up the default PDP context so the modem can register on the Packet Switch network. Then it tells the modem to register (AT+COPS=0).
+1d. Sets up AT event reporting.
 
-6. The WAN daemon calls `ril_get_ps_attach` to get the packet switch attach status until it detects that the modem is attached to the packet switch network.
+1e. Initializes an internal cache with the modem’s PDP context profile list.
 
-7. The WAN daemon calls the `ril_activate_data_call()` function to start the PDP context. The function returns a structure containing the networking parameters that are used by the wannetwork script to set up the network.
+**2.** The WAN daemon gets the SIM ICCID using the `ril_lock_wan_status()` function, retrieving the ICCID from the returned `ril_wan_status_t` structure.
 
-8. The WAN daemon executes the wannetwork script, which brings up the network interface, creates the default route, and sets the DNS servers.
+**3.** Based on the ICCID and the contents of the `/etc/wan/carriers` file, the WAN daemon determines the APN and PPP authentication parameters.
+
+**4.** The WAN daemon calls the `ril_select_network()` function. This function sets up the default PDP context so the modem can register on the Packet Switch network. Then it tells the modem to register (AT+COPS=0).
+
+**5.** The WAN daemon calls `ril_get_ps_attach` to get the packet switch attach status until it detects that the modem is attached to the packet switch network.
+
+**6.** The WAN daemon calls the `ril_activate_data_call()` function to start the PDP context. The function returns a structure containing the networking parameters that are used by the wannetwork script to set up the network.
+
+**7.** The WAN daemon executes the wannetwork script, which brings up the network interface, creates the default route, and sets the DNS servers.
 
 At this point the network is up and can be used by hubby.
 
@@ -177,7 +183,7 @@ The RIL interface is defined in `RIL.h`. The functions defined in the interface 
 
 #### ril_init
 
-Syntax
+#####Syntax
 
 ```
 int ril_init(struct event_base *base, ril_event_callback_t callback, void *context);
@@ -199,22 +205,24 @@ The `ril_init` function on the HL75xx RIL calls the `prv_modem_init` function, w
 6. Configures the modem to report camped cell info events.
 7. Reads in the internal PDP context database into the PDP context cache.
 
-Parameters
+#####Parameters
 
-| `base`     | The event base of the libevent2 event loop. This is used to add the AT command event that occurs when input is available on the AT command serial device. |
+| PARAMETER   | DESCRIPTION |
 | ---------- | ------------------------------------------------------------ |
+| `base`     | The event base of the libevent2 event loop. This is used to add the AT command event that occurs when input is available on the AT command serial device. |
 | `callback` | This callback is called when the RIL wants to notify the WAN daemon of an asynchronous event. Right now the only asynchronous event the RIL sends to the WAN daemon is the RIL_EVENT_DATA_CALL_LOST event, which causes the WAN daemon to shut down the network using `ril_deactivate_data_call()` and then bring it up again using `ril_activate_data_call()`. |
 | `context`  | Any context the WAN daemon needs in the callback. At the moment the WAN daemon does not use the context and sets it to NULL. |
 
-Returns
+#####Returns
 
+| RETURN   | DESCRIPTION |
+| ---------- | ------------------------------------------------------------ |
 | `RIL_ERROR_NONE (0)` | RIL was initialized properly.                                |
-| -------------------- | ------------------------------------------------------------ |
 | `RIL_ERROR_FATAL`    | Something failed during initialization. The WAN daemon will restart the RIL in this case. |
 
 #### ril_select_network
 
-Syntax
+#####Syntax
 
 ```
 int ril_select_network(ril_data_call_request_t *dataCallReq);
@@ -222,7 +230,7 @@ int ril_select_network(ril_data_call_request_t *dataCallReq);
 
 This function must set the APN according to the specified data call request and attempt to automatically camp on a network.
 
-Parameters
+#####Parameters
 
 The WAN daemon fills in the dataCallReq parameter, which is a `ril_data_call_request_t` defined as follows:
 
@@ -244,22 +252,24 @@ typedef struct {
 
 All of these members are specified as null terminated C strings:
 
-| `auth_type` | Specifies PPP authentication type. Set to “1” for PAP authentication,“2” for CHAP authentication. Only specified if PPP authentication is required for specified APN. |
+| OPTION | DESCRIPTION |
 | ----------- | ------------------------------------------------------------ |
+| `auth_type` | Specifies PPP authentication type. Set to “1” for PAP authentication,“2” for CHAP authentication. Only specified if PPP authentication is required for specified APN. |
 | `protocol`  | Specifies IP protocol supported. Set to “IP” for IPv4, “IPV4V6” for mixed stack IPv4 and IPv6, and “IPV6” for IPv6. |
 | `apn`       | Specifies Access Point Name (APN) of PDP context.            |
 | `user`      | Specifies PPP authentication user name and is only specified if PPP authentication is required for specified APN. |
 | `password`  | Specifies PPP authentication password and is only specified if PPP authentication is required for specified APN. |
 
-Returns
+#####Returns
 
-| `RIL_ERR_NONE`  | Function succeeded. |
+| RETURN  | DESCRIPTION |
 | --------------- | ------------------- |
+| `RIL_ERR_NONE`  | Function succeeded. |
 | `RIL_ERR_FATAL` | Failure occurred.   |
 
 #### ril_get_ps_attach
 
-Syntax
+#####Syntax
 
 ```
 int ril_get_ps_attach(int *attachP);
@@ -270,24 +280,25 @@ Determines if the modem is attached to a packet switched network:
 - When the modem is attached to a packet switched network, the WAN daemon can start or maintain a PDP context.
 - When the modem is not attached to a packet network, a PDP context cannot be started or sustained.
 
-This function is also responsible for getting the WAN status information, which is discussed in more detail in [Concurrency and Debug Data](../LinuxSDK-WANDaemon#concuranddebug).
+This function is also responsible for getting the WAN status information, which is discussed in more detail in [Concurrency and Debug Data](../LinuxSDK-WANDaemon#concurrency-and-debug-data).
 
-Parameters
+#####Parameters
 
-| `attachP` | Integer passed by reference in which the function stores the attach status. The attach status is nonzero if the modem is attached and zero otherwise. The WAN daemon uses this value to determine if it should start a PDP context. |
+| PARAMETER | DESCRIPTION |
 | --------- | ------------------------------------------------------------ |
-|           |                                                              |
+| `attachP` | Integer passed by reference in which the function stores the attach status. The attach status is nonzero if the modem is attached and zero otherwise. The WAN daemon uses this value to determine if it should start a PDP context. |
 
-Returns
+#####Returns
 
-| `RIL_ERR_NONE`     | Function succeeded.                           |
+| RETURN     | DESCRIPTION  |
 | ------------------ | --------------------------------------------- |
+| `RIL_ERR_NONE`     | Function succeeded.                           |
 | `RIL_ERR_NONFATAL` | Failure occurred; modem will be power-cycled. |
 | `RIL_ERR_FATAL`    | Failure occurred; modem will be power-cycled. |
 
 #### ril_lock_wan_status
 
-Syntax
+#####Syntax
 
 ```
 ril_wan_status_t *ril_lock_wan_status(void);
@@ -297,7 +308,7 @@ Locks the mutex protecting the internal WAN status structure and returns a point
 
 #### ril_unlock_wan_status
 
-Syntax
+#####Syntax
 
 ```
 void ril_unlock_wan_status(void);
@@ -307,7 +318,7 @@ Unlocks the mutex protecting the internal WAN status structure.
 
 #### ril_activate_data_call
 
-Syntax
+#####Syntax
 
 ```
 int ril_activate_data_call(ril_data_call_response_t *dataCallRsp);
@@ -323,11 +334,11 @@ Establishes a PDP context on the serving cell and returns the IP parameters. Thi
 6. Enters the data state (AT+CGDATA).
 7. Fills in the data call response data structure.
 
-Parameters
+#####Parameters
 
-| `dataCallRsp` | Structure that contains the network information of the data call that was just set up. This structure is defined as follows: |
+| PARAMETER | DESCRIPTION |
 | ------------- | ------------------------------------------------------------ |
-|               |                                                              |
+| `dataCallRsp` | Structure that contains the network information of the data call that was just set up. This structure is defined as follows: |
 
 ```
 typedef struct {
@@ -344,24 +355,26 @@ typedef struct {
 
 Where:
 
+| PARAMETER | DESCRIPTION |
+| ------------- | ------------------------------------------------------------ |
 | `subnet_v4`        | Specifies the subnet mask for the IPv4 address. For example, if the subnet mask is 255.255.255.0, the subnet is 24. |
-| ------------------ | ------------------------------------------------------------ |
 | `subnet_v6`        | Specifies the subnet mask for the IPv6 address.              |
 | `ip_v4`            | Null-terminated string containing an IPv4 address in dot notation; for example, “192.168.1.5”. If the modem doesn’t have an IPv4 address, this member must be set to the empty string (""). |
 | `ip_v6`            | Null-terminated string containing an IPv6 address in colon notation; for example, “fe80::b283:feff:fea2:3f1”. If the modem doesn’t have an IPv6 address, this member must be set to the empty string (""). |
 | `dns1_v4, dns2_v4` | Null-terminated strings containing the first and second IPv4 DNS servers in dot notation; for example, “8.8.8.8”. If the modem can’t retrieve IPv4 DNS addresses, these members must be set to the empty string (""). |
 | `dns1_v6, dns2_v6` | Null-terminated strings containing the first and second IPv6 DNS servers in colon notation. If the modem can’t retrieve IPv6 DNS addresses, these members must be set to the empty string (""). |
 
-Returns
+#####Returns
 
+| RETURN | DESCRIPTION |
+| ------------- | ------------------------------------------------------------ |
 | `RIL_ERR_NONE`     | Function succeeded.                                          |
-| ------------------ | ------------------------------------------------------------ |
 | `RIL_ERR_NONFATAL` | Failure occurred, but not bad enough to warrant a modem power cycle. |
 | `RIL_ERR_FATAL`    | Failure occurred, requiring the modem be power-cycled; for example, an AT command timed out. |
 
 #### ril_shutdown
 
-Syntax
+#####Syntax
 
 ```
 void ril_shutdown(void);
@@ -385,27 +398,29 @@ The HL75xx RIL uses these functions for all AT command management.
 
 #### at_init
 
-Syntax
+#####Syntax
 
 ```
 int at_init(char *device, struct event_base *base, at_unsol_def_t *defs, int numDefs, void *context);
 ```
 
-Opens the specified AT command serial device, sets up the serial device input event, and registers a set of callbacks for handling unsolicited AT events. It also creates a mutex and condition variable for thread synchronization. This is discussed in greater detail in RIL Threading.
+Opens the specified AT command serial device, sets up the serial device input event, and registers a set of callbacks for handling unsolicited AT events. It also creates a mutex and condition variable for thread synchronization. This is discussed in greater detail in [RIL Threading](../LinuxSDK-WANDaemon#ril-threading).
 
-Parameters
+#####Parameters
 
+| PARAMETER | DESCRIPTION |
+| ------------- | ------------------------------------------------------------ |
 | `device`  | String specifying the serial AT command device; for example, “/dev/ttyACM0”. |
-| --------- | ------------------------------------------------------------ |
 | `base`    | Event base for the main event loop that handles the AT event. |
 | `defs`    | Array of at_unsol_def_t structures that specify an unsolicited AT event prefix and a callback to be called when that prefix is received. This is discussed below. |
 | `numDefs` | Number of definitions in the defs array.                     |
 | `context` | Reference context that can be used by the unsolicited AT event callback. |
 
-Returns
+#####Returns
 
+| RETURN | DESCRIPTION |
+| ------------- | ------------------------ |
 | `0`  | Function succeeded.                      |
-| ---- | ---------------------------------------- |
 | `-1` | Function failed; sets errno accordingly. |
 
 The `at_unsol_def_t` structure is defined as follows:
@@ -421,45 +436,43 @@ typedef struct {
 
 An unsolicited event callback returns void and has two parameters:
 
+| RETURN | DESCRIPTION |
+| ------------- | ------------------------ |
 | `rest`    | The rest of the AT event output when the prefix and the colon (“:”) that follows it are eliminated. |
-| --------- | ------------------------------------------------------------ |
 | `context` | The reference context passed into the `at_init` function.    |
 
 The prefix member of the `at_unsol_def_t` structure defines the prefix of the AT event. For example, on the HL75xx, changes to the packet switch attach status are reported using like this:
 
-
-
 ```
 +CGEV: 1
 ```
-
 To get a callback when the prefix in this case is “+CGEV”. When the callback is called, the rest parameter points to the “ 1” part of the string that follows the prefix “CGEV” and the colon “:”.
 
 The callback member of the `unsol_def_t` structure defines the callback that is called when the prefix is seen in at the AT command input.
 
 #### at_shutdown
 
-Syntax
+#####Syntax
 
 ```
 void at_shutdown(void);
 ```
 
-This function closes the AT command serial device and deletes the input event. It also cleans up the synchronization primitives create in at_init. See [RIL Threading](../LinuxSDK-WANDaemon#rilthreading) for more information.
+This function closes the AT command serial device and deletes the input event. It also cleans up the synchronization primitives create in at_init. See [RIL Threading](../LinuxSDK-WANDaemon#ril-threading) for more information.
 
 #### at_start_cmds
 
-Syntax
+#####Syntax
 
 ```
 void at_start_cmds(void);
 ```
 
-This function locks the resources used for sending AT commands and parsing the responses. You must call this function before sending a series of AT commands or you will have concurrency issues. See [RIL Threading](../LinuxSDK-WANDaemon#rilthreading) for more information.
+This function locks the resources used for sending AT commands and parsing the responses. You must call this function before sending a series of AT commands or you will have concurrency issues. See [RIL Threading](../LinuxSDK-WANDaemon#ril-threading) for more information.
 
 #### at_end_cmds
 
-Syntax
+#####Syntax
 
 ```
 void at_end_cmds(void);
@@ -469,35 +482,36 @@ This function unlocks the resources used for sending AT commands and parsing the
 
 #### at_send_cmd
 
-Syntax
+#####Syntax
 
 ```
 at_result_t at_send_cmd(at_response_type_t rsp_type, char *prefix, char *opt, int timeout);
 ```
-
 Sends an AT command with the specified prefix and parameters string to the modem and waits until the specified timeout for a response back that matches the specified prefix and response type. This function blocks until the results of the AT command have been received. As a result, this function must not be called in the event loop.
 
-Parameters
+#####Parameters
 
-| `rsp_type` | Enum that specifies the expected format of the AT command response. There are three values for the `rsp_type`:`AT_RSP_TYPE_OK`The AT command simply responds with “OK”. For example, the ATE0 command response is “OK”.`AT_RSP_TYPE_PREFIX`The AT command responds with the command itself as a prefix. For example, the “AT+COPS?” command response is something like +COPS: 0,0, "AT&T",7.`AT_RSP_TYPE_NO_PREFIX`The AT command response with the data only. For example, on the Sierra Wireless HL7548, the "ATI" command responds with the identification information only “HL7548”. |
+| PARAMETER  |  DESCRIPTION	
 | ---------- | ------------------------------------------------------------ |
+| `rsp_type` | Enum that specifies the expected format of the AT command response. There are three values for the `rsp_type`:<br><br>`AT_RSP_TYPE_OK` - The AT command simply responds with “OK”. For example, the ATE0 command response is “OK”.<br><br>`AT_RSP_TYPE_PREFIX` - The AT command responds with the command itself as a prefix. For example, the “AT+COPS?” command response is something like +COPS: 0,0, "AT&T",7.<br><br>`AT_RSP_TYPE_NO_PREFIX` - The AT command response with the data only. For example, on the Sierra Wireless HL7548, the "ATI" command responds with the identification information only “HL7548”. |
 | `prefix`   | Null-terminated string that specifies the AT command prefix. For example, the prefix for “AT+COPS=0” is “+COPS”. |
 | `opt`      | Null-terminated string containing the parameters for the AT command or NULL if no parameters are needed. For example, the parameter string for “AT+COPS=0” is “=0”. |
 | `timeout`  | Number of seconds the command will execute. If this is set to 0, the default timeout (10 seconds) is used. Some commands take longer; for example, “AT+COPS=0”. |
 
-Returns
+#####Returns
 
 Returns a code that indicates the success or failure of the AT command invocation. The return code can have the following values:
 
-| `AT_RESULT_SUCCESS`     | The AT command completed successfully.                       |
+| RETURN  |  DESCRIPTION |
 | ----------------------- | ------------------------------------------------------------ |
+| `AT_RESULT_SUCCESS`     | The AT command completed successfully.                       |
 | `AT_RESULT_ERROR`       | The AT command returned an error. The error number can be obtained using the `at_rsp_error` function. |
 | `AT_RESULT_CME_ERROR`   | The AT command returned a mobile equipment error. The error number can be obtained using the `at_rsp_error` function. |
 | `AT_RESULT_CMS_ERROR`   | The AT command returned a message system error. The error number can be obtained using the `at_rsp_error` function. |
 | `AT_RESULT_TIMEDOUT`    | The AT command did not return a result before the timeout period. |
 | `AT_RESULT_SEND_FAILED` | The AT command failed to send. This usually indicates a failure on the serial device. |
 
-Example
+#####Example
 
 ```
 int res = at_send_cmd(AT_RSP_TYPE_OK, "ATE", "0", 0);
@@ -505,7 +519,7 @@ int res = at_send_cmd(AT_RSP_TYPE_OK, "ATE", "0", 0);
 
 #### at_send_cmd_1_int
 
-Syntax
+#####Syntax
 
 ```
 at_result_t at_send_cmd_1_int(at_response_type_t type, char *prefix, int arg, int timeout);
@@ -513,15 +527,16 @@ at_result_t at_send_cmd_1_int(at_response_type_t type, char *prefix, int arg, in
 
 Sends the AT command with the specified prefix and single integer argument. This is a convenience function for the `at_send_cmd` function.
 
-Parameters
+#####Parameters
 
-| `rsp_type` | See the [at_send_cmd](../LinuxSDK-WANDaemon#at_send_cmd) documentation for an explanation of the response type. |
+| PARAMETER  | DESCRIPTION |
 | ---------- | ------------------------------------------------------------ |
+| `rsp_type` | See the [at_send_cmd](../LinuxSDK-WANDaemon#at_send_cmd) documentation for an explanation of the response type. |
 | `prefix`   | Null-terminated string that specifies the AT command prefix. For example, the prefix for “AT+COPS=0” is “+COPS”. |
 | `arg`      | Integer argument for the command. For example, the argument for “AT+COPS=” is “0”. |
 | `timeout`  | Number of seconds the command will execute. If this is set to 0, the default timeout (10 seconds) is used. Some commands take longer, for example, “AT+COPS=0”. |
 
-Example
+#####Example
 
 ```
 int res = at_send_cmd_1_int(AT_RSP_TYPE_OK, "+COPS", 1, 0);
@@ -529,24 +544,24 @@ int res = at_send_cmd_1_int(AT_RSP_TYPE_OK, "+COPS", 1, 0);
 
 #### at_send_cmd_2_int
 
-Syntax
+#####Syntax
 
 ```
 at_result_t at_send_cmd_2_int(at_response_type_t type, char *prefix, int arg1, int arg2, int timeout);
 ```
-
 Sends the AT command with the specified prefix and two integer arguments. This is a convenience function for the `at_send_cmd` function.
 
-Parameters
+#####Parameters
 
-| `rsp_type` | See the [at_send_cmd](../LinuxSDK-WANDaemon#at_send_cmd) documentation for an explanation of the response type. |
+| PARAMETER  |  DESCRIPTION |
 | ---------- | ------------------------------------------------------------ |
+| `rsp_type` | See the [at_send_cmd](../LinuxSDK-WANDaemon#at_send_cmd) documentation for an explanation of the response type. |
 | `prefix`   | Null-terminated string that specifies the AT command prefix. For example, the prefix for “AT+COPS=0” is “+COPS”. |
 | `arg1`     | First integer argument for the command.                      |
 | `arg2`     | Second integer argument for the command.                     |
 | `timeout`  | Number of seconds the command will execute. If this is set to 0, the default timeout (10 seconds) is used. Some commands take longer, for example, “AT+COPS=0”. |
 
-Example
+#####Example
 
 ```
 res = at_send_cmd_2_int(AT_RSP_TYPE_OK, "+CGEREP", 1, 0, 0);
@@ -560,7 +575,7 @@ AT+CGEREP=1,0
 
 #### at_rsp_num_lines
 
-Syntax
+#####Syntax
 
 ```
 int at_rsp_num_lines(void);
@@ -570,7 +585,7 @@ Returns the number of lines in the response to the AT command sent using at_cmd_
 
 #### at_rsp_next_line
 
-Syntax
+#####Syntax
 
 ```
 char *at_rsp_next_line(void);
@@ -578,7 +593,7 @@ char *at_rsp_next_line(void);
 
 Returns a pointer to the null-terminated string containing the next line of the response to the AT command sent using the at_cmd_send function or one of its variants. This function allows you to iterate through the lines of the output until you reach the end. Returns NULL if there are no more response lines.
 
-Example
+#####Example
 
 ```
 char *line;
@@ -589,7 +604,7 @@ while  ((line = at_rsp_next_line()) != NULL) {
 
 #### at_rsp_error
 
-Syntax
+#####Syntax
 
 ```
 int at_rsperror(void)
@@ -601,7 +616,7 @@ For example, if you send the following AT command using `at_send_cmd`: “AT+CCI
 
 #### at_tokenize_line
 
-Syntax
+#####Syntax
 
 ```
 int at_tokenize_line(char *line, char tok, char **list, int len);
@@ -609,19 +624,20 @@ int at_tokenize_line(char *line, char tok, char **list, int len);
 
 Breaks a string into chunks separated by the specified token character. Also removes quotation marks around a substring.
 
-Parameters
+#####Parameters
 
-| `line` | String to be separated.                                      |
+| PARAMETER | DESCRIPTION |
 | ------ | ------------------------------------------------------------ |
+| `line` | String to be separated.                                      |
 | `tok`  | Token character to be used to split the line, usually “,”.   |
 | `list` | Array of pointers to characters that will hold the pieces of the line. |
 | `len`  | Number of elements in the list array.                        |
 
-Return
+#####Return
 
 The number of actual substrings found.
 
-Example
+#####Example
 
 ```
 char *line = " 1,\"IP\",\"m2m.com.attz\",\"10.51.134.104\",0,0,0,0,0,0"
@@ -713,8 +729,6 @@ sleep(2);
 at_start_cmds();
 ```
 
- 
-
 #### Concurrency and Debug Data
 
 The WAN daemon provides debugging information in the form of Afero attributes. These attributes are described in the [Attribute Daemon Client Implementation](../LinuxSDK-AttrDaemon). The Radio Interface Layer is responsible for gathering this data, which it stores in a structure of type `ril_wan_status_t`, defined (in `ril.h`) as follows:
@@ -769,10 +783,10 @@ ril_unlock_wan_status();
 
 The WAN daemon binds all of these pieces together. It consists of four components:
 
-- [Worker thread (wand.c)](../LinuxSDK-WANDaemon#workerthread)
-- [State machine (wand.c)](../LinuxSDK-WANDaemon#statemachine)
-- [Network monitor (net.c)](../LinuxSDK-WANDaemon#networkmonitor)
-- [Attribute handler (server.c)](../LinuxSDK-WANDaemon#attributehandler)
+- [Worker thread (wand.c)](../LinuxSDK-WANDaemon#worker-thread)
+- [State machine (wand.c)](../LinuxSDK-WANDaemon#state-machine)
+- [Network monitor (net.c)](../LinuxSDK-WANDaemon#network-monitor)
+- [Attribute handler (server.c)](../LinuxSDK-WANDaemon#attribute-handler)
 
 These components are discussed in more detail in the sections below.
 
@@ -784,11 +798,12 @@ The worker thread loop is in the `prv_worker_loop` function. It waits for a cond
 
 The worker thread can perform the following functions:
 
-| [WAND_COMMAND_MODEM_ON](../LinuxSDK-WANDaemon#WAND_COMMAND_MODEM_ON) | Powers on the modem.                                         |
+| FUNCTION | DESCRIPTION |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [WAND_COMMAND_MODEM_OFF](../LinuxSDK-WANDaemon#WAND_COMMAND_MODEM_OFF) | Powers off the modem by calling the `prv_modem_off` function. |
-| [WAND_COMMAND_ACTIVATE_DATA_CALL](../LinuxSDK-WANDaemon#WAND_COMMAND_ACTIVATE_DATA_CALL) | Starts a data call while the modem is powered up by calling the `prv_activate_data_call` function. |
-| [WAND_COMMAND_REACTIVATE_DATA_CALL](../LinuxSDK-WANDaemon#WAND_COMMAND_REACTIVATE_DATA_CALL) | Tears down and restarts the data call by calling the `prv_reactivate_data_call` function. |
+| [WAND_COMMAND_MODEM_ON](../LinuxSDK-WANDaemon#wand_command_modem_on) | Powers on the modem.                                         |
+| [WAND_COMMAND_MODEM_OFF](../LinuxSDK-WANDaemon#wand_command_modem_off) | Powers off the modem by calling the `prv_modem_off` function. |
+| [WAND_COMMAND_ACTIVATE_DATA_CALL](../LinuxSDK-WANDaemon#wand_command_activate_data_call) | Starts a data call while the modem is powered up by calling the `prv_activate_data_call` function. |
+| [WAND_COMMAND_REACTIVATE_DATA_CALL](../LinuxSDK-WANDaemon#wand_command_reactivate_data_call) | Tears down and restarts the data call by calling the `prv_reactivate_data_call` function. |
 | `WAND_COMMAND_CHECK`                                         | Checks the signal strength by calling `prv_check_signal`. This command is issued when the condition-variable timed-wait times out after five seconds. |
 
 Each of these actions can take quite a long time and is therefore ineligible for handling by the event thread.
@@ -861,7 +876,6 @@ To execute this command the worker thread calls `prv_reactivate_data_call`. This
 
 The `prv_deactivate_data_call` function shuts down the network watcher (see [Network Monitor](../LinuxSDK-WANDaemon#networkmonitor) below), shuts down the host network using the wannetwork script, and shuts down the data call using the `ril_deactivate_data_call` function.
 
- 
 
 ### State Machine
 
@@ -869,8 +883,9 @@ The heart of the WAN daemon is its state machine. The state machine keeps track 
 
 Probably the easiest way to explain the state machine is to enumerate the states:
 
-| `WAND_STATE_OFF`              | WAN is permanently off. This is an exceptional case, and typically occurs only if there is a modem hardware failure or the modem is not populated. |
+| STATE   | DESCRIPTION |
 | ----------------------------- | ------------------------------------------------------------ |
+| `WAND_STATE_OFF`              | WAN is permanently off. This is an exceptional case, and typically occurs only if there is a modem hardware failure or the modem is not populated. |
 | `WAND_STATE_WAITING_FOR_DOWN` | State machine is waiting for the system to be put in the powered-off state. |
 | `WAND_STATE_WAITING_FOR_UP`   | State machine is waiting for the modem to be powered on and the RIL to be initialized. |
 | `WAND_STATE_WAITING_FOR_DATA` | State machine is waiting for a data call to be activated and networking to be started. |
@@ -878,8 +893,9 @@ Probably the easiest way to explain the state machine is to enumerate the states
 
 The WAN system can be in each of these states for a period of time. While the WAN system is in one of these states, many events can occur that can affect which state the state machine goes to. These events are:
 
-| `WAND_EVENT_MODEM_UP`            | Modem was powered up successfully.                           |
+| EVENT  | DESCRIPTION |
 | -------------------------------- | ------------------------------------------------------------ |
+| `WAND_EVENT_MODEM_UP`            | Modem was powered up successfully.                           |
 | `WAND_EVENT_MODEM_DOWN`          | Modem was powered down OR the modem failed to be powered up. |
 | `WAND_EVENT_MODEM_LOCKED`        | AT serial device is not responding.                          |
 | `WAND_EVENT_DATA_CALL_UP`        | Data call was started successfully.                          |
@@ -931,4 +947,6 @@ The attributes that this code handles are:
 - WAN_DL_BIT_RATE
 - WAN_UL_BIT_RATE
 
-These attributes are described in more detail in the [Attribute Daemon Client Implementation](../LinuxSDK-AttrDaemon). With few exceptions (WAN_APN, WAN_ITF_STATE, WAN_DL_BIT_RATE, and WAN_UL_BIT_RATE) the attribute values for these attributes are derived from the WAN status structure in the RIL. See the [Concurrency and Debug Data](../LinuxSDK-WANDaemon#concuranddebug) section for more details.
+These attributes are described in more detail in the [Attribute Daemon Client Implementation](../LinuxSDK-AttrDaemon). With few exceptions (WAN_APN, WAN_ITF_STATE, WAN_DL_BIT_RATE, and WAN_UL_BIT_RATE) the attribute values for these attributes are derived from the WAN status structure in the RIL. See the [Concurrency and Debug Data](../LinuxSDK-WANDaemon#concurrency-and-debug-data) section for more details.
+
+  **&#8674;** *Next:* [Connection Manager Daemon Implementation](../LinuxSDK-ConnMgrDaemon)

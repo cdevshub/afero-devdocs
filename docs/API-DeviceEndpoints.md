@@ -207,4 +207,4 @@ Change the friendly name of the specified device. This name is visible in the Af
 }
 ```
 
- ****&#8674;** *Next:*** [Over-the-Air (OTA) Update API](../API-OTAEndpoints)
+ **&#8674;** *Next:* [Over-the-Air (OTA) Update API](../API-OTAEndpoints)

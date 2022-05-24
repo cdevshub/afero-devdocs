@@ -8,11 +8,11 @@ The Connection Manager (ConnMgr) is an event-based daemon. It manages the networ
 
 The Connection Manager daemon consists of the following components, each described in detail on this page:
 
-- [Firewall scripts](../LinuxSDK-ConnMgrDaemon#firewallscripts) - Bash scripts that manage the firewall (via iptables) on the device.
-- [Afero service whitelist](../LinuxSDK-ConnMgrDaemon#whitelist) - ASCII file that contains the list of servers with which the firewall allows traffic. It’s also responsible for the management of the whitelist.
-- [Traffic monitoring and route selection engine](../LinuxSDK-ConnMgrDaemon#traffmonandroute) - Monitors traffic from the Ethernet and Wi-Fi connections (if they are enabled). In the event a selected connection becomes unavailable, it performs a route switch to a connection that is available (based on the selection criteria).
-- [Whitelist IP extraction (from DNS entry)](../LinuxSDK-ConnMgrDaemon#whitelistextract) - Because Afero services are hosted in the Amazon Cloud and the load balancing service is provided by the Amazon Cloud, the IP address in the services whitelist are not static. This component helps us adapt to the dynamic changes of the IP addresses in the Amazon Cloud by modifying the firewall with updated firewall rules, thereby permitting traffic with Afero services.
-- [Attribute management](../LinuxSDK-ConnMgrDaemon#attributemgmt) - Responsible for managing the connection to the Attribute daemon and for the `get` and `set` operations of the attributes owned by ConnMgr.
+- [Firewall scripts](../LinuxSDK-ConnMgrDaemon#firewall-scripts) - Bash scripts that manage the firewall (via iptables) on the device.
+- [Afero service whitelist](../LinuxSDK-ConnMgrDaemon#afero-service-whitelist) - ASCII file that contains the list of servers with which the firewall allows traffic. It’s also responsible for the management of the whitelist.
+- [Traffic monitoring and route selection engine](../LinuxSDK-ConnMgrDaemon#traffic-monitoring-and-traffic-route-selection) - Monitors traffic from the Ethernet and Wi-Fi connections (if they are enabled). In the event a selected connection becomes unavailable, it performs a route switch to a connection that is available (based on the selection criteria).
+- [Whitelist IP extraction (from DNS entry)](../LinuxSDK-ConnMgrDaemon#whitelist-ip-extraction-via-dns) - Because Afero services are hosted in the Amazon Cloud and the load balancing service is provided by the Amazon Cloud, the IP address in the services whitelist are not static. This component helps us adapt to the dynamic changes of the IP addresses in the Amazon Cloud by modifying the firewall with updated firewall rules, thereby permitting traffic with Afero services.
+- [Attribute management](../LinuxSDK-ConnMgrDaemon#attribute-management) - Responsible for managing the connection to the Attribute daemon and for the `get` and `set` operations of the attributes owned by ConnMgr.
 
 The sections below discuss each component in more detail with an emphasis on the motivation behind the design. If you must customize any sections for a particular component, the requirements are presented.
 
@@ -58,19 +58,17 @@ The network interface may vary depending on what is being supported by the devic
 
 | NETWORK              | NETWORK NAME | INTERFACE NAME* | COMMENTS                                                     | EXAMPLE CONFIGURATIONS (OPENWRT-BASED)                       |
 | :------------------- | :----------- | :-------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Ethernet             | ethnet       | eth0            | Typically used to connect to a corporate LAN or a user’s home network via an Ethernet jack. | config interface 'ethnet' option ifname 'eth0' option macaddr 90:6F:18:00:04:50 option proto 'dhcp' option metric '10' |
-| Wireless Station     | stanet       | wlan0           | When the wireless is configured as station mode.             | config interface 'stanet' option ifname 'wlan0' option proto 'dhcp' option metric '20' |
+| Ethernet             | ethnet       | eth0            | Typically used to connect to a corporate LAN or a user’s home network via an Ethernet jack. | config interface 'ethnet'<br>option ifname 'eth0'<br>option macaddr 90:6F:18:00:04:50<br>option proto 'dhcp'<br>option metric '10' |
+| Wireless Station     | stanet       | wlan0           | When the wireless is configured as station mode.             | config interface 'stanet'<br>option ifname 'wlan0'<br>option proto 'dhcp'<br>option metric '20' |
 | LTE Cellular network | modemnet     | wwan0           | The LTE cellular setup is controlled by the Afero WAN daemon (wand).The configuration specifics found in the configuration files are provided for completeness only. | Created by WAN daemon (wand).                                |
 
-The interface naming convention must be followed because ConnMgr assumes these are the interface names. If you change the “interface name”, you must make sure all the changes are propagated to all the various scripts and files supported by ConnMgr by using the `netif_names` configuration file. See directly below for details.
-
-
+<mark>**&#x26A0; Caution!**     The interface naming convention must be followed because ConnMgr assumes these are the interface names. If you change the “interface name”, you must make sure all the changes are propagated to all the various scripts and files supported by ConnMgr by using the `netif_names` configuration file. See directly below for details.</mark>
 
 ### netif_names Configuration File
 
 This script provides an easy mechanism to allow the implementer to tell connmgr (and wifistad) the network interface names if non-conventional names are used. The script, `get_netif_names` is used by the deamons to retrieve the network interface names.
 
-The format of this configuration uses <key>='<value>'. For example:
+The format of this configuration uses `<key>=<value>`. For example:
 
 ```
 ETH_INTERFACE_0='eth0'
@@ -212,7 +210,7 @@ When the selected network connection becomes unreachable by the Cloud and doesn�
 
 - **Predefined Preference** (most economical) - Preference is in the order of Ethernet, Wi-Fi, then wireless modem. The usage of the wireless modem has a cost associated with it, therefore it’s defined as the last preferred network connection. Wireless modem is only used when all other network connections fail.
 
-  For example, if all three network connections are functional, then ConnMgr selects Ethernet as the network to pass traffic. If the Ethernet connection is down or becomes unreachable, then by preference ConnMgr selects the Wi-Fi connection to pass traffic, assuming it’s up. As a last resort, when both the Ethernet and Wi-Fi connections are out, ConnMgr will use the wireless modem connection.
+    For example, if all three network connections are functional, then ConnMgr selects Ethernet as the network to pass traffic. If the Ethernet connection is down or becomes unreachable, then by preference ConnMgr selects the Wi-Fi connection to pass traffic, assuming it’s up. As a last resort, when both the Ethernet and Wi-Fi connections are out, ConnMgr will use the wireless modem connection.
 
 - **Device Link Status** - The connection status embeds the connection quality (device link) information; e.g., if the Afero Cloud service is “reachable”. The selection scheme always favors the network interface connection with a link status that is connectable and reachable by the Afero Cloud service (i.e., NETCONN_STATUS_ITFUP_SS). For example, if both the Ethernet and Wi-Fi network interfaces are connected, by the predefined preference, we would select Ethernet. However, if we cannot confirm that the Afero Cloud service is reachable on the Ethernet interface, the selection scheme would then choose the Wi-Fi network connection once it is confirmed to be reachable by the Afero Cloud.
 
@@ -241,12 +239,11 @@ There are other attributes defined, but ConnMgr supports the following attribute
 
 | ATTRIBUTE    | ID    | SIZE | TYPE  | DEFAULT | RANGE | VALUES                                     |
 | :----------- | :---- | :--- | :---- | :------ | :---- | :----------------------------------------- |
-| Network Type | 65008 | 1    | SINT8 | -       | -1–2  | -1 - None  0 - Ethernet  1 - WLAN  2 - WAN |
+| Network Type | 65008 | 1    | SINT8 | -       | -1–2  | -1 - None<br>0 - Ethernet<br>1 - WLAN<br>2 - WAN |
 
 Developers can add and support their own attributes by first adding these attributes into the attrd database, then implementing the `get` and `set` functionality of these attributes.
 
-These attributes must be part of the device Profile to work properly.
-
+<mark>**&#x26A0; Caution!**  These attributes must be part of the device Profile to work properly.</mark>
 
 
  **&#8674;** *Next:* [Edge Device Daemon Implementation](../LinuxSDK-EdgeDaemon)
