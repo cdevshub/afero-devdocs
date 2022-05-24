@@ -2,22 +2,22 @@
 
 Now that you have successfully built Potenco using the instructions in the Linux SDK documentation, you may want to add your own recipe and application. In the sections below, we will lay out both the instructions for how to do this, and the reasoning behind the instructions.
 
-- [About BitBake Layers](../LinuxSDK-PotencoBBGWApp#aboutlayers)
-- [Prerequisites](../LinuxSDK-PotencoBBGWApp#prereqs)
+- [About BitBake Layers](../LinuxSDK-PotencoBBGWApp#about-bitbake-layers)
+- [Prerequisites](../LinuxSDK-PotencoBBGWApp#prerequisites)
 - The Steps
-  - [Step 1. Have Your Potenco Build Image](../LinuxSDK-PotencoBBGWApp#step1)
-  - [Step 2. Create af-app Directory](../LinuxSDK-PotencoBBGWApp#step2)
-  - [Step 3. Add Source File](../LinuxSDK-PotencoBBGWApp#step3)
-  - [Step 4. Create the makefile](../LinuxSDK-PotencoBBGWApp#step4)
-  - [Step 5. Create the BitBake Layer](../LinuxSDK-PotencoBBGWApp#step5)
-  - [Step 6. Create the BitBake Recipe for the App](../LinuxSDK-PotencoBBGWApp#step6)
-  - [Step 7. Create the layer.conf File](../LinuxSDK-PotencoBBGWApp#step7)
-  - [Step 8. Modify bblayers.conf File](../LinuxSDK-PotencoBBGWApp#step8)
-  - [Step 9. Build Application](../LinuxSDK-PotencoBBGWApp#step9)
-  - [Step 10. Copy App to Target Machine or Create SD Card Image](../LinuxSDK-PotencoBBGWApp#step10)
-  - [Step 11. Create and Publish Device Profile](../LinuxSDK-PotencoBBGWApp#step11)
-  - [Step 12. Open the App on the Device](../LinuxSDK-PotencoBBGWApp#step12)
-- [Using the Ready-Made Example App](../LinuxSDK-PotencoBBGWApp#exapp)
+    - [Step 1. Have Your Potenco Build Image](../LinuxSDK-PotencoBBGWApp#step-1-have-your-potenco-build-image)
+    - [Step 2. Create af-app Directory](../LinuxSDK-PotencoBBGWApp#step-2-create-af-app-directory)
+    - [Step 3. Add Source File](../LinuxSDK-PotencoBBGWApp#step-3-add-source-file)
+    - [Step 4. Create the makefile](../LinuxSDK-PotencoBBGWApp#step-4-create-the-makefile)
+    - [Step 5. Create the BitBake Layer](../LinuxSDK-PotencoBBGWApp#step-5-create-the-bitbake-layer)
+    - [Step 6. Create the BitBake Recipe for the App](../LinuxSDK-PotencoBBGWApp#step-6-create-the-bitbake-recipe-for-the-app)
+    - [Step 7. Create the layer.conf File](../LinuxSDK-PotencoBBGWApp#step-7-create-the-layerconf-file)   
+    - [Step 8. Modify bblayers.conf File](../LinuxSDK-PotencoBBGWApp#step-8-modify-bblayersconf-file)
+    - [Step 9. Build Application](../LinuxSDK-PotencoBBGWApp#step-9-build-application)
+    - [Step 10. Copy App to Target Machine or Create SD Card Image](../LinuxSDK-PotencoBBGWApp#step-10-copy-app-to-target-machine-or-create-sd-card-image)
+    - [Step 11. Create and Publish Device Profile](../LinuxSDK-PotencoBBGWApp#step-11-create-and-publish-device-profile)
+    - [Step 12. Open the App on the Device](../LinuxSDK-PotencoBBGWApp#step-12-open-the-app-on-the-device)
+- [Using the Ready-Made Example App](../LinuxSDK-PotencoBBGWApp#using-the-ready-made-example-app)
 
 We are assuming some general familiarity with Yocto and BitBake so will not be defining the terminology used.
 
@@ -31,7 +31,8 @@ Before we get started, let’s get some preliminaries out of the way.
 
 ## Prerequisites
 
-- You have completed the instructions for building the BeagleBone Green Wireless-based Potenco project, contained in the section [Build the Potenco OS Image](../LinuxSDK-PotencoBBGW#bldpotosimage).
+- You have completed the instructions for building the BeagleBone Green Wireless-based Potenco project, contained in the section [Build the Potenco OS Image](../LinuxSDK-PotencoBBGW#build-the-potenco-os-image).
+
 - You have named the directory in which the Potenco project exists as “potenco” and placed it in your home directory. If you choose to use a different path or directory name, you must adjust the instructions below accordingly.
 - You must have at least 64GB of disk space and 4GB of memory in your Ubuntu system to successfully build the Potenco image.
 
@@ -39,11 +40,9 @@ Before we get started, let’s get some preliminaries out of the way.
 
 ### Step 1. Have Your Potenco Build Image
 
-Again, be sure you have created a Potenco build image per the instructions in [Build the Potenco OS Image](../LinuxSDK-PotencoBBGW#bldpotosimage). This will be both the core image that is used on the BeagleBone Green Wireless and the image to which you will add your own application code.
+Again, be sure you have created a Potenco build image per the instructions in [Build the Potenco OS Image](../LinuxSDK-PotencoBBGW#build-the-potenco-os-image). This will be both the core image that is used on the BeagleBone Green Wireless and the image to which you will add your own application code.
 
-The first-time build of the Potenco image can take up to several hours, depending on the speed of your computer. In the instructions below, you will create your own BitBake layer so you can create your application by simply typing “`bitake app`”, avoiding having to rebuild from scratch. Also, when building the root filesystem, the time required will be much shorter once the Potenco image has been built vs. having to build it from scratch; that is, it will take minutes rather than hours.
-
-
+<mark>**&check; Note:**  The first-time build of the Potenco image can take up to several hours, depending on the speed of your computer. In the instructions below, you will create your own BitBake layer so you can create your application by simply typing “`bitake app`”, avoiding having to rebuild from scratch. Also, when building the root filesystem, the time required will be much shorter once the Potenco image has been built vs. having to build it from scratch; that is, it will take minutes rather than hours.</mark>
 
 ### Step 2. Create af-app Directory
 
@@ -307,7 +306,7 @@ $ cd ~/potenco/sources
 $ mkdir meta-app
 ```
 
-Now we need two subdirectories in `meta-app`: `conf` and `recipes-app`. Type the following:
+Now we need two subdirectories in `meta-app: conf` and `recipes-app`. Type the following:
 
 ```
 $ cd meta-app
@@ -315,9 +314,7 @@ $ mkdir conf
 $ mkdir recipes-app
 ```
 
-The use of a separate layer for the application allows us to use “`bitake app`” (or whatever you might change it to as directed in the `layer.conf` file, in the “`BBFILE_COLLECTIONS +="app"`” label). This allows you to build the application very quickly without having to rebuild anything else… as long as you are using `scp` to copy the binary over to the BBGW. If you wish to include it in the root filesystem so that it’s part of the SD card, then you also need to use “`bitbake arag-afer-image`”, but this, again, will not take long, only a few minutes as the parts it requires are already built and it’s simply creating the final root filesystem to burn onto the SD card.
-
-
+<mark>**&check; Note:**  The use of a separate layer for the application allows us to use “`bitake app`” (or whatever you might change it to as directed in the `layer.conf` file, in the “`BBFILE_COLLECTIONS +="app"`” label). This allows you to build the application very quickly without having to rebuild anything else… as long as you are using `scp` to copy the binary over to the BBGW. If you wish to include it in the root filesystem so that it’s part of the SD card, then you also need to use “`bitbake arag-afer-image`”, but this, again, will not take long, only a few minutes as the parts it requires are already built and it’s simply creating the final root filesystem to burn onto the SD card.</mark>
 
 ### Step 6. Create the BitBake Recipe for the App
 
@@ -455,128 +452,112 @@ At this point you can take the app and use `scp` to copy it to the target machin
 
 To create a full SD card image, we need to tell the arago-afero-image BitBake recipe that there is one more thing to include in the final image. This is not done automatically for a new layer and means that you have to edit the BitBake recipe to add it. This recipe is located in `./sources/meta-afero/recipes-core/images/` and is called “`arago-afero-image.bb`”.
 
-1. Take a look at the
+**1.** Take a look at the `arago-afero-image.bb` file. You find the following section named IMAGE_INSTALL that lists a large number of items:
 
-    
+```
+IMAGE_INSTALL = " \
+   packagegroup-core-boot \
+   kernel-modules \
+   bash \
+   udev-extraconf \
+   base-files \
+   module-init-tools \
+   mtd-utils \
+   mtd-utils-ubifs \
+   curl \
+   thermal-init \
+   dbus \
+   expat \
+   glib-2.0 \
+   libxml2 \
+   libpcre \
+   iptables \
+   arago-gpl-notice \
+   util-linux-fsck \
+   i2c-tools \
+   usbutils \
+   zlib \
+   libevent \
+   json-c \
+   libstdc++ \
+   pru-icss \
+   wl18xx-target-scripts \
+   wpa-supplicant-wl18xx \
+   bt-firmware \
+   wl18xx-firmware \
+   wlconf \
+   iw \
+   crda \
+   backports \
+   af-ipc \
+   af-util \
+   attrd \
+   af-conn \
+   af-sec \
+   af-edge \
+   otamgr \
+   hubby \
+   af-extras \
+   dropbear \
+   lrzsz \
+"
+```
 
-   ```
-   arago-afero-image.bb
-   ```
+**2.** As you can see, it lists a large number of elements that are to be included in the final rootfs. Just add “`app \`” to this list, like in the following version. Place the addition near the bottom, as shown:
 
-    
-
-   file. You find the following section named IMAGE_INSTALL that lists a large number of items:
-
-   ```
-   IMAGE_INSTALL = " \
-       packagegroup-core-boot \
-       kernel-modules \
-       bash \
-       udev-extraconf \
-       base-files \
-       module-init-tools \
-       mtd-utils \
-       mtd-utils-ubifs \
-       curl \
-       thermal-init \
-       dbus \
-       expat \
-       glib-2.0 \
-       libxml2 \
-       libpcre \
-       iptables \
-       arago-gpl-notice \
-       util-linux-fsck \
-       i2c-tools \
-       usbutils \
-       zlib \
-       libevent \
-       json-c \
-       libstdc++ \
-       pru-icss \
-       wl18xx-target-scripts \
-       wpa-supplicant-wl18xx \
-       bt-firmware \
-       wl18xx-firmware \
-       wlconf \
-       iw \
-       crda \
-       backports \
-       af-ipc \
-       af-util \
-       attrd \
-       af-conn \
-       af-sec \
-       af-edge \
-       otamgr \
-       hubby \
-       af-extras \
-       dropbear \
-       lrzsz \
-   "
-   ```
-
-2. As you can see, it lists a large number of elements that are to be included in the final rootfs. Just add “
-
-   ```
+```
+IMAGE_INSTALL = " \
+   packagegroup-core-boot \
+   kernel-modules \
+   bash \
+   udev-extraconf \
+   base-files \
+   module-init-tools \
+   mtd-utils \
+   mtd-utils-ubifs \
+   curl \
+   thermal-init \
+   dbus \
+   expat \
+   glib-2.0 \
+   libxml2 \
+   libpcre \
+   iptables \
+   arago-gpl-notice \
+   util-linux-fsck \
+   i2c-tools \
+   usbutils \
+   zlib \
+   libevent \
+   json-c \
+   libstdc++ \
+   pru-icss \
+   wl18xx-target-scripts \
+   wpa-supplicant-wl18xx \
+   bt-firmware \
+   wl18xx-firmware \
+   wlconf \
+   iw \
+   crda \
+   backports \
+   af-ipc \
+   af-util \
+   attrd \
+   af-conn \
+   af-sec \
+   af-edge \
+   otamgr \
+   hubby \
+   af-extras \
    app \
-   ```
+   dropbear \
+   lrzsz \
+"
+```
 
-   ” to this list, like in the following version. Place the addition near the bottom, as shown:
+**3.** Save the file. Now, after you use the command “`bitbake arago-afero-image`”, the app will be deposited in `/usr/bin` in the root filesystem.
 
-   ```
-   IMAGE_INSTALL = " \
-       packagegroup-core-boot \
-       kernel-modules \
-       bash \
-       udev-extraconf \
-       base-files \
-       module-init-tools \
-       mtd-utils \
-       mtd-utils-ubifs \
-       curl \
-       thermal-init \
-       dbus \
-       expat \
-       glib-2.0 \
-       libxml2 \
-       libpcre \
-       iptables \
-       arago-gpl-notice \
-       util-linux-fsck \
-       i2c-tools \
-       usbutils \
-       zlib \
-       libevent \
-       json-c \
-       libstdc++ \
-       pru-icss \
-       wl18xx-target-scripts \
-       wpa-supplicant-wl18xx \
-       bt-firmware \
-       wl18xx-firmware \
-       wlconf \
-       iw \
-       crda \
-       backports \
-       af-ipc \
-       af-util \
-       attrd \
-       af-conn \
-       af-sec \
-       af-edge \
-       otamgr \
-       hubby \
-       af-extras \
-       app \
-       dropbear \
-       lrzsz \
-   "
-   ```
-
-3. Save the file. Now, after you use the command “`bitbake arago-afero-image`”, the app will be deposited in `/usr/bin` in the root filesystem.
-
-4. You can take the resulting `afimg` file, flash it on to a micro SD card, insert it into the BBGW board, and boot up the system in the usual way by holding down the User button while the device is reset, then continue to hold it until the blue LEDs start to flash, usually more than 10 seconds.
+**4.** You can take the resulting `afimg` file, flash it on to a micro SD card, insert it into the BBGW board, and boot up the system in the usual way by holding down the User button while the device is reset, then continue to hold it until the blue LEDs start to flash, usually more than 10 seconds.
 
 Now we will create the Potenco device Profile and publish it to the device.
 
@@ -584,163 +565,62 @@ Now we will create the Potenco device Profile and publish it to the device.
 
 After the system boots, you can type `**app**` at the command prompt and the application will run. However, it won’t **do** anything until you have pushed a new profile to your Potenco device that includes two new attributes. Use the Afero Profile Editor to create a new Profile that defines these attributes. You can read details on using the Profile Editor in the [Profile Editor User Guide](../Projects), but the specific instructions follow:
 
-1. Open the latest version of the Afero Profile Editor and sign in with your Afero developer account. (Download for either [Windows](http://cdn.afero.io/latest-ape/win) or [macOS](http://cdn.afero.io/latest-ape/mac).)
+**1.** Open the latest version of the Afero Profile Editor and sign in with your Afero developer account. (Download for either [Windows](http://cdn.afero.io/latest-ape/win) or [macOS](http://cdn.afero.io/latest-ape/mac).)
 
-2. On the Startup window, select
+**2.** On the Startup window, select NEW. On the New Project dialog, complete the fields as follows:
 
-    
+- **Module Type**: Potenco
+- **Device Type Name**: MyApp (or any name you prefer)
+- **Project Folder**: Default location is fine
+- **Create Subfolder using Device Type Name**: Leave selected
 
-   NEW
+Select the CREATE button.
 
-   . On the New Project dialog, complete the fields as follows:
+**3.** On the DEFINE THE DEVICE TYPE window that appears, add a DESCRIPTION if you wish then select the SAVE button in the upper-right.
 
-   - **Module Type**: Potenco
-   - **Device Type Name**: MyApp (or any name you prefer)
-   - **Project Folder**: Default location is fine
-   - **Create Subfolder using Device Type Name**: Leave selected
+**4.** Select  ATTRIBUTES in the left-hand Navigation pane. On the  DEFINE THE MCU ATTRIBUTES window, complete the fields as follows:
 
-   Select the CREATE button.
+- **Supported Network Interfaces**: Select Wi-Fi and WAN
+- **Device Configuration**, **Receive UTC Time**: Leave deselected
+- **Device Attribute** - Create two MCU attributes using the +DEVICE ATTRIBUTE button:
+    - **MCU attribute ID 1** - Name: int8, Data Type: SINT8, Default Value: 0, Operations: Read and Write
+    - **MCU attribute ID 2** - Name: int32, Data Type: SINT32, Default Value: 0, Operations: Read and Write
 
-3. On the DEFINE THE DEVICE TYPE window that appears, add a DESCRIPTION if you wish then select the SAVE button in the upper-right.
+Select the SAVE button in the upper-right.
 
-4. Select
+**5.** Select UI CONTROLS in the left-hand Navigation pane. On the DEFINE THE UI CONTROLS window, define two Value controls that will simply store and show the values to the app:
 
-    
+5a. First, define two attribute options using the +ATTRIBUTE OPTION button in the right-hand pane:
 
-   ATTRIBUTES
+- **int8** - Attribute: int8, Label: int8, leave remaining fields as shown
+- **int32** - Attribute: int32, Label: int32, leave remaining fields as shown
 
-    
+5b. Next, define two controls using the  +CONTROL button:
 
-   in the left-hand Navigation pane. On the
+- **Value control 1** - Attribute Option: int8, Control Type: Value, leave remaining fields as shown
+- **Value control 2** - Attribute Option: int32, Control Type: Value, leave remaining fields as shown
 
-    
+Select the SAVE button in the upper-right.
 
-   DEFINE THE MCU ATTRIBUTES
+**6.** Select UI CONTROL GROUPS in the left-hand Navigation pane. On the DEFINE THE UI CONTROL GROUPS window:
 
-    
+6a. Select the + button to create a new group.
 
-   window, complete the fields as follows:
+6b. Name your control group as you wish by first selecting “New Group” then editing the name.
 
-   - **Supported Network Interfaces**: Select Wi-Fi and WAN
+6c. Drag both Value controls from the right-hand pane into the group box.
 
-   - **Device Configuration**, **Receive UTC Time**: Leave deselected
+Select the SAVE button in the upper-right.
 
-   - Device Attribute
+**7.** Select PUBLISH in the left-hand Navigation pane. On the PUBLISH window:
 
-      
-
-     \- Create two MCU attributes using the
-
-      
-
-     +DEVICE ATTRIBUTE
-
-      
-
-     button:
-
-     - **MCU attribute ID 1** - Name: int8, Data Type: SINT8, Default Value: 0, Operations: Read and Write
-     - **MCU attribute ID 2** - Name: int32, Data Type: SINT32, Default Value: 0, Operations: Read and Write
-
-   Select the SAVE button in the upper-right.
-
-5. Select
-
-    
-
-   UI CONTROLS
-
-    
-
-   in the left-hand Navigation pane. On the
-
-    
-
-   DEFINE THE UI CONTROLS
-
-    
-
-   window, define two Value controls that will simply store and show the values to the app:
-
-   
-
-   1. First, define two attribute options using the
-
-       
-
-      +ATTRIBUTE OPTION
-
-       
-
-      button in the right-hand pane:
-
-      - **int8** - Attribute: int8, Label: int8, leave remaining fields as shown
-      - **int32** - Attribute: int32, Label: int32, leave remaining fields as shown
-
-   2. Next, define two controls using the
-
-       
-
-      +CONTROL
-
-       
-
-      button:
-
-      - **Value control 1** - Attribute Option: int8, Control Type: Value, leave remaining fields as shown
-      - **Value control 2** - Attribute Option: int32, Control Type: Value, leave remaining fields as shown
-
-   Select the SAVE button in the upper-right.
-
-6. Select
-
-    
-
-   UI CONTROL GROUPS
-
-    
-
-   in the left-hand Navigation pane. On the
-
-    
-
-   DEFINE THE UI CONTROL GROUPS
-
-    
-
-   window:
-
-   1. Select the + button to create a new group.
-   2. Name your control group as you wish by first selecting “New Group” then editing the name.
-   3. Drag both Value controls from the right-hand pane into the group box.
-
-   Select the SAVE button in the upper-right.
-
-7. Select
-
-    
-
-   PUBLISH
-
-    
-
-   in the left-hand Navigation pane. On the
-
-    
-
-   PUBLISH
-
-    
-
-   window:
-
-   1. Select the checkbox adjacent to your Potenco device name.
-   2. Select the PUBLISH button. Your Profile will be published to your Potenco; monitor progress by watching the DEVICE ACTIVITY pane.
-   3. Once published, you can close the Afero Profile Editor.
+7a. Select the checkbox adjacent to your Potenco device name.
+7b. Select the PUBLISH button. Your Profile will be published to your Potenco; monitor progress by watching the DEVICE ACTIVITY pane.
+7c. Once published, you can close the Afero Profile Editor.
 
 ### Step 12. Open the App on the Device
 
-On the Potenco device, invoke the app by typing `**app**` at the command prompt. It will look like the program is hanging, but it is waiting for the Wi-Fi signal strength to change. When it changes, an event is generated that the code will see and respond to by setting attribute 2 value to 8. To make this happen, you can simply cup your hands over the Wi-Fi antenna. What you will see is the app suddenly showing a value of 8 for the attribute ID 2 value.
+On the Potenco device, invoke the app by typing **app** at the command prompt. It will look like the program is hanging, but it is waiting for the Wi-Fi signal strength to change. When it changes, an event is generated that the code will see and respond to by setting attribute 2 value to 8. To make this happen, you can simply cup your hands over the Wi-Fi antenna. What you will see is the app suddenly showing a value of 8 for the attribute ID 2 value.
 
 ## Using the Ready-Made Example App
 
@@ -757,371 +637,202 @@ Note that these instructions are very similar to those above and use identical c
 
 ### Steps
 
-1. Let’s start with getting the GitHub package. You should put it into the root of your home directory. Use the following command:
+**1.** Let’s start with getting the GitHub package. You should put it into the root of your home directory. Use the following command:
 
-   ```
-   $ cd
-   ```
+```
+$ cd
+```
 
-2. Download the package from the GitHub repository using the URL given to you by the ACE team:
+**2.** Download the package from the GitHub repository using the URL given to you by the ACE team:
 
-   ```
-   $ git clone <GitHub repo URL> am335x-demo-app.git
-   ```
+```
+$ git clone <GitHub repo URL> am335x-demo-app.git
+```
 
-   The package will clone to a directory named “
-
-   ```
-   am335x-demo-app
-   ```
-
-   ”.
+The package will clone to a directory named “`am335x-demo-app`”.
 
    
+**3.** Within this `am335x-demo-app` directory, you will find the directories and directory trees listed below. To install them, simply copy them into your own instance of the Potenco reference build.
 
-3. Within this `am335x-demo-app` directory, you will find the directories and directory trees listed below. To install them, simply copy them into your own instance of the Potenco reference build.
+- `af-app` - Holds your makefile and your application code.
 
-4. - `af-app` - Holds your makefile and your application code.
+- `meta-app` - Top-level BitBake recipe directory that defines when and how your application is built.
 
-   - `meta-app` - Top-level BitBake recipe directory that defines when and how your application is built.
-
-   - - `conf` - Resides under `meta-afero` and holds the layer configuration file for the meta-app BitBake layer that describes how to build your application.
+    - `conf` - Resides under `meta-afero` and holds the layer configuration file for the meta-app BitBake layer that describes how to build your application.
+    
      - `recipes-app` - Resides under the `meta-afero` directory and holds the actual BitBake recipe for your application.
 
    - `APEProject` - Holds a directory containing the Afero Profile Editor project that defines the attributes used in this demo, as well as the UI definition for the Afero mobile app.
 
-5. Enter the directory that was created when you cloned the GitHub repo. The directory should be named
-
-    
-
-   ```
-   am335x-demo-app
-   ```
-
-   :
-
-   ```
-   $ cd am335x-demo-app
-   ```
-
-6. List the contents:
-
-   ```
-   $ ls
-   af-app meta-app APEProject
-   ```
-
-7. Now copy the application source code that’s in the
-
-    
-
-   ```
-   af-app
-   ```
-
-    
-
-   directory to the top level of the
-
-    
-
-   ```
-   potenco
-   ```
-
-    
-
-   directory tree:
-
-   ```
-   $ cp -r af-app ~/potenco
-   ```
-
-8. List the directory contents to verify:
-
-   ```
-   $ ls ~/potenco
-   af-app af-conn af-ipc af-util attrd build configs downloads oe-layertool-setup.sh otamgr sample-files sources
-   ```
-
-9. Copy the
-
-    
-
-   ```
-   meta-app
-   ```
-
-    
-
-   directory to the
-
-    
-
-   ```
-   sources
-   ```
-
-    
-
-   directory in the
-
-    
-
-   ```
-   potenco
-   ```
-
-    
-
-   tree so that it can be found by BitBake and the recipes extracted from it, then verify the contents:
-
-   ```
-   $ cp -r meta-app ~/potenco/sources/
-   $ ls ~/potenco/sources/
-   bitbake meta-afero meta-app meta-arago meta-linaro meta-openembedded meta-processor-sdk meta-qt5 meta-ti oe-core
-   ```
-
-10. Enter the
-
-     
-
-    ```
-    ~/potenco/build/conf
-    ```
-
-     
-
-    directory, then look at the contents of the
-
-     
-
-    ```
-    bblayers.conf
-    ```
-
-     
-
-    file:
-
-    ```
-    $ cd potenco
-    $ ls
-    af-app af-conn af-ipc af-util attrd build configs downloads oe-layertool-setup.sh otamgr sample-files sources
-    $ cd build
-    $ ls
-    arago-tmp-external-linaro-toolchain bitbake.lock buildhistory cache conf sstate-cache
-    $ cd conf
-    $ ls
-    bblayers.conf local.conf sanity_info setenv
-    $ more bblayers.conf
-    
-    # This template file was created by taking the oe-core/meta/conf/bblayers.conf
-    # file and removing the BBLAYERS section at the end.
-    # LAYER_CONF_VERSION is increased each time build/conf/bblayers.conf
-    # changes incompatibly
-    LCONF_VERSION = "7"
-    BBPATH = "${TOPDIR}"
-    BBFILES ?= "" # Layers configured by oe-core-setup script
-    BBLAYERS += " \
-    	<your_full_path>/potenco/sources/meta-processor-sdk \
-    	<your_full_path>/potenco/sources/meta-arago/meta-arago-distro \
-    	<your_full_path>/potenco/sources/meta-arago/meta-arago-extras \
-    	<your_full_path>/potenco/sources/meta-qt5 \
-    	<your_full_path>/potenco/sources/meta-openembedded/meta-networking \
-    	<your_full_path>/potenco/sources/meta-openembedded/meta-ruby \
-    	<your_full_path>/potenco/sources/meta-openembedded/meta-python \
-    	<your_full_path>/potenco/sources/meta-openembedded/meta-oe \
-    	<your_full_path>/potenco/sources/meta-ti \
-    	<your_full_path>/potenco/sources/meta-linaro/meta-linaro-toolchain \
-    	<your_full_path>/potenco/sources/oe-core/meta \
-    	<your_full_path>/potenco/sources/meta-afero \
-    "
-    ```
-
-11. Open this
-
-     
-
-    ```
-    bblayers.conf
-    ```
-
-     
-
-    file for edit. First replace the instances of “<
-
-    your_full_path
-
-    \>” with your local system’s fully-qualified path to the
-
-     
-
-    ```
-    potenco
-    ```
-
-     
-
-    tree (should be your home directory). Then add the path to the
-
-     
-
-    ```
-    meta-app
-    ```
-
-     
-
-    directory
-
-     
-
-    after
-
-     
-
-    the
-
-     
-
-    ```
-    meta-afero
-    ```
-
-     
-
-    line. As an example, here are the last three lines with the
-
-     
-
-    ```
-    meta-app
-    ```
-
-     
-
-    path added:
-
-    ```
-    ⋮
-    <your_full_path>/potenco/sources/meta-afero \
-    <your_full_path>/potenco/sources/meta-app \
-    "
-    ```
-
-12. Enter the
-
-     
-
-    ```
-    ~/potenco/build
-    ```
-
-     
-
-    directory and use the following command to build your own application. Example output is shown below the command:
-
-    ```
-    $ ~/potenco/build$ bitbake app
-    
-    NOTE: Started PRServer with DBfile: <your_full_path>/potenco/build/cache/prserv.sqlite3, IP: 127.0.0.1, PORT: 45763, PID: 28648
-    Loading cache: 100% |###########################################################################################################| ETA: 00:00:00
-    Loaded 2844 entries from dependency cache.
-    Parsing recipes: 100% |#########################################################################################################| Time: 00:00:00
-    Parsing of 2257 .bb files complete (2251 cached, 6 parsed). 2849 targets, 477 skipped, 0 masked, 0 errors.
-    WARNING: No recipes available for:
-    <your_full_path>/potenco/sources/meta-arago/meta-arago-distro/recipes-multimedia/libav/libav_9.16.bbappend
-    <your_full_path>/potenco/sources/meta-processor-sdk/recipes-core/udev/udev_182.bbappend
-    NOTE: Resolving any missing task queue dependencies
-    Build Configuration:
-    BB_VERSION = "1.30.0"
-    BUILD_SYS = "x86_64-linux"
-    NATIVELSBSTRING = "Ubuntu-16.04"
-    TARGET_SYS = "arm-linux-gnueabi"
-    MACHINE = "am335x-evm"
-    DISTRO = "arago"
-    DISTRO_VERSION = "2016.05"
-    TUNE_FEATURES = "arm armv7a vfp thumb neon callconvention-hard cortexa8"
-    TARGET_FPU = "hard"
-    meta-processor-sdk = "HEAD:1686d851985872f34ca3a2c30d4a0726a20a5c99"
-    meta-arago-distro
-    meta-arago-extras = "HEAD:36598b78a6d9fbe442f93111f64d3413c04418a8"
-    meta-qt5 = "HEAD:d715f2c1d340fa38f8a9860acc73de5e14a38b75"
-    meta-networking
-    meta-ruby
-    meta-python
-    meta-oe = "HEAD:66174d8f1273e54f7d12e21ca4b4309706dceeee"
-    meta-ti = "HEAD:1ae0cadb1200d0007a779958e852a48379d42c26"
-    meta-linaro-toolchain = "HEAD:2f51d38048599d9878f149d6d15539fb97603f8f"
-    meta = "HEAD:b0b91490e4ede61a302eb547da2cc65aa7da87ff"
-    meta-afero = "master:8ae143eebf4f2c12fa00c1c01d7b9deb54c4c4ef"
-    meta-app = "master:e65daaecbf66e2220b4575cf0f376523af685db7"
-    NOTE: Preparing RunQueue NOTE: Executing SetScene Tasks
-    NOTE: Executing RunQueue Tasks app-1.0-r0 do_compile:
-    NOTE: app: compiling from external source tree <your_full_path>/potenco/build/../af-app
-    WARNING: app-1.0-r0 do_package_qa: QA Issue: No GNU_HASH in the elf binary: '<your_full_path>/potenco/build/arago-tmp-external-linaro-toolchain/work/cortexa8hf-neon-linux-gnueabi/app/1.0-r0/packages-split/app/usr/bin/app' [ldflags]
-    NOTE: Tasks Summary: Attempted 421 tasks of which 413 didn’t need to be rerun and all succeeded.
-    NOTE: Writing buildhistory
-    Summary: There were 2 WARNING messages shown.
-    ```
-
-13. At this point you have created an image named “app”. You can `scp` this image to the BBGW board.
-
-14. If you wish to have the file added to the final root filesystem image, you must tell the controlling BitBake recipe how to do so by editing the `/sources/meta-afero/recipes-core/images/arago-afero-image.bb` file.
-
-15. 1. Look at the `arago-afero-image.bb` file; you will see a list of build target names that are part of the IMAGE_INSTALL= of the BitBake file:
-
-    2. - backports \
-       - af-ipc \
-       - af-util \
-       - attrd \
-       - af-conn \
-       - af-sec \
-       - af-edge \
-       - otamgr \
-       - hubby \
-       - af-extras \
-       - dropbear \
-
-    3. Add “app \” to this list, as shown:
-
-    4. - backports \
-       - af-ipc \
-       - af-util \
-       - attrd \
-       - af-conn \
-       - af-sec \
-       - af-edge \
-       - otamgr \
-       - hubby \
-       - af-extras \
-       - app \
-       - dropbear \
-
-    5. This adds the application as a target to the root filesystem. Therefore, when you execute `bitbake arago-afero-image`, you will have the target of the build “app” placed into the root filesystem according to where the `do_install_append` of the application tells it, which is the directory of the target root filesystem.
-
-16. Save the file, then execute the following command:
-
-    ```
-    bitbake arago-afero-image
-    ```
-
-    As explained above, the binary “
-
-    ```
-    app
-    ```
-
-    ” is placed into the root filesystem as
-
-     
-
-    ```
-    /usr/bin/app
-    ```
-
-    .
+**4.** Enter the directory that was created when you cloned the GitHub repo. The directory should be named `am335x-demo-app`:
+
+```
+$ cd am335x-demo-app
+```
+
+**5.** List the contents:
+
+```
+$ ls
+af-app meta-app APEProject
+```
+
+**6.** Now copy the application source code that’s in the `af-app` directory to the top level of the `potenco` directory tree:
+
+```
+$ cp -r af-app ~/potenco
+```
+
+**7.** List the directory contents to verify:
+
+```
+$ ls ~/potenco
+af-app af-conn af-ipc af-util attrd build configs downloads oe-layertool-setup.sh otamgr sample-files sources
+```
+
+**8.** Copy the `meta-app` directory to the `sources` directory in the `potenco` tree so that it can be found by BitBake and the recipes extracted from it, then verify the contents:
+
+```
+$ cp -r meta-app ~/potenco/sources/
+$ ls ~/potenco/sources/
+bitbake meta-afero meta-app meta-arago meta-linaro meta-openembedded meta-processor-sdk meta-qt5 meta-ti oe-core
+```
+
+**9.** Enter the `~/potenco/build/conf` directory, then look at the contents of the `bblayers.conf` file:
+
+```
+$ cd potenco
+$ ls
+af-app af-conn af-ipc af-util attrd build configs downloads oe-layertool-setup.sh otamgr sample-files sources
+$ cd build
+$ ls
+arago-tmp-external-linaro-toolchain bitbake.lock buildhistory cache conf sstate-cache
+$ cd conf
+$ ls
+bblayers.conf local.conf sanity_info setenv
+$ more bblayers.conf
+
+# This template file was created by taking the oe-core/meta/conf/bblayers.conf
+# file and removing the BBLAYERS section at the end.
+# LAYER_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+LCONF_VERSION = "7"
+BBPATH = "${TOPDIR}"
+BBFILES ?= "" # Layers configured by oe-core-setup script
+BBLAYERS += " \
+	<your_full_path>/potenco/sources/meta-processor-sdk \
+	<your_full_path>/potenco/sources/meta-arago/meta-arago-distro \
+	<your_full_path>/potenco/sources/meta-arago/meta-arago-extras \
+	<your_full_path>/potenco/sources/meta-qt5 \
+	<your_full_path>/potenco/sources/meta-openembedded/meta-networking \
+	<your_full_path>/potenco/sources/meta-openembedded/meta-ruby \
+	<your_full_path>/potenco/sources/meta-openembedded/meta-python \
+	<your_full_path>/potenco/sources/meta-openembedded/meta-oe \
+	<your_full_path>/potenco/sources/meta-ti \
+	<your_full_path>/potenco/sources/meta-linaro/meta-linaro-toolchain \
+	<your_full_path>/potenco/sources/oe-core/meta \
+	<your_full_path>/potenco/sources/meta-afero \
+"
+```
+
+**10.** Open this `bblayers.conf` file for edit. First replace the instances of “`<your_full_path>`” with your local system’s fully-qualified path to the `potenco` tree (should be your home directory). Then add the path to the `meta-app` directory after the
+`meta-afero` line. As an example, here are the last three lines with the `meta-app` path added:
+
+```
+⋮
+<your_full_path>/potenco/sources/meta-afero \
+<your_full_path>/potenco/sources/meta-app \
+"
+```
+
+**11.** Enter the `~/potenco/build` directory and use the following command to build your own application. Example output is shown below the command:
+
+```
+$ ~/potenco/build$ bitbake app
+
+NOTE: Started PRServer with DBfile: <your_full_path>/potenco/build/cache/prserv.sqlite3, IP: 127.0.0.1, PORT: 45763, PID: 28648
+Loading cache: 100% |###########################################################################################################| ETA: 00:00:00
+Loaded 2844 entries from dependency cache.
+Parsing recipes: 100% |#########################################################################################################| Time: 00:00:00
+Parsing of 2257 .bb files complete (2251 cached, 6 parsed). 2849 targets, 477 skipped, 0 masked, 0 errors.
+WARNING: No recipes available for:
+<your_full_path>/potenco/sources/meta-arago/meta-arago-distro/recipes-multimedia/libav/libav_9.16.bbappend
+<your_full_path>/potenco/sources/meta-processor-sdk/recipes-core/udev/udev_182.bbappend
+NOTE: Resolving any missing task queue dependencies
+Build Configuration:
+BB_VERSION = "1.30.0"
+BUILD_SYS = "x86_64-linux"
+NATIVELSBSTRING = "Ubuntu-16.04"
+TARGET_SYS = "arm-linux-gnueabi"
+MACHINE = "am335x-evm"
+DISTRO = "arago"
+DISTRO_VERSION = "2016.05"
+TUNE_FEATURES = "arm armv7a vfp thumb neon callconvention-hard cortexa8"
+TARGET_FPU = "hard"
+meta-processor-sdk = "HEAD:1686d851985872f34ca3a2c30d4a0726a20a5c99"
+meta-arago-distro
+meta-arago-extras = "HEAD:36598b78a6d9fbe442f93111f64d3413c04418a8"
+meta-qt5 = "HEAD:d715f2c1d340fa38f8a9860acc73de5e14a38b75"
+meta-networking
+meta-ruby
+meta-python
+meta-oe = "HEAD:66174d8f1273e54f7d12e21ca4b4309706dceeee"
+meta-ti = "HEAD:1ae0cadb1200d0007a779958e852a48379d42c26"
+meta-linaro-toolchain = "HEAD:2f51d38048599d9878f149d6d15539fb97603f8f"
+meta = "HEAD:b0b91490e4ede61a302eb547da2cc65aa7da87ff"
+meta-afero = "master:8ae143eebf4f2c12fa00c1c01d7b9deb54c4c4ef"
+meta-app = "master:e65daaecbf66e2220b4575cf0f376523af685db7"
+NOTE: Preparing RunQueue NOTE: Executing SetScene Tasks
+NOTE: Executing RunQueue Tasks app-1.0-r0 do_compile:
+NOTE: app: compiling from external source tree <your_full_path>/potenco/build/../af-app
+WARNING: app-1.0-r0 do_package_qa: QA Issue: No GNU_HASH in the elf binary: '<your_full_path>/potenco/build/arago-tmp-external-linaro-toolchain/work/cortexa8hf-neon-linux-gnueabi/app/1.0-r0/packages-split/app/usr/bin/app' [ldflags]
+NOTE: Tasks Summary: Attempted 421 tasks of which 413 didn’t need to be rerun and all succeeded.
+NOTE: Writing buildhistory
+Summary: There were 2 WARNING messages shown.
+```
+
+**12.** At this point you have created an image named “app”. You can `scp` this image to the BBGW board.
+
+**13.** If you wish to have the file added to the final root filesystem image, you must tell the controlling BitBake recipe how to do so by editing the `/sources/meta-afero/recipes-core/images/arago-afero-image.bb` file.
+
+13a. Look at the `arago-afero-image.bb` file; you will see a list of build target names that are part of the IMAGE_INSTALL= of the BitBake file:
+
+- backports \
+- af-ipc \
+- af-util \
+- attrd \
+- af-conn \
+- af-sec \
+- af-edge \
+- otamgr \
+- hubby \
+- af-extras \
+- dropbear \
+
+13b. Add “app \” to this list, as shown:
+
+- backports \
+- af-ipc \
+- af-util \
+- attrd \
+- af-conn \
+- af-sec \
+- af-edge \
+- otamgr \
+- hubby \
+- af-extras \
+- app \
+- dropbear \
+
+This adds the application as a target to the root filesystem. Therefore, when you execute `bitbake arago-afero-image`, you will have the target of the build “app” placed into the root filesystem according to where the `do_install_append` of the application tells it, which is the directory of the target root filesystem.
+
+**14.** Save the file, then execute the following command:
+
+```
+bitbake arago-afero-image
+```
+
+As explained above, the binary “`app`” is placed into the root filesystem as `/usr/bin/app`.
 
 Now you have a full distribution image as per the [Potenco Setup Guide for BBGW](../LinuxSDK-PotencoBBGW). You can use those instructions to burn the image into an SD card and then install the image onto your BeagleBone Green Wireless board.
 
