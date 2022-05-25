@@ -499,6 +499,7 @@ Retrieves all device type associations of a given firmware image.
 &nbsp; - `{versionNumber}` - The version number of the firmware image.                    
 
 **REQUEST HEADERS:**
+
 ```                                                                                                            
 { 
   "Accept": "application/json", 
@@ -506,18 +507,19 @@ Retrieves all device type associations of a given firmware image.
 }
 ```                                                               
 
-**RESPONSE BODY MODEL SCHEMA:**                                                                                                
+**RESPONSE BODY MODEL SCHEMA:** 
+                                                                                               
 ```
 [ 
-  { 
-    "name": "<string>", 
-    "partnerId": "<string>" 
-    "email": "<string>", 
-    "deviceTypeId": "<string>", 
-    "deviceTypeName": "<string>", 
-    "firmwareImageId": "<string_integer>" 
-  }
-],
+ { 
+   "name": "<string>", 
+   "partnerId": "<string>" 
+   "email": "<string>", 
+   "deviceTypeId": "<string>", 
+   "deviceTypeName": "<string>", 
+   "firmwareImageId": "<string_integer>" 
+ }
+]
 ```                                                              
 
 &nbsp;
