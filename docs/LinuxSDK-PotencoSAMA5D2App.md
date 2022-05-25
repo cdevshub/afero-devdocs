@@ -2,22 +2,22 @@
 
 Now that you have successfully built Potenco using the instructions in the Linux SDK documentation, you may want to add your own recipe and application. In the sections below, we will lay out both the instructions for how to do this, and the reasoning behind the instructions.
 
-- [About BitBake Layers](../LinuxSDK-PotencoSAMA5D2App#aboutlayers)
-- [Prerequisites](../LinuxSDK-PotencoSAMA5D2App#prereqs)
+- [About BitBake Layers](../LinuxSDK-PotencoSAMA5D2App#about-bitbake-layers)
+- [Prerequisites](../LinuxSDK-PotencoSAMA5D2App#prerequisites)
 - The Steps
-    - [Step 1. Have Your Potenco Build Image](../LinuxSDK-PotencoSAMA5D2App#step1)
-    - [Step 2. Create af-app Directory](../LinuxSDK-PotencoSAMA5D2App#step2)
-    - [Step 3. Add Source File](../LinuxSDK-PotencoSAMA5D2App#step3)
-    - [Step 4. Create the makefile](../LinuxSDK-PotencoSAMA5D2App#step4)
-    - [Step 5. Create the BitBake Layer](../LinuxSDK-PotencoSAMA5D2App#step5)
-    - [Step 6. Create the BitBake Recipe for the App](../LinuxSDK-PotencoSAMA5D2App#step6)
-    - [Step 7. Create the layer.conf File](../LinuxSDK-PotencoSAMA5D2App#step7)
-    - [Step 8. Modify bblayers.conf File](../LinuxSDK-PotencoSAMA5D2App#step8)
-    - [Step 9. Build Application](../LinuxSDK-PotencoSAMA5D2App#step9)
-    - [Step 10. Flash or Copy App Image to Target Device](../LinuxSDK-PotencoSAMA5D2App#step10)
-    - [Step 11. Create and Publish Device Profile](../LinuxSDK-PotencoSAMA5D2App#step11)
-    - [Step 12. Open the App on the Device](../LinuxSDK-PotencoSAMA5D2App#step12)
-- [Using the Ready-Made Example App](../LinuxSDK-PotencoSAMA5D2App#exapp)
+    - [Step 1. Have Your Potenco Build Image](../LinuxSDK-PotencoSAMA5D2App#step-1-have-your-potenco-build-image)
+    - [Step 2. Create af-app Directory](../LinuxSDK-PotencoSAMA5D2App#step-2-create-af-app-directory)
+    - [Step 3. Add Source File](../LinuxSDK-PotencoSAMA5D2App#step-3-add-source-file)
+    - [Step 4. Create the makefile](../LinuxSDK-PotencoSAMA5D2App#step-4-create-the-makefile)
+    - [Step 5. Create the BitBake Layer](../LinuxSDK-PotencoSAMA5D2App#step-5-create-the-bitbake-layer)
+    - [Step 6. Create the BitBake Recipe for the App](../LinuxSDK-PotencoSAMA5D2App#step-6-create-the-bitbake-recipe-for-the-app)
+    - [Step 7. Create the layer.conf File](../LinuxSDK-PotencoSAMA5D2App#step-7-create-the-layerconf-file)
+    - [Step 8. Modify bblayers.conf File](../LinuxSDK-PotencoSAMA5D2App#step-8-modify-bblayersconf-file)
+    - [Step 9. Build Application](../LinuxSDK-PotencoSAMA5D2App#step-9-build-application)
+    - [Step 10. Flash or Copy App Image to Target Device](../LinuxSDK-PotencoSAMA5D2App#step-10-flash-or-copy-app-image-to-target-device)
+    - [Step 11. Create and Publish Device Profile](../LinuxSDK-PotencoSAMA5D2App#step-11-create-and-publish-device-profile)
+    - [Step 12. Open the App on the Device](../LinuxSDK-PotencoSAMA5D2App#step-12-open-the-app-on-the-device)
+- [Using the Ready-Made Example App](../LinuxSDK-PotencoSAMA5D2App#using-the-ready-made-example-app)
 
 We are assuming some general familiarity with Yocto and BitBake so will not be defining the terminology used.
 
@@ -31,7 +31,7 @@ Before we get started, let’s get some preliminaries out of the way.
 
 ## Prerequisites
 
-- You have completed the instructions for building the Atmel SAMA5D2 based Potenco project, contained in the section [Build the Potenco OS Image](../LinuxSDK-PotencoSAMA5D2#bldpotosimage).
+- You have completed the instructions for building the Atmel SAMA5D2 based Potenco project, contained in the section [Build the SAMA5D2 OS Image](../LinuxSDK-PotencoSAMA5D2#build-the-sama5d2-linux-os-image).
 - You have named the directory in which the Potenco project exists as “`sama5/src_afero`” and placed it in your home directory. If you choose to use a different path or directory name, you must adjust the instructions below accordingly.
 - You must have at least 64GB of disk space and 4GB of memory in your Ubuntu 16.04 system to successfully build the Potenco image.
 
@@ -39,11 +39,9 @@ Before we get started, let’s get some preliminaries out of the way.
 
 ### Step 1. Have Your Potenco Build Image
 
-Again, be sure you have created a Potenco build image per the instructions in [Build the Potenco OS Image](../LinuxSDK-PotencoSAMA5D2#bldpotosimage). This will be both the core image that is used on the Atmel SAMA5D2 and the image to which you will add your own application code.
+Again, be sure you have created a Potenco build image per the instructions in [Build the SAMA5D2 OS Image](../LinuxSDK-PotencoSAMA5D2#build-the-sama5d2-linux-os-image). This will be both the core image that is used on the Atmel SAMA5D2 and the image to which you will add your own application code.
 
 The first-time build of the Potenco image can take up to several hours, depending on the speed of your computer. In the instructions below, you will create your own BitBake layer so you can create your application by simply typing “`bitake app`”, avoiding having to rebuild from scratch. Also, when building the root filesystem, the time required will be much shorter once the Potenco image has been built vs. having to build it from scratch; that is, it will take minutes rather than hours.
-
-
 
 ### Step 2. Create af-app Directory
 
@@ -457,92 +455,68 @@ Before we can flash the image, we must tell the `core-image-minimal` BitBake rec
 
 Follow the instructions below to include your app in the final image:
 
-1. Go to the following directory:
+**1.** Go to the following directory:
 
-   ```
-   $ cd ~/sama5/meta-afero/recipes-core/images/
-   ```
+```
+$ cd ~/sama5/meta-afero/recipes-core/images/
+```
 
-2. Find the file named “`core-image-minimal.bbappend`” and open it for editing.
+**2.** Find the file named “`core-image-minimal.bbappend`” and open it for editing.
 
-3. You will find a line beginning with “
+**3.** You will find a line beginning with “`IMAGE_INSTALL`” that lists a large number of items:
 
-   ```
-   IMAGE_INSTALL
-   ```
+```
+IMAGE_INSTALL += "beetle hubby af-sec af-ipc af-util af-edge attrd af-conn bluez5 bluez5-noinst-tools wpa-supplicant iptables iw linux-firmware-bcm43430 curl openssl ntp vim-common otamgr i2c-tools dropbear ntp"
+```
 
-   ” that lists a large number of items:
+**4.** This list identifies the items that are to be included in the final rootfs. Just add “`app`” to the list after the other Afero items (bolded below so you can find it easily):
 
-   ```
-   IMAGE_INSTALL += "beetle hubby af-sec af-ipc af-util af-edge attrd af-conn bluez5 bluez5-noinst-tools wpa-supplicant iptables iw linux-firmware-bcm43430 curl openssl ntp vim-common otamgr i2c-tools dropbear ntp"
-   ```
+```
+IMAGE_INSTALL += "beetle hubby af-sec af-ipc af-util af-edge attrd af-conn bluez5 bluez5-noinst-tools app wpa-supplicant iptables iw linux-firmware-bcm43430 curl openssl ntp vim-common otamgr i2c-tools dropbear ntp"
+```
 
-4. This list identifies the items that are to be included in the final rootfs. Just add “
+**5.** Save the file. Now, after you use the command “`bitbake core-image-minimal`”, the app will be deposited in `/usr/bin` in the root filesystem.
 
-   ```
-   app
-   ```
-
-   ” to the list after the other Afero items (bolded below so you can find it easily):
-
-   ```
-   IMAGE_INSTALL += "beetle hubby af-sec af-ipc af-util af-edge attrd af-conn bluez5 bluez5-noinst-tools app wpa-supplicant iptables iw linux-firmware-bcm43430 curl openssl ntp vim-common otamgr i2c-tools dropbear ntp"
-   ```
-
-5. Save the file. Now, after you use the command “`bitbake core-image-minimal`”, the app will be deposited in `/usr/bin` in the root filesystem.
-
-6. Take the resulting `afimg` file, and flash it onto the SAMA5D2 board using the method outlined in the [Afero Potenco Setup Guide for SAMA5D2 Board > Flash the SAMA5D2 Image](../LinuxSDK-PotencoSAMA5D2#flash).
+**6.** Take the resulting `afimg` file, and flash it onto the SAMA5D2 board using the method outlined in the [Afero Potenco Setup Guide for SAMA5D2 Board > Flash the SAMA5D2 Image](../LinuxSDK-PotencoSAMA5D2#flash).
 
 #### Option 2: Copy Image Using SCP
 
 You can also securely copy the application image to the SAMA5D2 board, which is substantially faster than burning in the entire root filesystem. For this to work, the SAMA5D2 board must already be connected. The first time you do this you have to flash the entire root filesystem on the SAMA5D2; after that, if you simply want to test your app's functionality, you can use `scp`. Here’s how you do that:
 
-1. Get the IP address from the device by typing:
+**1.** Get the IP address from the device by typing:
 
-   ```
-   $ ifconfig
-   ```
+```
+$ ifconfig
+```
 
-   The following should return:
+The following should return:
 
-   ```
-   lo        Link encap:Local Loopback 
-             inet addr:127.0.0.1  Mask:255.0.0.0
-             inet6 addr: ::1%132976/128 Scope:Host
-             UP LOOPBACK RUNNING  MTU:65536  Metric:1
-             RX packets:163 errors:0 dropped:0 overruns:0 frame:0
-             TX packets:163 errors:0 dropped:0 overruns:0 carrier:0
-             collisions:0 txqueuelen:1
-             RX bytes:12376 (12.0 KiB)  TX bytes:12376 (12.0 KiB)
-    
-   wlan0     Link encap:Ethernet  HWaddr 40:BD:32:77:FE:84 
-             inet addr:10.177.227.122  Bcast:10.177.227.255  Mask:255.255.255.0
-             UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-             RX packets:15462 errors:0 dropped:0 overruns:0 frame:0
-             TX packets:18874 errors:0 dropped:0 overruns:0 carrier:0
-             collisions:0 txqueuelen:1000
-             RX bytes:1585679 (1.5 MiB)  TX bytes:2183887 (2.0 MiB)
-   ```
+```
+lo       Link encap:Local Loopback 
+		 inet addr:127.0.0.1  Mask:255.0.0.0
+		 inet6 addr: ::1%132976/128 Scope:Host
+		 UP LOOPBACK RUNNING  MTU:65536  Metric:1
+		 RX packets:163 errors:0 dropped:0 overruns:0 frame:0
+		 TX packets:163 errors:0 dropped:0 overruns:0 carrier:0
+		 collisions:0 txqueuelen:1
+		 RX bytes:12376 (12.0 KiB)  TX bytes:12376 (12.0 KiB)
 
-2. The device you are interested in is **wlan0**. The IP address of the device is identified in this internet address value: “`inet addr: 10.177.227.122`”.
+wlan0     Link encap:Ethernet  HWaddr 40:BD:32:77:FE:84 
+		 inet addr:10.177.227.122  Bcast:10.177.227.255  Mask:255.255.255.0
+		 UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+		 RX packets:15462 errors:0 dropped:0 overruns:0 frame:0
+		 TX packets:18874 errors:0 dropped:0 overruns:0 carrier:0
+		 collisions:0 txqueuelen:1000
+		 RX bytes:1585679 (1.5 MiB)  TX bytes:2183887 (2.0 MiB)
+```
 
-3. Go to the directory where the app is located, then type the following on your Ubuntu build system, using the inet address:
+**2.** The device you are interested in is **wlan0**. The IP address of the device is identified in this internet address value: “`inet addr: 10.177.227.122`”.
 
-   ```
-   $ scp app root@10.177.227.122:/usr/bin
-   ```
+**3.** Go to the directory where the app is located, then type the following on your Ubuntu build system, using the inet address:
 
-   This will put the app in
-
-    
-
-   ```
-   /usr/bin
-   ```
-
-    
-
-   on the SAMA5D2 board.
+```
+$ scp app root@10.177.227.122:/usr/bin `/usr/bin` on the SAMA5D2 board.
+```
 
 Now we will create the Potenco device Profile and publish it to the device.
 
@@ -550,159 +524,62 @@ Now we will create the Potenco device Profile and publish it to the device.
 
 After the system boots, you can type `**app**` at the command prompt and the application will run. However, it won’t **do** anything until you have pushed a new profile to your Potenco device that includes two new attributes. Use the Afero Profile Editor to create a new Profile that defines these attributes. You can read details on using the Profile Editor in the [Profile Editor User Guide](../Projects), but the specific instructions follow:
 
-1. Open the latest version of the Afero Profile Editor and sign in with your Afero developer account. (Download for either [Windows](http://cdn.afero.io/latest-ape/win) or [macOS](http://cdn.afero.io/latest-ape/mac).)
+**1.** Open the latest version of the Afero Profile Editor and sign in with your Afero developer account. (Download for either [Windows](http://cdn.afero.io/latest-ape/win) or [macOS](http://cdn.afero.io/latest-ape/mac).)
 
-2. On the Startup window, select
+**2.** On the Startup window, select NEW. On the New Project dialog, complete the fields as follows:
 
-    
+- **Module Type**: Potenco
+- **Device Type Name**: MyApp (or any name you prefer)
+- **Project Folder**: Default location is fine
+- **Create Subfolder using Device Type Name**: Leave selected
 
-   NEW
+Select the CREATE button.
 
-   . On the New Project dialog, complete the fields as follows:
+**3.** On the DEFINE THE DEVICE TYPE window that appears, add a DESCRIPTION if you wish then select the SAVE button in the upper-right.
 
-   - **Module Type**: Potenco
-   - **Device Type Name**: MyApp (or any name you prefer)
-   - **Project Folder**: Default location is fine
-   - **Create Subfolder using Device Type Name**: Leave selected
+**4.** Select  ATTRIBUTES in the left-hand Navigation pane. On the DEFINE THE MCU ATTRIBUTES window, complete the fields as follows:
 
-   Select the CREATE button.
+- **Supported Network Interfaces**: Select Wi-Fi and WAN
 
-3. On the DEFINE THE DEVICE TYPE window that appears, add a DESCRIPTION if you wish then select the SAVE button in the upper-right.
+- **Device Configuration**, **Receive UTC Time**: Leave deselected
 
-4. Select
-
-    
-
-   ATTRIBUTES
-
-    
-
-   in the left-hand Navigation pane. On the
-
-    
-
-   DEFINE THE MCU ATTRIBUTES
-
-    
-
-   window, complete the fields as follows:
-
-   - **Supported Network Interfaces**: Select Wi-Fi and WAN
-
-   - **Device Configuration**, **Receive UTC Time**: Leave deselected
-
-   - Device Attribute
-
-      
-
-     \- Create two MCU attributes using the
-
-      
-
-     +DEVICE ATTRIBUTE
-
-      
-
-     button:
-
+- **Device Attribute** - Create two MCU attributes using the +DEVICE ATTRIBUTE button:
      - **MCU attribute ID 1** - Name: int8, Data Type: SINT8, Default Value: 0, Operations: Read and Write
      - **MCU attribute ID 2** - Name: int32, Data Type: SINT32, Default Value: 0, Operations: Read and Write
 
-   Select the SAVE button in the upper-right.
+Select the SAVE button in the upper-right.
 
-5. Select
+**5.** Select UI CONTROLS in the left-hand Navigation pane. On the DEFINE THE UI CONTROLS window, define two Value controls that will simply store and show the values to the app:
 
-    
+5a. First, define two attribute options using the +ATTRIBUTE OPTION button in the right-hand pane:
 
-   UI CONTROLS
+- **int8** - Attribute: int8, Label: int8, leave remaining fields as shown
+- **int32** - Attribute: int32, Label: int32, leave remaining fields as shown
 
-    
+5b. Next, define two controls using the +CONTROL button:
 
-   in the left-hand Navigation pane. On the
+- **Value control 1** - Attribute Option: int8, Control Type: Value, leave remaining fields as shown
+- **Value control 2** - Attribute Option: int32, Control Type: Value, leave remaining fields as shown
 
-    
+Select the SAVE button in the upper-right.
 
-   DEFINE THE UI CONTROLS
+**6.** Select UI CONTROL GROUPS in the left-hand Navigation pane. On the DEFINE THE UI CONTROL GROUPS window:
 
-    
+6a. Select the + button to create a new group.
 
-   window, define two Value controls that will simply store and show the values to the app:
+6b. Name your control group as you wish by first selecting “New Group” then editing the name.
 
-   
+6c. Drag both Value controls from the right-hand pane into the group box.
 
-   1. First, define two attribute options using the
+Select the SAVE button in the upper-right.
 
-       
+**7.** Select PUBLISH in the left-hand Navigation pane. On the PUBLISH window:
 
-      +ATTRIBUTE OPTION
+7a. Select the checkbox adjacent to your Potenco device name.
 
-       
+7b. Select the PUBLISH button. Your Profile will be published to your Potenco; monitor progress by watching the DEVICE ACTIVITY pane.
 
-      button in the right-hand pane:
-
-      - **int8** - Attribute: int8, Label: int8, leave remaining fields as shown
-      - **int32** - Attribute: int32, Label: int32, leave remaining fields as shown
-
-   2. Next, define two controls using the
-
-       
-
-      +CONTROL
-
-       
-
-      button:
-
-      - **Value control 1** - Attribute Option: int8, Control Type: Value, leave remaining fields as shown
-      - **Value control 2** - Attribute Option: int32, Control Type: Value, leave remaining fields as shown
-
-   Select the SAVE button in the upper-right.
-
-6. Select
-
-    
-
-   UI CONTROL GROUPS
-
-    
-
-   in the left-hand Navigation pane. On the
-
-    
-
-   DEFINE THE UI CONTROL GROUPS
-
-    
-
-   window:
-
-   1. Select the + button to create a new group.
-   2. Name your control group as you wish by first selecting “New Group” then editing the name.
-   3. Drag both Value controls from the right-hand pane into the group box.
-
-   Select the SAVE button in the upper-right.
-
-7. Select
-
-    
-
-   PUBLISH
-
-    
-
-   in the left-hand Navigation pane. On the
-
-    
-
-   PUBLISH
-
-    
-
-   window:
-
-   1. Select the checkbox adjacent to your Potenco device name.
-   2. Select the PUBLISH button. Your Profile will be published to your Potenco; monitor progress by watching the DEVICE ACTIVITY pane.
-   3. Once published, you can close the Afero Profile Editor.
+7c. Once published, you can close the Afero Profile Editor.
 
 ### Step 12. Open the App on the Device
 
@@ -734,302 +611,161 @@ Note that these instructions are very similar to those above and use identical c
 
 ### Prerequisites
 
-- You have completed the instructions for building the Atmel SAMA5D2-based Potenco project, contained in the section [Build the Potenco OS Image](../LinuxSDK-PotencoSAMA5D2#bldpotosimage).
+- You have completed the instructions for building the Atmel SAMA5D2-based Potenco project, contained in the section [Build the SAMA5D2 OS Image](../LinuxSDK-PotencoSAMA5D2#build-the-sama5d2-linux-os-image).
 - You have named the directory in which the Potenco project exists as “`sama5/src_afero`” and placed it in your home directory. If you choose to use a different path or directory name, you must adjust the instructions below accordingly.
 - You have at least 64GB of disk space and 4GB of memory in your Ubuntu system to successfully build the Potenco image.
 - You have a GitHub account and have been given access to the am335x-demo-app GitHub repository. Contact the Afero Customer Enablement (ACE) team at “ace@afero.io” for access and the GitHub repo URL.
 
 ### Steps
 
-1. Let’s start with getting the GitHub package. You should put it into the root of your home directory. Use the following command:
+**1.** Let’s start with getting the GitHub package. You should put it into the root of your home directory. Use the following command:
 
-   ```
-   $ cd
-   ```
+```
+$ cd
+```
 
-2. Download the package from the GitHub repository using the URL given to you by the ACE team:
+**2.** Download the package from the GitHub repository using the URL given to you by the ACE team:
 
-   ```
-   $ git clone <GitHub repo URL> am335x-demo-app.git
-   ```
+```
+$ git clone <GitHub repo URL> am335x-demo-app.git
+```
 
-   The package will clone to a directory named “am335x-demo-app”.
+The package will clone to a directory named “am335x-demo-app”. 
 
-   
+**3.** Within this `am335x-demo-app` directory, you will find the directories and directory trees listed below. To install them, simply copy them into your own instance of the Potenco reference build.
 
-3. Within this `am335x-demo-app` directory, you will find the directories and directory trees listed below. To install them, simply copy them into your own instance of the Potenco reference build.
+- `af-app` - Holds your makefile and your application code.
 
-4. - `af-app` - Holds your makefile and your application code.
+- `meta-app` - Top-level BitBake recipe directory that defines when and how your application is built.
 
-   - `meta-app` - Top-level BitBake recipe directory that defines when and how your application is built.
-
-   - - `conf` - Resides under `meta-afero` and holds the layer configuration file for the meta-app BitBake layer that describes how to build your application.
+     - `conf` - Resides under `meta-afero` and holds the layer configuration file for the meta-app BitBake layer that describes how to build your application.
+     
      - `recipes-app` - Resides under the `meta-afero` directory and holds the actual BitBake recipe for your application.
 
-   - `APEProject` - Holds directory containing the Afero Profile Editor project that defines the attributes used in this demo, as well as the UI definition for the Afero mobile app.
+- `APEProject` - Holds directory containing the Afero Profile Editor project that defines the attributes used in this demo, as well as the UI definition for the Afero mobile app.
 
-5. Enter the directory that was created when you cloned the GitHub repo. The directory should be named
+**4.** Enter the directory that was created when you cloned the GitHub repo. The directory should be named `am335x-demo-app`:
 
-    
+```
+$ cd am335x-demo-app
+```
 
-   ```
-   am335x-demo-app
-   ```
+**5.** List the contents:
 
-   :
+```
+$ ls
+af-app meta-app APEProject
+```
 
-   ```
-   $ cd am335x-demo-app
-   ```
+**6.** Now copy the application source code that’s in the `af-app` directory to the top level of the `~/sama5/src_afero` directory tree:
 
-6. List the contents:
+```
+$ cp -r af-app ~/sama5/src_afero
+```
 
-   ```
-   $ ls
-   af-app meta-app APEProject
-   ```
+**7.** List the directory contents to verify:
 
-7. Now copy the application source code that’s in the
+```
+$ ls ~/sama5/src_afero
+af-app af-conn af-edge af-ipc af-sec af-util attrd beetle hubby otamgr
+```
 
-    
+**8.** Copy the `meta-app` directory to the `~/sama5` directory tree so that it can be found by BitBake and the recipes extracted from it, then verify the contents:
 
-   ```
-   af-app
-   ```
+```
+$ cp -r meta-app ~/sama5
+$ ls ~/sama5
+meta-afero meta-app meta-atmel meta-openembedded meta-qt5 poky src_afero
+```
 
-    
+**9.** Enter the `~/sama5/poky/build-microchip/conf` directory, then look at the contents of the `bblayers.conf` file:
 
-   directory to the top level of the
+```
+$ cd ~/sama5
+$ ls
+meta-afero  meta-app  meta-atmel  meta-openembedded  meta-qt5  poky  src_afero
+$ cd conf
+$ ls
+bblayers.conf  local.conf  sanity_info  templateconf.cfg
+$ more bblayers.conf
 
-    
+# POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
 
-   ```
-   ~/sama5/src_afero
-   ```
+POKY_BBLAYERS_CONF_VERSION = "2"
 
-    
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+BSPDIR := "${@os.path.abspath(os.path.dirname(d.getVar('FILE', True)) + '/../../..')}"
 
-   directory tree:
+BBLAYERS ?= " \
+  ${BSPDIR}/poky/meta \
+  ${BSPDIR}/poky/meta-poky \
+  ${BSPDIR}/poky/meta-yocto-bsp \
+  ${BSPDIR}/meta-atmel \
+  ${BSPDIR}/meta-openembedded/meta-oe \
+  ${BSPDIR}/meta-openembedded/meta-networking \
+  ${BSPDIR}/meta-openembedded/meta-python \
+  ${BSPDIR}/meta-openembedded/meta-multimedia \
+  ${BSPDIR}/meta-qt5 \
+  ${BSPDIR}/meta-afero \
+  "
 
-   ```
-   $ cp -r af-app ~/sama5/src_afero
-   ```
+BBLAYERS_NON_REMOVABLE ?= " \
+  ${BSPDIR}/poky/meta \
+  ${BSPDIR}/poky/meta-poky \
 
-8. List the directory contents to verify:
+  "
+```
 
-   ```
-   $ ls ~/sama5/src_afero
-   af-app af-conn af-edge af-ipc af-sec af-util attrd beetle hubby otamgr
-   ```
+**10.** Open this `bblayers.conf` file for edit. Add the path to the `meta-app` directory after the `meta-afero` line. As an example, here are the last three lines defining BBLAYERS with the `meta-app` path added:
 
-9. Copy the
+```
+⋮
+${BSPDIR}/meta-afero \
+${BSPDIR}/meta-app \
+"
+```
 
-    
+**11.** Enter the `~/sama5/poky/build-microchip` directory and use the following command to build your own application.
 
-   ```
-   meta-app
-   ```
+```
+$ cd ~/sama5/poky/build-microchip
+$ bitbake app
+```
 
-    
+**12.** At this point you have created an image named “app”. You can `scp` this image to the SAMA5D2 board.
 
-   directory to the
+**13.** If you wish to have the file added to the final root filesystem image, we must tell the controlling BitBake recipe how to do so by editing the `~/sama5/meta-afero/recipes-core/images/core-image-minimal.bbappend` file, as explained below:
 
-    
+13a. Go to the following directory:
 
-   ```
-   ~/sama5
-   ```
+```
+$ cd ~/sama5/meta-afero/recipes-core/images/
+```
 
-    
+13b. Find the file named “`core-image-minimal.bbappend`” and open it for editing.
 
-   directory tree so that it can be found by BitBake and the recipes extracted from it, then verify the contents:
+13c. You will find a line beginning with “`IMAGE_INSTALL`” that lists a large number of items:
 
-   ```
-   $ cp -r meta-app ~/sama5
-   $ ls ~/sama5
-   meta-afero meta-app meta-atmel meta-openembedded meta-qt5 poky src_afero
-   ```
+```
+IMAGE_INSTALL += "beetle hubby af-sec af-ipc af-util af-edge attrd af-conn bluez5 bluez5-noinst-tools wpa-supplicant iptables iw linux-firmware-bcm43430 curl openssl ntp vim-common otamgr i2c-tools dropbear ntp"
+```
 
-10. Enter the
+13d. This list identifies the items that are to be included in the final rootfs. Just add “`app`” to the list after the other Afero items (bolded below so you can find it easily):
 
-     
+```
+IMAGE_INSTALL += "beetle hubby af-sec af-ipc af-util af-edge attrd af-conn bluez5 bluez5-noinst-tools app wpa-supplicant iptables iw linux-firmware-bcm43430 curl openssl ntp vim-common otamgr i2c-tools dropbear ntp"
+```
 
-    ```
-    ~/sama5/poky/build-microchip/conf
-    ```
+13e. Save the file. Then execute the following command:
 
-     
+```
+bitbake core-image-minimal
+```
 
-    directory, then look at the contents of the
+The app will be deposited in `/usr/bin` in the root filesystem.
 
-     
-
-    ```
-    bblayers.conf
-    ```
-
-     
-
-    file:
-
-    ```
-    $ cd ~/sama5
-    $ ls
-    meta-afero  meta-app  meta-atmel  meta-openembedded  meta-qt5  poky  src_afero
-    $ cd conf
-    $ ls
-    bblayers.conf  local.conf  sanity_info  templateconf.cfg
-    $ more bblayers.conf
-    
-    # POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
-    # changes incompatibly
-    
-    POKY_BBLAYERS_CONF_VERSION = "2"
-    
-    BBPATH = "${TOPDIR}"
-    BBFILES ?= ""
-    BSPDIR := "${@os.path.abspath(os.path.dirname(d.getVar('FILE', True)) + '/../../..')}"
-    
-    BBLAYERS ?= " \
-      ${BSPDIR}/poky/meta \
-      ${BSPDIR}/poky/meta-poky \
-      ${BSPDIR}/poky/meta-yocto-bsp \
-      ${BSPDIR}/meta-atmel \
-      ${BSPDIR}/meta-openembedded/meta-oe \
-      ${BSPDIR}/meta-openembedded/meta-networking \
-      ${BSPDIR}/meta-openembedded/meta-python \
-      ${BSPDIR}/meta-openembedded/meta-multimedia \
-      ${BSPDIR}/meta-qt5 \
-      ${BSPDIR}/meta-afero \
-      "
-    
-    BBLAYERS_NON_REMOVABLE ?= " \
-      ${BSPDIR}/poky/meta \
-      ${BSPDIR}/poky/meta-poky \
-    
-      "
-    ```
-
-11. Open this
-
-     
-
-    ```
-    bblayers.conf
-    ```
-
-     
-
-    file for edit. Add the path to the
-
-     
-
-    ```
-    meta-app
-    ```
-
-     
-
-    directory after the
-
-     
-
-    ```
-    meta-afero
-    ```
-
-     
-
-    line. As an example, here are the last three lines defining BBLAYERS with the
-
-     
-
-    ```
-    meta-app
-    ```
-
-     
-
-    path added:
-
-    ```
-    ⋮
-    ${BSPDIR}/meta-afero \
-    ${BSPDIR}/meta-app \
-    "
-    ```
-
-12. Enter the
-
-     
-
-    ```
-    ~/sama5/poky/build-microchip
-    ```
-
-     
-
-    directory and use the following command to build your own application.
-
-    ```
-    $ cd ~/sama5/poky/build-microchip
-    $ bitbake app
-    ```
-
-13. At this point you have created an image named “app”. You can `scp` this image to the SAMA5D2 board.
-
-14. If you wish to have the file added to the final root filesystem image, we must tell the controlling BitBake recipe how to do so by editing the `~/sama5/meta-afero/recipes-core/images/core-image-minimal.bbappend` file, as explained below:
-
-15. 1. Go to the following directory:
-
-       ```
-       $ cd ~/sama5/meta-afero/recipes-core/images/
-       ```
-
-    2. Find the file named “`core-image-minimal.bbappend`” and open it for editing.
-
-    3. You will find a line beginning with “
-
-       ```
-       IMAGE_INSTALL
-       ```
-
-       ” that lists a large number of items:
-
-       ```
-       IMAGE_INSTALL += "beetle hubby af-sec af-ipc af-util af-edge attrd af-conn bluez5 bluez5-noinst-tools wpa-supplicant iptables iw linux-firmware-bcm43430 curl openssl ntp vim-common otamgr i2c-tools dropbear ntp"
-       ```
-
-    4. This list identifies the items that are to be included in the final rootfs. Just add “
-
-       ```
-       app
-       ```
-
-       ” to the list after the other Afero items (bolded below so you can find it easily):
-
-       ```
-       IMAGE_INSTALL += "beetle hubby af-sec af-ipc af-util af-edge attrd af-conn bluez5 bluez5-noinst-tools app wpa-supplicant iptables iw linux-firmware-bcm43430 curl openssl ntp vim-common otamgr i2c-tools dropbear ntp"
-       ```
-
-    5. Save the file. Then execute the following command:
-
-       ```
-       bitbake core-image-minimal
-       ```
-
-       The app will be deposited in
-
-        
-
-       ```
-       /usr/bin
-       ```
-
-        
-
-       in the root filesystem.
-
-Now you are ready to flash the image to the internal eMMC. Take the resulting `afimg` file and flash it onto the SAMA5D2 board using the method outlined in the [Potenco Setup Guide for SAMA5D2](../LinuxSDK-PotencoSAMA5D2#flash).
+Now you are ready to flash the image to the internal eMMC. Take the resulting `afimg` file and flash it onto the SAMA5D2 board using the method outlined in the [Potenco Setup Guide for SAMA5D2](../LinuxSDK-PotencoSAMA5D2#flash-the-sama5d2-image).
 
  **&#8674;** *Next:* [Secure Linux SDK Frequently-Asked Questions](../LinuxSDK-FAQ)
