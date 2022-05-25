@@ -2,7 +2,7 @@
 
 The RESTful API exposes the OAuth function described in this section.
 
-Before you begin using the API below, be sure you have read the information in [Afero Cloud APIs](../CloudAPIs).
+<mark>**&check; Note:**   Before you begin using the API below, be sure you have read the information in [Afero Cloud APIs](../CloudAPIs).</mark>
 
 
 
@@ -31,9 +31,9 @@ The OAuth Authentication endpoint is used to authenticate end-users and generate
 
 - The Authorization header value should be the string `Basic`, followed by a space, followed by the Base64-encoded representation of your OAuth Client ID, a colon, and then your OAuth Client Secret.
 
-  For example, if your ClientID were “Mork” and your Client Secret were “Mindy”, you would perform a Base64-encoding of `Mork:Mindy` to create the string `TW9yazpNaW5keQ==`.
+    For example, if your ClientID were “Mork” and your Client Secret were “Mindy”, you would perform a Base64-encoding of `Mork:Mindy` to create the string `TW9yazpNaW5keQ==`.
 
-  The entire Authorization header value would be `Basic TW9yazpNaW5keQ==`.
+    The entire Authorization header value would be `Basic TW9yazpNaW5keQ==`.
 
 - In the Request Payload, the `username` and `password` are the username (email address) and password you chose when you activated your Afero account.
 

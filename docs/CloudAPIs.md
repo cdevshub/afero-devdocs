@@ -16,7 +16,7 @@ Afero API is secure. All Afero API requests must be made over SSL, and must be a
 
 Sign in to the Afero Profile Editor and open the VIEW > ACCOUNT INFO window (example shown below). From this Account Information window, you can view your “OAuth Client ID” and “OAuth Client Secret”, which you will need to authenticate requests on behalf of the end-user. These credentials **should not** be shared with untrusted parties!
 
-![Account Information](img/AccountInfo.png)
+<img src="../img/AccountInfo.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ### For Each Communication Session
 

@@ -2,9 +2,7 @@
 
 The RESTful API exposes the functionality related to Users described in this section.
 
-Before you begin using the API below, be sure you have read the information in [Afero Cloud APIs](../CloudAPIs).
-
-
+<mark>**&check; Note:**Before you begin using the API below, be sure you have read the information in [Afero Cloud APIs](../CloudAPIs).</mark>
 
 ## Get Information About a User
 
