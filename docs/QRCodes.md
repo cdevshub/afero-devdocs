@@ -13,11 +13,11 @@ This page contains the following information about the QR code labels required f
         - [QR Payload Details](../QRCodes#qr-payload-details)
         - [QR Code Details](../QRCodes#qr-code-details)
         - [Plain-Text Association ID](../QRCodes#plain-text-association-id)
-        - [Examples](../QRCodes#examples)
+        - [Latest Code Examples](../QRCodes#latest-code-examples)
     - [Products Using the Legacy QR Code Version](../QRCodes#products-using-the-legacy-qr-code-version)
         - [About ASR-1 Association ID](../QRCodes#about-the-asr-1-association-id)
         - [Label Printing](../QRCodes#label-printing)
-        - [Examples](../QRCodes#examples)
+        - [Legacy Code Examples](../QRCodes#legacy-code-examples)
 
 ## Labeling Afero Products with QR Codes
 
@@ -176,11 +176,11 @@ In addition to a QR code (containing the Payload) each label is also required to
 - **Association ID (formatted for printing as plain-text):** ABCD-EF12-3456-7890-ABCD-EF12
 - **Font Type:** Monospaced (such as Consolas or Courier) for all Association ID characters. A proportional font (such as Times New Roman) may be used for the hyphens.
 
-#### Examples
+#### Latest Code Examples
 
 | **Example QR Payload**                | 1:ABCDEF1234567890ABCDEF12:1234567890ABCDEF                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| **Example QR Code**                   | <img src="../img/BigAssnQRcode.png" width="105" style="vertical-align:middle;margin:0px 0px;border:none"> |
+| **Example QR Code**                   | <img src="../img/BigAssnQRcode.png" width="115" style="vertical-align:middle;margin:0px 0px;border:none"> |
 | **Example Plain Text Association ID** | ABCD-EF12-3456-7890-ABCD-EF12                                |
 | **Example Label**                     | <img src="../img/BigAssnQRcodeLabel.png" width="375" style="vertical-align:middle;margin:0px 0px;border:none"> |
 
@@ -221,7 +221,7 @@ The plain-text Association ID is used for manual-entry of the Association ID by 
 - **Association ID (formatted for printing as plain-text):** 1234-5612-3456
 - **Font Type:** Monospaced (such as Consolas or Courier) for all Association ID characters. A proportional font (such as Times New Roman) may be used for the hyphens.
 
-#### Examples
+#### Legacy Code Examples
 
 <img src="../img/ASR1-ExampleQRcodes.png" width="800" style="vertical-align:middle;margin:0px 0px;border:none">
 
