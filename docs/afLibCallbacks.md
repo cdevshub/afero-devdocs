@@ -502,3 +502,5 @@ void loop() {
   }
 }
 ```
+
+ **&#8674;** *Next:* [Checking Capabilities](../afLibCapabilities)

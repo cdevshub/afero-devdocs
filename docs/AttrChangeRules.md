@@ -184,3 +184,5 @@ Note that the following operations **do not** exist:
 - SET/GET of an MCU attribute originating from ASR (not originating from the Cloud)
 - UPDATE of an ASR attribute from MCU or the Cloud
 - UPDATE of an MCU attribute from the Cloud
+
+ **&#8674;** *Next:* [afLib API](../API-afLib)

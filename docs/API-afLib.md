@@ -23,3 +23,5 @@ We also describe the callback function you should write to work with afLib:
 - [`attrEventCallback()`](../afLibCallbacks/#attreventcallback)
 
 If you need to refer to the API documentation for afLib3, [download the archive file (.zip).](../files/afLib3-DevDocs.zip)
+
+ **&#8674;** *Next:* [The afLib Lifecycle: The transports, create( ), and destroy( )](../afLibLifecycle)
