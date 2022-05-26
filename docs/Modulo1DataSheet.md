@@ -2,12 +2,12 @@
 
 Modulo-1 is the demonstration platform board for Afero Secure Radio. This page contains the following sections:
 
-- [Connections](../Modulo1DataSheet#Modulo1Connections)
-- [Specification](../Modulo1DataSheet#Modulo1Spec)
-- [Block Diagram](../Modulo1DataSheet#Modulo1BlockDiagram)
-- [Pin Configuration](../Modulo1DataSheet#Modulo1Pinout)
-- [DC Electrical Specification](../Modulo1DataSheet#Modulo1DCElecSpec)
-- [Environmental Specification](../Modulo1DataSheet#Modulo1EnvironSpec)
+- [Connections](../Modulo1DataSheet#connections)
+- [Specification](../Modulo1DataSheet#specification)
+- [Block Diagram](../Modulo1DataSheet#block-diagram)
+- [Pin Configuration](../Modulo1DataSheet#pin-configuration)
+- [DC Electrical Specification](../Modulo1DataSheet#dc-electical-specification)
+- [Environmental Specification](../Modulo1DataSheet#environmental-specification)
 
 ## Connections
 
@@ -47,7 +47,7 @@ The Modulo-1 is designed to attach directly to a Teensy (3.1 or better) board, o
 
 ## Specification
 
-| **Model name**                | Modulo-1                                        |
+| Model name                    | Modulo-1                                        |
 | ----------------------------- | ----------------------------------------------- |
 | **Model number**              | AFERO-DB-01                                     |
 | **Description**               | ASR-1 development board                         |

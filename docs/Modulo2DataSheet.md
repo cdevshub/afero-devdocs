@@ -4,35 +4,61 @@ Modulo-2 is a Wi-Fi and Bluetooth® low energy development board that makes it e
 
 This page contains the following sections:
 
-- [Introduction](../Modulo2DataSheet#Intro)
-- [Mechanical Specification](../Modulo2DataSheet#MechSpec)
-- [DC Electrical Specification](../Modulo2DataSheet#DCSpec)
-- [RF Electrical Specification](../Modulo2DataSheet#RFSpec)
-- [Environmental Specification](../Modulo2DataSheet#EnvSpec)
-- [Ordering Information](../Modulo2DataSheet#OrderInfo)
-- [Compliance Notices](../Modulo2DataSheet#Compliance)
+- [Introduction](../Modulo2DataSheet#introduction)
+- [Mechanical Specification](../Modulo2DataSheet#mechanical-specification)
+- [DC Electrical Specification](../Modulo2DataSheet#dc-electrical-specification)
+- [RF Electrical Specification](../Modulo2DataSheet#rf-electrical-specification)
+- [Environmental Specification](../Modulo2DataSheet#environmental-specification)
+- [Ordering Information](../Modulo2DataSheet#ordering-information)
+- [Compliance Notices](../Modulo2DataSheet#compliance-notices)
 
 ## Introduction
 
 ### Modulo-2 Features
 
-| Model name: Afero Modulo-2 Secure WLAN Radio Development BoardAfero model number: Modulo-2WLAN type: 802.11 b/g/n 1x1WLAN radio frequencies: 2.4GHzNumber of WLAN antennas: One (1)WLAN antenna configuration: Microstrip Monopole PCB antennaWLAN encryption: 64-bit WEP, 128-bit WEP, WPA-PSK, WPA2-PSKBluetooth radio: Bluetooth® low energy wireless technology (4.0)Number of Bluetooth antennas: One (1) shared with WLANBluetooth antenna configuration: Shared with WLANBluetooth power level: 4dBmMaximum transmit power: 20 dBmReceive sensitivity: -85dBmPower consumption: <500 mW (average)Host interface: UART, SPI, 3.3V CMOS | Security features: Cryptographic co-processor with secure, hardware-based key storageInterface pins: Four (4) multifunction IOsPower (VCC): 5VDC +10/-5%Operating temperature: 0 - +85CStorage temperature: -20 - +85COperating humidity: 10-85% RH, non-condensingStorage humidity: 0-90% RH, non-condensingLED indicators: One (1)Buttons: One (1)Dimensions: 61.5mm x 17.8mm x 11.5mm (L x W x H)Weight (Earth ABL): 7gPackage: 600 mil DIP form factorCompliance: FCC/IC, CE, TELECCertifications: Bluetooth SIG |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-|                                                              |                                                              |
+- Model name: Afero Modulo-2 Secure WLAN Radio Development Board
+- Afero model number: Modulo-2
+- WLAN type: 802.11 b/g/n 1x1
+- WLAN radio frequencies: 2.4GHz
+- Number of WLAN antennas: One (1)
+- WLAN antenna configuration: Microstrip Monopole PCB antenna
+- WLAN encryption: 64-bit WEP, 128-bit WEP, WPA-PSK, WPA2-PSK
+- Bluetooth radio: Bluetooth® low energy wireless technology (4.0)
+- Number of Bluetooth antennas: One (1) shared with WLAN
+- Bluetooth antenna configuration: Shared with WLAN
+- Bluetooth power level: 4dBm
+- Maximum transmit power: 20 dBm
+- Receive sensitivity: -85dBm
+- Power consumption: <500 mW (average)
+- Host interface: UART, SPI, 3.3V CMOS
+- Security features: Cryptographic co-processor with secure, hardware-based key storage
+- Interface pins: Four (4) multifunction IOs
+- Power (VCC): 5VDC +10/-5%
+- Operating temperature: 0 - +85C
+- Storage temperature: -20 - +85C
+- Operating humidity: 10-85% RH, non-condensing
+- Storage humidity: 0-90% RH, non-condensing
+- LED indicators: One (1)
+- Buttons: One (1)
+- Dimensions: 61.5mm x 17.8mm x 11.5mm (L x W x H)
+- Weight (Earth ABL): 7g
+- Package: 600 mil DIP form factor
+- Compliance: FCC/IC, CE, TELEC
+- Certifications: Bluetooth SIG
 
 ### Block Diagram
 
-![img](img/Mod2Block1.png)
+<img src="../img/Mod2Block1.png" width="700" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ## Mechanical Specification
 
 ### Mechanical Drawing
 
-![img](img/Modulo-2MechDrawingRevA.png)
+<img src="../img/Modulo-2MechDrawingRevA.png" width="700" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ### Antenna Keepout
 
-![img](img/Modulo2AntennaKeepout.png)
+<img src="../img/Modulo-2MechDrawingRevA.png" width="700" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ### Pin Definitions
 
@@ -58,7 +84,7 @@ This page contains the following sections:
 | **18** | GND          | Ground                      | **36** | VCC_USB      | External 5V USB Power Rail  |
 |        |              |                             |        |              |                             |
 
-![img](img/Mod2_MarkUp.jpg)
+<img src="../img/Mod2_MarkUp.jpg" width="350" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ### Mechanical Characteristics
 

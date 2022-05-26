@@ -6,14 +6,14 @@ Modulo-1B-TY makes it easy to prototype and build connected products used in con
 
 This data sheet contains the following sections:
 
-- [Overview](../Modulo1BTYDataSheet#Intro)
-- [Pin Definitions](../Modulo1BTYDataSheet#PinDefs)
-- [DC Electrical Specification](../Modulo1BTYDataSheet#DCSpec)
-- [RF Specification](../Modulo1BTYDataSheet#RFSpec)
-- [Environmental Specification](../Modulo1BTYDataSheet#EnvSpec)
-- [Mechanical Specification](../Modulo1BTYDataSheet#MechSpec)
-- [Where to Obtain](../Modulo1BTYDataSheet#Obtain)
-- [Compliance Notices](../Modulo1BTYDataSheet#Compliance)
+- [Overview](../Modulo1BTYDataSheet#overview)
+- [Pin Definitions](../Modulo1BTYDataSheet#pindefinitions)
+- [DC Electrical Specification](../Modulo1BTYDataSheet#dc-electrical-specification)
+- [RF Specification](../Modulo1BTYDataSheet#rf-specification)
+- [Environmental Specification](../Modulo1BTYDataSheet#environmental-specification)
+- [Mechanical Specification](../Modulo1BTYDataSheet#mechanical-specification)
+- [Where to Obtain](../Modulo1BTYDataSheet#where-to-obtain)
+- [Compliance Notices](../Modulo1BTYDataSheet#compliance-notes)
 
 This data sheet is also available as a [PDF file](../files/Modulo-1B-TYDataSheet.pdf).
 
@@ -21,13 +21,33 @@ This data sheet is also available as a [PDF file](../files/Modulo-1B-TYDataSheet
 
 ### Features
 
-| Model name: Afero Modulo-1B Secure BLE Radio Development BoardPart number: A-FGS-00017-00Afero model number: Modulo-1B-TYBluetooth radio: Bluetooth low energy wireless technology (5.0)Number of Bluetooth antennas: One (1)Antenna configuration: On-module chip antennaMaximum transmit power: 4dBmReceive sensitivity: -96dBmPower consumption: 7.5mA(TX), 5.4mA(RX)Host interface: UART, SPI, 3.3V CMOSSecurity features: Cryptographic co-processor with secure, hardware-based key storageInterface pins: Four (4) x GPIO | Power: Supplied via an input pin (VIN: 4.0-5.5V) or via µUSB connectorOperating temperature: 0 - +85° CStorage temperature: -40 to +85° COperating humidity: 10 to 80% RH, non-condensingStorage humidity: 5 to 90% RH, non-condensingLED indicators: One (1)Buttons: One (1)Dimensions: 62 x 18 x 12mm (L x W x H)Weight (Earth ABL): 7gPackage: 600 mil DIP form factorCompliance: FCC/IC/TELEC |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-|                                                              |                                                              |
+- Model name: Afero Modulo-1B Secure BLE Radio Development Board
+- Part number: A-FGS-00017-00
+- Afero model number: Modulo-1B-TY
+- Bluetooth radio: Bluetooth low energy wireless technology (5.0)
+- Number of Bluetooth antennas: One (1)
+- Antenna configuration: On-module chip antenna
+- Maximum transmit power: 4dBm
+- Receive sensitivity: -96dBm
+- Power consumption: 7.5mA(TX), 5.4mA(RX)
+- Host interface: UART, SPI, 3.3V CMOS
+- Security features: Cryptographic co-processor with secure, hardware-based key storage
+- Interface pins: Four (4) x GPIO
+- Power: Supplied via an input pin (VIN: 4.0-5.5V) or via µUSB connector
+- Operating temperature: 0 - +85° C
+- Storage temperature: -40 to +85° C
+- Operating humidity: 10 to 80% RH, non-condensing
+- Storage humidity: 5 to 90% RH, non-condensing
+- LED indicators: One (1)
+- Buttons: One (1)
+- Dimensions: 62 x 18 x 12mm (L x W x H)
+- Weight (Earth ABL): 7g
+- Package: 600 mil DIP form factor
+- Compliance: FCC/IC/TELEC 
 
 ### Block Diagram
 
-![img](img/Mod1BTY-BlockDiagram.png)
+<img src="../img/Mod1BTY-BlockDiagram.png" width="600" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ## Pin Definitions
 
@@ -57,7 +77,7 @@ This data sheet is also available as a [PDF file](../files/Modulo-1B-TYDataSheet
 
 ### Pinout Diagram
 
-![img](img/Mod1BTY-Pinout.png)
+<img src="../img/Mod1BTY-Pinout.png" width="300" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ### Configuration Options
 
@@ -67,7 +87,7 @@ This data sheet is also available as a [PDF file](../files/Modulo-1B-TYDataSheet
 | **SB2**         | User can measure current on 3V3_OUT rail by cutting the SB2 and applying current meter to each end of SB2. |
 | **SB3**         | Button(S1) is connected to pin IO3 and is active low. Pressing the button will indicate input value 0. User can disconnect the button from the pin by cutting the SB3. |
 
-![img](img/Mod1BTY-SB.png)
+<img src="../img/Mod1BTY-SB.png" width="350" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ## DC Electrical Specification
 
@@ -153,13 +173,13 @@ Conditions: 25°C, VIN=5V, Parameters measured at RF connector.
 
 ### Mechanical Drawing
 
-![img](img/Mod1BTY-MechDrawing.png)
+<img src="../img/Mod1BTY-MechDrawing.png" width="700" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ### Antenna Keep-Out
 
 To preserve antenna performance, keep materials away from the antenna element. The dimensioned box shows an example antenna keep-out region. Infringing on this keep-out should be done with direction from an RF engineer to best retain RF performance.
 
-![img](img/Mod1BTY-AntennaKeepout.png)
+<img src="../img/Mod1BTY-AntennaKeepout.png" width="700" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ### Mechanical Characteristics
 

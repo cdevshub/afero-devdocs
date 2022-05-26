@@ -8,13 +8,13 @@ The instructions that follow use the following components:
 - Afero specific Microchip CryptoAuthentication™ Security Module (ATECC508A-MAHKN)
 - SPI flash memory (W25Q32JVSSIQ)
 
-Ordering information is provided below in the [Key Components List](../ASR2HWInt#key-comps) section.
+Ordering information is provided below in the [Key Components List](../ASR2HWInt#key-components-list) section.
 
 ## Components
 
 The block diagram below illustrates the components required for this integration:
 
-![img](img/Murata-Components-BlockDiag.jpg)
+<img src="../img/Murata-Components-BlockDiag.jpg" width="700" style="vertical-align:middle;margin:0px 0px;border:none">
 
 Each component is described in more detail below.
 
@@ -28,7 +28,7 @@ WICED is a Cypress development system that vastly reduces the effort required to
 
 Afero designed the following reference schematic with Murata. (Click to open a [.pdf file of the schematic](../files/1LD_Afero_20181023.pdf).)
 
-![img](img/1LD_Afero_20181023.png)
+<img src="../img/1LD_Afero_20181023.png" width="1000" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ### Afero Security Module
 

@@ -2,35 +2,29 @@
 
 This page contains the following information about the QR code labels required for Afero products. You will need this information in the prototyping and manufacturing processes.
 
-- [Labeling Afero Products with QR Codes](../QRCodes#QR-Code-Labeling)
-
-- - [Large QR Code Labels](../QRCodes#LargeQRCode)
-  - [Small QR Code Labels](../QRCodes#SmallQRCode)
-  - [Manufacturing Process](../QRCodes#QRCodeManufacturing)
-  - [Notes on Label Placement](../QRCodes#LabelPlacement)
-  - [Customizing the Label for Printing](../QRCodes#CustomLabel)
-
-- [Generating QR Codes for Afero Products](../QRCodes#QRCodeGen)
-
-- - [Products Using the Latest QR Code Version](../QRCodes#ASR2QR)
-
-  - - [QR Payload Details](../QRCodes#QRPayload)
-    - [QR Code Details](../QRCodes#QRParameters)
-    - [Plain-Text Association ID](../QRCodes#PlainTextAssnID)
-    - [Examples](../QRCodes#ASR2QRcodeExample)
-
-  - [Products Using the Legacy QR Code Version](../QRCodes#ASR1QR)
-
-  - - [About ASR-1 Association ID](../QRCodes#AboutASR-1QRCodes)
-    - [Label Printing](../QRCodes#ASR1QRLabeling)
-    - [Examples](../QRCodes#ASR1QRcodeExample)
+- [Labeling Afero Products with QR Codes](../QRCodes#labeling-afero-products-with-qr-codes)
+    - [Large QR Code Labels](../QRCodes#large-qr-code-labels)
+    - [Small QR Code Labels](../QRCodes#small-qr-code-labels)
+    - [Manufacturing Process](../QRCodes#manufacturing-process)
+    - [Notes on Label Placement](../QRCodes#notes-on-label-placement)
+    - [Customizing the Label for Printing](../QRCodes#customizing-the-label-for-printing)
+- [Generating QR Codes for Afero Products](../QRCodes#generating-qr-codes-for-afero-products)
+    - [Products Using the Latest QR Code Version](../QRCodes#products-using-the-latest-qr-code-version)
+        - [QR Payload Details](../QRCodes#qr-payload-details)
+        - [QR Code Details](../QRCodes#qr-code-details)
+        - [Plain-Text Association ID](../QRCodes#plain-text-association-id)
+        - [Examples](../QRCodes#examples)
+    - [Products Using the Legacy QR Code Version](../QRCodes#products-using-the-legacy-qr-code-version)
+        - [About ASR-1 Association ID](../QRCodes#about-the-asr-1-association-id)
+        - [Label Printing](../QRCodes#label-printing)
+        - [Examples](../QRCodes#examples)
 
 ## Labeling Afero Products with QR Codes
 
 Each Afero smart product requires two QR code labels:
 
-- A customer-visible QR code label on the product, described further in [Large QR code Label](../QRCodes#LargeQRCode) below.
-- A smaller QR code label on the PCB, described further in [Small QR Code Label](../QRCodes#SmallQRCode), also below.
+- A customer-visible QR code label on the product, described further in [Large QR code Label](../QRCodes#large-qr-code-labels) below.
+- A smaller QR code label on the PCB, described further in [Small QR Code Label](../QRCodes#small-qr-code-labels), also below.
 
 ### Large QR Code Label
 
@@ -46,7 +40,7 @@ This use requires the following of the label:
 
 An example large QR code label is illustrated below:
 
-![Example of Large QR Code Label](img/QRCode-Large.png)
+<img src="../img/QRCode-Large.png" width="400" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ### Small QR Code Label
 
@@ -59,13 +53,11 @@ The smaller label is attached to the product PCB that is running the Afero firmw
 
 An example small QR code label is illustrated below:
 
-![Example of Small QR Code Label](img/QRCode-Small.png)
+<img src="../img/QRCode-Small.png" width="300" style="vertical-align:middle;margin:0px 0px;border:none">
 
 ### Manufacturing Process
 
 The Afero Factory Programmer (AFP2) prints both the large and small QR code labels.
-
-
 
 - The small QR code label is printed as part of the PCB factory programming.
 - The large QR code label is printed in a later step, when running the label printing script.
@@ -142,8 +134,8 @@ Assn ID
 
 This section contains instructions for generating the QR codes that will be printed on the labels, for:
 
-- [Products using the latest QR code version](../QRCodes#ASR2QR), and
-- [Products containing the legacy QR code version](../QRCodes#ASR1QR)
+- [Products using the latest QR code version](../products-using-the-latest-qr-code-version), and
+- [Products Using the legacy QR code version](../QRCodes#products-using-the-legacy-qr-code-version)
 
 Unless explicitly instructed otherwise, assume you will be generating the latest QR code version.
 
@@ -188,9 +180,10 @@ In addition to a QR code (containing the Payload) each label is also required to
 
 | **Example QR Payload**                | 1:ABCDEF1234567890ABCDEF12:1234567890ABCDEF                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| **Example QR Code**                   | ![Example QR Code](img/BigAssnQRcode.png) |
+| **Example QR Code**                   | <img src="../img/BigAssnQRcode.png" width="105" style="vertical-align:middle;margin:0px 0px;border:none"> |
 | **Example Plain Text Association ID** | ABCD-EF12-3456-7890-ABCD-EF12                                |
-| **Example Label**                     | ![Example Label](img/BigAssnQRcodeLabel.png) |
+| **Example Label**                     | <img src="../img/BigAssnQRcodeLabel.png" width="375" style="vertical-align:middle;margin:0px 0px;border:none"> |
+
 
 ### Products Using the Legacy QR Code Version
 
@@ -212,29 +205,25 @@ Here is an example of one Association ID in its various formats:
 
 Every label must include the following two pieces of information: 1) the QR code, and 2) a plain-text version of the Association ID. The code can optionally include other information, such as an FCC ID.
 
-1. QR Code Generation
+**1.** QR Code Generation
 
-    
+The following parameters should be used when generating a QR code:
 
-    The following parameters should be used when generating a QR code:
+- **Version:** 1 (21x21)
+- **Error Connection:** Q (quartile)
+- **Input Mode:** Alphanumeric
 
-   - **Version:** 1 (21x21)
-   - **Error Connection:** Q (quartile)
-   - **Input Mode:** Alphanumeric
+**2.** Plain-Text Association ID
 
-2. Plain-Text Association ID
+The plain-text Association ID is used for manual-entry of the Association ID by a user in the case that the QR code is unusable (e.g., QR code is damaged, camera on phone is not working). The plain-text Association ID consists of the 12 characters of the hex-encoded Association ID broken into three distinct four-character blocks. Each character block is separated by a hyphen.
 
-    
-
-    The plain-text Association ID is used for manual-entry of the Association ID by a user in the case that the QR code is unusable (e.g., QR code is damaged, camera on phone is not working). The plain-text Association ID consists of the 12 characters of the hex-encoded Association ID broken into three distinct four-character blocks. Each character block is separated by a hyphen.
-
-   - **Association ID (hex):** 0x123456123456
-   - **Association ID (formatted for printing as plain-text):** 1234-5612-3456
-   - **Font Type:** Monospaced (such as Consolas or Courier) for all Association ID characters. A proportional font (such as Times New Roman) may be used for the hyphens.
+- **Association ID (hex):** 0x123456123456
+- **Association ID (formatted for printing as plain-text):** 1234-5612-3456
+- **Font Type:** Monospaced (such as Consolas or Courier) for all Association ID characters. A proportional font (such as Times New Roman) may be used for the hyphens.
 
 #### Examples
 
-![Example QR Codes for ASR-1](img/ASR1-ExampleQRcodes.png)
+<img src="../img/ASR1-ExampleQRcodes.png" width="800" style="vertical-align:middle;margin:0px 0px;border:none">
 
 
 
