@@ -56,6 +56,6 @@ Project files are complete and saved locally. This has a few practical implicati
 - **You can freely copy and share projects.** Thanks to the simple structure of a Profile Editor project, you can freely duplicate projects, share them, or import one as a template to start another.
 - **To delete a project,** simply delete the project directory through your filesystem.
 
-**&#x26A0; Caution!**  Avoid making edits directly on project files with tools other than the Afero Profile Editor. If you do, normal consistency checks and validation are bypassed, which could cause unexpected results.
+<mark>**&#x26A0; Caution!**  Avoid making edits directly on project files with tools other than the Afero Profile Editor. If you do, normal consistency checks and validation are bypassed, which could cause unexpected results.</mark>
 
  **&#8674;** *Next:* [Select the Project](../SelectProject)

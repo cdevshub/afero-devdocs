@@ -6,7 +6,7 @@ After selecting a project on the Startup window, the Profile Editor opens to the
 
 ## Add Your Information
 
-**1.** In the DEFINE THE DEVICE TYPE section, complete the fields using the information in the table below:
+**1**&nbsp;&nbsp;In the DEFINE THE DEVICE TYPE section, complete the fields using the information in the table below:
 
    | FIELD              | DESCRIPTION                                                  |
    | :----------------- | :----------------------------------------------------------- |
@@ -16,7 +16,7 @@ After selecting a project on the Startup window, the Profile Editor opens to the
    | Header File Output | If you are using a device that has a separate MCU, a header file containing the device description (attributes) will be generated when you publish your project. By default, the header file will be saved to your project directory, but you can use this setting to save the header file to a different directory. For example, you might wish to save the file directly into the project directory for the associated MCU code (which will rely on the header). |
    | Device Icon        | This icon will be visible to the end-user. Select a meaningful image to represent your device. Click SELECT to see all available icons; highlight the icon you want then click USE THIS ONE! Your selected icon will be displayed in the Preview pane to the right, to give you an idea of how it will look on a smartphone. It will also be displayed to the left of your project name in the Navigation pane. |
 
-**2.** The POWER OPTIMIZATION section provides controls and information regarding battery power consumption.
+**2**&nbsp;&nbsp;The POWER OPTIMIZATION section provides controls and information regarding battery power consumption.
 
 <mark>**&check; Note:** The Power Optimization calculations apply only to projects using either the Modulo-1 or Modulo-1B modules.</mark>
 
@@ -27,12 +27,12 @@ After selecting a project on the Startup window, the Profile Editor opens to the
  
     <img src="../img/APE-ApproxBatteryLife.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
 
-**3.** Once you’ve defined the Device Type, you’ll want to save the definition.
+**3**&nbsp;&nbsp;Once you’ve defined the Device Type, you’ll want to save the definition.
 
 - Clicking CANCEL reverts any changes you made on the page.
 - Clicking SAVE initiates validation of the new data and, if validation is successful, the data is saved to your local project directory.
 
-   Every time you save, your data is validated. If validation fails for any reason, an error message will appear then move to the left. Click the error description in the message to highlight the field that needs correcting.
+<mark>**&check; Note:**  Every time you save, your data is validated. If validation fails for any reason, an error message will appear then move to the left. Click the error description in the message to highlight the field that needs correcting.</mark>
 
 
  **&#8674;** *Next:* [Define the Device Attributes](../AttrDef)

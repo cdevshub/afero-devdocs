@@ -29,9 +29,7 @@ Each attribute has an “owner”, which can be ASR or an associated MCU. It’s
 
 - Attributes owned by ASR have IDs in the range 1024 - 65022.
 
-  All attribute IDs in a given device Profile are listed in the device-description.h file, which is created for you by the Afero Profile Editor.
-
-  
+All attribute IDs in a given device Profile are listed in the device-description.h file, which is created for you by the Afero Profile Editor.
 
 Ownership affects how an attribute is treated; specifically:
 

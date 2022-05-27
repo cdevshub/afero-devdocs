@@ -59,11 +59,11 @@ You can update the firmware on your MCU by using the Afero OTA Manager in conjun
 
 We’ll start by defining the GPIO attributes. Note that not all modules have GPIO pins.
 
-**1. Click ATTRIBUTES in the Navigation pane to open the Attribute Definition window.** (We’ll talk about the MCU PROTOCOL drop-down menu when we [define MCU attributes](../AttrDef#MCUAttrs), later.) By default the GPIO attributes appear, ready to be defined:
+**1**&nbsp;&nbsp;Click ATTRIBUTES in the Navigation pane to open the Attribute Definition window.** (We’ll talk about the MCU PROTOCOL drop-down menu when we [define MCU attributes](../AttrDef#MCUAttrs), later.) By default the GPIO attributes appear, ready to be defined:
 
 <img src="../img/AttributeDefinition.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
 
-**2. Click an attribute’s ON/OFF toggle switch to turn it ON and open the attribute’s definition editor.** Depending on the Operation Mode you select for your GPIO pin (INPUT vs. OUTPUT), different options will appear:
+**2**&nbsp;&nbsp;Click an attribute’s ON/OFF toggle switch to turn it ON and open the attribute’s definition editor.** Depending on the Operation Mode you select for your GPIO pin (INPUT vs. OUTPUT), different options will appear:
 
 **GPIO Input Options**<br><img src="../img/GPIO-Attributes-Input.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
 
@@ -71,7 +71,7 @@ We’ll start by defining the GPIO attributes. Note that not all modules have GP
 
 <mark>**&check; Note:** If you turn an attribute OFF, you will lose its current definition. To retain your attribute definition but close that attribute’s editor, click the name of the attribute shown in orange at the top-left of the editor. Save your work at any time by clicking the SAVE button in the upper-right of the window.</mark>
 
-**3. Complete the fields using the information in the table below:**
+**3**&nbsp;&nbsp;Complete the fields using the information in the table below:**
 
    | FIELD                                                        | DESCRIPTION                                                  |
    | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -80,7 +80,7 @@ We’ll start by defining the GPIO attributes. Note that not all modules have GP
    | Active                                                       | By default, an attribute value of 1 sets the I/O voltage to HIGH. To invert that setting so a value of 1 sets the voltage to LOW, select that option. Active Low can be set for all GPIOs that are configured as Input or Output, but are not configured as Toggle (for Input) or PWM (for Output). |
    | Bind to Attributes                                           | Use binding to have changes from one attribute propagate to another attribute locally, without having to go through the Afero Cloud. For details, read [More About Binding](../AttrDef#more-about-binding).<br><br><mark>**&check; Note:** When you bind attributes together, if one of the bound attributes has the STORE IN FLASH option selected, then all the bound attributes must have the STORE IN FLASH option selected.</mark> |
    | Store in Flash                                               | This option is available to:<br><br>&#9632; **Output** attributes **not** set to Pulse (see note below), and<br><br>&#9632; **Input** attributes that **are** set to ISTOGGLE.<br><br>Selecting this checkbox ensures that an attribute value persists in flash memory if power is interrupted. A good example of this is when a powered-on plug loses, then regains, power. When power is restored, you want the plug to return to the “on” state, the same state it was in prior to losing power.<br><br><mark>**&check; Note:** There is a reason STORE IN FLASH is not available to Output attributes set to PULSE. If a pulsing attribute values were stored in flash, the value would be written with every pulse, and that could result in exhausting flash lifetime earlier than expected.</mark> |
-   | Use ASR Timestamps                                           | This option is available to all attributes, **but only on Modulo-1B, Plumo-2C, and Plumo-2D**.<br><br>Select this option if you want to report the actual time an attribute was updated, whether the device was offline or online at the time of update.<br><br>**&check; Note:** If you want to track the history of updates and not just the last time something happened, you can store the timestamps in a queue using a specified logic that’s used for reporting. You configure the queue by selecting a “queuing policy” in the drop-down menu described below. |
+   | Use ASR Timestamps                                           | This option is available to all attributes, **but only on Modulo-1B, Plumo-2C, and Plumo-2D**.<br><br>Select this option if you want to report the actual time an attribute was updated, whether the device was offline or online at the time of update.<br><br><mark>**&check; Note:** If you want to track the history of updates and not just the last time something happened, you can store the timestamps in a queue using a specified logic that’s used for reporting. You configure the queue by selecting a “queuing policy” in the drop-down menu described below.</mark> |
    | Queue Configuration                                          | This option is available to all attributes, **but only on Modulo-1B, Plumo-2C, and Plumo-2D**.<br><br>If you want to keep track of updates to an attribute, you can configure a queue that stores these updates. If you have selected the USE ASR TIMESTAMPS option, the time of update is also stored.<br><br>To set up a queue, you must select a Queuing Policy that specifies the **queue order** and **what happens when the queue is full**. After selecting a policy, you will define the Queue Size, which must be an integer between 0 and 65,535. **However**, the size of the queue must fit in your device Profile RAM, so the upper limit will most likely be much lower.<br><br>Read the details of each queuing policy in [All About Queuing](../AttrDef#all-about-queuing). |
 
 ### More About Pulsing
@@ -159,17 +159,17 @@ Depending on whether your MCU device is a Potenco or another MCU device, the int
 
 First you will configure your Potenco, then add attributes:
 
-**1.** Once you’ve clicked ATTRIBUTES in the right-hand navigation bar, you’ll see the DEFINE THE MCU ATTRIBUTES window:<br>
+**1**&nbsp;&nbsp;Once you’ve clicked ATTRIBUTES in the right-hand navigation bar, you’ll see the DEFINE THE MCU ATTRIBUTES window:<br>
 <img src="../img/APE-PotencoConfig.png" width="300" style="vertical-align:middle;margin:0px 0px;border:none">
 
-**2.** In the Supported Network Interfaces pane, select all the network interfaces that your device supports. Select from WI-FI, ETHERNET, and WAN.
+**2**&nbsp;&nbsp;In the Supported Network Interfaces pane, select all the network interfaces that your device supports. Select from WI-FI, ETHERNET, and WAN.
 
-**3.** In the Device Configuration pane, if you want your MCU to receive the UTC time updates from ASR, select the RECEIVE UTC TIME checkbox. Read more in [Using the Afero Cloud to Keep Time on the MCU](../SetMCUTime).
+**3**&nbsp;&nbsp;In the Device Configuration pane, if you want your MCU to receive the UTC time updates from ASR, select the RECEIVE UTC TIME checkbox. Read more in [Using the Afero Cloud to Keep Time on the MCU](../SetMCUTime).
 
-**4.** Now you’re ready to add an attribute. Click the + DEVICE ATTRIBUTE button to open the device attribute editor:<br>
+**4**&nbsp;&nbsp;Now you’re ready to add an attribute. Click the + DEVICE ATTRIBUTE button to open the device attribute editor:<br>
 <img src="../img/APE-PotencoAttrEditor.png" width="400" style="vertical-align:middle;margin:0px 0px;border:none">
 
-**5.** Complete the fields using the information in the table below:
+**5**&nbsp;&nbsp;Complete the fields using the information in the table below:
 
    | FIELD          | DESCRIPTION                                                  |
    | :------------- | :----------------------------------------------------------- |
@@ -180,19 +180,19 @@ First you will configure your Potenco, then add attributes:
    | Max Size       | Maximum size, in bytes, of the attribute data. The max size is pre-defined for all data types, with UTF8S and BYTES the highest at 1536 bytes. Keep in mind that attribute memory is preallocated in ASR, so choose a max that will definitely handle your application needs; if you exceed allocated space at runtime, you will almost certainly overwrite something else. |
    | Read/Write     | MCU attributes are Read-Only by default. If you need to write attributes to your device, then select the WRITE checkbox as well. |
 
-**6.** Once you’ve defined all your attributes, click SAVE in the upper-right corner of the window.
+**6**&nbsp;&nbsp;Once you’ve defined all your attributes, click SAVE in the upper-right corner of the window.
 
 ### Define (Non-Potenco) MCU Attributes
 
 First you will configure your MCU, then add attributes:
 
-**1.** Click the MCU CONFIGURATION toggle switch to turn it ON and select the protocol your MCU is using, either SPI or UART.
+**1**&nbsp;&nbsp;Click the MCU CONFIGURATION toggle switch to turn it ON and select the protocol your MCU is using, either SPI or UART.
 
 <mark>**&check; Note:** For the “Plumo-2D” Module Type, only UART protocol is supported.</mark>
 
 <img src="../img/MCU-Config.png" width="600" style="vertical-align:middle;margin:0px 0px;border:none">
 
-**2.** If you have selected UART, you must select the following transmission options from the drop-down menus:
+**2**&nbsp;&nbsp;If you have selected UART, you must select the following transmission options from the drop-down menus:
 
    | OPTION     | DESCRIPTION                                                  |
    | :--------- | :----------------------------------------------------------- |
@@ -201,18 +201,18 @@ First you will configure your MCU, then add attributes:
    | Data Width | Number of bits per data frame. Select from 5, 6, 7, 8, or 9. |
    | Stop Bits  | Number of bits used to signal the end of the data transmission. Select from 1, 1.5, or 2. |
 
-**3.** **The RECEIVE UTC TIME setting applies only to ASR-2 and Modulo-2**: If you want your MCU to receive the UTC time updates from ASR, select the RECEIVE UTC TIME checkbox. Read more in [Using the Afero Cloud to Keep Time on the MCU](../SetMCUTime).
+**3**&nbsp;&nbsp;**The RECEIVE UTC TIME setting applies only to ASR-2 and Modulo-2**: If you want your MCU to receive the UTC time updates from ASR, select the RECEIVE UTC TIME checkbox. Read more in [Using the Afero Cloud to Keep Time on the MCU](../SetMCUTime).
 
-**4.** Use the FIRMWARE OTA UPDATES section if you are planning to send firmware image updates to your MCU over-the-air using the OTA Manager. You must select at least one firmware Image Type checkbox to enable OTA firmware updates for your MCU.
+**4**&nbsp;&nbsp;Use the FIRMWARE OTA UPDATES section if you are planning to send firmware image updates to your MCU over-the-air using the OTA Manager. You must select at least one firmware Image Type checkbox to enable OTA firmware updates for your MCU.
 
-   If you don’t see any Image Types, or need an Image Type that isn’t shown, go to the [Afero OTA Manager](https://otamanager.afero.io/) and create a new Image Type. Once you’ve saved this new Image Type, return to the Profile Editor to select the Image Type and complete your Profile.
+If you don’t see any Image Types, or need an Image Type that isn’t shown, go to the [Afero OTA Manager](https://otamanager.afero.io/) and create a new Image Type. Once you’ve saved this new Image Type, return to the Profile Editor to select the Image Type and complete your Profile.
 
-   For more information on preparing your MCU application code to receive OTA updates, please read [Handling MCU OTA Updates](../MCU_OTA).
+For more information on preparing your MCU application code to receive OTA updates, please read [Handling MCU OTA Updates](../MCU_OTA).
 
-**5.** Now you’re ready to add an MCU attribute. Click the + MCU ATTRIBUTE button to open the MCU attribute definition editor:<br>
+**5**&nbsp;&nbsp;Now you’re ready to add an MCU attribute. Click the + MCU ATTRIBUTE button to open the MCU attribute definition editor:<br>
 <img src="../img/Define_MCU_Attr.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
 
-**6.** Complete the fields using the information in the table below:
+**6**&nbsp;&nbsp;Complete the fields using the information in the table below:
 
    | FIELD               | DESCRIPTION                                                  |
    | :------------------ | :----------------------------------------------------------- |
@@ -225,7 +225,7 @@ First you will configure your MCU, then add attributes:
    | Use ASR Timestamps  | Refer to the [Use ASR Timestamps](../AttrDef#UseTimestamp) section above. |
    | Queue Configuration | Refer to the [Queue Configuration](../AttrDef#QueueConfig) section above. To understand the queuing policy options, read [All About Queuing](../AttrDef#queuepolicy). |
 
-**7.** Once you’ve defined all your attributes, click SAVE in the upper-right corner of the window.
+**7**&nbsp;&nbsp;Once you’ve defined all your attributes, click SAVE in the upper-right corner of the window.
 
 #### MCU Attribute Tips
 

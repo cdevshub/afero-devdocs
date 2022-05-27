@@ -2,8 +2,6 @@
 
 The QR code contains an Association ID that is used by the Afero mobile app to onboard the device. It is critical that the correct QR code label be physically applied to the module that generated it.
 
-
-
 Every label must include the following two pieces of information:
 
 - QR code, and
