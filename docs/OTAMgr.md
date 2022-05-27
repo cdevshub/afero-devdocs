@@ -60,19 +60,19 @@ The first time you sign in to the Afero OTA Manager, you will be taken through a
 
 After the first sign-in wizard flow, you will be able to create Image Types from the main window of the OTA Manager:
 
-**1.** From the upper-right of the OTA Manager main window, select the ADD button, just to the right of the heading IMAGE TYPES. The Add Firmware Image Type window appears:
+**1**&nbsp;&nbsp;From the upper-right of the OTA Manager main window, select the ADD button, just to the right of the heading IMAGE TYPES. The Add Firmware Image Type window appears:
 
 <img src="../img/NewImageType.png" width="300" style="vertical-align:middle;margin:0px 0px;border:none"> 
 
-**2.** Give your Image Type a name and description, then click ADD.
+**2**&nbsp;&nbsp;Give your Image Type a name and description, then click ADD.
 
 ### Edit Existing Image Type
 
 If you want to change the name or description of an existing Image Type, you can do this from the main window. Note that once you’ve created an Image Type, that type is assigned an ID that does not change even when you edit the name or description. So, if what you want is the underlying category of the image to be different, create a new Image Type rather than changing the name on an existing type.
 
-**1.** From the OTA Manager main window on the left, hover your cursor over the pencil icon<img src="../img/EditIcon.png" width="25" style="vertical-align:middle;margin:0px 0px;border:none">to the left of an existing Image Type. The option to EDIT IMAGE TYPE will appear. Select the icon.
+**1**&nbsp;&nbsp;From the OTA Manager main window on the left, hover your cursor over the pencil icon<img src="../img/EditIcon.png" width="25" style="vertical-align:middle;margin:0px 0px;border:none">to the left of an existing Image Type. The option to EDIT IMAGE TYPE will appear. Select the icon.
 
-**2.** The Edit Firmware Image Type window will appear. Make your edits and SAVE.
+**2**&nbsp;&nbsp;The Edit Firmware Image Type window will appear. Make your edits and SAVE.
 
 ## Upload a Firmware Image
 
@@ -82,7 +82,7 @@ When you are ready to upload a firmware image, start from the OTA Manager main w
 
 **1**&nbsp;&nbsp;From the upper-right of the window, select +UPLOAD NEW IMAGE. The three-step upload wizard appears.
 
-****&nbsp;&nbsp;You can upload your image in either of two ways:
+**2**&nbsp;&nbsp;You can upload your image in either of two ways:
 
 - Drag & drop the image into the target Image Type folder; or
 - Select the target Image Type folder then navigate to your image file and select it.
