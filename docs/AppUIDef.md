@@ -12,12 +12,12 @@ After you’ve defined the mobile app UI but before you move on to publishing yo
 
 For each of your attributes, you will define “attribute options”, which specify how a control will display the attribute’s values. Follow the instructions below:
 
-**1.** Click UI CONTROLS in the left-hand Navigation pane to open the UI Controls definition window.
+**1**&nbsp;&nbsp;Click UI CONTROLS in the left-hand Navigation pane to open the UI Controls definition window.
 
-**2.** In the far-right pane, click + ATTRIBUTE OPTION. The Attribute Option Details dialog box opens:<br>
+**2**&nbsp;&nbsp;In the far-right pane, click + ATTRIBUTE OPTION. The Attribute Option Details dialog box opens:<br>
 <img src="../img/APE-AttrOptDetails.png" width="500" style="vertical-align:middle;margin:0px 0px;border:none">
 
-**3.** Complete each field, as relevant to the targeted UI control(s), using the table below as reference:
+**3**&nbsp;&nbsp;Complete each field, as relevant to the targeted UI control(s), using the table below as reference:
 
    | FIELD                                                        | DESCRIPTION                                                  | RELEVANT UI CONTROL(S)                     |
    | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------- |
@@ -30,9 +30,9 @@ For each of your attributes, you will define “attribute options”, which spec
    | FIELD                                                        | DESCRIPTION                                                  | RELEVANT UI CONTROL(S)                     |
    | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------- |
    | Value Options                                                | Select the VALUE OPTIONS checkbox before entering values. Note that Switch controls **require** that you select this checkbox and define two value options.<br><br>To define the options, type the set of attribute values along with their corresponding labels in the table. In the mobile app, value options are often rendered as a menu of buttons, only one of which can be selected at any one time. Using the menu example, after the end-user taps any of the buttons, the associated attribute would be set to the corresponding value.<br><br>If you select the RUNNING STATE box for a given value option, when the associated attribute has the selected value, your device will be marked as “Running” in the mobile app UI — this means the Home screen device icon will be colored orange.<br><br>Note that the value options you define will appear in the UI in the order listed in the table. They won't automatically reorder in the UI on the basis of value or label. This gives you complete control over presentation, regardless of underlying implementation.<br><br>**To reorder a defined value option**, move your cursor to the left of the option to reveal the hand cursor and a textured handle. Click and hold the handle; without letting go, reposition the option, then let go to drop it into place.<br><img src="../img/MovingValueOptions.png" width="200" style="vertical-align:middle;margin:0px 0px;border:none"> | &bull; Menu<br>&bull; Slider<br>&bull; Value<br>&bull; Switch (*required*)<br>&bull; Text Box |
-   | Range Options                                                | Select the RANGE OPTIONS checkbox before entering values.<br><br>Min, Max - All values must be numbers (can use decimals with Q15_16 data type). Min must be less than Max. The Min value is both the minimum limit of the slider range and the numeric label shown on the left. Max value is the maximum of the range, on the right.<br><br>Number or Size of Steps - You must define the set points (steps) you want the control to use between Min and Max values. The way you do this depends on the underlying data type of the attribute:<br><br>&bull; If your attribute is a fixed-point integer (Q_15_16 data type), you will set the number of steps. The size of each step will be calculated for you.<br><br>&bull; For all other data types, you must type the minimum granularity of the slider. For example, if you define Min as 0, Max as 1000, and Step as 2, there are 500 valid positions on the slider.<br><br>Unit Label - This label describes the units that the control is displaying and is limited to eight characters. The label is drawn above the control adjacent to the current value of the slider. As a Slider example, if you define the label as “Lumens”, as you drag the slider, it changes from “25 Lumens” to “40 Lumens”, and so on. | &bull; Slider<br>&bull; Temperature<br>&bull; Battery Level             |
+   | Range Options                                                | Select the RANGE OPTIONS checkbox before entering values.<br><br>Min, Max - All values must be numbers (can use decimals with Q15_16 data type). Min must be less than Max. The Min value is both the minimum limit of the slider range and the numeric label shown on the left. Max value is the maximum of the range, on the right.<br><br>Number or Size of Steps - You must define the set points (steps) you want the control to use between Min and Max values. The way you do this depends on the underlying data type of the attribute:<p><ul><li>If your attribute is a fixed-point integer (Q_15_16 data type), you will set the number of steps. The size of each step will be calculated for you.</li><li>For all other data types, you must type the minimum granularity of the slider. For example, if you define Min as 0, Max as 1000, and Step as 2, there are 500 valid positions on the slider.</li></ul>Unit Label - This label describes the units that the control is displaying and is limited to eight characters. The label is drawn above the control adjacent to the current value of the slider. As a Slider example, if you define the label as “Lumens”, as you drag the slider, it changes from “25 Lumens” to “40 Lumens”, and so on. | &bull; Slider<br>&bull; Temperature<br>&bull; Battery Level             |
 
-**4.** When you have finished defining the details for a given attribute, click OK to save and dismiss the dialog box. Your saved attribute options will all be listed in the far-right column labeled ATTRIBUTE OPTIONS. Each attribute option is identified with its *Default Label:Attribute* in the upper-left of each pane:<br>
+**4**&nbsp;&nbsp;When you have finished defining the details for a given attribute, click OK to save and dismiss the dialog box. Your saved attribute options will all be listed in the far-right column labeled ATTRIBUTE OPTIONS. Each attribute option is identified with its *Default Label:Attribute* in the upper-left of each pane:<br>
 
 <img src="../img/APE-AttrOptionsPane.png" width="200" style="vertical-align:middle;margin:0px 0px;border:none">
 
@@ -42,7 +42,7 @@ You can take the following actions on any of your saved attribute options:
 - Edit saved attribute option details by selecting the pencil icon<img src="../img/PencilIconWhite.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none"> in the relevant Attribute Option pane: The Attribute Option Details dialog box will open for edit.
 - You can delete an attribute option by selecting the trash icon<img src="../img/TrashIconWhite.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none">.
 
-**6.** Select + ATTRIBUTE OPTION to open a new Attribute Option Details dialog box; add the details for your next attribute and save. Repeat for each attribute.
+**6**&nbsp;&nbsp;Select + ATTRIBUTE OPTION to open a new Attribute Option Details dialog box; add the details for your next attribute and save. Repeat for each attribute.
 
 Now that you’ve defined all your attribute options, you can move on to assigning controls for your attributes.
 
@@ -52,7 +52,7 @@ Use this window to define which attribute option(s) will be displayed using whic
 
 You can assign a single attribute option to multiple UI controls. Each control assigned will use the attribute option details that are relevant to that control.
 
-**1.** If you haven’t defined any controls for your device yet, or to create a new one, click + CONTROL to open the Select Control Type window. You’ll be able to select from the following controls (read below, step 2, for details).
+**1**&nbsp;&nbsp;If you haven’t defined any controls for your device yet, or to create a new one, click + CONTROL to open the Select Control Type window. You’ll be able to select from the following controls (read below, step 2, for details).
 
    | [MENU](../AppUIDef#MenuControl)      |      | [SLIDER](../AppUIDef#SliderControl)  |
    | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -64,7 +64,7 @@ You can assign a single attribute option to multiple UI controls. Each control a
    | [TEXT BOX](../AppUIDef#TextBoxControl) |      |                                                              |
    | <img src="../img/TextBoxControl.png" width="200" style="vertical-align:middle;margin:0px 0px;border:none"> |      |                                                              |
 
-**2.** Use the following guidelines when selecting and defining a control. Note that if you have not defined attribute options for a given attribute, that attribute won’t be available in the ATTRIBUTE OPTION drop-down menu. You must do that by selecting the +ATTRIBUTE OPTION button in the right-hand pane. Instructions for completing those fields are described above in [Define the Attribute Options](../AppUIDef#Options).
+**2**&nbsp;&nbsp;Use the following guidelines when selecting and defining a control. Note that if you have not defined attribute options for a given attribute, that attribute won’t be available in the ATTRIBUTE OPTION drop-down menu. You must do that by selecting the +ATTRIBUTE OPTION button in the right-hand pane. Instructions for completing those fields are described above in [Define the Attribute Options](../AppUIDef#Options).
 
 **MENU** - Use when the function has a small number of discrete value states and when each value state is short (can only be one line of text). When you select this control you must define the fields described below:
 
@@ -109,7 +109,7 @@ When you select this control you must define the fields described below:
    | Attribute Option      | Select the attribute option you want to associate with this Temperature control. If it doesn’t appear in the drop-down menu, create a new one by selecting the +ATTRIBUTE OPTION button in the right-hand pane. |
    | Control Type          | Should be predefined with Temperature control.               |
    | View Style            | Select INLINE or POPUP. Inline style displays the full slider. Popup style shows the current value in a selectable circle, which expands to a full vertically-oriented slider on tap. Select VIEW STYLE PREVIEW to see what that control will look like in the mobile app. |
-   | Additional Attributes | You can optionally set two more attributes if you want to show the end-user the current temperature and a heating “status” (as a number or a string):<br><br>&bull; CURRENT TEMPERATURE - Select a defined attribute that will report the current temperature, then in the Attribute Options for this attribute, define the CURRENT TEMP RANGE: Min, Max, and Number or Size of Steps.<br><br>&bull; CURRENT STATUS - Select a defined attribute that will report the thermostat “status”, which will appear next to the slider (below for Inline; on the left for Popup). |
+   | Additional Attributes | You can optionally set two more attributes if you want to show the end-user the current temperature and a heating “status” (as a number or a string):<p><ul><li>CURRENT TEMPERATURE - Select a defined attribute that will report the current temperature, then in the Attribute Options for this attribute, define the CURRENT TEMP RANGE: Min, Max, and Number or Size of Steps.</li><li>CURRENT STATUS - Select a defined attribute that will report the thermostat “status”, which will appear next to the slider (below for Inline; on the left for Popup).</li></ul> |
 
 **BATTERY LEVEL** - Use when you need to display battery level to the end-user. This control is like the Slider but gets information from two attributes:
 
@@ -148,7 +148,7 @@ When you select this control you must define the fields described below:
    | Control Type     | Should be predefined with Text Box control.                  |
    | View Style       | INLINE is the only View Style option for the Text Box control. Select VIEW STYLE PREVIEW to see what that control will look like in the mobile app. |
 
-**3.** When you are finished defining the UI controls, click SAVE in the upper-right corner of the window.
+**3**&nbsp;&nbsp;When you are finished defining the UI controls, click SAVE in the upper-right corner of the window.
 
 ## Define the UI Control Groups
 
@@ -160,57 +160,57 @@ Every UI control must belong to at least one UI control group; orphan controls a
 
 Read through and follow the steps below:
 
-**1.** Click UI CONTROL GROUPS in the left-hand Navigation pane to open the UI Control Groups definition window. We’ll look the example below before starting.
+**1**&nbsp;&nbsp;Click UI CONTROL GROUPS in the left-hand Navigation pane to open the UI Control Groups definition window. We’ll look the example below before starting.
 
 The left-hand pane, DEFINE THE UI CONTROL GROUPS, displays a representation of the device mobile app UI (both shown below). At the top of both the mobile app and the Profile Editor is the “groups ribbon”; below are the controls for the selected group. Note that device Settings and Automation are selections only shown in the mobile app groups ribbon, not in the Profile Editor.
 
 You’ll see two groups have been defined: **LED** and **Button**. These are shown at the top in the “groups ribbon”. The **LED** group is centered and highlighted, which means it’s “active” and ready for editing. Below the groups ribbon you’ll see that the **LED** control has been added to the **LED** group. In the right-hand pane, AVAILABLE UI CONTROLS, the **Button** control is shown as still “available” to the **LED** group.<br>
 <img src="../img/APE-ControlGroups.png" width="800" style="vertical-align:middle;margin:0px 0px;border:none">
 
-**2.** You’ll define your groups in the groups ribbon:
+**2**&nbsp;&nbsp;You’ll define your groups in the groups ribbon:
 
-   2a. To **add** a group, click<img src="../img/AddGroupIcon.png" width="25" style="vertical-align:middle;margin:0px 0px;border:none">.
+ ***2a***&nbsp;&nbsp;To **add** a group, click<img src="../img/AddGroupIcon.png" width="25" style="vertical-align:middle;margin:0px 0px;border:none">.
    
-   2b. To **edit** a group name, click the name to make the group active and editable, then make your text edits. Note that group names cannot be longer than 39 characters.
+ ***2b***&nbsp;&nbsp;To **edit** a group name, click the name to make the group active and editable, then make your text edits. Note that group names cannot be longer than 39 characters.
    
-   2c. To **reposition** a group in the ribbon, click the group to make it active, then hover your cursor to the left of the group name (outlined in orange) to reveal the textured move handle<img src="../img/APE-MoveGroup.png" width="130" style="vertical-align:middle;margin:0px 0px;border:none">then drag & drop the group – left or right – to the new position.
+ ***2c***&nbsp;&nbsp;To **reposition** a group in the ribbon, click the group to make it active, then hover your cursor to the left of the group name (outlined in orange) to reveal the textured move handle<img src="../img/APE-MoveGroup.png" width="130" style="vertical-align:middle;margin:0px 0px;border:none">then drag & drop the group – left or right – to the new position.
    
-   2d. To **delete** a group, click the group to make it active, then hover your cursor to the right of the group name to reveal the trash icon<img src="../img/APE-GroupWithTrashCan.png" width="130" style="vertical-align:middle;margin:0px 0px;border:none">then click the trash.
+***2d***&nbsp;&nbsp;To **delete** a group, click the group to make it active, then hover your cursor to the right of the group name to reveal the trash icon<img src="../img/APE-GroupWithTrashCan.png" width="130" style="vertical-align:middle;margin:0px 0px;border:none">then click the trash.
 
-**3.** Now that you’ve defined your control groups, you can organize them as you’d like them to appear to the end-user on the mobile app screen. Remember you can include a given UI control in multiple groups.
+**3**&nbsp;&nbsp;Now that you’ve defined your control groups, you can organize them as you’d like them to appear to the end-user on the mobile app screen. Remember you can include a given UI control in multiple groups.
 
-3a. In the groups ribbon, click the group you want to work on. If you need to scroll the groups ribbon, hover your cursor over the line separating the groups ribbon from controls display and drag the horizontal scroll bar that appears under your cursor. The group you select will center and be outlined in orange. The group is active and ready to receive controls.
+***3a***&nbsp;&nbsp;In the groups ribbon, click the group you want to work on. If you need to scroll the groups ribbon, hover your cursor over the line separating the groups ribbon from controls display and drag the horizontal scroll bar that appears under your cursor. The group you select will center and be outlined in orange. The group is active and ready to receive controls.
 
-3b. The controls you defined in the UI Controls window appear in the right-hand column of the window, under the heading AVAILABLE UI CONTROLS. To add a control to the active group, simply drag it from the column of available controls to the controls display below the groups ribbon. Repeat for all the controls you want to add to the active group.
+***3b***&nbsp;&nbsp;The controls you defined in the UI Controls window appear in the right-hand column of the window, under the heading AVAILABLE UI CONTROLS. To add a control to the active group, simply drag it from the column of available controls to the controls display below the groups ribbon. Repeat for all the controls you want to add to the active group.
 
-3c. To reposition a control within the group, simply drag & drop it.
+***3c***&nbsp;&nbsp;To reposition a control within the group, simply drag & drop it.
 
-3d. To remove a control from a group, drag it back to the AVAILABLE UI CONTROLS pane.
+***3d***&nbsp;&nbsp;To remove a control from a group, drag it back to the AVAILABLE UI CONTROLS pane.
 
-**4.** To quickly switch a control’s View Style or remove it from the group, hover your cursor to the right of a control that’s been added to a group, then click the pencil icon that appears. Editing tools open:<br>
+**4**&nbsp;&nbsp;To quickly switch a control’s View Style or remove it from the group, hover your cursor to the right of a control that’s been added to a group, then click the pencil icon that appears. Editing tools open:<br>
 <img src="../img/APE-EditControl.png" width="300" style="vertical-align:middle;margin:0px 0px;border:none">
 
-**5.** When you’re finished defining your groups, click SAVE.
+**5**&nbsp;&nbsp;When you’re finished defining your groups, click SAVE.
 
 ## Preview the Mobile App UI
 
 It’s possible to preview the UI as you’re creating it, right in the Afero mobile app on your own device. To do this:
 
-**1.** Click the PREVIEW UI button in the upper-left of the window.
+**1**&nbsp;&nbsp;Click the PREVIEW UI button in the upper-left of the window.
 
-**2.** Check the mobile app UI. You will see that a new device icon has been added to your devices: this is the Preview Device.
+**2**&nbsp;&nbsp;Check the mobile app UI. You will see that a new device icon has been added to your devices: this is the Preview Device.
 
 <mark>**&check; Note:** The Preview Device is a virtual device. Changing controls in the Preview UI will not affect the state of any actual device.</mark>
 
-**3.**  In the mobile app, tap the Preview Device to open it and see the UI that you defined. You can test the controls, see changes to the Primary Operation, Running State, and so on.
+**3**&nbsp;&nbsp; In the mobile app, tap the Preview Device to open it and see the UI that you defined. You can test the controls, see changes to the Primary Operation, Running State, and so on.
 
-**4.** If you make changes in the Profile Editor, click the PREVIEW UI button again to update the mobile app UI; you don’t need to Save to see changes.
+**4**&nbsp;&nbsp;If you make changes in the Profile Editor, click the PREVIEW UI button again to update the mobile app UI; you don’t need to Save to see changes.
 
-**5.** You can also exercise your attributes using the Attribute Tester, which opens after you click PREVIEW UI.<br>
+**5**&nbsp;&nbsp;You can also exercise your attributes using the Attribute Tester, which opens after you click PREVIEW UI.<br>
 <img src="../img/APE-AttributeTester.png" width="300" style="vertical-align:middle;margin:0px 0px;border:none">
 
 To use the Attribute Tester, click any group icon to reveal the associated Attribute(s), type a desired value, and click UPDATE. Changes will be visible in the mobile app UI.
 
-**6.** When you’re done testing your UI, remove the Preview Device by doing this: In the mobile app, go to the Preview Device > Settings screen, then tap the Remove Device button.
+**6**&nbsp;&nbsp;When you’re done testing your UI, remove the Preview Device by doing this: In the mobile app, go to the Preview Device > Settings screen, then tap the Remove Device button.
 
  **&#8674;** *Next:* [Define the Rules & Notifications](../RulesDef)
