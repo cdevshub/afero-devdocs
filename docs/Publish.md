@@ -10,11 +10,11 @@ The final step in device Profile creation is publishing. When you publish your P
 
 Do the following to prepare for publishing:
 
-**1.** Have your smartphone nearby with the Afero app installed, running. Be signed in to your account.
+**1**&nbsp;&nbsp;Have your smartphone nearby with the Afero app installed, running. Be signed in to your account.
 
-**2.** Have your Afero module connected to a micro-USB power source, either an AC adapter or your computer (not your smartphone).
+**2**&nbsp;&nbsp;Have your Afero module connected to a micro-USB power source, either an AC adapter or your computer (not your smartphone).
 
-**3.** With the Afero Profile Editor opened to your project, and with PUBLISH selected from the Navigation pane, your window should show a QR Code Generator button, a list of the devices associated with your account, and your device activity:
+**3**&nbsp;&nbsp;With the Afero Profile Editor opened to your project, and with PUBLISH selected from the Navigation pane, your window should show a QR Code Generator button, a list of the devices associated with your account, and your device activity:
 
 <img src="../img/Publish.png" width="700" style="vertical-align:middle;margin:0px 0px;border:none">
    
@@ -57,16 +57,16 @@ For each event you will see:
 
 ## Now, Let’s Publish
 
-**1.** With the Afero mobile app active and your device powered up, the Status for this device should show a number like -30dBm. Specifying a specific numeric target is complex, but the point is that Status should not read “OFFLINE”. If it does, try restarting the mobile app, cycling power to the device, or restarting the Afero Profile Editor.
+**1**&nbsp;&nbsp;With the Afero mobile app active and your device powered up, the Status for this device should show a number like -30dBm. Specifying a specific numeric target is complex, but the point is that Status should not read “OFFLINE”. If it does, try restarting the mobile app, cycling power to the device, or restarting the Afero Profile Editor.
 
-**2.** Select the orange checkbox next to the ID of the device to which you intend to install.
+**2**&nbsp;&nbsp;Select the orange checkbox next to the ID of the device to which you intend to install.
 
-**3.** Click the PUBLISH button in the upper-right of the window.
+**3**&nbsp;&nbsp;Click the PUBLISH button in the upper-right of the window.
 
-**4.** After a short interval, you should see a banner at the top of the window that tells you the Profile has been published and the Over-The-Air (OTA) update is in progress. During the update, you may see log info scroll past in the Device Activity, including lines such as “The Profile ID for this device was changed from <old ID> to <new ID>”. On the Afero dev boards, you may also see the LED flash.
+**4**&nbsp;&nbsp;After a short interval, you should see a banner at the top of the window that tells you the Profile has been published and the Over-The-Air (OTA) update is in progress. During the update, you may see log info scroll past in the Device Activity, including lines such as “The Profile ID for this device was changed from <old ID> to <new ID>”. On the Afero dev boards, you may also see the LED flash.
 
-**5.** The update of your device is complete when the SW Version data in the Developer Devices table reads the new version number. This indicates the new Profile has been installed, and the device has restarted and reported its software version to the Afero Cloud.
+**5**&nbsp;&nbsp;The update of your device is complete when the SW Version data in the Developer Devices table reads the new version number. This indicates the new Profile has been installed, and the device has restarted and reported its software version to the Afero Cloud.
 
-**6.** When the Profile is complete, the Afero mobile app should update to display the Control UI you defined for your device. If the update does not happen quickly, try restarting the Afero mobile app.
+**6**&nbsp;&nbsp;When the Profile is complete, the Afero mobile app should update to display the Control UI you defined for your device. If the update does not happen quickly, try restarting the Afero mobile app.
 
 Once the new Control UI is in place, you should be able to use the controls to change attributes on the associated device.

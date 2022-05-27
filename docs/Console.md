@@ -46,7 +46,7 @@ To clear the map of all device activity, click the CLEAR MARKERS button in the u
 
 Click DEVICE LISTING in the left-hand Navigation pane to open a window displaying all your devices, including methods for filtering and finding a specific device or set of devices.
 
-In the table titled YOUR AFERO POWERED DEVICE LISTING, click a Device ID to open the [Device Data Viewer](../Console#DeviceDataViewer), or click a DEVICE TYPE NAME to go to the relevant [Device Type Reports](../Console#DTReports) window.
+In the table titled YOUR AFERO POWERED DEVICE LISTING, click a Device ID to open the [Individual Device Data Viewer](../Console#individual-device-data-viewer), or click a DEVICE TYPE NAME to go to the relevant [Device Type Reports](../Console#device-type-reports-window) window.
 
 You can package and download the contents of this device listings table (with additional Creation Date, Profile ID, and Location information) into a zipped .csv file. Click the download icon on the far right<img src="../img/Console-DownloadIcon.png" width="30" style="vertical-align:middle;margin:0px 0px;border:none">then click the download link that appears. When unzipping the file, you’ll be prompted to enter the password provided under the download link (use copy & paste).
 

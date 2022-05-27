@@ -4,21 +4,21 @@ Afero offers developers the ability to send over-the-air (OTA) firmware image up
 
 At a high level, this is how it works:
 
-**1.** Developer uses the Afero Profile Editor to publish a Profile to devices of a given Device Type.
+**1**&nbsp;&nbsp;Developer uses the Afero Profile Editor to publish a Profile to devices of a given Device Type.
 
-**2.** Developer uses the OTA Manager to create the firmware “Image Types” they will be using and associates each Image Type with a Device Type.
+**2**&nbsp;&nbsp;Developer uses the OTA Manager to create the firmware “Image Types” they will be using and associates each Image Type with a Device Type.
 
-**3.** Developer uses the Profile Editor to enable MCU Firmware OTA Updates for selected firmware Image Types.
+**3**&nbsp;&nbsp;Developer uses the Profile Editor to enable MCU Firmware OTA Updates for selected firmware Image Types.
 
-**4.** Developer uses the OTA Manager to upload the firmware image (associating it with one of their Image Types), where it is hosted on the Afero OTA server.
+**4**&nbsp;&nbsp;Developer uses the OTA Manager to upload the firmware image (associating it with one of their Image Types), where it is hosted on the Afero OTA server.
 
-**5.** Developer uses the OTA Manager to “deploy” the firmware image to eligible devices.
+**5**&nbsp;&nbsp;Developer uses the OTA Manager to “deploy” the firmware image to eligible devices.
 
-**6.** Afero uses its OTA service to send the OTA update to the ASR in the device.
+**6**&nbsp;&nbsp;Afero uses its OTA service to send the OTA update to the ASR in the device.
 
-**7.** The ASR passes the firmware update to the MCU using the ASR ⇆ MCU interface.
+**7**&nbsp;&nbsp;The ASR passes the firmware update to the MCU using the ASR ⇆ MCU interface.
 
-**8.** Update success/failure is reported back to Afero.
+**8**&nbsp;&nbsp;Update success/failure is reported back to Afero.
 
 <mark>**&check; Note:** In addition, you'll have to prepare your application code to accept an MCU OTA update. Instructions are on this page: [Handling MCU OTA Updates](../MCU-OTA).</mark>
 
@@ -80,20 +80,20 @@ When you are ready to upload a firmware image, start from the OTA Manager main w
 
 <mark>**&check; Note:** Remember that before uploading an image, you must have already used the Profile Editor to create and publish a device Profile that has a firmware Image Type selected. You do this on the Attributes Definition window > MCU Configuration pane > Firmware OTA Updates section. Read [Configure the MCU](../AttrDef#ConfigMCU) for more details.</mark>
 
-**1.** From the upper-right of the window, select +UPLOAD NEW IMAGE. The three-step upload wizard appears.
+**1**&nbsp;&nbsp;From the upper-right of the window, select +UPLOAD NEW IMAGE. The three-step upload wizard appears.
 
-**2.** You can upload your image in either of two ways:
+****&nbsp;&nbsp;You can upload your image in either of two ways:
 
 - Drag & drop the image into the target Image Type folder; or
 - Select the target Image Type folder then navigate to your image file and select it.
 
 When finished, click  NEXT: ADD INFO FOR YOUR FIRMWARE.
 
-**3.** On the next window you’ll add some metadata for your image: image name, description, version string, and tag(s). You will be able to search on this information later if you want to find a specific image quickly, or use one of the fields to filter your images. Press Enter after typing a tag to add more tags.
+**3**&nbsp;&nbsp;On the next window you’ll add some metadata for your image: image name, description, version string, and tag(s). You will be able to search on this information later if you want to find a specific image quickly, or use one of the fields to filter your images. Press Enter after typing a tag to add more tags.
 
 When finished, click  NEXT: ASSOCIATE DEVICE TYPES.
 
-**4.** All your eligible Device Types appear on the next window. Select those you want to receive the firmware image. Select DONE when you’re finished.
+**4**&nbsp;&nbsp;All your eligible Device Types appear on the next window. Select those you want to receive the firmware image. Select DONE when you’re finished.
 
 ## Deploy a Firmware Image
 
@@ -110,13 +110,13 @@ The main window of the OTA Manager displays all your images. If you have a large
 
 Once you have found the firmware image you want to deploy, you’re ready to push the image to your device(s):
 
-**1.** With the firmware image you want to deploy selected, click the DEPLOY button to the far-right of the firmware image entry.
+**1**&nbsp;&nbsp;With the firmware image you want to deploy selected, click the DEPLOY button to the far-right of the firmware image entry.
 
-**2.** Below the image name, the target device ID(s) are shown. Select the targets.
+**2**&nbsp;&nbsp;Below the image name, the target device ID(s) are shown. Select the targets.
 
-**3.** Click the PUSH NOW button on the far-right.
+**3**&nbsp;&nbsp;Click the PUSH NOW button on the far-right.
 
-**4.** You can see deployment status in a message (in orange text) below your selected device(s):
+**4**&nbsp;&nbsp;You can see deployment status in a message (in orange text) below your selected device(s):
 
 <img src="../img/OTA-DeployStatus.png" width="325" style="vertical-align:middle;margin:0px 0px;border:none">
 

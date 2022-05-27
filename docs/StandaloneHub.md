@@ -76,42 +76,42 @@ The Afero Hub Software is not particularly platform- or architecture-specific an
 
 The Raspbian OS allows you to configure the Wi-Fi network from your local PC before booting it in the Raspberry Pi.
 
-**1.** Install the Raspbian OS to an appropriate SD card (8GB or larger) via the instructions at https://www.raspberrypi.org/documentation/installation/installing-images/.
+**1**&nbsp;&nbsp;Install the Raspbian OS to an appropriate SD card (8GB or larger) via the instructions at https://www.raspberrypi.org/documentation/installation/installing-images/.
 
-**2.** Remove and re-insert the SD card into your computer.
+**2**&nbsp;&nbsp;Remove and re-insert the SD card into your computer.
 
-**3.** Open the SD card image, which will have the volume name of “boot”.
+**3**&nbsp;&nbsp;Open the SD card image, which will have the volume name of “boot”.
 
-**4.** Using a text editor like Notepad for Windows, TextEdit for macOS, or your favorite plain text editor program (do not use a document program like Word or Pages), do the following:
+**4**&nbsp;&nbsp;Using a text editor like Notepad for Windows, TextEdit for macOS, or your favorite plain text editor program (do not use a document program like Word or Pages), do the following:
 
-4a. Create a file on the SD card named “wpa_supplicant.conf”.
+***4a*** Create a file on the SD card named “wpa_supplicant.conf”.
 
-4b. Paste the text shown below into this file, replacing the Wi-Fi network SSID (network name) and password with the proper values for your Wi-Fi network. If you reside outside the US, replace the “country” setting with the proper two-letter country code.
+***4b*** Paste the text shown below into this file, replacing the Wi-Fi network SSID (network name) and password with the proper values for your Wi-Fi network. If you reside outside the US, replace the “country” setting with the proper two-letter country code.
 
-      ```
-      country=US
-      ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-      update_config=1
-      
-      network={
-          ssid="your_wifi_ssid"
-          scan_ssid=1
-          psk="your_wifi_password"
-          key_mgmt=WPA-PSK
-      }
-      ```
+```
+  country=US
+  ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+  update_config=1
+  
+  network={
+	  ssid="your_wifi_ssid"
+	  scan_ssid=1
+	  psk="your_wifi_password"
+	  key_mgmt=WPA-PSK
+  }
+```
 
-4c. Save the file.
+***4c*** Save the file.
 
-**5.** (Optional) If you do not have a keyboard and monitor to attach to the Pi, you can use a secure shell connection to the Pi to connect over your network: Using your text editor, create a file named “ssh” or “ssh.txt”. The contents of this file don’t matter, as long as the file exists on the “boot” SD card and is named “ssh”. This allows you to use the “ssh” command to connect to the Pi over your network.
+**5**&nbsp;&nbsp;(Optional) If you do not have a keyboard and monitor to attach to the Pi, you can use a secure shell connection to the Pi to connect over your network: Using your text editor, create a file named “ssh” or “ssh.txt”. The contents of this file don’t matter, as long as the file exists on the “boot” SD card and is named “ssh”. This allows you to use the “ssh” command to connect to the Pi over your network.
 
-**6.** Unmount the SD card and remove it from your computer. Insert it into the Raspberry Pi, and power up the Pi. In subsequent steps, you will work on the Pi.
+**6**&nbsp;&nbsp;Unmount the SD card and remove it from your computer. Insert it into the Raspberry Pi, and power up the Pi. In subsequent steps, you will work on the Pi.
 
-**7.** And finally, please take these important security steps after your Pi is set up and working:
+**7**&nbsp;&nbsp;And finally, please take these important security steps after your Pi is set up and working:
 
-7a. Change the default password for the “pi” user using the `passwd` command.
+***7a*** Change the default password for the “pi” user using the `passwd` command.
 
-7b. Replace the plaintext Wi-Fi password in the file `/etc/wpa_supplicant/wpa_supplicant.conf` with an encrypted version using the `wpa_passphrase` utility.
+***7b*** Replace the plaintext Wi-Fi password in the file `/etc/wpa_supplicant/wpa_supplicant.conf` with an encrypted version using the `wpa_passphrase` utility.
 
 ## Install the Afero Hub Software
 
@@ -121,7 +121,7 @@ You can install the Afero Hub Software in either of two ways. The first, [via AP
 
 Afero provides a Debian Repository for the packages we publish. If you add our repository to your system’s Advanced Packaging Tool (APT) sources list, you can install and update packages through the normal Debian package tools, such as `aptitude` and `apt-get`.
 
-**1.** Run the following commands to download a script that will add Afero to your APT sources:
+**1**&nbsp;&nbsp;Run the following commands to download a script that will add Afero to your APT sources:
 
 ```
 $ wget https://cdn.afero.io/repo/deb/addrepo.sh
@@ -137,20 +137,20 @@ $ bash ./addrepo.sh
 
    This will fetch the afero-ble and afero-hub packages as well as any other prerequisite packages you may need.
 
-**2.** During installation, you will be prompted to accept the [Afero Developer Terms of Service](https://www.afero.io/legal#developer), which is the license that covers your use of the Afero ble and hub packages.
+**2**&nbsp;&nbsp;During installation, you will be prompted to accept the [Afero Developer Terms of Service](https://www.afero.io/legal#developer), which is the license that covers your use of the Afero ble and hub packages.
 
-**3.** Skip down to [Add the Virtual-Hub Device to Your Account](../StandaloneHub#add-the-virtual-hub-device-to-your-account) to continue.
+**3**&nbsp;&nbsp;Skip down to [Add the Virtual-Hub Device to Your Account](../StandaloneHub#add-the-virtual-hub-device-to-your-account) to continue.
 
 ### Install the Hub Software Manually
 
-**1.** If you don’t wish to use our package repository, or if you’re installing these packages offline, you may download them manually from the following URLs:
+**1**&nbsp;&nbsp;If you don’t wish to use our package repository, or if you’re installing these packages offline, you may download them manually from the following URLs:
 
    - https://cdn.afero.io/repo/deb/afero-ble_latest_armhf.deb
    - https://cdn.afero.io/repo/deb/afero-hub_latest_armhf.deb
 
 If you intend to install these packages offline, you will also need to download the `html2text, qrencode, libqrencode3, and bluetooth` packages, either from a connected Debian system (with the command: `apt-get download html2text bluetooth qrencode libqrencode3 libpng12-0`), or fetch them online from https://packages.debian.org/stretch/allpackages/.
 
-**2.** Install these packages with the following commands:
+**2**&nbsp;&nbsp;Install these packages with the following commands:
 
 ```
 $ sudo dpkg -i html2text*.deb libpng12-0*deb libqrencode3*.deb qrencode*deb bluetooth*deb
@@ -158,25 +158,25 @@ $ sudo reboot
 $ sudo dpkg -i afero-ble*.deb
 ```
 
-**3.** You will be prompted to accept the [Afero Developer Terms of Service](https://www.afero.io/legal#developer), which is the license that covers your use of the Afero ble and hub packages.
+**3**&nbsp;&nbsp;You will be prompted to accept the [Afero Developer Terms of Service](https://www.afero.io/legal#developer), which is the license that covers your use of the Afero ble and hub packages.
 
-   ```
-   $ sudo dpkg -i afero-hub*.deb
-   ```
+```
+$ sudo dpkg -i afero-hub*.deb
+```
 
-**4.** Continue with [Add the Virtual-Hub Device to Your Account](../StandaloneHub#add-the-virtual-hub-device-to-your-account).
+**4**&nbsp;&nbsp;Continue with [Add the Virtual-Hub Device to Your Account](../StandaloneHub#add-the-virtual-hub-device-to-your-account).
 
 ## Add the Virtual-Hub Device to Your Account
 
 The installation of the Hub Software package will create a virtual-hub device that you can connect to your Afero account by scanning a QR code, just as with other devices such as Modulo. Follow the steps below:
 
-**1.** **Accept Terms of Service** - During installation, you must accept the [Afero Developer Terms of Service](https://www.afero.io/legal#developer) before the packages will install.
+**1**&nbsp;&nbsp;**Accept Terms of Service** - During installation, you must accept the [Afero Developer Terms of Service](https://www.afero.io/legal#developer) before the packages will install.
 
-**2.** Scan QR code with Afero mobile app - The package installation will present a QR code on your screen. Launch the Afero mobile app on your smartphone, and tap ADD DEVICE to add a device to your account, then scan the QR code.
+**2**&nbsp;&nbsp;Scan QR code with Afero mobile app - The package installation will present a QR code on your screen. Launch the Afero mobile app on your smartphone, and tap ADD DEVICE to add a device to your account, then scan the QR code.
 
 If the QR code won’t scan for some reason, tap MANUALLY ADD DEVICE and type the alphanumeric Association ID listed below the QR code.
 
-**3.** The software will then connect to the Afero Cloud to associate the Hub Software with your account.
+**3**&nbsp;&nbsp;The software will then connect to the Afero Cloud to associate the Hub Software with your account.
 
 **At this point, installation is complete, and your Developer Hub is ready to use!** For future reference, we’ve included instructions for managing your hub, directly below.
 
@@ -278,10 +278,10 @@ You can remove, re-install, and update these packages using normal Debian packag
 
 - When we release a new version of the Hub Software, you can update the packages through the normal `apt-get` process:
 
-```
-	$ sudo apt-get install --only-upgrade afero-ble   
-	$ sudo apt-get install --only-upgrade afero-hub
-```
+     ```
+     $ sudo apt-get install --only-upgrade afero-ble   
+     $ sudo apt-get install --only-upgrade afero-hub
+     ```
 
 Upgrading the packages will preserve the virtual-hub device attached to your account.
 
