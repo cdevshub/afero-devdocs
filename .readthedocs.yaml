@@ -10,6 +10,11 @@ build:
   tools:
     python: "3.10"
 
+# Build PDF & ePub
+formats:
+  - epub
+  - pdf
+
 mkdocs:
   configuration: mkdocs.yml
   
