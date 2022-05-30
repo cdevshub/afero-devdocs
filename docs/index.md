@@ -28,7 +28,7 @@ We’ve built Afero to be accessible to a broad range of developers, from novice
 
 ## Building Devices
 
-- Read our [Firmware](/en/latest/FW-API) and [Hardware](/en/latest/HWRef) docs to get your device ready for programming.
+- Read our [Firmware](/en/latest/FW-API)  <!--- and [Hardware](/en/latest/HWRef)---> docs to get your device ready for programming.
 - Define and program your device with Afero Profile Editor, following the [Profile Editor User Guide](/en/latest/Projects).
 - Use the [Afero Inspector](/en/latest/Inspector) web app to look inside your device definitions.
 - If you have an MCU on your developer device, refer to the [afLib](/en/latest/API-afLib) docs to use the library in your MCU application.

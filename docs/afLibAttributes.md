@@ -36,8 +36,9 @@ af_lib_get_attribute(af_lib_t *af_lib, const uint16_t attr_id)
 
 ### Parameters
 
+| PARAMETER  | DESCRIPTION                          |
+| ---------- | ------------------------------------------------------------ |
 | `af_lib`  | Pointer to the active aflib instance.             |
-| --------- | ------------------------------------------------- |
 | `attr_id` | The attribute ID of the value you are requesting. |
 
 ### Returns
@@ -47,8 +48,6 @@ An [afLib result code](../afLibErrors) indicating whether request was queued suc
 ### Example
 
 The code examples for the functions below illustrate the use of SPI communication. To use UART instead, only the minimal changes in afLib instantiation, as described in the [afLib Lifecycle](../afLibLifecycle#Func-transport-create) section, would be required.
-
-
 
 In the example below, `af_lib_get_attribute()` is called in `loop()` to obtain the value of `AF_MY_ATTRIBUTE`. If the call returns success, we set `shouldGetAttr` to false, since we won’t need to call `af_lib_get_attribute()` again. The value of the attribute of interest is actually obtained when `attrEventCallback()` is called. In that callback, we use the event type and attribute ID to select which action should be taken (in this case, we simply print to console).
 
@@ -178,13 +177,13 @@ af_lib_error_t af_lib_set_attribute_bytes(af_lib_t *af_lib,
 
 ### Parameters
 
-| `af_lib`   | Pointer to the active aflib instance.                        |
+| PARAMETER  | DESCRIPTION                          |
 | ---------- | ------------------------------------------------------------ |
-| `attr_id`  | The attribute ID for which you are<br>requesting the value.     |
-| `valueLen` | The size in bytes of the attribute value.<br>This parameter only needed when value size is not indicated by value type. |
+| `af_lib`   | Pointer to the active aflib instance.                        |
+| `attr_id`  | The attribute ID for which you are requesting the value.  |
+| `valueLen` | The size in bytes of the attribute value. This parameter only needed when value size is not indicated by value type. |
 | `value`    | The new value for the attribute.                             |
-| `reason`   | The reason that the MCU is setting the attribute at the time. <br>The two possible values are:<br>-AF_LIB_SET_REASON_GET_RESPONSE (if the set is in response to an<br> AF_LIB_EVENT_MCU_GET_REQUEST event in the callback)<br>-AF_LIB_SET_REASON_LOCAL_CHANGE (for any other reason). |
-|            |                                                              |
+| `reason`   | The reason that the MCU is setting the attribute at the time. The two possible values are:<ul><li>AF_LIB_SET_REASON_GET_RESPONSE (if the set is in response to an AF_LIB_EVENT_MCU_GET_REQUEST event in the callback)</li><li>AF_LIB_SET_REASON_LOCAL_CHANGE (for any other reason)</li></ul> |
 
 ### Returns
 

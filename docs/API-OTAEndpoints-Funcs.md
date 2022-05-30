@@ -319,7 +319,7 @@ Moves a file from the temporary location to the permanent firmware image reposit
 **HTTP METHOD:** `POST`                                                   
 **RESPONSE CODE:** `200 (OK)`                                               
 **REQUEST PARAMETERS:**                                                                                                     
-- {partnerID}` - The partner ID.                                          
+- `{partnerID}` - The partner ID.                                          
 **REQUEST HEADERS:**
 ```                                                                                                        
 
@@ -532,8 +532,9 @@ Updates a firmware image in the pool.
 **RESPONSE CODE:** `204 (No Content)`                                           
 **REQUEST PARAMETERS:**                                                                                                         
 - `{partnerID}` - The partner ID.                                                                               
- **`{type}`**                                                  The firmware type.                                           
+- `{type}` - The firmware type.                                           
 - `{versionNumber}` - The version number of the firmware image.                    
+
 **REQUEST HEADERS:**
 ```                                                                                                            
 { 
@@ -565,12 +566,12 @@ Creates a new firmware image association with a device type.
 **HTTP METHOD:** `POST`                                                       
 **RESPONSE CODE:** `201 (Created)`                                              
 **REQUEST PARAMETERS:**                                                                                                         
-&nbsp; - `{partnerID}` - The partner ID.                                                                               
-&nbsp; - `{deviceTypeId}` - The device type ID.
-                                        
-**REQUEST HEADERS:**
-```                                                                                                            
+- `{partnerID}` - The partner ID.                                                                               
+- `{deviceTypeId}` - The device type ID.
 
+**REQUEST HEADERS:**
+
+```                                                                                                          
 { 
   "Content_Type": "application/json", 
   "Accept": "application/json", 
@@ -834,6 +835,8 @@ Pushes a firmware image to a device.
 
 - Dissociates a firmware image from a device type.
 
+
+&nbsp;
 ## Firmware Tag Endpoints
 
 &nbsp;

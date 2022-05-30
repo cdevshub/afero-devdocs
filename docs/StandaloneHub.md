@@ -1,5 +1,6 @@
 # DEVELOPER HUB SETUP
 
+
 Any connected device created with an Afero ASR requires an Afero Hub to communicate with the Cloud. Options for an Afero Hub include a dedicated Afero Secure Hub, a smartphone running the Afero mobile app, or the Afero Hub Software package, which allows you to create your own standalone hub. We refer to the latter as an Afero Developer Hub, or Developer Hub for short. Our first release is for Raspberry Pi, or any other ARM-based computer system running Debian Linux.
 
 This Raspberry Pi release includes the following:
@@ -32,6 +33,7 @@ To set up an Afero Developer Hub, please use the information in the sections bel
     - [Remove, Reinstall, and Update the Hub Software](../StandaloneHub#remove-reinstall-and-update-the-hub-software)
     
 - [Get Support](../StandaloneHub#get-support)
+
 ## Caveats and Considerations
 
 - We recommend running the Developer Hub on the latest Raspbian “Buster” OS, however any version of Buster, and any version of Stretch (version 2017-08-16 or newer) are supported. Raspian can be downloaded from https://www.raspberrypi.org/downloads/raspbian/.

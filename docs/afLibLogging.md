@@ -35,8 +35,9 @@ For other platforms, check the `<*platform*>_logger.h` header file for proper pa
 
 ### Parameters
 
-| `val`    | Value to be printed.                                      |
+| PARAMETER    | DESCRIPTION                                      |
 | -------- | --------------------------------------------------------- |
+| `val`    | Value to be printed.                                      |
 | `format` | Optional `af_logger_format_t` to determine output format. |
 
 Note that, because `val` is declared as a signed 32-bit type, `af_logger()` will not properly print values of unsigned 32-bit numbers larger than 2147483647. If you need support for such values, you should use the standard Arduino `Serial.print()`, or implement your own logger.

@@ -22,9 +22,9 @@ void af_lib_loop(af_lib_t *af_lib)
 
 ### Parameters
 
-| `af_lib` | Pointer to the active afLib instance. |
+|PARAMETER | DESCRIPTION                          |
 | -------- | ------------------------------------- |
-|          |                                       |
+|  `af_lib`| Pointer to the active afLib instance. |
 
 ### Returns
 
@@ -72,9 +72,9 @@ bool af_lib_is_idle(af_lib_t *af_lib)
 
 ### Parameters
 
-| `af_lib` | Pointer to the active afLib instance. |
+|PARAMETER | DESCRIPTION                          |
 | -------- | ------------------------------------- |
-|          |                                       |
+|  `af_lib`| Pointer to the active afLib instance. |
 
 ### Returns
 
@@ -115,9 +115,9 @@ void af_lib_sync(af_lib_t *af_lib)
 
 ### Parameters
 
-| `af_lib` | Pointer to the active afLib instance. |
+|PARAMETER | DESCRIPTION                          |
 | -------- | ------------------------------------- |
-|          |                                       |
+|  `af_lib`| Pointer to the active afLib instance. |
 
 ### Returns
 
