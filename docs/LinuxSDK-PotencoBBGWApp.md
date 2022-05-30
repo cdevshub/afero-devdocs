@@ -452,7 +452,7 @@ At this point you can take the app and use `scp` to copy it to the target machin
 
 To create a full SD card image, we need to tell the arago-afero-image BitBake recipe that there is one more thing to include in the final image. This is not done automatically for a new layer and means that you have to edit the BitBake recipe to add it. This recipe is located in `./sources/meta-afero/recipes-core/images/` and is called “`arago-afero-image.bb`”.
 
-**1.** Take a look at the `arago-afero-image.bb` file. You find the following section named IMAGE_INSTALL that lists a large number of items:
+**1**&nbsp;&nbsp;Take a look at the `arago-afero-image.bb` file. You find the following section named IMAGE_INSTALL that lists a large number of items:
 
 ```
 IMAGE_INSTALL = " \
@@ -503,7 +503,7 @@ IMAGE_INSTALL = " \
 "
 ```
 
-**2.** As you can see, it lists a large number of elements that are to be included in the final rootfs. Just add “`app \`” to this list, like in the following version. Place the addition near the bottom, as shown:
+**2**&nbsp;&nbsp;As you can see, it lists a large number of elements that are to be included in the final rootfs. Just add “`app \`” to this list, like in the following version. Place the addition near the bottom, as shown:
 
 ```
 IMAGE_INSTALL = " \
@@ -555,9 +555,9 @@ IMAGE_INSTALL = " \
 "
 ```
 
-**3.** Save the file. Now, after you use the command “`bitbake arago-afero-image`”, the app will be deposited in `/usr/bin` in the root filesystem.
+**3**&nbsp;&nbsp;Save the file. Now, after you use the command “`bitbake arago-afero-image`”, the app will be deposited in `/usr/bin` in the root filesystem.
 
-**4.** You can take the resulting `afimg` file, flash it on to a micro SD card, insert it into the BBGW board, and boot up the system in the usual way by holding down the User button while the device is reset, then continue to hold it until the blue LEDs start to flash, usually more than 10 seconds.
+**4**&nbsp;&nbsp;You can take the resulting `afimg` file, flash it on to a micro SD card, insert it into the BBGW board, and boot up the system in the usual way by holding down the User button while the device is reset, then continue to hold it until the blue LEDs start to flash, usually more than 10 seconds.
 
 Now we will create the Potenco device Profile and publish it to the device.
 
@@ -565,9 +565,9 @@ Now we will create the Potenco device Profile and publish it to the device.
 
 After the system boots, you can type `**app**` at the command prompt and the application will run. However, it won’t **do** anything until you have pushed a new profile to your Potenco device that includes two new attributes. Use the Afero Profile Editor to create a new Profile that defines these attributes. You can read details on using the Profile Editor in the [Profile Editor User Guide](../Projects), but the specific instructions follow:
 
-**1.** Open the latest version of the Afero Profile Editor and sign in with your Afero developer account. (Download for either [Windows](http://cdn.afero.io/latest-ape/win) or [macOS](http://cdn.afero.io/latest-ape/mac).)
+**1**&nbsp;&nbsp;Open the latest version of the Afero Profile Editor and sign in with your Afero developer account. (Download for either [Windows](http://cdn.afero.io/latest-ape/win) or [macOS](http://cdn.afero.io/latest-ape/mac).)
 
-**2.** On the Startup window, select NEW. On the New Project dialog, complete the fields as follows:
+**2**&nbsp;&nbsp;On the Startup window, select NEW. On the New Project dialog, complete the fields as follows:
 
 - **Module Type**: Potenco
 - **Device Type Name**: MyApp (or any name you prefer)
@@ -576,9 +576,9 @@ After the system boots, you can type `**app**` at the command prompt and the app
 
 Select the CREATE button.
 
-**3.** On the DEFINE THE DEVICE TYPE window that appears, add a DESCRIPTION if you wish then select the SAVE button in the upper-right.
+**3**&nbsp;&nbsp;On the DEFINE THE DEVICE TYPE window that appears, add a DESCRIPTION if you wish then select the SAVE button in the upper-right.
 
-**4.** Select  ATTRIBUTES in the left-hand Navigation pane. On the  DEFINE THE MCU ATTRIBUTES window, complete the fields as follows:
+**4**&nbsp;&nbsp;Select  ATTRIBUTES in the left-hand Navigation pane. On the  DEFINE THE MCU ATTRIBUTES window, complete the fields as follows:
 
 - **Supported Network Interfaces**: Select Wi-Fi and WAN
 - **Device Configuration**, **Receive UTC Time**: Leave deselected
@@ -588,35 +588,37 @@ Select the CREATE button.
 
 Select the SAVE button in the upper-right.
 
-**5.** Select UI CONTROLS in the left-hand Navigation pane. On the DEFINE THE UI CONTROLS window, define two Value controls that will simply store and show the values to the app:
+**5**&nbsp;&nbsp;Select UI CONTROLS in the left-hand Navigation pane. On the DEFINE THE UI CONTROLS window, define two Value controls that will simply store and show the values to the app:
 
-5a. First, define two attribute options using the +ATTRIBUTE OPTION button in the right-hand pane:
+***5a***&nbsp;&nbsp;First, define two attribute options using the +ATTRIBUTE OPTION button in the right-hand pane:
 
 - **int8** - Attribute: int8, Label: int8, leave remaining fields as shown
 - **int32** - Attribute: int32, Label: int32, leave remaining fields as shown
 
-5b. Next, define two controls using the  +CONTROL button:
+***5b***&nbsp;&nbsp;Next, define two controls using the  +CONTROL button:
 
 - **Value control 1** - Attribute Option: int8, Control Type: Value, leave remaining fields as shown
 - **Value control 2** - Attribute Option: int32, Control Type: Value, leave remaining fields as shown
 
 Select the SAVE button in the upper-right.
 
-**6.** Select UI CONTROL GROUPS in the left-hand Navigation pane. On the DEFINE THE UI CONTROL GROUPS window:
+**6**&nbsp;&nbsp;Select UI CONTROL GROUPS in the left-hand Navigation pane. On the DEFINE THE UI CONTROL GROUPS window:
 
-6a. Select the + button to create a new group.
+***6a***&nbsp;&nbsp;Select the + button to create a new group.
 
-6b. Name your control group as you wish by first selecting “New Group” then editing the name.
+***6b***&nbsp;&nbsp;Name your control group as you wish by first selecting “New Group” then editing the name.
 
-6c. Drag both Value controls from the right-hand pane into the group box.
+***6c***&nbsp;&nbsp;Drag both Value controls from the right-hand pane into the group box.
 
 Select the SAVE button in the upper-right.
 
-**7.** Select PUBLISH in the left-hand Navigation pane. On the PUBLISH window:
+**7**&nbsp;&nbsp;Select PUBLISH in the left-hand Navigation pane. On the PUBLISH window:
 
-7a. Select the checkbox adjacent to your Potenco device name.
-7b. Select the PUBLISH button. Your Profile will be published to your Potenco; monitor progress by watching the DEVICE ACTIVITY pane.
-7c. Once published, you can close the Afero Profile Editor.
+***7a***&nbsp;&nbsp;Select the checkbox adjacent to your Potenco device name.
+
+***7b***&nbsp;&nbsp;Select the PUBLISH button. Your Profile will be published to your Potenco; monitor progress by watching the DEVICE ACTIVITY pane.
+
+***7c***&nbsp;&nbsp;Once published, you can close the Afero Profile Editor.
 
 ### Step 12. Open the App on the Device
 
@@ -637,13 +639,13 @@ Note that these instructions are very similar to those above and use identical c
 
 ### Steps
 
-**1.** Let’s start with getting the GitHub package. You should put it into the root of your home directory. Use the following command:
+**1**&nbsp;&nbsp;Let’s start with getting the GitHub package. You should put it into the root of your home directory. Use the following command:
 
 ```
 $ cd
 ```
 
-**2.** Download the package from the GitHub repository using the URL given to you by the ACE team:
+**2**&nbsp;&nbsp;Download the package from the GitHub repository using the URL given to you by the ACE team:
 
 ```
 $ git clone <GitHub repo URL> am335x-demo-app.git
@@ -652,7 +654,7 @@ $ git clone <GitHub repo URL> am335x-demo-app.git
 The package will clone to a directory named “`am335x-demo-app`”.
 
    
-**3.** Within this `am335x-demo-app` directory, you will find the directories and directory trees listed below. To install them, simply copy them into your own instance of the Potenco reference build.
+**3**&nbsp;&nbsp;Within this `am335x-demo-app` directory, you will find the directories and directory trees listed below. To install them, simply copy them into your own instance of the Potenco reference build.
 
 - `af-app` - Holds your makefile and your application code.
 
@@ -664,33 +666,33 @@ The package will clone to a directory named “`am335x-demo-app`”.
 
    - `APEProject` - Holds a directory containing the Afero Profile Editor project that defines the attributes used in this demo, as well as the UI definition for the Afero mobile app.
 
-**4.** Enter the directory that was created when you cloned the GitHub repo. The directory should be named `am335x-demo-app`:
+**4**&nbsp;&nbsp;Enter the directory that was created when you cloned the GitHub repo. The directory should be named `am335x-demo-app`:
 
 ```
 $ cd am335x-demo-app
 ```
 
-**5.** List the contents:
+**5**&nbsp;&nbsp;List the contents:
 
 ```
 $ ls
 af-app meta-app APEProject
 ```
 
-**6.** Now copy the application source code that’s in the `af-app` directory to the top level of the `potenco` directory tree:
+**6**&nbsp;&nbsp;Now copy the application source code that’s in the `af-app` directory to the top level of the `potenco` directory tree:
 
 ```
 $ cp -r af-app ~/potenco
 ```
 
-**7.** List the directory contents to verify:
+**7**&nbsp;&nbsp;List the directory contents to verify:
 
 ```
 $ ls ~/potenco
 af-app af-conn af-ipc af-util attrd build configs downloads oe-layertool-setup.sh otamgr sample-files sources
 ```
 
-**8.** Copy the `meta-app` directory to the `sources` directory in the `potenco` tree so that it can be found by BitBake and the recipes extracted from it, then verify the contents:
+**8**&nbsp;&nbsp;Copy the `meta-app` directory to the `sources` directory in the `potenco` tree so that it can be found by BitBake and the recipes extracted from it, then verify the contents:
 
 ```
 $ cp -r meta-app ~/potenco/sources/
@@ -698,7 +700,7 @@ $ ls ~/potenco/sources/
 bitbake meta-afero meta-app meta-arago meta-linaro meta-openembedded meta-processor-sdk meta-qt5 meta-ti oe-core
 ```
 
-**9.** Enter the `~/potenco/build/conf` directory, then look at the contents of the `bblayers.conf` file:
+**9**&nbsp;&nbsp;Enter the `~/potenco/build/conf` directory, then look at the contents of the `bblayers.conf` file:
 
 ```
 $ cd potenco
@@ -735,7 +737,7 @@ BBLAYERS += " \
 "
 ```
 
-**10.** Open this `bblayers.conf` file for edit. First replace the instances of “`<your_full_path>`” with your local system’s fully-qualified path to the `potenco` tree (should be your home directory). Then add the path to the `meta-app` directory after the
+**10**&nbsp;&nbsp;Open this `bblayers.conf` file for edit. First replace the instances of “`<your_full_path>`” with your local system’s fully-qualified path to the `potenco` tree (should be your home directory). Then add the path to the `meta-app` directory after the
 `meta-afero` line. As an example, here are the last three lines with the `meta-app` path added:
 
 ```
@@ -745,7 +747,7 @@ BBLAYERS += " \
 "
 ```
 
-**11.** Enter the `~/potenco/build` directory and use the following command to build your own application. Example output is shown below the command:
+**11**&nbsp;&nbsp;Enter the `~/potenco/build` directory and use the following command to build your own application. Example output is shown below the command:
 
 ```
 $ ~/potenco/build$ bitbake app
@@ -791,11 +793,11 @@ NOTE: Writing buildhistory
 Summary: There were 2 WARNING messages shown.
 ```
 
-**12.** At this point you have created an image named “app”. You can `scp` this image to the BBGW board.
+**12**&nbsp;&nbsp;At this point you have created an image named “app”. You can `scp` this image to the BBGW board.
 
-**13.** If you wish to have the file added to the final root filesystem image, you must tell the controlling BitBake recipe how to do so by editing the `/sources/meta-afero/recipes-core/images/arago-afero-image.bb` file.
+**13**&nbsp;&nbsp;If you wish to have the file added to the final root filesystem image, you must tell the controlling BitBake recipe how to do so by editing the `/sources/meta-afero/recipes-core/images/arago-afero-image.bb` file.
 
-13a. Look at the `arago-afero-image.bb` file; you will see a list of build target names that are part of the IMAGE_INSTALL= of the BitBake file:
+***13a***&nbsp;&nbsp;Look at the `arago-afero-image.bb` file; you will see a list of build target names that are part of the IMAGE_INSTALL= of the BitBake file:
 
 - backports \
 - af-ipc \
@@ -809,7 +811,7 @@ Summary: There were 2 WARNING messages shown.
 - af-extras \
 - dropbear \
 
-13b. Add “app \” to this list, as shown:
+***13b***&nbsp;&nbsp;Add “app \” to this list, as shown:
 
 - backports \
 - af-ipc \
@@ -826,7 +828,7 @@ Summary: There were 2 WARNING messages shown.
 
 This adds the application as a target to the root filesystem. Therefore, when you execute `bitbake arago-afero-image`, you will have the target of the build “app” placed into the root filesystem according to where the `do_install_append` of the application tells it, which is the directory of the target root filesystem.
 
-**14.** Save the file, then execute the following command:
+**14**&nbsp;&nbsp;Save the file, then execute the following command:
 
 ```
 bitbake arago-afero-image

@@ -11,27 +11,16 @@ This Raspberry Pi release includes the following:
 To set up an Afero Developer Hub, please use the information in the sections below:
 
 - [Caveats and Considerations](../StandaloneHub#caveats-and-considerations)
-
 - [Hardware Requirements](../StandaloneHub#hardware-requirements)
-
 - [Set Up the Raspberry Pi](../StandaloneHub#set-up-the-raspberry-pi)
-
 - [Install the Afero Hub Software](../StandaloneHub#install-the-afero-hub-software)
-
-    - [Install the Hub Software via APT Repository (Recommended)](../StandaloneHub#install-the-hub-software-via-apt-repository-recommended)
-    
+    - [Install the Hub Software via APT Repository (Recommended)](../StandaloneHub#install-the-hub-software-via-apt-repository-recommended)    
     - [Install the Hub Software Manually](../StandaloneHub#install-the-hub-software-manually)
-
 - [Add the Virtual-Hub Device to Your Account](../StandaloneHub#add-the-virtual-hub-device-to-your-account)
-
 - [Manage the Afero Hub Software](../StandaloneHub#manage-the-afero-hub-software)
-
-    - [Start, Stop, and Restart the Hub Software](../StandaloneHub#start-stop-and-restart-the-hub-software)
-    
-    - [Manage the Virtual-Hub Device](../StandaloneHub#manage-the-virtual-hub-device)
-  
-    - [Remove, Reinstall, and Update the Hub Software](../StandaloneHub#remove-reinstall-and-update-the-hub-software)
-    
+    - [Start, Stop, and Restart the Hub Software](../StandaloneHub#start-stop-and-restart-the-hub-software)  
+    - [Manage the Virtual-Hub Device](../StandaloneHub#manage-the-virtual-hub-device)  
+    - [Remove, Reinstall, and Update the Hub Software](../StandaloneHub#remove-reinstall-and-update-the-hub-software)    
 - [Get Support](../StandaloneHub#get-support)
 
 ## Caveats and Considerations

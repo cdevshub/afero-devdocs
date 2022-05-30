@@ -3,15 +3,10 @@
 The WAN system has the following parts that work together. Each component is described in detail on this page:
 
 - [wancontrol script](../LinuxSDK-WANDaemon#wancontrol-script) - Bash script that controls the power states of the modem. You will need to customize this script for your modem.
-
 - [atcmd executable](../LinuxSDK-WANDaemon#atcmd-executable) - Linux executable to send AT commands that is suitable for scripting. You should not need to customize this code.
-
 - [wannetwork script](../LinuxSDK-WANDaemon#wannetwork-script) - Bash script that brings up the WAN network interface and sets up the routing and DNS servers. You will need to customize this code for your OS.
-
 - [Radio Interface Layer (RIL)](../LinuxSDK-WANDaemon#radio-interface-layer-ril) - Static library that manages an AT command interface for network setup, RF environment monitoring, and debugging. You will need to customize this code for your modem.
-
     - [AT command interface](../LinuxSDK-WANDaemon#at-command-interface) - Part of the RIL that provides general purpose AT command utilities. You may need to modify this code for your modem.
-
 - [WAN daemon components](../LinuxSDK-WANDaemon#wan-daemon-components) - Linux executable that binds all of these pieces together. You may not need to customize this code.
 
 The sections on this page discuss each of these parts in more detail with an emphasis on the motivation for each part’s design. If you must customize anything for a particular modem, the requirements are presented.
@@ -149,29 +144,29 @@ To understand the RIL, it is helpful to understand the sequence of operations ne
 
 After the WAN daemon powers up the WAN (using the wancontrol script) it brings up the data connection by interacting with the RIL as follows:
 
-**1.** The WAN daemon calls `ril_init()` to initialize the RIL. This function does the following:
+**1**&nbsp;&nbsp;The WAN daemon calls `ril_init()` to initialize the RIL. This function does the following:
 
-1a. Starts the AT command event handler.
+***1a***&nbsp;&nbsp;Starts the AT command event handler.
 
-1b. Turns off AT command echo.
+***1b***&nbsp;&nbsp;Turns off AT command echo.
 
-1c. Gets some modem and SIM parameters for debugging.
+***1c***&nbsp;&nbsp;Gets some modem and SIM parameters for debugging.
 
-1d. Sets up AT event reporting.
+***1d***&nbsp;&nbsp;Sets up AT event reporting.
 
-1e. Initializes an internal cache with the modem’s PDP context profile list.
+***1e***&nbsp;&nbsp;Initializes an internal cache with the modem’s PDP context profile list.
 
-**2.** The WAN daemon gets the SIM ICCID using the `ril_lock_wan_status()` function, retrieving the ICCID from the returned `ril_wan_status_t` structure.
+**2**&nbsp;&nbsp;The WAN daemon gets the SIM ICCID using the `ril_lock_wan_status()` function, retrieving the ICCID from the returned `ril_wan_status_t` structure.
 
-**3.** Based on the ICCID and the contents of the `/etc/wan/carriers` file, the WAN daemon determines the APN and PPP authentication parameters.
+**3**&nbsp;&nbsp;Based on the ICCID and the contents of the `/etc/wan/carriers` file, the WAN daemon determines the APN and PPP authentication parameters.
 
-**4.** The WAN daemon calls the `ril_select_network()` function. This function sets up the default PDP context so the modem can register on the Packet Switch network. Then it tells the modem to register (AT+COPS=0).
+**4**&nbsp;&nbsp;The WAN daemon calls the `ril_select_network()` function. This function sets up the default PDP context so the modem can register on the Packet Switch network. Then it tells the modem to register (AT+COPS=0).
 
-**5.** The WAN daemon calls `ril_get_ps_attach` to get the packet switch attach status until it detects that the modem is attached to the packet switch network.
+**5**&nbsp;&nbsp;The WAN daemon calls `ril_get_ps_attach` to get the packet switch attach status until it detects that the modem is attached to the packet switch network.
 
-**6.** The WAN daemon calls the `ril_activate_data_call()` function to start the PDP context. The function returns a structure containing the networking parameters that are used by the wannetwork script to set up the network.
+**6**&nbsp;&nbsp;The WAN daemon calls the `ril_activate_data_call()` function to start the PDP context. The function returns a structure containing the networking parameters that are used by the wannetwork script to set up the network.
 
-**7.** The WAN daemon executes the wannetwork script, which brings up the network interface, creates the default route, and sets the DNS servers.
+**7**&nbsp;&nbsp;The WAN daemon executes the wannetwork script, which brings up the network interface, creates the default route, and sets the DNS servers.
 
 At this point the network is up and can be used by hubby.
 

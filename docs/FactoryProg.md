@@ -11,17 +11,12 @@ The factory programming process is described in the following sections:
 
 #####The Steps
 
-[1. Gather Factory Programmer Requirements](../FactoryProg#1-gather-factory-programmer-requirements)
-
-[2. Request Factory Programmer from Afero](../FactoryProg#2-request-factory-programmer-from-afero)
-
-[3. Set Up Hardware/Software for Factory](../FactoryProg#3-set-up-hardwaresoftware-for-factory)
-
-[4. Program Devices at Factory](../FactoryProg#4-program-devices-at-factory)
-
-[5. Print Product Labels](../FactoryProg#5-print-product-labels)
-
-[6. Run Validation Tests](../FactoryProg#Val6-run-validation-testsidate)
+[1. Gather Factory Programmer Requirements](../FactoryProg#1-gather-factory-programmer-requirements)<br>
+[2. Request Factory Programmer from Afero](../FactoryProg#2-request-factory-programmer-from-afero)<br>
+[3. Set Up Hardware/Software for Factory](../FactoryProg#3-set-up-hardwaresoftware-for-factory)<br>
+[4. Program Devices at Factory](../FactoryProg#4-program-devices-at-factory)<br>
+[5. Print Product Labels](../FactoryProg#5-print-product-labels)<br>
+[6. Run Validation Tests](../FactoryProg#Val6-run-validation-testsidate)<br>
 
 ## Prerequisite Tasks
 

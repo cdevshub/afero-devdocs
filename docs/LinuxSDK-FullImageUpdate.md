@@ -68,19 +68,19 @@ We strongly recommend the two partitions approach to the full OTA image update. 
 
 Follow the instructions outlined below to perform a full OTA image update. (The steps include the use of the Python script tools Afero provides. These scripts are described in detail in the section, [OTA Python Tools Reference](../LinuxSDK-FullImageUpdate#ota-python-tools-reference)).
 
-**1.** [Create the OTA image](../LinuxSDK-FullImageUpdate#1-create-the-ota-image), which includes:
+**Step 1**&nbsp;&nbsp;[Create the OTA image](../LinuxSDK-FullImageUpdate#step-1-create-the-ota-image), which includes:
 
 - Customizing the configuration file
 - Creating an OTA record
 - Incorporating the OTA record into your build
 - Uploading the image file to the OTA service
 
-**2.** [Deploy the OTA image](../LinuxSDK-FullImageUpdate#2-deploy-the-ota-image-to-a-device) by pushing the OTA image file to the Linux device.
+**Step 2**&nbsp;&nbsp;[Deploy the OTA image](../LinuxSDK-FullImageUpdate#step-2-deploy-the-ota-image-to-a-device) by pushing the OTA image file to the Linux device.
 
-**3.** [Install the OTA image](../LinuxSDK-FullImageUpdate#3-install-image-on-device-using-otamgr-daemon) on the device using the otamgr daemon.
+**Step 3**&nbsp;&nbsp;[Install the OTA image](../LinuxSDK-FullImageUpdate#step-3-install-image-on-device-using-otamgr-daemon) on the device using the otamgr daemon.
 
-
-### 1. Create the OTA Image
+&nbsp;
+### Step 1. Create the OTA Image
 
 This section focuses on how to create your OTA image, including integrating the OTA image creation with your build process.
 
@@ -96,21 +96,21 @@ Set up the build environment using the following instructions, as appropriate:
 
 **Note!** The instructions below assume you are developing on an Atmel SAMA5D2 board. If you are on a BeagleBone Green Wireless board, you can use the instructions below, but substitute the appropriate directory paths. If you have questions, contact the Afero Customer Enablement Team (“ace@afero.io”).
 
-**1.** Type the following:
+**1**&nbsp;&nbsp;Type the following:
 
 ```
 $ cd ~/sama5/poky
 $ source oe-init-build-env build-microchip
 ```
 
-**2.** Locate Yocto’s TMPDIR directory:
+**2**&nbsp;&nbsp;Locate Yocto’s TMPDIR directory:
 
 ```
 $ bitbake -e | grep ^TMPDIR
 TMPDIR="/home/john/sama5/poky/build-microchip/tmp"
 ```
 
-**3.** Go to the Yocto build’s `tmp` directory; if it doesn’t already exist, create it:
+**3**&nbsp;&nbsp;Go to the Yocto build’s `tmp` directory; if it doesn’t already exist, create it:
 
 ```
 $ mkdir -p tmp
@@ -119,7 +119,7 @@ $ cd tmp
 
 Note that we are using the `tmp` directory as a workspace for the OTA update tools.
 
-**4.** Clone the Afero partner OTA tools repository. If you don’t delete the Yocto build’s `tmp` directory, then you only have to do this once:
+**4**&nbsp;&nbsp;Clone the Afero partner OTA tools repository. If you don’t delete the Yocto build’s `tmp` directory, then you only have to do this once:
 
 ```
 $ git clone git@github.com:AferoCE/partner-hub-ota-tools.git
@@ -183,7 +183,7 @@ Assuming success, the OTA record file is generated and saved; for example, as th
 
 #### Run and Package the Build
 
-**1.** Run the build. The example below shows BitBake compiling and building the image for
+**1**&nbsp;&nbsp;Run the build. The example below shows BitBake compiling and building the image for
 `BUILD_TYPE=prod` (as you normally would):
 
 ```
@@ -191,27 +191,27 @@ $ cd ../..
 $ BUILD_TYPE=prod BUILD_TARGET=debug BUILD_PROFILE=potenco bitbake core-image-minimal
 ```
 
-**2.** In this step, package your build image as you like. Below is an example of copying the tar rootfs image to the `partner-hub-ota-tools` directory:
+**2**&nbsp;&nbsp;In this step, package your build image as you like. Below is an example of copying the tar rootfs image to the `partner-hub-ota-tools` directory:
 
 ```
 $ cd tmp/partner-hub-ota-tools
 $ cp ../deploy/images/sama5d2-xplained-emmc/core-image-minimal-sama5d2-xplained-emmc.tar.gz   hub_update.bin
 ```
 
-**3.** Upload the image file to the Afero OTA service (i.e., `hub_update.bin`), using the same default configuration file and build number as used above:
+**3**&nbsp;&nbsp;Upload the image file to the Afero OTA service (i.e., `hub_update.bin`), using the same default configuration file and build number as used above:
 
 ```
 $ python partner-ota-hub-uploader.py -n <your build number> --uploadOTAImage
 You are done!
 ```
-
-### 2. Deploy the OTA Image to a Device
+&nbsp;
+### Step 2. Deploy the OTA Image to a Device
 
 Deploying an OTA image can be independent of the creating the image. In this section, it is assumed that you have already uploaded your OTA image to the Afero OTA service and now you want to deploy this uploaded image to an device. Currently, we only support deploying image one at a time using this tool.
 
-**1.** Make sure you have already cloned the Afero partner tools and edited the configuration file, as described above in [Set Up the Environment](../LinuxSDK-FullImageUpdate#set-up-the-environment) and [Customize the Configuration File](../LinuxSDK-FullImageUpdate#customize-the-configuration-file).
+**1**&nbsp;&nbsp;Make sure you have already cloned the Afero partner tools and edited the configuration file, as described above in [Set Up the Environment](../LinuxSDK-FullImageUpdate#set-up-the-environment) and [Customize the Configuration File](../LinuxSDK-FullImageUpdate#customize-the-configuration-file).
 
-**2.** Display your OTA images for the deviceTypeId and partnerId by typing the following:
+**2**&nbsp;&nbsp;Display your OTA images for the deviceTypeId and partnerId by typing the following:
 
 ```
 $ python partner-ota-hub-deploy.py --list
@@ -234,9 +234,9 @@ Image Id    Version          Name                  Description
 49867       1.0.2d           Potenco-test          OTA Image description
 ```
 
-**3.** Look up your `deviceId` from your mobile app. Your `deviceId` should look something like this: 012359551bf18eba.
+**3**&nbsp;&nbsp;Look up your `deviceId` from your mobile app. Your `deviceId` should look something like this: 012359551bf18eba.
 
-**4.** Use the `partner-ota-hub-deploy.py` with the option `-i <imageId>` and `-d <deviceId>` to deploy your OTA images to the device with that ID:
+**4**&nbsp;&nbsp; Use the `partner-ota-hub-deploy.py` with the option `-i <imageId>` and `-d <deviceId>` to deploy your OTA images to the device with that ID:
 
 ```
 $ python partner-ota-hub-deploy.py -i <imageId> and -d <deviceId>
@@ -294,8 +294,8 @@ If sysupgrade is not available, you will see:
 
 sh: /sbin/sysupgrade: No such file or directory
 ```
-
-### 3. Install Image on Device Using otamgr Daemon
+&nbsp;
+### Step 3. Install Image on Device Using otamgr Daemon
 
 Once the OTA image has been deployed to the device and hubby has informed the otamgr daemon (via an Afero attribute) the location of the validated firmware in the filesystem, the otamgr daemon can install the image on the device. Please refer to [OTA Manager (otamgr)](../LinuxSDK-Overview#ota-manager-otamgr) and [OTA Manager Daemon Implementation](../LinuxSDK-OTAManager) for details.
 
