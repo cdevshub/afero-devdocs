@@ -26,7 +26,7 @@ Whenever possible, express data in the smallest form possible. Usually this just
 
 For frequency, no more than one write/update per second is preferable. Much slower than that, if possible, is recommended. Remember, a high update rate can affect your overall solution cost. If a device reports attribute values rapidly during operation even if those values haven’t changed, those updates will cause excessive traffic between the MCU and ASR. Also, there’s no need to write a group of related attributes if only one has changed. Only send updates that are meaningful to you.
 
-Writing to ASR does not mean the attribute has been synchronized with the Cloud; synchronization may take some time depending on the radio network or connectivity in general. So if you overwrite an attribute before it’s synchronized, the Cloud will not know about it (with an exception for attributes defined as [latch](../AttrDef#Latching)). Read more about allowing adequate attribute write timing in [Don’t Forget to Call af_lib_loop()](../MCUCodingTips#MCU-DoNotForgetafLib).
+Writing to ASR does not mean the attribute has been synchronized with the Cloud; synchronization may take some time depending on the radio network or connectivity in general. So if you overwrite an attribute before it’s synchronized, the Cloud will not know about it (with an exception for attributes defined as [latch](../AttrDef#Latching)). Read more about allowing adequate attribute write timing in [Don’t Forget to Call af_lib_loop()](../MCUCodingTips#dont-forget-to-call-af_lib_loop).
 
 The MCU can sample as often as desired; there’s no limit on attribute reads since they come directly from ASR with no Cloud overhead. But again, **only push useful data**.
 
@@ -34,7 +34,7 @@ The MCU can sample as often as desired; there’s no limit on attribute reads si
 
 One way to build a attribute model for your device is to organize all the attribute information in a table, one attribute per row. Assign each attribute a number using column *1*. MCU attributes can be numbered 1-1023.
 
-| *1*<br>NO. | *2*<br>FEATURE | *3*vDESCRIPTION | *4*<br>STATES | *5*<br>DATA TYPE | *6*<br>WRITABILITY | *7*<br>DEFAULT VALUE | *8*<br>UI CONTROL | *9*<br>SEND FREQUENCY | *10*<br>DEPENDENCIES |
+| *1*<br>NO. | *2*<br>FEATURE | *3*<br>DESCRIPTION | *4*<br>STATES | *5*<br>DATA TYPE | *6*<br>WRITABILITY | *7*<br>DEFAULT VALUE | *8*<br>UI CONTROL | *9*<br>SEND FREQUENCY | *10*<br>DEPENDENCIES |
 | :------: | :----------: | :--------------: | :---------: | :------------: | :--------------: | :----------------: | :-------------: | :-----------------: | :----------------: |
 | 1       |             |                 |            |               |                 |                   |                |                    |                   |
 | 2       |             |                 |            |               |                 |                   |                |                    |                   |
@@ -53,7 +53,7 @@ The information entered in the table will answer these questions:
 
 ## Smart Toaster Oven Example
 
-In this example we’ll define the attributes for a smart midline toaster oven. We’ll step through the toaster oven features (a.k.a. attributes), numbering and naming them so we can use that information when defining these attributes in the Afero Profile Editor. The full table is shown at the end of the example in [The Toaster Oven Data Model](../AttrModel#toven-datamodel).
+In this example we’ll define the attributes for a smart midline toaster oven. We’ll step through the toaster oven features (a.k.a. attributes), numbering and naming them so we can use that information when defining these attributes in the Afero Profile Editor. The full table is shown at the end of the example in [The Toaster Oven Data Model](../AttrModel#the-toaster-oven-data-model).
 
 First, let’s ask, “What controls does the toaster oven provide?” The Start Button is pretty obvious, let’s begin with that.
 
@@ -211,7 +211,7 @@ The table below lays out the data model. You can even use the *No.* and *Feature
 
 | NO.  | FEATURE                | DESCRIPTION                                                  | STATES                                                       | DATA TYPE | WRITABILITY | DEFAULT VALUE   | UI CONTROL | SEND FREQUENCY | DEPENDENCIES                                               |
 | :--- | :--------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :-------- | :---------- | :-------------- | :--------- | :------------- | :--------------------------------------------------------- |
-| 1    | Start Button           | Button that starts/stops the currently-set action.           | StartStop                                                    | Boolean   | Read/Write  | Stop            | Menu       | On Change      | Any Cooking Mode is selected.                              |
+| 1    | Start Button           | Button that starts/stops the currently-set action.           | Start<br>Stop                                                    | Boolean   | Read/Write  | Stop            | Menu       | On Change      | Any Cooking Mode is selected.                              |
 | 2    | Cooking Mode           | Selector for setting cooking mode.                           | 1 = Bake<br>2&nbsp;=&nbsp;Convection<br>3 = Broil<br>4 = Toast<br>5 = Warm<br>6 = Reheat | SINT8     | Read/Write  | Bake            | Menu       | On Change      | Feature is available when unit is not cooking.             |
 | 3    | Number of Toast Slices | Toggle to set number of slices you plan to toast.            | 1–3<br>4–6                                                      | Boolean   | Read/Write  | 1–3             | Menu       | On Change      | Cooking Mode *Toast* is selected.                          |
 | 4    | Toast Shade            | Selector for setting toast “doneness”.                       | Range from 1–10, increments of 1, where labels reflect:<br>1 = Defrost<br>3 = Light<br>5 = Medium<br>7 = Dark<br>10 = Very Dark | SINT8     | Read/Write  | Medium (5)      | Slider     | On Change      | Cooking Mode *Toast* is selected.                          |
