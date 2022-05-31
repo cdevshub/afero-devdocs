@@ -8,59 +8,62 @@ theme:
     name: mkdocs
 nav:
    - Welcome: 'index.md'
-   - Introducing Afero:
-        - INTRODUCING AFERO: 'Overview.md'
-        - Afero IoT Platform Overview: 'SystemOverview.md'
-        - Core Development Concepts: 'CoreConcepts.md'
-   - Getting Started:
-        - GETTING STARTED: 'Tutorials.md'
-        - Tutorial 1. Linking Your Afero Development Board: 'Lesson1.md'
-        - Tutorial 2. Creating a Device Profile: 'Lesson2.md'
-        - Tutorial 3. Creating a Device Profile: 'Lesson3.md'
-   - Cookbook:
-        - COOKBOOK: 'Cookbook.md'
-        - MCU Coding Tips: 'MCUCodingTips.md' 
-        - Using the Afero Cloud to Keep Time on the MCU: 'SetMCUTime.md'
-        - Handling Reboot Requests: 'RebootRequests.md' 
-        - Robust af_lib_set_attribute*() Calls: 'RobustafLibSet.md' 
-        - Useful Debugging Methods: 'DebugMethods.md' 
-        - Handling MCU OTA Updates: 'MCU-OTA.md'
-   - Profile Editor User Guide: 
-        - PROFILE EDITOR USER GUIDE: 'Projects.md' 
-        - Select the Project: 'SelectProject.md' 
-        - Define the Device Type: 'DeviceType.md' 
-        - Define the Device Attributes:
-           - Define the Device Attributes: 'AttrDef.md' 
-           - Great Attribute Modeling: 'AttrModel.md' 
-           - Device Attribute RAM Size: 'AttributeRAM.md' 
-        - Define the Mobile App UI: 'AppUIDef.md' 
-        - Define the Rules & Notifications: 'RulesDef.md'
-        - Publish Your Profile: 'Publish.md'
-   - OTA Manager User Guide: 'OTAMgr.md' 
-   - Inspector User Guide: 'Inspector.md' 
-   - Developer Hub Setup: 'StandaloneHub.md' 
-   - Console User Guide: 'Console.md' 
-   - Mobile SDKs: 'MobileSDK.md' 
-   - Secure Linux Device SDK:
-      - SECURE LINUX DEVICE SDK: 'LinuxSDK-Index.md'
-      - Overview of the Linux Device SDK: 'LinuxSDK-Overview.md'
-      - Software Tasks: 'LinuxSDK-SWTasks.md'
-      - Attribute Daemon Client:
-          - ATTRIBUTE DAEMON CLIENT: 'LinuxSDK-AttrDaemon.md'
-          - Defining Your Own Attributes: 'LinuxSDK-DefineAttrs.md'
-      - Wi-Fi Station Daemon: 'LinuxSDK-WiFiStDaemon.md'
-      - WAN Daemon: 'LinuxSDK-WANDaemon.md'
-      - Connection Mgr Daemon: 'LinuxSDK-ConnMgrDaemon.md'
-      - Edge Device Daemon: 'LinuxSDK-EdgeDaemon.md'
-      - OTA Mgr Daemon: 'LinuxSDK-OTAManager.md'
-      - Linux Device Full Image OTA Update: 'LinuxSDK-FullImageUpdate.md'
-      - Potenco Guides:
-         - POTENCO GUIDES: 'LinuxSDK-PotencoSetupGds.md'
-         - Potenco Setup for BBGW Board: 'LinuxSDK-PotencoBBGW.md'
-         - Add a Potenco App for BBGW: 'LinuxSDK-PotencoBBGWApp.md'
-         - Potenco Setup for SAMA5D2: 'LinuxSDK-PotencoSAMA5D2.md'
-         - Add a Potenco App for SAMA5D2: 'LinuxSDK-PotencoSAMA5D2App.md'
-      - Secure Linux SDK FAQ : 'LinuxSDK-FAQ.md'
+   - Start Here: 
+      - Introducing Afero:
+         - INTRODUCING AFERO: 'Overview.md'
+         - Afero IoT Platform Overview: 'SystemOverview.md'
+         - Core Development Concepts: 'CoreConcepts.md'
+      - Tutorials:
+         - GETTING STARTED: 'Tutorials.md'
+         - Tutorial 1. Linking Your Afero Development Board: 'Lesson1.md'
+         - Tutorial 2. Creating a Device Profile: 'Lesson2.md'
+         - Tutorial 3. Creating a Device Profile: 'Lesson3.md'
+      - Cookbook:
+         - COOKBOOK: 'Cookbook.md'
+         - MCU Coding Tips: 'MCUCodingTips.md' 
+         - Using the Afero Cloud to Keep Time on the MCU: 'SetMCUTime.md'
+         - Handling Reboot Requests: 'RebootRequests.md' 
+         - Robust af_lib_set_attribute*() Calls: 'RobustafLibSet.md' 
+         - Useful Debugging Methods: 'DebugMethods.md' 
+         - Handling MCU OTA Updates: 'MCU-OTA.md'
+   - User Guides:
+       - Profile Editor User Guide: 
+            - PROFILE EDITOR USER GUIDE: 'Projects.md' 
+            - Select the Project: 'SelectProject.md' 
+            - Define the Device Type: 'DeviceType.md' 
+            - Define the Device Attributes:
+               - Define the Device Attributes: 'AttrDef.md' 
+               - Great Attribute Modeling: 'AttrModel.md' 
+               - Device Attribute RAM Size: 'AttributeRAM.md' 
+            - Define the Mobile App UI: 'AppUIDef.md' 
+            - Define the Rules & Notifications: 'RulesDef.md'
+            - Publish Your Profile: 'Publish.md'
+       - OTA Manager User Guide: 'OTAMgr.md' 
+       - Inspector User Guide: 'Inspector.md' 
+       - Developer Hub Setup: 'StandaloneHub.md' 
+       - Console User Guide: 'Console.md' 
+   - SDKs:
+       - Mobile SDKs: 'MobileSDK.md' 
+       - Secure Linux Device SDK:
+            - SECURE LINUX DEVICE SDK: 'LinuxSDK-Index.md'
+            - Overview of the Linux Device SDK: 'LinuxSDK-Overview.md'
+            - Software Tasks: 'LinuxSDK-SWTasks.md'
+            - Attribute Daemon Client:
+                - ATTRIBUTE DAEMON CLIENT: 'LinuxSDK-AttrDaemon.md'
+                - Defining Your Own Attributes: 'LinuxSDK-DefineAttrs.md'
+            - Wi-Fi Station Daemon: 'LinuxSDK-WiFiStDaemon.md'
+            - WAN Daemon: 'LinuxSDK-WANDaemon.md'
+            - Connection Mgr Daemon: 'LinuxSDK-ConnMgrDaemon.md'
+            - Edge Device Daemon: 'LinuxSDK-EdgeDaemon.md'
+            - OTA Mgr Daemon: 'LinuxSDK-OTAManager.md'
+            - Linux Device Full Image OTA Update: 'LinuxSDK-FullImageUpdate.md'
+            - Potenco Guides:
+               - POTENCO GUIDES: 'LinuxSDK-PotencoSetupGds.md'
+               - Potenco Setup for BBGW Board: 'LinuxSDK-PotencoBBGW.md'
+               - Add a Potenco App for BBGW: 'LinuxSDK-PotencoBBGWApp.md'
+               - Potenco Setup for SAMA5D2: 'LinuxSDK-PotencoSAMA5D2.md'
+               - Add a Potenco App for SAMA5D2: 'LinuxSDK-PotencoSAMA5D2App.md'
+            - Secure Linux SDK FAQ : 'LinuxSDK-FAQ.md'
    - Cloud APIs:
       - CLOUD APIs: 'CloudAPIs.md'
       - OAuth API Endpoint: 'API-OAuthEndpoints.md'
@@ -89,8 +92,4 @@ nav:
            - Console Logging: 'afLibLogging.md'
            - afLib Result Codes: 'afLibErrors.md'
       - Attribute Update Reasons & States: 'PeripheralUpdates.md'
-   - Factory Programming:
-      - FACTORY PROGRAMMING: 'FactoryProg.md'
-      - Customize QR Code Labels: 'CustomizeLabel.md'
-      - Add Environment Variable Paths on a PC: 'AddPath.md'
    - Glossary: 'Glossary.md'
